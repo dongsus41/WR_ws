@@ -1,0 +1,7 @@
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:3:10:[m[K [01;31m[Kfatal error: [m[Kwearable_robot_interfaces/msg/can_data_frame.hpp: No such file or directory
+    3 | #include [01;31m[K<wearable_robot_interfaces/msg/can_data_frame.hpp>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/can_data_processor.dir/build.make:63: CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:86: CMakeFiles/can_data_processor.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

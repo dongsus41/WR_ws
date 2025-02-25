@@ -1,0 +1,92 @@
+[0.036s] Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8
+[0.174s] [ 19%] Built target gtest_main
+[0.174s] [ 19%] Built target gtest
+[0.179s] [ 42%] Built target ros2_socketcan
+[0.200s] [ 52%] Built target socket_can_sender_node_exe
+[0.208s] [35m[1mScanning dependencies of target socket_can_receiver_node[0m
+[0.216s] [ 61%] Built target socket_can_receiver_node_exe
+[0.240s] [ 80%] Built target ros2_socketcan_test
+[0.274s] [ 85%] [32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o[0m
+[3.688s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:10:1:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kdrivers::socketcan::SocketCanReceiverNode::SocketCanReceiverNode(const rclcpp::NodeOptions&)[m[K’
+[3.689s]    10 | [01;31m[KSocketCanReceiverNode[m[K::SocketCanReceiverNode(const rclcpp::NodeOptions & options)
+[3.689s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.691s] In file included from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.691s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:45:24:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Kdrivers::socketcan::SocketCanReceiverNode::SocketCanReceiverNode(drivers::socketcan::SocketCanReceiverNode&&)[m[K’
+[3.691s]    45 | class SOCKETCAN_PUBLIC [01;36m[KSocketCanReceiverNode[m[K final
+[3.692s]       |                        [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.692s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:45:24:[m[K [01;36m[Knote: [m[K                ‘[01m[Kdrivers::socketcan::SocketCanReceiverNode::SocketCanReceiverNode(const drivers::socketcan::SocketCanReceiverNode&)[m[K’
+[3.692s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:50:12:[m[K [01;36m[Knote: [m[K                ‘[01m[Kdrivers::socketcan::SocketCanReceiverNode::SocketCanReceiverNode(rclcpp::NodeOptions)[m[K’
+[3.692s]    50 |   explicit [01;36m[KSocketCanReceiverNode[m[K(rclcpp::NodeOptions options);
+[3.692s]       |            [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.692s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:45:24:[m[K [01;36m[Knote: [m[K‘[01m[Kclass drivers::socketcan::SocketCanReceiverNode[m[K’ defined here
+[3.692s]    45 | class SOCKETCAN_PUBLIC [01;36m[KSocketCanReceiverNode[m[K final
+[3.693s]       |                        [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.698s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In member function ‘[01m[Kvirtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn drivers::socketcan::SocketCanReceiverNode::on_configure(const rclcpp_lifecycle::State&)[m[K’:
+[3.699s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:36:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_100_[m[K’ was not declared in this scope
+[3.699s]    36 |     [01;31m[Kpub_id_100_[m[K = create_publisher<can_msgs::msg::Frame>("can_data_100", 10);
+[3.699s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[3.708s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:37:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_401_[m[K’ was not declared in this scope
+[3.708s]    37 |     [01;31m[Kpub_id_401_[m[K = create_publisher<can_msgs::msg::Frame>("can_data_401", 10);
+[3.708s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[3.710s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:25:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstate[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.711s]    25 | SocketCanReceiverNode::on_configure([01;35m[Kconst rclcpp_lifecycle::State & state[m[K)
+[3.711s]       |                                     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[3.718s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In member function ‘[01m[Kvirtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn drivers::socketcan::SocketCanReceiverNode::on_activate(const rclcpp_lifecycle::State&)[m[K’:
+[3.718s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:55:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_100_[m[K’ was not declared in this scope
+[3.718s]    55 |   [01;31m[Kpub_id_100_[m[K->on_activate();
+[3.718s]       |   [01;31m[K^~~~~~~~~~~[m[K
+[3.724s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:56:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_401_[m[K’ was not declared in this scope
+[3.724s]    56 |   [01;31m[Kpub_id_401_[m[K->on_activate();
+[3.724s]       |   [01;31m[K^~~~~~~~~~~[m[K
+[3.725s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:53:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstate[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.725s]    53 | SocketCanReceiverNode::on_activate([01;35m[Kconst rclcpp_lifecycle::State & state[m[K)
+[3.725s]       |                                    [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[3.731s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In member function ‘[01m[Kvirtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn drivers::socketcan::SocketCanReceiverNode::on_deactivate(const rclcpp_lifecycle::State&)[m[K’:
+[3.731s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:63:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_100_[m[K’ was not declared in this scope
+[3.731s]    63 |   [01;31m[Kpub_id_100_[m[K->on_deactivate();
+[3.731s]       |   [01;31m[K^~~~~~~~~~~[m[K
+[3.737s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:64:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_401_[m[K’ was not declared in this scope
+[3.737s]    64 |   [01;31m[Kpub_id_401_[m[K->on_deactivate();
+[3.737s]       |   [01;31m[K^~~~~~~~~~~[m[K
+[3.737s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:61:70:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstate[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.737s]    61 | SocketCanReceiverNode::on_deactivate([01;35m[Kconst rclcpp_lifecycle::State & state[m[K)
+[3.737s]       |                                      [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[3.743s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In member function ‘[01m[Kvirtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn drivers::socketcan::SocketCanReceiverNode::on_cleanup(const rclcpp_lifecycle::State&)[m[K’:
+[3.743s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:71:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_100_[m[K’ was not declared in this scope
+[3.743s]    71 |   [01;31m[Kpub_id_100_[m[K.reset();
+[3.743s]       |   [01;31m[K^~~~~~~~~~~[m[K
+[3.748s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:72:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_401_[m[K’ was not declared in this scope
+[3.748s]    72 |   [01;31m[Kpub_id_401_[m[K.reset();
+[3.749s]       |   [01;31m[K^~~~~~~~~~~[m[K
+[3.749s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:69:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstate[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.749s]    69 | SocketCanReceiverNode::on_cleanup([01;35m[Kconst rclcpp_lifecycle::State & state[m[K)
+[3.749s]       |                                   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[3.749s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In member function ‘[01m[Kvirtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn drivers::socketcan::SocketCanReceiverNode::on_shutdown(const rclcpp_lifecycle::State&)[m[K’:
+[3.749s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:84:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstate[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.749s]    84 | SocketCanReceiverNode::on_shutdown([01;35m[Kconst rclcpp_lifecycle::State & state[m[K)
+[3.750s]       |                                    [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[3.761s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In member function ‘[01m[Kvoid drivers::socketcan::SocketCanReceiverNode::receive()[m[K’:
+[3.761s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:120:33:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_pub_100_[m[K’ was not declared in this scope
+[3.761s]   120 |             if ((current_time - [01;31m[Klast_pub_100_[m[K).nanoseconds() >= interval_100_.count()) {
+[3.761s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.764s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:120:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kinterval_100_[m[K’ was not declared in this scope; did you mean ‘[01m[Kinterval_ns_[m[K’?
+[3.764s]   120 |             if ((current_time - last_pub_100_).nanoseconds() >= [01;31m[Kinterval_100_[m[K.count()) {
+[3.764s]       |                                                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.764s]       |                                                                 [32m[Kinterval_ns_[m[K
+[3.769s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:121:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_100_[m[K’ was not declared in this scope
+[3.770s]   121 |               [01;31m[Kpub_id_100_[m[K->publish(frame);
+[3.770s]       |               [01;31m[K^~~~~~~~~~~[m[K
+[3.776s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:131:33:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_pub_401_[m[K’ was not declared in this scope
+[3.776s]   131 |             if ((current_time - [01;31m[Klast_pub_401_[m[K).nanoseconds() >= interval_401_.count()) {
+[3.777s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.780s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:131:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kinterval_401_[m[K’ was not declared in this scope; did you mean ‘[01m[Kinterval_ns_[m[K’?
+[3.780s]   131 |             if ((current_time - last_pub_401_).nanoseconds() >= [01;31m[Kinterval_401_[m[K.count()) {
+[3.780s]       |                                                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.780s]       |                                                                 [32m[Kinterval_ns_[m[K
+[3.785s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:132:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_id_401_[m[K’ was not declared in this scope
+[3.785s]   132 |               [01;31m[Kpub_id_401_[m[K->publish(frame);
+[3.786s]       |               [01;31m[K^~~~~~~~~~~[m[K
+[6.230s] make[2]: *** [CMakeFiles/socket_can_receiver_node.dir/build.make:63: CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o] Error 1
+[6.231s] make[1]: *** [CMakeFiles/Makefile2:301: CMakeFiles/socket_can_receiver_node.dir/all] Error 2
+[6.231s] make: *** [Makefile:141: all] Error 2
+[6.238s] Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan' returned '2': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8

@@ -1,0 +1,306 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)
+-- Found rclcpp_lifecycle: 2.4.3 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)
+-- Found ros2_socketcan_msgs: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake)
+-- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/include
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[35m[1mScanning dependencies of target can_data_processor[0m
+[35m[1mScanning dependencies of target data_parser_node[0m
+[35m[1mScanning dependencies of target displacement_processing_node[0m
+[35m[1mScanning dependencies of target IMU_processing_node[0m
+[35m[1mScanning dependencies of target displacement_data_logger[0m
+[ 10%] [32mBuilding CXX object CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o[0m
+[ 20%] [32mBuilding CXX object CMakeFiles/displacement_data_logger.dir/src/displacement_data_logger_node.cpp.o[0m
+[ 30%] [32mBuilding CXX object CMakeFiles/data_parser_node.dir/src/data_parser_node.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/IMU_processing_node.dir/src/IMU_processing_node.cpp.o[0m
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:[m[K In member function ‘[01m[Kvoid DisplacementProcessingNode::displacement_callback(wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:99:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement0[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   99 |             msg->[01;31m[Kdisplacement0[m[K, msg->displacement1, msg->displacement2, msg->displacement3, msg->displacement4,
+      |                  [01;31m[K^~~~~~~~~~~~~[m[K
+      |                  [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:99:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement1[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   99 |             msg->displacement0, msg->[01;31m[Kdisplacement1[m[K, msg->displacement2, msg->displacement3, msg->displacement4,
+      |                                      [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                      [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:99:58:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement2[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   99 |             msg->displacement0, msg->displacement1, msg->[01;31m[Kdisplacement2[m[K, msg->displacement3, msg->displacement4,
+      |                                                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:99:78:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement3[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   99 |             msg->displacement0, msg->displacement1, msg->displacement2, msg->[01;31m[Kdisplacement3[m[K, msg->displacement4,
+      |                                                                              [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                                              [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:99:98:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement4[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   99 |             msg->displacement0, msg->displacement1, msg->displacement2, msg->displacement3, msg->[01;31m[Kdisplacement4[m[K,
+      |                                                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                                                                  [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:100:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement5[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+  100 |             msg->[01;31m[Kdisplacement5[m[K, msg->displacement6, msg->displacement7, msg->displacement8, msg->displacement9
+      |                  [01;31m[K^~~~~~~~~~~~~[m[K
+      |                  [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:100:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement6[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+  100 |             msg->displacement5, msg->[01;31m[Kdisplacement6[m[K, msg->displacement7, msg->displacement8, msg->displacement9
+      |                                      [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                      [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:100:58:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement7[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+  100 |             msg->displacement5, msg->displacement6, msg->[01;31m[Kdisplacement7[m[K, msg->displacement8, msg->displacement9
+      |                                                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:100:78:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement8[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+  100 |             msg->displacement5, msg->displacement6, msg->displacement7, msg->[01;31m[Kdisplacement8[m[K, msg->displacement9
+      |                                                                              [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                                              [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:100:98:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement9[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+  100 |             msg->displacement5, msg->displacement6, msg->displacement7, msg->displacement8, msg->[01;31m[Kdisplacement9[m[K
+      |                                                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                                                                                  [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:111:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement0[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  111 |                 case 0: processed_msg.[01;31m[Kdisplacement0[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:112:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement1[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  112 |                 case 1: processed_msg.[01;31m[Kdisplacement1[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:113:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement2[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  113 |                 case 2: processed_msg.[01;31m[Kdisplacement2[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:114:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement3[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  114 |                 case 3: processed_msg.[01;31m[Kdisplacement3[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:115:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement4[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  115 |                 case 4: processed_msg.[01;31m[Kdisplacement4[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:116:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement5[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  116 |                 case 5: processed_msg.[01;31m[Kdisplacement5[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:117:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement6[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  117 |                 case 6: processed_msg.[01;31m[Kdisplacement6[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:118:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement7[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  118 |                 case 7: processed_msg.[01;31m[Kdisplacement7[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:119:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement8[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  119 |                 case 8: processed_msg.[01;31m[Kdisplacement8[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:120:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement9[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  120 |                 case 9: processed_msg.[01;31m[Kdisplacement9[m[K = calibrated_value; break;
+      |                                       [01;31m[K^~~~~~~~~~~~~[m[K
+      |                                       [32m[Kdisplacement[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:1[m[K:
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:128:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement0[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  128 |             processed_msg.[01;31m[Kdisplacement0[m[K, processed_msg.displacement1);
+      |                           [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:128:56:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement1[m[K’; did you mean ‘[01m[Kdisplacement[m[K’?
+  128 |             processed_msg.displacement0, processed_msg.[01;31m[Kdisplacement1[m[K);
+      |                                                        [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:[m[K In member function ‘[01m[Kvoid DataParserNode::CAN_data_100_callback(wearable_robot_interfaces::msg::CANData_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:44:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kcan_id[m[K’
+   44 |         displacement_msg.[01;31m[Kcan_id[m[K = msg->can_id;
+      |                          [01;31m[K^~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:47:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement0[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   47 |         displacement_msg.[01;31m[Kdisplacement0[m[K = msg->data[0];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:48:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement1[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   48 |         displacement_msg.[01;31m[Kdisplacement1[m[K = msg->data[1];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:49:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement2[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   49 |         displacement_msg.[01;31m[Kdisplacement2[m[K = msg->data[2];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:50:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement3[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   50 |         displacement_msg.[01;31m[Kdisplacement3[m[K = msg->data[3];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:51:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement4[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   51 |         displacement_msg.[01;31m[Kdisplacement4[m[K = msg->data[4];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:52:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement5[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   52 |         displacement_msg.[01;31m[Kdisplacement5[m[K = msg->data[5];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:53:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement6[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   53 |         displacement_msg.[01;31m[Kdisplacement6[m[K = msg->data[6];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:54:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement7[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   54 |         displacement_msg.[01;31m[Kdisplacement7[m[K = msg->data[7];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:55:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement8[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   55 |         displacement_msg.[01;31m[Kdisplacement8[m[K = msg->data[8];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:56:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kdisplacement9[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   56 |         displacement_msg.[01;31m[Kdisplacement9[m[K = msg->data[9];
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:[m[K In member function ‘[01m[Kvoid DataParserNode::CAN_data_401_callback(wearable_robot_interfaces::msg::CANData_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:96:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::ActuatorCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kpwm0[m[K’; did you mean ‘[01m[Kpwm[m[K’?
+   96 |         pwm_msg.[01;31m[Kpwm0[m[K = msg->data[0];
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kpwm[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:97:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::ActuatorCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kpwm1[m[K’; did you mean ‘[01m[Kpwm[m[K’?
+   97 |         pwm_msg.[01;31m[Kpwm1[m[K = msg->data[1];
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kpwm[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:98:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::ActuatorCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kpwm2[m[K’; did you mean ‘[01m[Kpwm[m[K’?
+   98 |         pwm_msg.[01;31m[Kpwm2[m[K = msg->data[2];
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kpwm[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:99:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::ActuatorCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kpwm3[m[K’; did you mean ‘[01m[Kpwm[m[K’?
+   99 |         pwm_msg.[01;31m[Kpwm3[m[K = msg->data[3];
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kpwm[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:107:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::FanCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kfan0[m[K’; did you mean ‘[01m[Kfan[m[K’?
+  107 |         fan_msg.[01;31m[Kfan0[m[K = msg->data[4] > 0;
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kfan[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:108:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::FanCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kfan1[m[K’; did you mean ‘[01m[Kfan[m[K’?
+  108 |         fan_msg.[01;31m[Kfan1[m[K = msg->data[5] > 0;
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kfan[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:109:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::FanCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kfan2[m[K’; did you mean ‘[01m[Kfan[m[K’?
+  109 |         fan_msg.[01;31m[Kfan2[m[K = msg->data[6] > 0;
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kfan[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:110:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::FanCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kfan3[m[K’; did you mean ‘[01m[Kfan[m[K’?
+  110 |         fan_msg.[01;31m[Kfan3[m[K = msg->data[7] > 0;
+      |                 [01;31m[K^~~~[m[K
+      |                 [32m[Kfan[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:118:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::TemperatureData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktemperature0[m[K’; did you mean ‘[01m[Ktemperature[m[K’?
+  118 |         temp_msg.[01;31m[Ktemperature0[m[K = static_cast<float>(msg->data[8]) * 0.25f;
+      |                  [01;31m[K^~~~~~~~~~~~[m[K
+      |                  [32m[Ktemperature[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:119:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::TemperatureData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktemperature1[m[K’; did you mean ‘[01m[Ktemperature[m[K’?
+  119 |         temp_msg.[01;31m[Ktemperature1[m[K = static_cast<float>(msg->data[9]) * 0.25f;
+      |                  [01;31m[K^~~~~~~~~~~~[m[K
+      |                  [32m[Ktemperature[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:120:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::TemperatureData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktemperature2[m[K’; did you mean ‘[01m[Ktemperature[m[K’?
+  120 |         temp_msg.[01;31m[Ktemperature2[m[K = static_cast<float>(msg->data[10]) * 0.25f;
+      |                  [01;31m[K^~~~~~~~~~~~[m[K
+      |                  [32m[Ktemperature[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:121:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::TemperatureData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktemperature3[m[K’; did you mean ‘[01m[Ktemperature[m[K’?
+  121 |         temp_msg.[01;31m[Ktemperature3[m[K = static_cast<float>(msg->data[11]) * 0.25f;
+      |                  [01;31m[K^~~~~~~~~~~~[m[K
+      |                  [32m[Ktemperature[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:1[m[K:
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:130:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::ActuatorCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kpwm0[m[K’; did you mean ‘[01m[Kpwm[m[K’?
+  130 |             pwm_msg.[01;31m[Kpwm0[m[K, fan_msg.fan0, temp_msg.temperature0);
+      |                     [01;31m[K^~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:130:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::FanCommand_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kfan0[m[K’; did you mean ‘[01m[Kfan[m[K’?
+  130 |             pwm_msg.pwm0, fan_msg.[01;31m[Kfan0[m[K, temp_msg.temperature0);
+      |                                   [01;31m[K^~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/data_parser_node.cpp:130:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct wearable_robot_interfaces::msg::TemperatureData_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktemperature0[m[K’; did you mean ‘[01m[Ktemperature[m[K’?
+  130 |             pwm_msg.pwm0, fan_msg.fan0, temp_msg.[01;31m[Ktemperature0[m[K);
+      |                                                  [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:[m[K In member function ‘[01m[Kvoid DisplacementDataLogger::topic_callback(wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:68:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcan_id[m[K’
+   68 |                  << msg->[01;31m[Kcan_id[m[K << ","
+      |                          [01;31m[K^~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:69:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement0[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   69 |                  << msg->[01;31m[Kdisplacement0[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:70:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement1[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   70 |                  << msg->[01;31m[Kdisplacement1[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:71:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement2[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   71 |                  << msg->[01;31m[Kdisplacement2[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:72:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement3[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   72 |                  << msg->[01;31m[Kdisplacement3[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:73:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement4[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   73 |                  << msg->[01;31m[Kdisplacement4[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:74:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement5[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   74 |                  << msg->[01;31m[Kdisplacement5[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:75:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement6[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   75 |                  << msg->[01;31m[Kdisplacement6[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:76:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement7[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   76 |                  << msg->[01;31m[Kdisplacement7[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:77:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement8[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   77 |                  << msg->[01;31m[Kdisplacement8[m[K << ","
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_data_logger_node.cpp:78:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement9[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+   78 |                  << msg->[01;31m[Kdisplacement9[m[K
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+      |                          [32m[Kdisplacement_raw[m[K
+make[2]: *** [CMakeFiles/displacement_data_logger.dir/build.make:63: CMakeFiles/displacement_data_logger.dir/src/displacement_data_logger_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/displacement_data_logger.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/can_data_processor.dir/build.make:63: CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o] Interrupt
+make[2]: *** [CMakeFiles/data_parser_node.dir/build.make:63: CMakeFiles/data_parser_node.dir/src/data_parser_node.cpp.o] Interrupt
+make[2]: *** wait: No child processes.  Stop.
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** wait: No child processes.  Stop.
+make[2]: *** [CMakeFiles/displacement_processing_node.dir/build.make:63: CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:86: CMakeFiles/can_data_processor.dir/all] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:194: CMakeFiles/displacement_processing_node.dir/all] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:167: CMakeFiles/data_parser_node.dir/all] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:248: CMakeFiles/IMU_processing_node.dir/all] Error 2
+make: *** [Makefile:141: all] Interrupt

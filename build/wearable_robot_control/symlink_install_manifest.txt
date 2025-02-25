@@ -1,0 +1,15 @@
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/package_run_dependencies/wearable_robot_control
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/parent_prefix_path/wearable_robot_control
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/ament_prefix_path.sh
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/ament_prefix_path.dsv
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/path.sh
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/path.dsv
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.bash
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.sh
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.zsh
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.dsv
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.dsv
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/packages/wearable_robot_control
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/cmake/wearable_robot_controlConfig.cmake
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/cmake/wearable_robot_controlConfig-version.cmake
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.xml

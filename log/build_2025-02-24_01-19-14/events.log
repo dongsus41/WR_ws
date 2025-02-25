@@ -1,0 +1,142 @@
+[0.000000] (-) TimerEvent: {}
+[0.000827] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.000956] (-) JobUnselected: {'identifier': 'wearable_robot_bringup'}
+[0.001021] (-) JobUnselected: {'identifier': 'wearable_robot_control'}
+[0.001068] (-) JobUnselected: {'identifier': 'wearable_robot_data_processing'}
+[0.001110] (-) JobUnselected: {'identifier': 'wearable_robot_hw'}
+[0.001151] (-) JobUnselected: {'identifier': 'wearable_robot_interfaces'}
+[0.001208] (ros2_socketcan) JobQueued: {'identifier': 'ros2_socketcan', 'dependencies': OrderedDict([('ros2_socketcan_msgs', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs')])}
+[0.001278] (ros2_socketcan) JobStarted: {'identifier': 'ros2_socketcan'}
+[0.063697] (ros2_socketcan) JobProgress: {'identifier': 'ros2_socketcan', 'progress': 'cmake'}
+[0.066410] (ros2_socketcan) JobProgress: {'identifier': 'ros2_socketcan', 'progress': 'build'}
+[0.068324] (ros2_socketcan) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/kimm/wearable_robot_ws/build/ros2_socketcan', '--', '-j8', '-l8'], 'cwd': '/home/kimm/wearable_robot_ws/build/ros2_socketcan', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/214ac6af_323f_4214_a2e1_939294f8f179'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.88'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/ros2_socketcan'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[0.083849] (-) TimerEvent: {}
+[0.184795] (-) TimerEvent: {}
+[0.264436] (ros2_socketcan) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_id_splitter_node\x1b[0m\n'}
+[0.284983] (-) TimerEvent: {}
+[0.312237] (ros2_socketcan) StdoutLine: {'line': b'[  8%] Built target socket_can_receiver_node_exe\n'}
+[0.333034] (ros2_socketcan) StdoutLine: {'line': b'[ 26%] Built target gtest\n'}
+[0.333775] (ros2_socketcan) StdoutLine: {'line': b'[ 26%] Built target gtest_main\n'}
+[0.367894] (ros2_socketcan) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o\x1b[0m\n'}
+[0.373669] (ros2_socketcan) StdoutLine: {'line': b'[ 52%] Built target ros2_socketcan\n'}
+[0.385166] (-) TimerEvent: {}
+[0.413912] (ros2_socketcan) StdoutLine: {'line': b'[ 60%] Built target socket_can_sender_node_exe\n'}
+[0.421624] (ros2_socketcan) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socket_can_receiver_node\x1b[0m\n'}
+[0.431684] (ros2_socketcan) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target ros2_socketcan_test\x1b[0m\n'}
+[0.485385] (-) TimerEvent: {}
+[0.493952] (ros2_socketcan) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/gtest_main.cpp.o\x1b[0m\n'}
+[0.507296] (ros2_socketcan) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o\x1b[0m\n'}
+[0.517216] (ros2_socketcan) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/sanity_checks.cpp.o\x1b[0m\n'}
+[0.542344] (ros2_socketcan) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/receiver.cpp.o\x1b[0m\n'}
+[0.585579] (-) TimerEvent: {}
+[0.686282] (-) TimerEvent: {}
+[0.787032] (-) TimerEvent: {}
+[0.861704] (ros2_socketcan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/can_id_splitter_node.cpp:2:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kros2_socketcan/socket_can_receiver_node.hpp: No such file or directory\n'}
+[0.862337] (ros2_socketcan) StderrLine: {'line': b'    2 | #include \x1b[01;31m\x1b[K"ros2_socketcan/socket_can_receiver_node.hpp"\x1b[m\x1b[K\n'}
+[0.862556] (ros2_socketcan) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.862721] (ros2_socketcan) StderrLine: {'line': b'compilation terminated.\n'}
+[0.867796] (ros2_socketcan) StderrLine: {'line': b'make[2]: *** [CMakeFiles/can_id_splitter_node.dir/build.make:63: CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o] Error 1\n'}
+[0.869033] (ros2_socketcan) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:330: CMakeFiles/can_id_splitter_node.dir/all] Error 2\n'}
+[0.869351] (ros2_socketcan) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[0.887268] (-) TimerEvent: {}
+[0.988045] (-) TimerEvent: {}
+[1.088789] (-) TimerEvent: {}
+[1.189564] (-) TimerEvent: {}
+[1.290343] (-) TimerEvent: {}
+[1.391147] (-) TimerEvent: {}
+[1.491891] (-) TimerEvent: {}
+[1.592736] (-) TimerEvent: {}
+[1.693680] (-) TimerEvent: {}
+[1.794460] (-) TimerEvent: {}
+[1.895319] (-) TimerEvent: {}
+[1.996523] (-) TimerEvent: {}
+[2.097283] (-) TimerEvent: {}
+[2.198036] (-) TimerEvent: {}
+[2.298793] (-) TimerEvent: {}
+[2.399615] (-) TimerEvent: {}
+[2.500382] (-) TimerEvent: {}
+[2.601121] (-) TimerEvent: {}
+[2.701860] (-) TimerEvent: {}
+[2.802604] (-) TimerEvent: {}
+[2.903494] (-) TimerEvent: {}
+[3.004230] (-) TimerEvent: {}
+[3.105025] (-) TimerEvent: {}
+[3.205825] (-) TimerEvent: {}
+[3.306579] (-) TimerEvent: {}
+[3.407352] (-) TimerEvent: {}
+[3.469882] (ros2_socketcan) StdoutLine: {'line': b'[ 82%] \x1b[32m\x1b[1mLinking CXX executable ros2_socketcan_test\x1b[0m\n'}
+[3.507525] (-) TimerEvent: {}
+[3.608364] (-) TimerEvent: {}
+[3.709152] (-) TimerEvent: {}
+[3.810037] (-) TimerEvent: {}
+[3.887043] (ros2_socketcan) StdoutLine: {'line': b'[ 82%] Built target ros2_socketcan_test\n'}
+[3.910218] (-) TimerEvent: {}
+[4.011060] (-) TimerEvent: {}
+[4.111827] (-) TimerEvent: {}
+[4.212564] (-) TimerEvent: {}
+[4.313471] (-) TimerEvent: {}
+[4.414186] (-) TimerEvent: {}
+[4.515036] (-) TimerEvent: {}
+[4.616368] (-) TimerEvent: {}
+[4.717308] (-) TimerEvent: {}
+[4.818167] (-) TimerEvent: {}
+[4.919022] (-) TimerEvent: {}
+[5.019905] (-) TimerEvent: {}
+[5.120605] (-) TimerEvent: {}
+[5.221455] (-) TimerEvent: {}
+[5.322335] (-) TimerEvent: {}
+[5.423049] (-) TimerEvent: {}
+[5.523875] (-) TimerEvent: {}
+[5.624613] (-) TimerEvent: {}
+[5.725341] (-) TimerEvent: {}
+[5.826089] (-) TimerEvent: {}
+[5.927177] (-) TimerEvent: {}
+[6.028413] (-) TimerEvent: {}
+[6.129233] (-) TimerEvent: {}
+[6.230049] (-) TimerEvent: {}
+[6.330877] (-) TimerEvent: {}
+[6.431627] (-) TimerEvent: {}
+[6.532381] (-) TimerEvent: {}
+[6.633061] (-) TimerEvent: {}
+[6.733799] (-) TimerEvent: {}
+[6.834585] (-) TimerEvent: {}
+[6.935357] (-) TimerEvent: {}
+[7.036173] (-) TimerEvent: {}
+[7.136947] (-) TimerEvent: {}
+[7.237731] (-) TimerEvent: {}
+[7.338595] (-) TimerEvent: {}
+[7.439691] (-) TimerEvent: {}
+[7.540885] (-) TimerEvent: {}
+[7.641621] (-) TimerEvent: {}
+[7.742303] (-) TimerEvent: {}
+[7.843010] (-) TimerEvent: {}
+[7.943841] (-) TimerEvent: {}
+[8.044677] (-) TimerEvent: {}
+[8.145500] (-) TimerEvent: {}
+[8.246306] (-) TimerEvent: {}
+[8.347110] (-) TimerEvent: {}
+[8.447939] (-) TimerEvent: {}
+[8.548779] (-) TimerEvent: {}
+[8.649570] (-) TimerEvent: {}
+[8.750400] (-) TimerEvent: {}
+[8.851196] (-) TimerEvent: {}
+[8.952001] (-) TimerEvent: {}
+[9.052806] (-) TimerEvent: {}
+[9.153488] (-) TimerEvent: {}
+[9.254304] (-) TimerEvent: {}
+[9.355100] (-) TimerEvent: {}
+[9.455808] (-) TimerEvent: {}
+[9.556519] (-) TimerEvent: {}
+[9.657249] (-) TimerEvent: {}
+[9.757951] (-) TimerEvent: {}
+[9.766068] (ros2_socketcan) StdoutLine: {'line': b'[ 86%] \x1b[32m\x1b[1mLinking CXX shared library libsocket_can_receiver_node.so\x1b[0m\n'}
+[9.858143] (-) TimerEvent: {}
+[9.958925] (-) TimerEvent: {}
+[10.059692] (-) TimerEvent: {}
+[10.160387] (-) TimerEvent: {}
+[10.243269] (ros2_socketcan) StdoutLine: {'line': b'[ 86%] Built target socket_can_receiver_node\n'}
+[10.246047] (ros2_socketcan) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[10.251439] (ros2_socketcan) CommandEnded: {'returncode': 2}
+[10.260857] (-) TimerEvent: {}
+[10.285489] (ros2_socketcan) JobEnded: {'identifier': 'ros2_socketcan', 'rc': 2}
+[10.297789] (-) EventReactorShutdown: {}

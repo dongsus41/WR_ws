@@ -1,0 +1,9 @@
+[35m[1mScanning dependencies of target CAN_data_extractor_node[0m
+[35m[1mScanning dependencies of target CAN_command_transmit_node[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/CAN_command_transmit_node.dir/src/CAN_command_transmit_node.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/CAN_data_extractor_node.dir/src/CAN_data_extractor_node.cpp.o[0m
+make[2]: *** [CMakeFiles/CAN_command_transmit_node.dir/build.make:63: CMakeFiles/CAN_command_transmit_node.dir/src/CAN_command_transmit_node.cpp.o] Interrupt
+make[2]: *** [CMakeFiles/CAN_data_extractor_node.dir/build.make:63: CMakeFiles/CAN_data_extractor_node.dir/src/CAN_data_extractor_node.cpp.o] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/CAN_command_transmit_node.dir/all] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/CAN_data_extractor_node.dir/all] Interrupt
+make: *** [Makefile:141: all] Interrupt

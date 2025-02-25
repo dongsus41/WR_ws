@@ -1,0 +1,213 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				},
+				{
+					"build" : "wearable_robot_interfaces__py",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/wearable_robot_interfaces__py",
+					"targetIndexes" : 
+					[
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "wearable_robot_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-4cff0a1249db7a5a0453.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces-80f5dcebcba46f507a93.json",
+					"name" : "wearable_robot_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__cpp-e5fa6e466239fbfc00bd.json",
+					"name" : "wearable_robot_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "wearable_robot_interfaces__py::@d6752e9b1a039691b09d",
+					"jsonFile" : "target-wearable_robot_interfaces__py-2af419b6092f3b0ae9d0.json",
+					"name" : "wearable_robot_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__python::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__python-5587bbfdd1eae98621d8.json",
+					"name" : "wearable_robot_interfaces__python",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_generator_c-0b0f958a5c6401c0abf5.json",
+					"name" : "wearable_robot_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_c-7817a950b68d9315830e.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_c__pyext-30b0ef18d242ed5482c2.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_cpp-67573d6233193d53eb36.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_fastrtps_c-6fb88d5f8db3eba9aec1.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext-2bf49e1c528a7bdddf7b.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp-2cc1523afb30c6b9bf26.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_introspection_c-91b47b058e3cf8b535ff.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext-431bc67bbc697b5e7079.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces__rosidl_typesupport_introspection_cpp-84be4424e1e84680d8fa.json",
+					"name" : "wearable_robot_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wearable_robot_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wearable_robot_interfaces_uninstall-81ec1b49af6c7dc34032.json",
+					"name" : "wearable_robot_interfaces_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces",
+		"source" : "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

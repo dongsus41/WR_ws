@@ -1,0 +1,25 @@
+[35m[1mScanning dependencies of target can_id_splitter_node[0m
+[  8%] Built target socket_can_receiver_node_exe
+[ 26%] Built target gtest
+[ 26%] Built target gtest_main
+[ 30%] [32mBuilding CXX object CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o[0m
+[ 52%] Built target ros2_socketcan
+[ 60%] Built target socket_can_sender_node_exe
+[35m[1mScanning dependencies of target socket_can_receiver_node[0m
+[35m[1mScanning dependencies of target ros2_socketcan_test[0m
+[ 65%] [32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/gtest_main.cpp.o[0m
+[ 69%] [32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o[0m
+[ 73%] [32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/sanity_checks.cpp.o[0m
+[ 78%] [32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/receiver.cpp.o[0m
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/can_id_splitter_node.cpp:2:10:[m[K [01;31m[Kfatal error: [m[Kros2_socketcan/socket_can_receiver_node.hpp: No such file or directory
+    2 | #include [01;31m[K"ros2_socketcan/socket_can_receiver_node.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/can_id_splitter_node.dir/build.make:63: CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:330: CMakeFiles/can_id_splitter_node.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[ 82%] [32m[1mLinking CXX executable ros2_socketcan_test[0m
+[ 82%] Built target ros2_socketcan_test
+[ 86%] [32m[1mLinking CXX shared library libsocket_can_receiver_node.so[0m
+[ 86%] Built target socket_can_receiver_node
+make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/build/wearable_robot_control/ament_cmake_core/wearable_robot_controlConfig-version.cmake

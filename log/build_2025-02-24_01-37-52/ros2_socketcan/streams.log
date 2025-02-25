@@ -1,0 +1,300 @@
+[0.036s] Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8
+[0.185s] [  9%] Built target gtest_main
+[0.198s] [ 19%] Built target gtest
+[0.209s] [ 42%] Built target ros2_socketcan
+[0.218s] [ 52%] Built target socket_can_receiver_node_exe
+[0.224s] [ 61%] Built target socket_can_sender_node_exe
+[0.251s] [35m[1mScanning dependencies of target socket_can_receiver_node[0m
+[0.271s] [ 80%] Built target ros2_socketcan_test
+[0.318s] [ 85%] [32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o[0m
+[0.343s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:1:3:[m[K [01;31m[Kerror: [m[Kinvalid preprocessing directive #socket_can_receiver_node
+[0.343s]     1 | # [01;31m[Ksocket_can_receiver_node[m[K.cpp
+[0.343s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.343s] In file included from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[0.344s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:1:3:[m[K [01;31m[Kerror: [m[Kinvalid preprocessing directive #socket_can_receiver_node
+[0.344s]     1 | # [01;31m[Ksocket_can_receiver_node[m[K.hpp
+[0.344s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.738s] In file included from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.738s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:22:46:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kfinal[m[K’
+[3.738s]    22 | class SOCKETCAN_PUBLIC SocketCanReceiverNode [01;31m[Kfinal[m[K
+[3.739s]       |                                              [01;31m[K^~~~~[m[K
+[3.743s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:18:1:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ does not name a type; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.743s]    18 | [01;31m[KSocketCanReceiverNode[m[K::SocketCanReceiverNode(const rclcpp::NodeOptions & options)
+[3.743s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.743s]       | [32m[KSocketCanReceiver[m[K
+[3.746s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:37:1:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ does not name a type; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.746s]    37 | [01;31m[KSocketCanReceiverNode[m[K::CallbackReturn
+[3.746s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.746s]       | [32m[KSocketCanReceiver[m[K
+[3.749s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:65:1:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ does not name a type; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.750s]    65 | [01;31m[KSocketCanReceiverNode[m[K::CallbackReturn
+[3.750s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.750s]       | [32m[KSocketCanReceiver[m[K
+[3.753s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:74:1:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ does not name a type; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.753s]    74 | [01;31m[KSocketCanReceiverNode[m[K::CallbackReturn
+[3.753s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.753s]       | [32m[KSocketCanReceiver[m[K
+[3.757s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:83:1:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ does not name a type; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.757s]    83 | [01;31m[KSocketCanReceiverNode[m[K::CallbackReturn
+[3.757s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.757s]       | [32m[KSocketCanReceiver[m[K
+[3.761s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:99:1:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ does not name a type; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.761s]    99 | [01;31m[KSocketCanReceiverNode[m[K::CallbackReturn
+[3.762s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.762s]       | [32m[KSocketCanReceiver[m[K
+[3.762s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:106:6:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ has not been declared
+[3.762s]   106 | void [01;31m[KSocketCanReceiverNode[m[K::receive()
+[3.762s]       |      [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.764s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In function ‘[01m[Kvoid drivers::socketcan::receive()[m[K’:
+[3.764s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:110:3:[m[K [01;31m[Kerror: [m[K‘[01m[KCanId[m[K’ was not declared in this scope
+[3.765s]   110 |   [01;31m[KCanId[m[K receive_id{};
+[3.765s]       |   [01;31m[K^~~~~[m[K
+[3.771s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:113:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_current_state[m[K’ was not declared in this scope
+[3.771s]   113 |     if ([01;31m[Kget_current_state[m[K().id() != lifecycle_msgs::msg::State::PRIMARY_STATE_ACTIVE) {
+[3.772s]       |         [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[3.772s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:113:58:[m[K [01;31m[Kerror: [m[K‘[01m[Klifecycle_msgs::msg::State[m[K’ has not been declared
+[3.772s]   113 |     if (get_current_state().id() != lifecycle_msgs::msg::[01;31m[KState[m[K::PRIMARY_STATE_ACTIVE) {
+[3.772s]       |                                                          [01;31m[K^~~~~[m[K
+[3.776s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:119:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kreceive_id[m[K’ was not declared in this scope; did you mean ‘[01m[Kreceive[m[K’?
+[3.777s]   119 |       [01;31m[Kreceive_id[m[K = receiver_->receive(frame.data.data(), interval_ns_);
+[3.777s]       |       [01;31m[K^~~~~~~~~~[m[K
+[3.777s]       |       [32m[Kreceive[m[K
+[3.779s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:119:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kreceiver_[m[K’ was not declared in this scope; did you mean ‘[01m[Kreceive[m[K’?
+[3.779s]   119 |       receive_id = [01;31m[Kreceiver_[m[K->receive(frame.data.data(), interval_ns_);
+[3.780s]       |                    [01;31m[K^~~~~~~~~[m[K
+[3.780s]       |                    [32m[Kreceive[m[K
+[3.784s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:119:58:[m[K [01;31m[Kerror: [m[K‘[01m[Kinterval_ns_[m[K’ was not declared in this scope
+[3.784s]   119 |       receive_id = receiver_->receive(frame.data.data(), [01;31m[Kinterval_ns_[m[K);
+[3.784s]       |                                                          [01;31m[K^~~~~~~~~~~~[m[K
+[3.784s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:124:52:[m[K [01;31m[Kerror: [m[K‘[01m[KFrameType[m[K’ has not been declared
+[3.784s]   124 |       frame.is_error = (receive_id.frame_type() == [01;31m[KFrameType[m[K::ERROR);
+[3.785s]       |                                                    [01;31m[K^~~~~~~~~[m[K
+[3.785s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:125:50:[m[K [01;31m[Kerror: [m[K‘[01m[KFrameType[m[K’ has not been declared
+[3.785s]   125 |       frame.is_rtr = (receive_id.frame_type() == [01;31m[KFrameType[m[K::REMOTE);
+[3.785s]       |                                                  [01;31m[K^~~~~~~~~[m[K
+[3.789s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:127:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kuse_bus_time_[m[K’ was not declared in this scope
+[3.789s]   127 |       if ([01;31m[Kuse_bus_time_[m[K) {
+[3.789s]       |           [01;31m[K^~~~~~~~~~~~~[m[K
+[3.792s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:130:30:[m[K [01;31m[Kerror: [m[K‘[01m[Know[m[K’ was not declared in this scope; did you mean ‘[01m[Kpow[m[K’?
+[3.792s]   130 |         frame.header.stamp = [01;31m[Know[m[K();
+[3.793s]       |                              [01;31m[K^~~[m[K
+[3.793s]       |                              [32m[Kpow[m[K
+[3.794s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:136:33:[m[K [01;31m[Kerror: [m[K‘[01m[Know[m[K’ was not declared in this scope; did you mean ‘[01m[Kpow[m[K’?
+[3.794s]   136 |             auto current_time = [01;31m[Know[m[K();
+[3.794s]       |                                 [01;31m[K^~~[m[K
+[3.795s]       |                                 [32m[Kpow[m[K
+[3.798s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:137:33:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_pub_100_[m[K’ was not declared in this scope
+[3.798s]   137 |             if ((current_time - [01;31m[Klast_pub_100_[m[K).nanoseconds() >= interval_100_.count()) {
+[3.799s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.803s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:137:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kinterval_100_[m[K’ was not declared in this scope
+[3.804s]   137 |             if ((current_time - last_pub_100_).nanoseconds() >= [01;31m[Kinterval_100_[m[K.count()) {
+[3.804s]       |                                                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.808s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:138:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kframes_pub_100_[m[K’ was not declared in this scope
+[3.809s]   138 |               [01;31m[Kframes_pub_100_[m[K->publish(frame);
+[3.809s]       |               [01;31m[K^~~~~~~~~~~~~~~[m[K
+[3.810s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.810s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.810s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.810s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.810s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.810s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.810s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.811s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.811s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.811s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.811s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.811s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.811s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:143:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+[3.811s]   143 |               [01;31m[Kget_logger[m[K(),
+[3.812s]       |               [01;31m[K^~~~~~~~~~[m[K
+[3.812s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:23[m[K,
+[3.812s]                  from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.812s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.812s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.812s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.812s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.812s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.813s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.813s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.813s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.813s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.813s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.813s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.813s] [01m[K/opt/ros/foxy/include/rclcpp/logger.hpp:80:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+[3.813s]    80 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+[3.814s]       |                 [01;36m[K^~~~~~[m[K
+[3.814s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.814s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.814s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.814s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.814s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.814s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.815s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.815s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.815s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.815s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.815s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.815s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.815s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:142:13:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.815s]   142 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.816s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.816s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:142:13:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.816s]   142 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.816s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.816s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:142:13:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.816s]   142 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.816s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.816s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:144:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_clock[m[K’ was not declared in this scope
+[3.816s]   144 |               *[01;31m[Kget_clock[m[K(),
+[3.817s]       |                [01;31m[K^~~~~~~~~[m[K
+[3.817s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In lambda function:
+[3.817s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:142:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kc[m[K’ was not declared in this scope; did you mean ‘[01m[Klc[m[K’?
+[3.818s]   142 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.818s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.822s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In function ‘[01m[Kvoid drivers::socketcan::receive()[m[K’:
+[3.823s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:154:33:[m[K [01;31m[Kerror: [m[K‘[01m[Know[m[K’ was not declared in this scope; did you mean ‘[01m[Kpow[m[K’?
+[3.823s]   154 |             auto current_time = [01;31m[Know[m[K();
+[3.823s]       |                                 [01;31m[K^~~[m[K
+[3.823s]       |                                 [32m[Kpow[m[K
+[3.826s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:155:33:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_pub_401_[m[K’ was not declared in this scope
+[3.827s]   155 |             if ((current_time - [01;31m[Klast_pub_401_[m[K).nanoseconds() >= interval_401_.count()) {
+[3.827s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.831s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:155:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kinterval_401_[m[K’ was not declared in this scope
+[3.832s]   155 |             if ((current_time - last_pub_401_).nanoseconds() >= [01;31m[Kinterval_401_[m[K.count()) {
+[3.832s]       |                                                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.837s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:156:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kframes_pub_401_[m[K’ was not declared in this scope
+[3.837s]   156 |               [01;31m[Kframes_pub_401_[m[K->publish(frame);
+[3.837s]       |               [01;31m[K^~~~~~~~~~~~~~~[m[K
+[3.838s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.838s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.838s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.838s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.838s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.838s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.838s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.839s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.839s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.839s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.839s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.839s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.839s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:161:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+[3.839s]   161 |               [01;31m[Kget_logger[m[K(),
+[3.839s]       |               [01;31m[K^~~~~~~~~~[m[K
+[3.840s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:23[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.840s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.841s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.841s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.841s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.841s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.841s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.841s] [01m[K/opt/ros/foxy/include/rclcpp/logger.hpp:80:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+[3.841s]    80 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+[3.842s]       |                 [01;36m[K^~~~~~[m[K
+[3.842s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.842s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.842s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.842s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.842s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.842s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.843s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.843s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.843s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.843s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.843s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.843s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.843s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:160:13:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.843s]   160 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.844s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.844s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:160:13:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.844s]   160 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.844s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.844s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:160:13:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.844s]   160 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.844s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.845s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:162:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_clock[m[K’ was not declared in this scope
+[3.845s]   162 |               *[01;31m[Kget_clock[m[K(),
+[3.845s]       |                [01;31m[K^~~~~~~~~[m[K
+[3.845s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In lambda function:
+[3.845s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:160:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kc[m[K’ was not declared in this scope; did you mean ‘[01m[Klc[m[K’?
+[3.845s]   160 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.845s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.848s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In function ‘[01m[Kvoid drivers::socketcan::receive()[m[K’:
+[3.848s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:173:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+[3.848s]   173 |         [01;31m[Kget_logger[m[K(),
+[3.848s]       |         [01;31m[K^~~~~~~~~~[m[K
+[3.848s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:23[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.849s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.850s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.850s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.850s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.850s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.850s] [01m[K/opt/ros/foxy/include/rclcpp/logger.hpp:80:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+[3.850s]    80 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+[3.850s]       |                 [01;36m[K^~~~~~[m[K
+[3.851s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.851s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.852s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.852s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.852s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:5[m[K,
+[3.852s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:2[m[K:
+[3.852s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:172:7:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.852s]   172 |       [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.852s]       |       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.852s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:172:7:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.853s]   172 |       [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.853s]       |       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.853s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:172:7:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.853s]   172 |       [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.853s]       |       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.853s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:174:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_clock[m[K’ was not declared in this scope
+[3.853s]   174 |         *[01;31m[Kget_clock[m[K(),
+[3.854s]       |          [01;31m[K^~~~~~~~~[m[K
+[3.856s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K In lambda function:
+[3.857s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:172:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kc[m[K’ was not declared in this scope; did you mean ‘[01m[Klc[m[K’?
+[3.857s]   172 |       [01;31m[KRCLCPP_WARN_THROTTLE[m[K(
+[3.857s]       |       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.895s] In file included from [01m[K/opt/ros/foxy/include/class_loader/class_loader.hpp:56[m[K,
+[3.895s]                  from [01m[K/opt/ros/foxy/include/rclcpp_components/register_node_macro.hpp:18[m[K,
+[3.895s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:186[m[K:
+[3.895s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:[m[K At global scope:
+[3.896s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:187:53:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ is not a member of ‘[01m[Kdrivers::socketcan[m[K’; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.896s]   187 | RCLCPP_COMPONENTS_REGISTER_NODE(drivers::socketcan::[01;31m[KSocketCanReceiverNode[m[K)
+[3.896s]       |                                                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.896s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:187:53:[m[K [01;31m[Kerror: [m[K‘[01m[KSocketCanReceiverNode[m[K’ is not a member of ‘[01m[Kdrivers::socketcan[m[K’; did you mean ‘[01m[KSocketCanReceiver[m[K’?
+[3.896s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:187:1:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.896s]   187 | [01;31m[KRCLCPP_COMPONENTS_REGISTER_NODE[m[K(drivers::socketcan::SocketCanReceiverNode)
+[3.896s]       | [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.848s] In file included from [01m[K/opt/ros/foxy/include/class_loader/class_loader_core.hpp:57[m[K,
+[4.848s]                  from [01m[K/opt/ros/foxy/include/class_loader/class_loader.hpp:55[m[K,
+[4.848s]                  from [01m[K/opt/ros/foxy/include/rclcpp_components/register_node_macro.hpp:18[m[K,
+[4.849s]                  from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:186[m[K:
+[4.849s] /opt/ros/foxy/include/class_loader/meta_object.hpp: In instantiation of ‘[01m[KB* class_loader::impl::MetaObject<C, B>::create() const [with C = int; B = rclcpp_components::NodeFactory][m[K’:
+[4.849s] [01m[K/opt/ros/foxy/include/class_loader/meta_object.hpp:216:7:[m[K   required from here
+[4.849s] [01m[K/opt/ros/foxy/include/class_loader/meta_object.hpp:218:12:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kint*[m[K’ to ‘[01m[Krclcpp_components::NodeFactory*[m[K’ in return
+[4.849s]   218 |     return [01;31m[Knew C[m[K;
+[4.849s]       |            [01;31m[K^~~~~[m[K
+[4.849s]       |            [01;31m[K|[m[K
+[4.850s]       |            [01;31m[Kint*[m[K
+[5.016s] make[2]: *** [CMakeFiles/socket_can_receiver_node.dir/build.make:63: CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o] Error 1
+[5.017s] make[1]: *** [CMakeFiles/Makefile2:301: CMakeFiles/socket_can_receiver_node.dir/all] Error 2
+[5.017s] make: *** [Makefile:141: all] Error 2
+[5.025s] Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan' returned '2': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8

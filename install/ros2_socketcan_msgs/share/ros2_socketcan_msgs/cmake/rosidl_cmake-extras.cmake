@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs/rosidl_cmake/rosidl_cmake-extras.cmake

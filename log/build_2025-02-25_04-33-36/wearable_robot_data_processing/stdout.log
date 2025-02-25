@@ -1,0 +1,6 @@
+[35m[1mScanning dependencies of target displacement_processing_node[0m
+[ 25%] Built target can_data_processor
+[ 50%] Built target IMU_processing_node
+[ 62%] [32mBuilding CXX object CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o[0m
+[ 87%] Built target data_parser_node
+[100%] [32m[1mLinking CXX executable displacement_processing_node[0m

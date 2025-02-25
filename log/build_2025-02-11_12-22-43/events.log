@@ -1,0 +1,11 @@
+[0.000000] (-) TimerEvent: {}
+[0.001096] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.001419] (-) JobUnselected: {'identifier': 'wearable_robot_bringup'}
+[0.001701] (-) JobUnselected: {'identifier': 'wearable_robot_control'}
+[0.001818] (-) JobUnselected: {'identifier': 'wearable_robot_data_processing'}
+[0.001903] (-) JobUnselected: {'identifier': 'wearable_robot_hw'}
+[0.001985] (-) JobUnselected: {'identifier': 'wearable_robot_interfaces'}
+[0.002071] (ros2_socketcan) JobQueued: {'identifier': 'ros2_socketcan', 'dependencies': OrderedDict([('ros2_socketcan_msgs', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs')])}
+[0.002167] (ros2_socketcan) JobStarted: {'identifier': 'ros2_socketcan'}
+[0.031543] (ros2_socketcan) JobEnded: {'identifier': 'ros2_socketcan', 'rc': 1}
+[0.042415] (-) EventReactorShutdown: {}

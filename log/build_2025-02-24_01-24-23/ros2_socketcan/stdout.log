@@ -1,0 +1,6 @@
+[35m[1mScanning dependencies of target can_id_splitter_node[0m
+[  8%] Built target gtest
+[ 17%] Built target gtest_main
+[ 26%] Built target socket_can_sender_node_exe
+[ 47%] Built target ros2_socketcan
+[ 56%] Built target socket_can_receiver_node_exe

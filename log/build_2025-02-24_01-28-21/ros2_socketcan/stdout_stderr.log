@@ -1,0 +1,58 @@
+-- Found ament_cmake_auto: 0.9.12 (/opt/ros/foxy/share/ament_cmake_auto/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Found gtest sources under '/opt/ros/foxy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kimm/wearable_robot_ws/build/ros2_socketcan
+[ 19%] Built target gtest
+[ 19%] Built target gtest_main
+[ 42%] Built target ros2_socketcan
+[ 52%] Built target socket_can_sender_node_exe
+[ 61%] Built target socket_can_receiver_node_exe
+[35m[1mScanning dependencies of target socket_can_receiver_node[0m
+[ 80%] Built target ros2_socketcan_test
+[ 85%] [32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o[0m
+In file included from [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:67[m[K:
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp:45:24:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kclass drivers::socketcan::SocketCanReceiverNode[m[K’
+   45 | class SOCKETCAN_PUBLIC [01;31m[KSocketCanReceiverNode[m[K final
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:22:7:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kclass drivers::socketcan::SocketCanReceiverNode[m[K’
+   22 | class [01;36m[KSocketCanReceiverNode[m[K : public rclcpp_lifecycle::LifecycleNode
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:92:1:[m[K [01;31m[Kerror: [m[K‘[01m[KCallbackReturn[m[K’ does not name a type
+   92 | [01;31m[KCallbackReturn[m[K SocketCanReceiverNode::on_configure(const rclcpp_lifecycle::State &)
+      | [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:121:1:[m[K [01;31m[Kerror: [m[K‘[01m[KCallbackReturn[m[K’ does not name a type
+  121 | [01;31m[KCallbackReturn[m[K SocketCanReceiverNode::on_activate(const rclcpp_lifecycle::State &)
+      | [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:129:1:[m[K [01;31m[Kerror: [m[K‘[01m[KCallbackReturn[m[K’ does not name a type
+  129 | [01;31m[KCallbackReturn[m[K SocketCanReceiverNode::on_deactivate(const rclcpp_lifecycle::State &)
+      | [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:137:1:[m[K [01;31m[Kerror: [m[K‘[01m[KCallbackReturn[m[K’ does not name a type
+  137 | [01;31m[KCallbackReturn[m[K SocketCanReceiverNode::on_cleanup(const rclcpp_lifecycle::State &)
+      | [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/socket_can_receiver_node.cpp:152:1:[m[K [01;31m[Kerror: [m[K‘[01m[KCallbackReturn[m[K’ does not name a type
+  152 | [01;31m[KCallbackReturn[m[K SocketCanReceiverNode::on_shutdown(const rclcpp_lifecycle::State &)
+      | [01;31m[K^~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/socket_can_receiver_node.dir/build.make:63: CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:301: CMakeFiles/socket_can_receiver_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

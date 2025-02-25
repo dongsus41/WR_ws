@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h

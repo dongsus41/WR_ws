@@ -1,0 +1,33 @@
+[0.059s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_hw': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_hw -- -j8 -l8
+[0.181s] [35m[1mScanning dependencies of target CAN_setting_node[0m
+[0.199s] [35m[1mScanning dependencies of target CAN_command_transmit_node[0m
+[0.260s] [ 33%] Built target CAN_data_extractor_node
+[0.292s] [ 50%] [32mBuilding CXX object CMakeFiles/CAN_setting_node.dir/src/CAN_setting_node.cpp.o[0m
+[0.293s] [ 66%] [32mBuilding CXX object CMakeFiles/CAN_command_transmit_node.dir/src/CAN_command_transmit_node.cpp.o[0m
+[5.221s] [ 83%] [32m[1mLinking CXX executable CAN_setting_node[0m
+[5.507s] [ 83%] Built target CAN_setting_node
+[16.295s] [100%] [32m[1mLinking CXX executable CAN_command_transmit_node[0m
+[16.990s] [100%] Built target CAN_command_transmit_node
+[17.021s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_hw' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_hw -- -j8 -l8
+[17.030s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_hw': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_hw
+[17.053s] -- Install configuration: ""
+[17.053s] -- Execute custom install script
+[17.055s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/lib/wearable_robot_hw/CAN_data_extractor_node
+[17.055s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/lib/wearable_robot_hw/CAN_command_transmit_node
+[17.056s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/lib/wearable_robot_hw/CAN_setting_node
+[17.057s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/ament_index/resource_index/package_run_dependencies/wearable_robot_hw
+[17.057s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/ament_index/resource_index/parent_prefix_path/wearable_robot_hw
+[17.058s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/ament_prefix_path.sh
+[17.058s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/ament_prefix_path.dsv
+[17.059s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/path.sh
+[17.059s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/path.dsv
+[17.059s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.bash
+[17.059s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.sh
+[17.060s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.zsh
+[17.060s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.dsv
+[17.061s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/package.dsv
+[17.090s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/ament_index/resource_index/packages/wearable_robot_hw
+[17.091s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/cmake/wearable_robot_hwConfig.cmake
+[17.091s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/cmake/wearable_robot_hwConfig-version.cmake
+[17.092s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/package.xml
+[17.098s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_hw' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_hw

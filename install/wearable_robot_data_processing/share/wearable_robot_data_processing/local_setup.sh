@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/ament_cmake_environment_hooks/local_setup.sh

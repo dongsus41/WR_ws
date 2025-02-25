@@ -1,0 +1,26 @@
+[35m[1mScanning dependencies of target CAN_command_transmit_node[0m
+[ 33%] Built target CAN_data_extractor_node
+[ 66%] Built target CAN_setting_node
+[ 83%] [32mBuilding CXX object CMakeFiles/CAN_command_transmit_node.dir/src/CAN_command_transmit_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable CAN_command_transmit_node[0m
+[100%] Built target CAN_command_transmit_node
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/lib/wearable_robot_hw/CAN_data_extractor_node
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/lib/wearable_robot_hw/CAN_command_transmit_node
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/lib/wearable_robot_hw/CAN_setting_node
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/ament_index/resource_index/package_run_dependencies/wearable_robot_hw
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/ament_index/resource_index/parent_prefix_path/wearable_robot_hw
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/path.sh
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/environment/path.dsv
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.bash
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.sh
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.zsh
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/local_setup.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/package.dsv
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/ament_index/resource_index/packages/wearable_robot_hw
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/cmake/wearable_robot_hwConfig.cmake
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/cmake/wearable_robot_hwConfig-version.cmake
+-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_hw/share/wearable_robot_hw/package.xml

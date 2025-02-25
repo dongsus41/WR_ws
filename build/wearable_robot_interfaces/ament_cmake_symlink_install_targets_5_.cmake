@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so" "TARGETS" "wearable_robot_interfaces__python" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

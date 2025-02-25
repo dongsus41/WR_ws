@@ -1,0 +1,249 @@
+[0.000000] (-) TimerEvent: {}
+[0.000680] (-) JobUnselected: {'identifier': 'ros2_socketcan'}
+[0.000918] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.001322] (-) JobUnselected: {'identifier': 'wearable_robot_bringup'}
+[0.001675] (-) JobUnselected: {'identifier': 'wearable_robot_control'}
+[0.002105] (-) JobUnselected: {'identifier': 'wearable_robot_hw'}
+[0.002199] (-) JobUnselected: {'identifier': 'wearable_robot_interfaces'}
+[0.002284] (wearable_robot_data_processing) JobQueued: {'identifier': 'wearable_robot_data_processing', 'dependencies': OrderedDict([('ros2_socketcan_msgs', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs'), ('wearable_robot_interfaces', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces'), ('ros2_socketcan', '/home/kimm/wearable_robot_ws/install/ros2_socketcan')])}
+[0.002418] (wearable_robot_data_processing) JobStarted: {'identifier': 'wearable_robot_data_processing'}
+[0.043831] (wearable_robot_data_processing) JobProgress: {'identifier': 'wearable_robot_data_processing', 'progress': 'cmake'}
+[0.045783] (wearable_robot_data_processing) JobProgress: {'identifier': 'wearable_robot_data_processing', 'progress': 'build'}
+[0.047922] (wearable_robot_data_processing) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing', '--', '-j8', '-l8'], 'cwd': '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9c6fa065_e41c_4263_9b40_c06cf43f89f8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.580'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[0.099451] (-) TimerEvent: {}
+[0.120637] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.176912] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.199599] (-) TimerEvent: {}
+[0.300236] (-) TimerEvent: {}
+[0.400876] (-) TimerEvent: {}
+[0.501527] (-) TimerEvent: {}
+[0.578475] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.594691] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.601843] (-) TimerEvent: {}
+[0.665205] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.671542] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.701990] (-) TimerEvent: {}
+[0.802700] (-) TimerEvent: {}
+[0.903447] (-) TimerEvent: {}
+[0.935982] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.003638] (-) TimerEvent: {}
+[1.035102] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.038371] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.103819] (-) TimerEvent: {}
+[1.204601] (-) TimerEvent: {}
+[1.305560] (-) TimerEvent: {}
+[1.310443] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)\n'}
+[1.366711] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 2.4.3 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)\n'}
+[1.405765] (-) TimerEvent: {}
+[1.419515] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ros2_socketcan_msgs: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake)\n'}
+[1.485394] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)\n'}
+[1.505948] (-) TimerEvent: {}
+[1.606681] (-) TimerEvent: {}
+[1.707408] (-) TimerEvent: {}
+[1.733432] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.807576] (-) TimerEvent: {}
+[1.908297] (-) TimerEvent: {}
+[1.933589] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.936758] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.938545] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/include\n'}
+[1.938904] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.942368] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.942892] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.944053] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.946695] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.947117] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.947722] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.958151] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.008464] (-) TimerEvent: {}
+[2.022916] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Generating done\n'}
+[2.053309] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing\n'}
+[2.108650] (-) TimerEvent: {}
+[2.139042] (wearable_robot_data_processing) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_data_processor\x1b[0m\n'}
+[2.173037] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 20%] Built target displacement_processing_node\n'}
+[2.175072] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 40%] Built target data_parser_node\n'}
+[2.179642] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 60%] Built target displacement_data_logger\n'}
+[2.184244] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 80%] Built target IMU_processing_node\n'}
+[2.208902] (-) TimerEvent: {}
+[2.221610] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o\x1b[0m\n'}
+[2.309075] (-) TimerEvent: {}
+[2.409790] (-) TimerEvent: {}
+[2.510561] (-) TimerEvent: {}
+[2.611329] (-) TimerEvent: {}
+[2.712232] (-) TimerEvent: {}
+[2.813010] (-) TimerEvent: {}
+[2.913760] (-) TimerEvent: {}
+[3.014520] (-) TimerEvent: {}
+[3.115252] (-) TimerEvent: {}
+[3.215964] (-) TimerEvent: {}
+[3.316698] (-) TimerEvent: {}
+[3.417463] (-) TimerEvent: {}
+[3.518330] (-) TimerEvent: {}
+[3.619076] (-) TimerEvent: {}
+[3.719852] (-) TimerEvent: {}
+[3.820589] (-) TimerEvent: {}
+[3.921384] (-) TimerEvent: {}
+[4.022132] (-) TimerEvent: {}
+[4.122901] (-) TimerEvent: {}
+[4.223815] (-) TimerEvent: {}
+[4.324832] (-) TimerEvent: {}
+[4.426625] (-) TimerEvent: {}
+[4.527384] (-) TimerEvent: {}
+[4.628091] (-) TimerEvent: {}
+[4.728836] (-) TimerEvent: {}
+[4.829633] (-) TimerEvent: {}
+[4.930558] (-) TimerEvent: {}
+[5.031329] (-) TimerEvent: {}
+[5.132036] (-) TimerEvent: {}
+[5.232858] (-) TimerEvent: {}
+[5.333591] (-) TimerEvent: {}
+[5.434401] (-) TimerEvent: {}
+[5.535122] (-) TimerEvent: {}
+[5.576021] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CanDataProcessor::canFdCallback(ros2_socketcan_msgs::msg::FdFrame_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.577310] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:42:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Krosidl_runtime_cpp::BoundedVector<unsigned char, 64, std::allocator<unsigned char> >::data()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.577647] (wearable_robot_data_processing) StderrLine: {'line': b'   42 |         const uint8_t* raw_data = msg->data.data(\x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[5.577840] (wearable_robot_data_processing) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[5.577997] (wearable_robot_data_processing) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp:8\x1b[m\x1b[K,\n'}
+[5.578145] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/duration.hpp:7\x1b[m\x1b[K,\n'}
+[5.578303] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/duration.hpp:20\x1b[m\x1b[K,\n'}
+[5.578485] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/qos.hpp:20\x1b[m\x1b[K,\n'}
+[5.578616] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node_interfaces/node_graph_interface.hpp:31\x1b[m\x1b[K,\n'}
+[5.578741] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:34\x1b[m\x1b[K,\n'}
+[5.578868] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[5.578993] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.579119] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[5.579243] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.579365] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.579493] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[5.579647] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[5.579774] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.579909] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[5.580032] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:1\x1b[m\x1b[K:\n'}
+[5.580158] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:418:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, typename std::enable_if<((! std::is_same<T, unsigned char>::value) && (! std::is_same<T, bool>::value)), void>::type* <anonymous> > T* rosidl_runtime_cpp::BoundedVector<Tp, UpperBound, Alloc>::data() [with T = T; typename std::enable_if<((! std::is_same<T, Tp>::value) && (! std::is_same<T, bool>::value))>::type* <anonymous> = <enumerator>; Tp = unsigned char; long unsigned int UpperBound = 64; Alloc = std::allocator<unsigned char>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.580302] (wearable_robot_data_processing) StderrLine: {'line': b'  418 |   \x1b[01;36m\x1b[Kdata\x1b[m\x1b[K() noexcept\n'}
+[5.580427] (wearable_robot_data_processing) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.580547] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:418:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[5.580673] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:42:50:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  couldn\xe2\x80\x99t deduce template parameter \xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.580840] (wearable_robot_data_processing) StderrLine: {'line': b'   42 |         const uint8_t* raw_data = msg->data.data(\x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[5.580972] (wearable_robot_data_processing) StderrLine: {'line': b'      |                                                  \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[5.581125] (wearable_robot_data_processing) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp:8\x1b[m\x1b[K,\n'}
+[5.581248] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/duration.hpp:7\x1b[m\x1b[K,\n'}
+[5.581388] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/duration.hpp:20\x1b[m\x1b[K,\n'}
+[5.581512] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/qos.hpp:20\x1b[m\x1b[K,\n'}
+[5.581632] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node_interfaces/node_graph_interface.hpp:31\x1b[m\x1b[K,\n'}
+[5.581752] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:34\x1b[m\x1b[K,\n'}
+[5.581875] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[5.581993] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.582112] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[5.582268] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.582397] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.582523] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[5.582646] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[5.582795] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.582919] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[5.583042] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:1\x1b[m\x1b[K:\n'}
+[5.583168] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:431:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, typename std::enable_if<((! std::is_same<T, unsigned char>::value) && (! std::is_same<T, bool>::value)), void>::type* <anonymous> > const T* rosidl_runtime_cpp::BoundedVector<Tp, UpperBound, Alloc>::data() const [with T = T; typename std::enable_if<((! std::is_same<T, Tp>::value) && (! std::is_same<T, bool>::value))>::type* <anonymous> = <enumerator>; Tp = unsigned char; long unsigned int UpperBound = 64; Alloc = std::allocator<unsigned char>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.583304] (wearable_robot_data_processing) StderrLine: {'line': b'  431 |   \x1b[01;36m\x1b[Kdata\x1b[m\x1b[K() const noexcept\n'}
+[5.583428] (wearable_robot_data_processing) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.583565] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:431:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[5.583710] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:42:50:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  couldn\xe2\x80\x99t deduce template parameter \xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.583915] (wearable_robot_data_processing) StderrLine: {'line': b'   42 |         const uint8_t* raw_data = msg->data.data(\x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[5.584056] (wearable_robot_data_processing) StderrLine: {'line': b'      |                                                  \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[5.595952] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:59:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Krosidl_runtime_cpp::BoundedVector<unsigned char, 64, std::allocator<unsigned char> >::data()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.596469] (wearable_robot_data_processing) StderrLine: {'line': b'   59 |         const uint8_t* raw_data = msg->data.data(\x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[5.596649] (wearable_robot_data_processing) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[5.596826] (wearable_robot_data_processing) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp:8\x1b[m\x1b[K,\n'}
+[5.596977] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/duration.hpp:7\x1b[m\x1b[K,\n'}
+[5.597112] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/duration.hpp:20\x1b[m\x1b[K,\n'}
+[5.597243] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/qos.hpp:20\x1b[m\x1b[K,\n'}
+[5.597368] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node_interfaces/node_graph_interface.hpp:31\x1b[m\x1b[K,\n'}
+[5.597519] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:34\x1b[m\x1b[K,\n'}
+[5.597651] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[5.597779] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.597903] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[5.598026] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.598149] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.598272] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[5.598394] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[5.598518] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.598640] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[5.598762] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:1\x1b[m\x1b[K:\n'}
+[5.598931] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:418:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, typename std::enable_if<((! std::is_same<T, unsigned char>::value) && (! std::is_same<T, bool>::value)), void>::type* <anonymous> > T* rosidl_runtime_cpp::BoundedVector<Tp, UpperBound, Alloc>::data() [with T = T; typename std::enable_if<((! std::is_same<T, Tp>::value) && (! std::is_same<T, bool>::value))>::type* <anonymous> = <enumerator>; Tp = unsigned char; long unsigned int UpperBound = 64; Alloc = std::allocator<unsigned char>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.599106] (wearable_robot_data_processing) StderrLine: {'line': b'  418 |   \x1b[01;36m\x1b[Kdata\x1b[m\x1b[K() noexcept\n'}
+[5.599232] (wearable_robot_data_processing) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.599354] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:418:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[5.599479] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:59:50:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  couldn\xe2\x80\x99t deduce template parameter \xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.599608] (wearable_robot_data_processing) StderrLine: {'line': b'   59 |         const uint8_t* raw_data = msg->data.data(\x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[5.599732] (wearable_robot_data_processing) StderrLine: {'line': b'      |                                                  \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[5.599852] (wearable_robot_data_processing) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp:8\x1b[m\x1b[K,\n'}
+[5.599973] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/duration.hpp:7\x1b[m\x1b[K,\n'}
+[5.600097] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/duration.hpp:20\x1b[m\x1b[K,\n'}
+[5.600218] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/qos.hpp:20\x1b[m\x1b[K,\n'}
+[5.600335] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node_interfaces/node_graph_interface.hpp:31\x1b[m\x1b[K,\n'}
+[5.600483] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:34\x1b[m\x1b[K,\n'}
+[5.600627] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[5.600774] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.600910] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[5.601604] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.601785] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.601923] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[5.602053] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[5.602213] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.602341] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[5.602464] (wearable_robot_data_processing) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:1\x1b[m\x1b[K:\n'}
+[5.602589] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:431:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, typename std::enable_if<((! std::is_same<T, unsigned char>::value) && (! std::is_same<T, bool>::value)), void>::type* <anonymous> > const T* rosidl_runtime_cpp::BoundedVector<Tp, UpperBound, Alloc>::data() const [with T = T; typename std::enable_if<((! std::is_same<T, Tp>::value) && (! std::is_same<T, bool>::value))>::type* <anonymous> = <enumerator>; Tp = unsigned char; long unsigned int UpperBound = 64; Alloc = std::allocator<unsigned char>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.602747] (wearable_robot_data_processing) StderrLine: {'line': b'  431 |   \x1b[01;36m\x1b[Kdata\x1b[m\x1b[K() const noexcept\n'}
+[5.602867] (wearable_robot_data_processing) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.602989] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rosidl_runtime_cpp/bounded_vector.hpp:431:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[5.603119] (wearable_robot_data_processing) StderrLine: {'line': b'\x1b[01m\x1b[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_data_processor.cpp:59:50:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  couldn\xe2\x80\x99t deduce template parameter \xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.603255] (wearable_robot_data_processing) StderrLine: {'line': b'   59 |         const uint8_t* raw_data = msg->data.data(\x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[5.603378] (wearable_robot_data_processing) StderrLine: {'line': b'      |                                                  \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[5.635327] (-) TimerEvent: {}
+[5.736126] (-) TimerEvent: {}
+[5.836952] (-) TimerEvent: {}
+[5.937701] (-) TimerEvent: {}
+[6.038481] (-) TimerEvent: {}
+[6.139280] (-) TimerEvent: {}
+[6.240015] (-) TimerEvent: {}
+[6.340863] (-) TimerEvent: {}
+[6.441692] (-) TimerEvent: {}
+[6.542436] (-) TimerEvent: {}
+[6.643202] (-) TimerEvent: {}
+[6.743945] (-) TimerEvent: {}
+[6.844785] (-) TimerEvent: {}
+[6.945605] (-) TimerEvent: {}
+[7.046469] (-) TimerEvent: {}
+[7.147316] (-) TimerEvent: {}
+[7.248100] (-) TimerEvent: {}
+[7.348852] (-) TimerEvent: {}
+[7.449545] (-) TimerEvent: {}
+[7.550241] (-) TimerEvent: {}
+[7.651034] (-) TimerEvent: {}
+[7.751816] (-) TimerEvent: {}
+[7.852656] (-) TimerEvent: {}
+[7.953550] (-) TimerEvent: {}
+[8.054386] (-) TimerEvent: {}
+[8.155175] (-) TimerEvent: {}
+[8.255943] (-) TimerEvent: {}
+[8.356796] (-) TimerEvent: {}
+[8.457647] (-) TimerEvent: {}
+[8.558483] (-) TimerEvent: {}
+[8.659369] (-) TimerEvent: {}
+[8.760167] (-) TimerEvent: {}
+[8.860924] (-) TimerEvent: {}
+[8.961653] (-) TimerEvent: {}
+[9.062372] (-) TimerEvent: {}
+[9.163183] (-) TimerEvent: {}
+[9.264098] (-) TimerEvent: {}
+[9.364840] (-) TimerEvent: {}
+[9.465574] (-) TimerEvent: {}
+[9.566291] (-) TimerEvent: {}
+[9.667135] (-) TimerEvent: {}
+[9.767989] (-) TimerEvent: {}
+[9.868811] (-) TimerEvent: {}
+[9.921655] (wearable_robot_data_processing) StderrLine: {'line': b'make[2]: *** [CMakeFiles/can_data_processor.dir/build.make:63: CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o] Error 1\n'}
+[9.922767] (wearable_robot_data_processing) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:86: CMakeFiles/can_data_processor.dir/all] Error 2\n'}
+[9.923591] (wearable_robot_data_processing) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[9.930899] (wearable_robot_data_processing) CommandEnded: {'returncode': 2}
+[9.961878] (wearable_robot_data_processing) JobEnded: {'identifier': 'wearable_robot_data_processing', 'rc': 2}
+[9.968927] (-) TimerEvent: {}
+[9.981355] (-) EventReactorShutdown: {}

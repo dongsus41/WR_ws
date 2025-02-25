@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from wearable_robot_interfaces/msg/IMUData.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+#include "wearable_robot_interfaces/msg/IMUType.idl"
+
+module wearable_robot_interfaces {
+  module msg {
+    struct IMUData {
+      std_msgs::msg::Header header;
+
+      wearable_robot_interfaces::msg::IMUType imu1;
+
+      wearable_robot_interfaces::msg::IMUType imu2;
+
+      wearable_robot_interfaces::msg::IMUType imu3;
+
+      wearable_robot_interfaces::msg::IMUType imu4;
+    };
+  };
+};

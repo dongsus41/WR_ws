@@ -1,0 +1,659 @@
+[0.000000] (-) TimerEvent: {}
+[0.002204] (-) JobUnselected: {'identifier': 'ros2_socketcan'}
+[0.002337] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.002392] (-) JobUnselected: {'identifier': 'wearable_robot_bringup'}
+[0.002435] (-) JobUnselected: {'identifier': 'wearable_robot_control'}
+[0.002474] (-) JobUnselected: {'identifier': 'wearable_robot_data_processing'}
+[0.002563] (-) JobUnselected: {'identifier': 'wearable_robot_hw'}
+[0.002618] (wearable_robot_interfaces) JobQueued: {'identifier': 'wearable_robot_interfaces', 'dependencies': OrderedDict()}
+[0.002672] (wearable_robot_interfaces) JobStarted: {'identifier': 'wearable_robot_interfaces'}
+[0.030229] (wearable_robot_interfaces) JobProgress: {'identifier': 'wearable_robot_interfaces', 'progress': 'cmake'}
+[0.033261] (wearable_robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces', '-DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces'], 'cwd': '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9c6fa065_e41c_4263_9b40_c06cf43f89f8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.580'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[0.076086] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.098278] (-) TimerEvent: {}
+[0.128592] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.129147] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.198452] (-) TimerEvent: {}
+[0.299167] (-) TimerEvent: {}
+[0.399901] (-) TimerEvent: {}
+[0.500743] (-) TimerEvent: {}
+[0.545384] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.560128] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[0.565950] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.572554] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.600931] (-) TimerEvent: {}
+[0.701631] (-) TimerEvent: {}
+[0.802371] (-) TimerEvent: {}
+[0.868354] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.902528] (-) TimerEvent: {}
+[0.916040] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found std_msgs: 2.0.5 (/opt/ros/foxy/share/std_msgs/cmake)\n'}
+[1.002689] (-) TimerEvent: {}
+[1.033091] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[1.102866] (-) TimerEvent: {}
+[1.203594] (-) TimerEvent: {}
+[1.304365] (-) TimerEvent: {}
+[1.405077] (-) TimerEvent: {}
+[1.500535] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[1.505299] (-) TimerEvent: {}
+[1.606139] (-) TimerEvent: {}
+[1.706908] (-) TimerEvent: {}
+[1.807643] (-) TimerEvent: {}
+[1.878765] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.907826] (-) TimerEvent: {}
+[2.006078] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.007946] (-) TimerEvent: {}
+[2.066049] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.067100] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[2.108107] (-) TimerEvent: {}
+[2.129930] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.130487] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[2.130674] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so\n'}
+[2.208288] (-) TimerEvent: {}
+[2.233546] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[2.260313] (wearable_robot_interfaces) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.265029] (wearable_robot_interfaces) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.267985] (wearable_robot_interfaces) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.280373] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.308497] (-) TimerEvent: {}
+[2.409290] (-) TimerEvent: {}
+[2.419766] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[2.455770] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces\n'}
+[2.482722] (wearable_robot_interfaces) CommandEnded: {'returncode': 0}
+[2.484695] (wearable_robot_interfaces) JobProgress: {'identifier': 'wearable_robot_interfaces', 'progress': 'build'}
+[2.486282] (wearable_robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces', '--', '-j8', '-l8'], 'cwd': '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9c6fa065_e41c_4263_9b40_c06cf43f89f8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.580'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[2.509458] (-) TimerEvent: {}
+[2.610224] (-) TimerEvent: {}
+[2.617869] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__cpp\x1b[0m\n'}
+[2.641415] (wearable_robot_interfaces) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[2.669600] (wearable_robot_interfaces) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[2.710416] (-) TimerEvent: {}
+[2.811329] (-) TimerEvent: {}
+[2.912527] (-) TimerEvent: {}
+[3.013414] (-) TimerEvent: {}
+[3.114479] (-) TimerEvent: {}
+[3.215669] (-) TimerEvent: {}
+[3.316360] (-) TimerEvent: {}
+[3.417000] (-) TimerEvent: {}
+[3.517677] (-) TimerEvent: {}
+[3.618425] (-) TimerEvent: {}
+[3.719286] (-) TimerEvent: {}
+[3.819936] (-) TimerEvent: {}
+[3.920670] (-) TimerEvent: {}
+[4.021487] (-) TimerEvent: {}
+[4.122143] (-) TimerEvent: {}
+[4.222842] (-) TimerEvent: {}
+[4.323676] (-) TimerEvent: {}
+[4.424427] (-) TimerEvent: {}
+[4.525168] (-) TimerEvent: {}
+[4.625914] (-) TimerEvent: {}
+[4.726674] (-) TimerEvent: {}
+[4.827498] (-) TimerEvent: {}
+[4.845833] (wearable_robot_interfaces) StdoutLine: {'line': b'[  1%] Built target wearable_robot_interfaces__cpp\n'}
+[4.879232] (wearable_robot_interfaces) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.927668] (-) TimerEvent: {}
+[4.948013] (wearable_robot_interfaces) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.952742] (wearable_robot_interfaces) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.972724] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_generator_c\x1b[0m\n'}
+[5.027976] (wearable_robot_interfaces) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/imu_raw_data__functions.c.o\x1b[0m\n'}
+[5.028541] (-) TimerEvent: {}
+[5.057953] (wearable_robot_interfaces) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__functions.c.o\x1b[0m\n'}
+[5.058880] (wearable_robot_interfaces) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/displacement_data__functions.c.o\x1b[0m\n'}
+[5.088578] (wearable_robot_interfaces) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/imu_data__functions.c.o\x1b[0m\n'}
+[5.099016] (wearable_robot_interfaces) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/imu_type__functions.c.o\x1b[0m\n'}
+[5.128762] (-) TimerEvent: {}
+[5.229467] (-) TimerEvent: {}
+[5.309338] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/temperature_data__functions.c.o\x1b[0m\n'}
+[5.329659] (-) TimerEvent: {}
+[5.348501] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__functions.c.o\x1b[0m\n'}
+[5.364207] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/fan_command__functions.c.o\x1b[0m\n'}
+[5.377344] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/joint_state__functions.c.o\x1b[0m\n'}
+[5.416892] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c.o\x1b[0m\n'}
+[5.429885] (-) TimerEvent: {}
+[5.530694] (-) TimerEvent: {}
+[5.631427] (-) TimerEvent: {}
+[5.633402] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 15%] \x1b[32m\x1b[1mLinking C shared library libwearable_robot_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[5.721044] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 15%] Built target wearable_robot_interfaces__rosidl_generator_c\n'}
+[5.733074] (-) TimerEvent: {}
+[5.763911] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[5.765501] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[5.833256] (-) TimerEvent: {}
+[5.933936] (-) TimerEvent: {}
+[6.034623] (-) TimerEvent: {}
+[6.135449] (-) TimerEvent: {}
+[6.236117] (-) TimerEvent: {}
+[6.336851] (-) TimerEvent: {}
+[6.437657] (-) TimerEvent: {}
+[6.538420] (-) TimerEvent: {}
+[6.639155] (-) TimerEvent: {}
+[6.739780] (-) TimerEvent: {}
+[6.840423] (-) TimerEvent: {}
+[6.893992] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_cpp\x1b[0m\n'}
+[6.940634] (-) TimerEvent: {}
+[6.961965] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o\x1b[0m\n'}
+[7.000829] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_raw_data__type_support.cpp.o\x1b[0m\n'}
+[7.006303] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o\x1b[0m\n'}
+[7.028787] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_data__type_support.cpp.o\x1b[0m\n'}
+[7.040807] (-) TimerEvent: {}
+[7.141497] (-) TimerEvent: {}
+[7.242218] (-) TimerEvent: {}
+[7.342960] (-) TimerEvent: {}
+[7.444905] (-) TimerEvent: {}
+[7.546764] (-) TimerEvent: {}
+[7.647561] (-) TimerEvent: {}
+[7.748324] (-) TimerEvent: {}
+[7.834947] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_c\x1b[0m\n'}
+[7.848491] (-) TimerEvent: {}
+[7.943853] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[7.948674] (-) TimerEvent: {}
+[7.959961] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o\x1b[0m\n'}
+[7.996396] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[8.034977] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.cpp.o\x1b[0m\n'}
+[8.047307] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_raw_data__type_support.cpp.o\x1b[0m\n'}
+[8.048778] (-) TimerEvent: {}
+[8.066692] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_type__type_support.cpp.o\x1b[0m\n'}
+[8.090191] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/displacement_raw_data__type_support.cpp.o\x1b[0m\n'}
+[8.119392] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.cpp.o\x1b[0m\n'}
+[8.149003] (-) TimerEvent: {}
+[8.200944] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o\x1b[0m\n'}
+[8.224586] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/imu_raw_data__type_support.cpp.o\x1b[0m\n'}
+[8.249202] (-) TimerEvent: {}
+[8.349950] (-) TimerEvent: {}
+[8.374339] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_data__type_support.cpp.o\x1b[0m\n'}
+[8.450148] (-) TimerEvent: {}
+[8.550947] (-) TimerEvent: {}
+[8.582321] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_type__type_support.cpp.o\x1b[0m\n'}
+[8.651169] (-) TimerEvent: {}
+[8.668521] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/displacement_data__type_support.cpp.o\x1b[0m\n'}
+[8.701087] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/temperature_data__type_support.cpp.o\x1b[0m\n'}
+[8.751319] (-) TimerEvent: {}
+[8.767549] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[8.826395] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.c.o\x1b[0m\n'}
+[8.850724] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o\x1b[0m\n'}
+[8.851325] (-) TimerEvent: {}
+[8.889989] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.c.o\x1b[0m\n'}
+[8.951587] (-) TimerEvent: {}
+[8.974529] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/displacement_data__type_support.c.o\x1b[0m\n'}
+[8.998886] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o\x1b[0m\n'}
+[9.051801] (-) TimerEvent: {}
+[9.086190] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/temperature_data__type_support.cpp.o\x1b[0m\n'}
+[9.147828] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o\x1b[0m\n'}
+[9.152032] (-) TimerEvent: {}
+[9.154369] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/imu_data__type_support.c.o\x1b[0m\n'}
+[9.155740] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/imu_type__type_support.c.o\x1b[0m\n'}
+[9.235738] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/temperature_data__type_support.c.o\x1b[0m\n'}
+[9.252221] (-) TimerEvent: {}
+[9.321466] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/actuator_command__type_support.c.o\x1b[0m\n'}
+[9.352443] (-) TimerEvent: {}
+[9.355520] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/displacement_data__type_support.cpp.o\x1b[0m\n'}
+[9.357070] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/fan_command__type_support.c.o\x1b[0m\n'}
+[9.369216] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/joint_state__type_support.cpp.o\x1b[0m\n'}
+[9.452648] (-) TimerEvent: {}
+[9.520127] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.c.o\x1b[0m\n'}
+[9.530686] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/joint_state__type_support.c.o\x1b[0m\n'}
+[9.552871] (-) TimerEvent: {}
+[9.557935] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[9.625886] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 49%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/imu_data__type_support.cpp.o\x1b[0m\n'}
+[9.648943] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/imu_data__type_support.cpp.o\x1b[0m\n'}
+[9.652285] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking C shared library libwearable_robot_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[9.652928] (-) TimerEvent: {}
+[9.753440] (-) TimerEvent: {}
+[9.792294] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 51%] Built target wearable_robot_interfaces__rosidl_typesupport_introspection_c\n'}
+[9.793710] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 51%] Built target wearable_robot_interfaces__rosidl_typesupport_c\n'}
+[9.811982] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/imu_type__type_support.cpp.o\x1b[0m\n'}
+[9.817055] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/temperature_data__type_support.cpp.o\x1b[0m\n'}
+[9.841454] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/imu_type__type_support.cpp.o\x1b[0m\n'}
+[9.853636] (-) TimerEvent: {}
+[9.954373] (-) TimerEvent: {}
+[10.056841] (-) TimerEvent: {}
+[10.157563] (-) TimerEvent: {}
+[10.259856] (-) TimerEvent: {}
+[10.363451] (-) TimerEvent: {}
+[10.383674] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o\x1b[0m\n'}
+[10.438716] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/temperature_data__type_support.cpp.o\x1b[0m\n'}
+[10.463651] (-) TimerEvent: {}
+[10.564448] (-) TimerEvent: {}
+[10.665277] (-) TimerEvent: {}
+[10.766055] (-) TimerEvent: {}
+[10.866273] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/actuator_command__type_support.cpp.o\x1b[0m\n'}
+[10.866801] (-) TimerEvent: {}
+[10.911692] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/fan_command__type_support.cpp.o\x1b[0m\n'}
+[10.965601] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/actuator_command__type_support.cpp.o\x1b[0m\n'}
+[10.966930] (-) TimerEvent: {}
+[11.067502] (-) TimerEvent: {}
+[11.168288] (-) TimerEvent: {}
+[11.269054] (-) TimerEvent: {}
+[11.369845] (-) TimerEvent: {}
+[11.467299] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/fan_command__type_support.cpp.o\x1b[0m\n'}
+[11.469975] (-) TimerEvent: {}
+[11.533142] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o\x1b[0m\n'}
+[11.570250] (-) TimerEvent: {}
+[11.671237] (-) TimerEvent: {}
+[11.772287] (-) TimerEvent: {}
+[11.835607] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.cpp.o\x1b[0m\n'}
+[11.875572] (-) TimerEvent: {}
+[11.911847] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/can_data_frame__type_support.cpp.o\x1b[0m\n'}
+[11.975754] (-) TimerEvent: {}
+[12.050141] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/joint_state__type_support.cpp.o\x1b[0m\n'}
+[12.075942] (-) TimerEvent: {}
+[12.167294] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/joint_state__type_support.cpp.o\x1b[0m\n'}
+[12.176162] (-) TimerEvent: {}
+[12.276954] (-) TimerEvent: {}
+[12.324567] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o\x1b[0m\n'}
+[12.377466] (-) TimerEvent: {}
+[12.478197] (-) TimerEvent: {}
+[12.579324] (-) TimerEvent: {}
+[12.680126] (-) TimerEvent: {}
+[12.695604] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/joint_state__type_support.cpp.o\x1b[0m\n'}
+[12.780337] (-) TimerEvent: {}
+[12.881182] (-) TimerEvent: {}
+[12.982049] (-) TimerEvent: {}
+[13.082860] (-) TimerEvent: {}
+[13.183594] (-) TimerEvent: {}
+[13.284318] (-) TimerEvent: {}
+[13.301184] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 68%] \x1b[32m\x1b[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[13.384624] (-) TimerEvent: {}
+[13.485392] (-) TimerEvent: {}
+[13.573818] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 68%] Built target wearable_robot_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[13.585581] (-) TimerEvent: {}
+[13.621337] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 69%] \x1b[32m\x1b[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[13.685764] (-) TimerEvent: {}
+[13.737182] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 69%] Built target wearable_robot_interfaces__rosidl_typesupport_cpp\n'}
+[13.785961] (-) TimerEvent: {}
+[13.814282] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[13.886135] (-) TimerEvent: {}
+[13.986851] (-) TimerEvent: {}
+[14.028217] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 70%] Built target wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[14.057341] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[14.087042] (-) TimerEvent: {}
+[14.187853] (-) TimerEvent: {}
+[14.288552] (-) TimerEvent: {}
+[14.389271] (-) TimerEvent: {}
+[14.490155] (-) TimerEvent: {}
+[14.591070] (-) TimerEvent: {}
+[14.691791] (-) TimerEvent: {}
+[14.792543] (-) TimerEvent: {}
+[14.893290] (-) TimerEvent: {}
+[14.994420] (-) TimerEvent: {}
+[15.096488] (-) TimerEvent: {}
+[15.197292] (-) TimerEvent: {}
+[15.298351] (-) TimerEvent: {}
+[15.399256] (-) TimerEvent: {}
+[15.500003] (-) TimerEvent: {}
+[15.601067] (-) TimerEvent: {}
+[15.702245] (-) TimerEvent: {}
+[15.804781] (-) TimerEvent: {}
+[15.890632] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[15.904957] (-) TimerEvent: {}
+[15.945189] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/displacement_data__type_support_c.cpp.o\x1b[0m\n'}
+[15.947841] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support_c.cpp.o\x1b[0m\n'}
+[15.963044] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support_c.cpp.o\x1b[0m\n'}
+[15.971083] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/imu_type__type_support_c.cpp.o\x1b[0m\n'}
+[15.977638] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/fan_command__type_support_c.cpp.o\x1b[0m\n'}
+[15.979245] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/temperature_data__type_support_c.cpp.o\x1b[0m\n'}
+[15.987670] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/imu_data__type_support_c.cpp.o\x1b[0m\n'}
+[16.005068] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/actuator_command__type_support_c.cpp.o\x1b[0m\n'}
+[16.005620] (-) TimerEvent: {}
+[16.106111] (-) TimerEvent: {}
+[16.206830] (-) TimerEvent: {}
+[16.307676] (-) TimerEvent: {}
+[16.408453] (-) TimerEvent: {}
+[16.509236] (-) TimerEvent: {}
+[16.610058] (-) TimerEvent: {}
+[16.710972] (-) TimerEvent: {}
+[16.811793] (-) TimerEvent: {}
+[16.912595] (-) TimerEvent: {}
+[17.013354] (-) TimerEvent: {}
+[17.114128] (-) TimerEvent: {}
+[17.214897] (-) TimerEvent: {}
+[17.315711] (-) TimerEvent: {}
+[17.416485] (-) TimerEvent: {}
+[17.448125] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/can_data_frame__type_support_c.cpp.o\x1b[0m\n'}
+[17.516976] (-) TimerEvent: {}
+[17.532538] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 81%] \x1b[32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/joint_state__type_support_c.cpp.o\x1b[0m\n'}
+[17.617178] (-) TimerEvent: {}
+[17.717983] (-) TimerEvent: {}
+[17.818845] (-) TimerEvent: {}
+[17.919648] (-) TimerEvent: {}
+[18.020385] (-) TimerEvent: {}
+[18.121231] (-) TimerEvent: {}
+[18.222224] (-) TimerEvent: {}
+[18.323774] (-) TimerEvent: {}
+[18.424586] (-) TimerEvent: {}
+[18.465452] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 82%] \x1b[32m\x1b[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[18.524763] (-) TimerEvent: {}
+[18.625505] (-) TimerEvent: {}
+[18.686115] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 82%] Built target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[18.726052] (-) TimerEvent: {}
+[18.732921] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 82%] Built target wearable_robot_interfaces\n'}
+[18.760581] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__py\x1b[0m\n'}
+[18.788501] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 83%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[18.826221] (-) TimerEvent: {}
+[18.926904] (-) TimerEvent: {}
+[19.027583] (-) TimerEvent: {}
+[19.128277] (-) TimerEvent: {}
+[19.229053] (-) TimerEvent: {}
+[19.329804] (-) TimerEvent: {}
+[19.430530] (-) TimerEvent: {}
+[19.531238] (-) TimerEvent: {}
+[19.631885] (-) TimerEvent: {}
+[19.732697] (-) TimerEvent: {}
+[19.833395] (-) TimerEvent: {}
+[19.934102] (-) TimerEvent: {}
+[20.034817] (-) TimerEvent: {}
+[20.135560] (-) TimerEvent: {}
+[20.236306] (-) TimerEvent: {}
+[20.336983] (-) TimerEvent: {}
+[20.437640] (-) TimerEvent: {}
+[20.538333] (-) TimerEvent: {}
+[20.639070] (-) TimerEvent: {}
+[20.739817] (-) TimerEvent: {}
+[20.840524] (-) TimerEvent: {}
+[20.941270] (-) TimerEvent: {}
+[21.042026] (-) TimerEvent: {}
+[21.142738] (-) TimerEvent: {}
+[21.243500] (-) TimerEvent: {}
+[21.344272] (-) TimerEvent: {}
+[21.445197] (-) TimerEvent: {}
+[21.545986] (-) TimerEvent: {}
+[21.651449] (-) TimerEvent: {}
+[21.752204] (-) TimerEvent: {}
+[21.852919] (-) TimerEvent: {}
+[21.953624] (-) TimerEvent: {}
+[22.054250] (-) TimerEvent: {}
+[22.154900] (-) TimerEvent: {}
+[22.255617] (-) TimerEvent: {}
+[22.356454] (-) TimerEvent: {}
+[22.457342] (-) TimerEvent: {}
+[22.473235] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 83%] Built target wearable_robot_interfaces__py\n'}
+[22.509435] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__python\x1b[0m\n'}
+[22.557563] (-) TimerEvent: {}
+[22.602928] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_imu_type_s.c.o\x1b[0m\n'}
+[22.609850] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_imu_data_s.c.o\x1b[0m\n'}
+[22.614002] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 86%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_data_s.c.o\x1b[0m\n'}
+[22.617757] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_temperature_data_s.c.o\x1b[0m\n'}
+[22.618390] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_raw_data_s.c.o\x1b[0m\n'}
+[22.620749] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_imu_raw_data_s.c.o\x1b[0m\n'}
+[22.629817] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_fan_command_s.c.o\x1b[0m\n'}
+[22.649398] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command_s.c.o\x1b[0m\n'}
+[22.657760] (-) TimerEvent: {}
+[22.758519] (-) TimerEvent: {}
+[22.859246] (-) TimerEvent: {}
+[22.960300] (-) TimerEvent: {}
+[22.983545] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.o\x1b[0m\n'}
+[23.035077] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_joint_state_s.c.o\x1b[0m\n'}
+[23.060506] (-) TimerEvent: {}
+[23.161241] (-) TimerEvent: {}
+[23.261950] (-) TimerEvent: {}
+[23.303236] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so\x1b[0m\n'}
+[23.362161] (-) TimerEvent: {}
+[23.417841] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 94%] Built target wearable_robot_interfaces__python\n'}
+[23.444046] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[23.444778] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[23.445017] (wearable_robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[23.462341] (-) TimerEvent: {}
+[23.487308] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/wearable_robot_interfaces/_wearable_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[23.495774] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/wearable_robot_interfaces/_wearable_robot_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[23.496439] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/wearable_robot_interfaces/_wearable_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[23.562548] (-) TimerEvent: {}
+[23.663393] (-) TimerEvent: {}
+[23.764242] (-) TimerEvent: {}
+[23.777110] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 98%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so\x1b[0m\n'}
+[23.778150] (wearable_robot_interfaces) StdoutLine: {'line': b'[ 99%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so\x1b[0m\n'}
+[23.795837] (wearable_robot_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so\x1b[0m\n'}
+[23.864440] (-) TimerEvent: {}
+[23.899165] (wearable_robot_interfaces) StdoutLine: {'line': b'[100%] Built target wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[23.933366] (wearable_robot_interfaces) StdoutLine: {'line': b'[100%] Built target wearable_robot_interfaces__rosidl_typesupport_c__pyext\n'}
+[23.964644] (-) TimerEvent: {}
+[23.972618] (wearable_robot_interfaces) StdoutLine: {'line': b'[100%] Built target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[24.014073] (wearable_robot_interfaces) CommandEnded: {'returncode': 0}
+[24.017493] (wearable_robot_interfaces) JobProgress: {'identifier': 'wearable_robot_interfaces', 'progress': 'install'}
+[24.049724] (wearable_robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces'], 'cwd': '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9c6fa065_e41c_4263_9b40_c06cf43f89f8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.580'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[24.065255] (-) TimerEvent: {}
+[24.074991] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[24.077715] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[24.078232] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/rosidl_interfaces/wearable_robot_interfaces\n'}
+[24.079345] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/actuator_command.h\n'}
+[24.079786] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/can_data.h\n'}
+[24.080238] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/can_data_frame.h\n'}
+[24.101785] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__functions.h\n'}
+[24.102813] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__struct.h\n'}
+[24.103190] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__type_support.h\n'}
+[24.103407] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__functions.h\n'}
+[24.103566] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__struct.h\n'}
+[24.103713] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__type_support.h\n'}
+[24.103854] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__functions.h\n'}
+[24.123887] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__struct.h\n'}
+[24.145184] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.h\n'}
+[24.165450] (-) TimerEvent: {}
+[24.167605] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__functions.h\n'}
+[24.168183] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__struct.h\n'}
+[24.168428] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__type_support.h\n'}
+[24.168637] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__functions.h\n'}
+[24.168853] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__struct.h\n'}
+[24.169185] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.h\n'}
+[24.169518] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__functions.h\n'}
+[24.169853] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__struct.h\n'}
+[24.170168] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__type_support.h\n'}
+[24.170503] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__functions.h\n'}
+[24.170831] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__struct.h\n'}
+[24.171161] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__type_support.h\n'}
+[24.171510] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__functions.h\n'}
+[24.171849] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__struct.h\n'}
+[24.172157] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.h\n'}
+[24.172462] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__functions.h\n'}
+[24.172824] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__struct.h\n'}
+[24.173168] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__type_support.h\n'}
+[24.173477] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__functions.h\n'}
+[24.173885] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__struct.h\n'}
+[24.174131] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__type_support.h\n'}
+[24.174463] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__functions.h\n'}
+[24.174828] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__struct.h\n'}
+[24.175239] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__type_support.h\n'}
+[24.175523] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_data.h\n'}
+[24.175848] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_raw_data.h\n'}
+[24.176177] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/fan_command.h\n'}
+[24.176500] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_data.h\n'}
+[24.176823] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_raw_data.h\n'}
+[24.177153] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_type.h\n'}
+[24.177476] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/joint_state.h\n'}
+[24.177843] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[24.178114] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/temperature_data.h\n'}
+[24.178755] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/library_path.sh\n'}
+[24.179300] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/library_path.dsv\n'}
+[24.181503] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_fastrtps_c.h\n'}
+[24.184254] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_fastrtps_c.h\n'}
+[24.185146] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__rosidl_typesupport_fastrtps_c.h\n'}
+[24.209418] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_fastrtps_c.h\n'}
+[24.209971] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_fastrtps_c.h\n'}
+[24.210220] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_fastrtps_c.h\n'}
+[24.213695] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_fastrtps_c.h\n'}
+[24.214206] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_fastrtps_c.h\n'}
+[24.214818] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_fastrtps_c.h\n'}
+[24.215111] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_fastrtps_c.h\n'}
+[24.215359] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_fastrtps_c.h\n'}
+[24.215536] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[24.215690] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[24.215837] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.216012] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.216145] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.244857] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.245488] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.245715] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.246001] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.246182] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.246407] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.246721] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.247190] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[24.247525] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[24.248763] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[24.250080] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_introspection_c.h\n'}
+[24.250393] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_introspection_c.h\n'}
+[24.250656] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__rosidl_typesupport_introspection_c.h\n'}
+[24.265591] (-) TimerEvent: {}
+[24.273867] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_introspection_c.h\n'}
+[24.274777] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_introspection_c.h\n'}
+[24.275325] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_introspection_c.h\n'}
+[24.276811] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_introspection_c.h\n'}
+[24.278189] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_introspection_c.h\n'}
+[24.278553] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_introspection_c.h\n'}
+[24.278918] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_introspection_c.h\n'}
+[24.279296] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_introspection_c.h\n'}
+[24.279657] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[24.281717] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/actuator_command.hpp\n'}
+[24.282123] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/can_data.hpp\n'}
+[24.282383] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/can_data_frame.hpp\n'}
+[24.303741] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__builder.hpp\n'}
+[24.304304] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__struct.hpp\n'}
+[24.304532] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__traits.hpp\n'}
+[24.304728] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__type_support.hpp\n'}
+[24.304989] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__builder.hpp\n'}
+[24.305308] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__struct.hpp\n'}
+[24.305632] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__traits.hpp\n'}
+[24.305982] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__type_support.hpp\n'}
+[24.306244] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__builder.hpp\n'}
+[24.327835] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__struct.hpp\n'}
+[24.348863] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__traits.hpp\n'}
+[24.365798] (-) TimerEvent: {}
+[24.381526] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.hpp\n'}
+[24.406938] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__builder.hpp\n'}
+[24.408123] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__struct.hpp\n'}
+[24.408774] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__traits.hpp\n'}
+[24.409173] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__type_support.hpp\n'}
+[24.409356] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__builder.hpp\n'}
+[24.409533] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__struct.hpp\n'}
+[24.409999] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__traits.hpp\n'}
+[24.410249] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.hpp\n'}
+[24.410439] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__builder.hpp\n'}
+[24.410608] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__struct.hpp\n'}
+[24.410993] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__traits.hpp\n'}
+[24.411199] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__type_support.hpp\n'}
+[24.411411] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__builder.hpp\n'}
+[24.411690] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__struct.hpp\n'}
+[24.411842] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__traits.hpp\n'}
+[24.412102] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__type_support.hpp\n'}
+[24.412451] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__builder.hpp\n'}
+[24.412798] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__struct.hpp\n'}
+[24.413184] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__traits.hpp\n'}
+[24.416005] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.hpp\n'}
+[24.418152] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__builder.hpp\n'}
+[24.418411] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__struct.hpp\n'}
+[24.418728] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__traits.hpp\n'}
+[24.418931] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__type_support.hpp\n'}
+[24.419112] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__builder.hpp\n'}
+[24.419297] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__struct.hpp\n'}
+[24.419437] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__traits.hpp\n'}
+[24.419576] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__type_support.hpp\n'}
+[24.419707] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__builder.hpp\n'}
+[24.419839] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__struct.hpp\n'}
+[24.419968] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__traits.hpp\n'}
+[24.420128] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__type_support.hpp\n'}
+[24.420383] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_data.hpp\n'}
+[24.420516] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_raw_data.hpp\n'}
+[24.420645] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/fan_command.hpp\n'}
+[24.420774] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_data.hpp\n'}
+[24.420904] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_raw_data.hpp\n'}
+[24.421030] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_type.hpp\n'}
+[24.421207] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/joint_state.hpp\n'}
+[24.421336] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[24.421593] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/temperature_data.hpp\n'}
+[24.421839] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.422183] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.422460] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data_frame__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.445992] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.446684] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.447001] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.447362] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.447546] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.447806] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.448114] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.448847] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[24.450171] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/pythonpath.sh\n'}
+[24.450399] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/pythonpath.dsv\n'}
+[24.450553] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/__init__.py\n'}
+[24.451188] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/__init__.py\n'}
+[24.451996] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_actuator_command.py\n'}
+[24.452324] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_can_data.py\n'}
+[24.452564] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_can_data_frame.py\n'}
+[24.465984] (-) TimerEvent: {}
+[24.474927] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_displacement_data.py\n'}
+[24.476191] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_displacement_raw_data.py\n'}
+[24.476955] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_fan_command.py\n'}
+[24.482215] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_imu_data.py\n'}
+[24.482817] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_imu_raw_data.py\n'}
+[24.483310] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_imu_type.py\n'}
+[24.483670] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_joint_state.py\n'}
+[24.483945] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_temperature_data.py\n'}
+[24.484855] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so\n'}
+[24.486127] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so\n'}
+[24.488461] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so\n'}
+[24.489289] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__python.so\n'}
+[24.489750] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementRawData.idl\n'}
+[24.489920] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMURawData.idl\n'}
+[24.490229] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementData.idl\n'}
+[24.490799] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUData.idl\n'}
+[24.491597] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUType.idl\n'}
+[24.491882] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/TemperatureData.idl\n'}
+[24.492134] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/ActuatorCommand.idl\n'}
+[24.495574] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/FanCommand.idl\n'}
+[24.496107] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/CANDataFrame.idl\n'}
+[24.516994] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/JointState.idl\n'}
+[24.517903] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementRawData.msg\n'}
+[24.520064] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMURawData.msg\n'}
+[24.520923] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementData.msg\n'}
+[24.521577] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUData.msg\n'}
+[24.521890] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUType.msg\n'}
+[24.522178] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/TemperatureData.msg\n'}
+[24.522363] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/ActuatorCommand.msg\n'}
+[24.522518] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/FanCommand.msg\n'}
+[24.522694] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/CANDataFrame.msg\n'}
+[24.555305] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/JointState.msg\n'}
+[24.556002] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/package_run_dependencies/wearable_robot_interfaces\n'}
+[24.556197] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/parent_prefix_path/wearable_robot_interfaces\n'}
+[24.556356] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/ament_prefix_path.sh\n'}
+[24.556509] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/ament_prefix_path.dsv\n'}
+[24.556651] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/path.sh\n'}
+[24.556793] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/path.dsv\n'}
+[24.556932] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.bash\n'}
+[24.557071] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.sh\n'}
+[24.557202] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.zsh\n'}
+[24.557330] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.dsv\n'}
+[24.557458] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.dsv\n'}
+[24.566180] (-) TimerEvent: {}
+[24.580555] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/packages/wearable_robot_interfaces\n'}
+[24.581189] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[24.581465] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[24.581970] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[24.582282] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[24.582497] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[24.582806] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[24.582979] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[24.583152] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfacesConfig.cmake\n'}
+[24.583346] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfacesConfig-version.cmake\n'}
+[24.583490] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.xml\n'}
+[24.584252] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_generator_c.so\n'}
+[24.585205] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_generator_c.so" to ""\n'}
+[24.585556] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[24.586550] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[24.586941] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_c.so\n'}
+[24.587793] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[24.588236] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[24.589348] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[24.589746] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_cpp.so\n'}
+[24.590660] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[24.666366] (-) TimerEvent: {}
+[24.688064] (wearable_robot_interfaces) StdoutLine: {'line': b"Compiling '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/__init__.py'...\n"}
+[24.713793] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_generator_cExport.cmake\n'}
+[24.715040] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[24.715380] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[24.715556] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[24.715713] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[24.715858] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[24.715998] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_generator_cppExport.cmake\n'}
+[24.716132] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[24.716271] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[24.716406] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[24.716569] (wearable_robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[24.719244] (wearable_robot_interfaces) CommandEnded: {'returncode': 0}
+[24.767103] (-) TimerEvent: {}
+[24.772559] (wearable_robot_interfaces) JobEnded: {'identifier': 'wearable_robot_interfaces', 'rc': 0}
+[24.774588] (-) EventReactorShutdown: {}

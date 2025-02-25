@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs/libros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp.so" "TARGETS" "ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

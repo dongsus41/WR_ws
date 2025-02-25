@@ -1,0 +1,275 @@
+[0.000000] (-) TimerEvent: {}
+[0.000600] (-) JobUnselected: {'identifier': 'ros2_socketcan'}
+[0.001040] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.001270] (-) JobUnselected: {'identifier': 'wearable_robot_bringup'}
+[0.002131] (-) JobUnselected: {'identifier': 'wearable_robot_control'}
+[0.002585] (-) JobUnselected: {'identifier': 'wearable_robot_hw'}
+[0.002709] (-) JobUnselected: {'identifier': 'wearable_robot_interfaces'}
+[0.002796] (wearable_robot_data_processing) JobQueued: {'identifier': 'wearable_robot_data_processing', 'dependencies': OrderedDict([('ros2_socketcan_msgs', '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs'), ('wearable_robot_interfaces', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces'), ('ros2_socketcan', '/home/kimm/wearable_robot_ws/install/ros2_socketcan')])}
+[0.002905] (wearable_robot_data_processing) JobStarted: {'identifier': 'wearable_robot_data_processing'}
+[0.042240] (wearable_robot_data_processing) JobProgress: {'identifier': 'wearable_robot_data_processing', 'progress': 'cmake'}
+[0.044875] (wearable_robot_data_processing) JobProgress: {'identifier': 'wearable_robot_data_processing', 'progress': 'build'}
+[0.046578] (wearable_robot_data_processing) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing', '--', '-j8', '-l8'], 'cwd': '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9c6fa065_e41c_4263_9b40_c06cf43f89f8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.580'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[0.099275] (-) TimerEvent: {}
+[0.132996] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.183924] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.199376] (-) TimerEvent: {}
+[0.299998] (-) TimerEvent: {}
+[0.400675] (-) TimerEvent: {}
+[0.501318] (-) TimerEvent: {}
+[0.602045] (-) TimerEvent: {}
+[0.603410] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.621906] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.692011] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.698652] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.703289] (-) TimerEvent: {}
+[0.804117] (-) TimerEvent: {}
+[0.904894] (-) TimerEvent: {}
+[0.961300] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.005071] (-) TimerEvent: {}
+[1.058553] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.062068] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.105258] (-) TimerEvent: {}
+[1.206020] (-) TimerEvent: {}
+[1.306908] (-) TimerEvent: {}
+[1.337341] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)\n'}
+[1.394320] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 2.4.3 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)\n'}
+[1.407097] (-) TimerEvent: {}
+[1.446201] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ros2_socketcan_msgs: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake)\n'}
+[1.507303] (-) TimerEvent: {}
+[1.509305] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)\n'}
+[1.607476] (-) TimerEvent: {}
+[1.708226] (-) TimerEvent: {}
+[1.749355] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.808390] (-) TimerEvent: {}
+[1.901243] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.903098] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.904166] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/include\n'}
+[1.904467] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.905812] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.906055] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.906940] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.908440] (-) TimerEvent: {}
+[1.908851] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.909114] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.909436] (wearable_robot_data_processing) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.917596] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.951729] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Generating done\n'}
+[1.967621] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing\n'}
+[2.008623] (-) TimerEvent: {}
+[2.036568] (wearable_robot_data_processing) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target data_parser_node\x1b[0m\n'}
+[2.073515] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/IMU_processing_node.dir/src/IMU_processing_node.cpp.o\x1b[0m\n'}
+[2.077729] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o\x1b[0m\n'}
+[2.101991] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/data_parser_node.dir/src/data_parser_node.cpp.o\x1b[0m\n'}
+[2.108806] (-) TimerEvent: {}
+[2.209531] (-) TimerEvent: {}
+[2.310265] (-) TimerEvent: {}
+[2.411003] (-) TimerEvent: {}
+[2.511763] (-) TimerEvent: {}
+[2.612573] (-) TimerEvent: {}
+[2.713312] (-) TimerEvent: {}
+[2.814128] (-) TimerEvent: {}
+[2.914901] (-) TimerEvent: {}
+[3.015690] (-) TimerEvent: {}
+[3.116472] (-) TimerEvent: {}
+[3.217199] (-) TimerEvent: {}
+[3.317941] (-) TimerEvent: {}
+[3.418720] (-) TimerEvent: {}
+[3.519476] (-) TimerEvent: {}
+[3.620230] (-) TimerEvent: {}
+[3.720966] (-) TimerEvent: {}
+[3.821721] (-) TimerEvent: {}
+[3.922447] (-) TimerEvent: {}
+[4.023184] (-) TimerEvent: {}
+[4.123968] (-) TimerEvent: {}
+[4.231389] (-) TimerEvent: {}
+[4.332137] (-) TimerEvent: {}
+[4.432939] (-) TimerEvent: {}
+[4.533693] (-) TimerEvent: {}
+[4.634431] (-) TimerEvent: {}
+[4.735249] (-) TimerEvent: {}
+[4.836077] (-) TimerEvent: {}
+[4.936843] (-) TimerEvent: {}
+[5.037596] (-) TimerEvent: {}
+[5.138366] (-) TimerEvent: {}
+[5.239106] (-) TimerEvent: {}
+[5.339875] (-) TimerEvent: {}
+[5.440627] (-) TimerEvent: {}
+[5.541405] (-) TimerEvent: {}
+[5.642177] (-) TimerEvent: {}
+[5.742951] (-) TimerEvent: {}
+[5.843701] (-) TimerEvent: {}
+[5.944482] (-) TimerEvent: {}
+[6.045234] (-) TimerEvent: {}
+[6.145958] (-) TimerEvent: {}
+[6.246683] (-) TimerEvent: {}
+[6.347438] (-) TimerEvent: {}
+[6.448177] (-) TimerEvent: {}
+[6.548954] (-) TimerEvent: {}
+[6.649694] (-) TimerEvent: {}
+[6.750427] (-) TimerEvent: {}
+[6.851163] (-) TimerEvent: {}
+[6.951914] (-) TimerEvent: {}
+[7.052704] (-) TimerEvent: {}
+[7.153414] (-) TimerEvent: {}
+[7.254173] (-) TimerEvent: {}
+[7.354908] (-) TimerEvent: {}
+[7.455653] (-) TimerEvent: {}
+[7.556393] (-) TimerEvent: {}
+[7.657386] (-) TimerEvent: {}
+[7.758142] (-) TimerEvent: {}
+[7.858916] (-) TimerEvent: {}
+[7.959659] (-) TimerEvent: {}
+[8.060438] (-) TimerEvent: {}
+[8.161197] (-) TimerEvent: {}
+[8.261937] (-) TimerEvent: {}
+[8.362693] (-) TimerEvent: {}
+[8.463434] (-) TimerEvent: {}
+[8.564168] (-) TimerEvent: {}
+[8.664912] (-) TimerEvent: {}
+[8.765655] (-) TimerEvent: {}
+[8.866395] (-) TimerEvent: {}
+[8.967134] (-) TimerEvent: {}
+[9.067945] (-) TimerEvent: {}
+[9.172653] (-) TimerEvent: {}
+[9.273414] (-) TimerEvent: {}
+[9.374163] (-) TimerEvent: {}
+[9.474920] (-) TimerEvent: {}
+[9.575743] (-) TimerEvent: {}
+[9.676550] (-) TimerEvent: {}
+[9.777341] (-) TimerEvent: {}
+[9.878102] (-) TimerEvent: {}
+[9.978877] (-) TimerEvent: {}
+[10.079665] (-) TimerEvent: {}
+[10.180476] (-) TimerEvent: {}
+[10.281198] (-) TimerEvent: {}
+[10.381927] (-) TimerEvent: {}
+[10.482634] (-) TimerEvent: {}
+[10.583379] (-) TimerEvent: {}
+[10.684112] (-) TimerEvent: {}
+[10.784826] (-) TimerEvent: {}
+[10.885519] (-) TimerEvent: {}
+[10.986227] (-) TimerEvent: {}
+[11.086956] (-) TimerEvent: {}
+[11.187777] (-) TimerEvent: {}
+[11.288555] (-) TimerEvent: {}
+[11.389259] (-) TimerEvent: {}
+[11.489969] (-) TimerEvent: {}
+[11.590674] (-) TimerEvent: {}
+[11.691381] (-) TimerEvent: {}
+[11.792087] (-) TimerEvent: {}
+[11.892870] (-) TimerEvent: {}
+[11.993622] (-) TimerEvent: {}
+[12.094323] (-) TimerEvent: {}
+[12.195047] (-) TimerEvent: {}
+[12.295766] (-) TimerEvent: {}
+[12.396513] (-) TimerEvent: {}
+[12.497215] (-) TimerEvent: {}
+[12.597977] (-) TimerEvent: {}
+[12.698673] (-) TimerEvent: {}
+[12.799376] (-) TimerEvent: {}
+[12.900059] (-) TimerEvent: {}
+[13.000858] (-) TimerEvent: {}
+[13.101578] (-) TimerEvent: {}
+[13.202296] (-) TimerEvent: {}
+[13.303008] (-) TimerEvent: {}
+[13.403739] (-) TimerEvent: {}
+[13.504497] (-) TimerEvent: {}
+[13.605227] (-) TimerEvent: {}
+[13.705923] (-) TimerEvent: {}
+[13.806624] (-) TimerEvent: {}
+[13.907380] (-) TimerEvent: {}
+[14.008092] (-) TimerEvent: {}
+[14.108814] (-) TimerEvent: {}
+[14.209531] (-) TimerEvent: {}
+[14.310264] (-) TimerEvent: {}
+[14.411076] (-) TimerEvent: {}
+[14.511855] (-) TimerEvent: {}
+[14.612606] (-) TimerEvent: {}
+[14.713313] (-) TimerEvent: {}
+[14.814070] (-) TimerEvent: {}
+[14.914847] (-) TimerEvent: {}
+[15.015607] (-) TimerEvent: {}
+[15.116545] (-) TimerEvent: {}
+[15.129729] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX executable can_data_processor\x1b[0m\n'}
+[15.184308] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking CXX executable IMU_processing_node\x1b[0m\n'}
+[15.216738] (-) TimerEvent: {}
+[15.317503] (-) TimerEvent: {}
+[15.418344] (-) TimerEvent: {}
+[15.519241] (-) TimerEvent: {}
+[15.619993] (-) TimerEvent: {}
+[15.720770] (-) TimerEvent: {}
+[15.753772] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 83%] Built target can_data_processor\n'}
+[15.821147] (-) TimerEvent: {}
+[15.904414] (wearable_robot_data_processing) StdoutLine: {'line': b'[ 83%] Built target IMU_processing_node\n'}
+[15.921171] (-) TimerEvent: {}
+[16.021866] (-) TimerEvent: {}
+[16.122542] (-) TimerEvent: {}
+[16.223216] (-) TimerEvent: {}
+[16.324031] (-) TimerEvent: {}
+[16.425178] (-) TimerEvent: {}
+[16.525996] (-) TimerEvent: {}
+[16.626777] (-) TimerEvent: {}
+[16.728644] (-) TimerEvent: {}
+[16.829416] (-) TimerEvent: {}
+[16.930564] (-) TimerEvent: {}
+[17.031413] (-) TimerEvent: {}
+[17.132097] (-) TimerEvent: {}
+[17.232836] (-) TimerEvent: {}
+[17.333690] (-) TimerEvent: {}
+[17.434457] (-) TimerEvent: {}
+[17.535234] (-) TimerEvent: {}
+[17.636051] (-) TimerEvent: {}
+[17.736861] (-) TimerEvent: {}
+[17.837670] (-) TimerEvent: {}
+[17.938475] (-) TimerEvent: {}
+[18.039297] (-) TimerEvent: {}
+[18.140132] (-) TimerEvent: {}
+[18.240999] (-) TimerEvent: {}
+[18.341804] (-) TimerEvent: {}
+[18.442601] (-) TimerEvent: {}
+[18.543325] (-) TimerEvent: {}
+[18.644031] (-) TimerEvent: {}
+[18.744747] (-) TimerEvent: {}
+[18.845564] (-) TimerEvent: {}
+[18.946389] (-) TimerEvent: {}
+[19.047132] (-) TimerEvent: {}
+[19.147815] (-) TimerEvent: {}
+[19.248600] (-) TimerEvent: {}
+[19.343616] (wearable_robot_data_processing) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable data_parser_node\x1b[0m\n'}
+[19.348781] (-) TimerEvent: {}
+[19.449592] (-) TimerEvent: {}
+[19.550344] (-) TimerEvent: {}
+[19.651236] (-) TimerEvent: {}
+[19.752248] (-) TimerEvent: {}
+[19.853035] (-) TimerEvent: {}
+[19.953864] (-) TimerEvent: {}
+[20.054668] (-) TimerEvent: {}
+[20.088565] (wearable_robot_data_processing) StdoutLine: {'line': b'[100%] Built target data_parser_node\n'}
+[20.116283] (wearable_robot_data_processing) CommandEnded: {'returncode': 0}
+[20.118641] (wearable_robot_data_processing) JobProgress: {'identifier': 'wearable_robot_data_processing', 'progress': 'install'}
+[20.145322] (wearable_robot_data_processing) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing'], 'cwd': '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'kimm'), ('LC_TIME', 'en_US.UTF-8'), ('ROS_NAMESPACE', 'robot1'), ('SSH_AGENT_PID', '2142'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/kimm'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('DESKTOP_SESSION', 'ubuntu'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-f52c6c4581153381.txt'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1836'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/home/kimm/wearable_robot_ws'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install:/home/kimm/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'kimm'), ('JOURNAL_STREAM', '7:810494'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'kimm'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/kimm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kimm/.vscode/extensions/ms-python.debugpy-2025.0.1-linux-arm64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/kimmA6033:@/tmp/.ICE-unix/24511,unix/kimmA6033:/tmp/.ICE-unix/24511'), ('INVOCATION_ID', '5f72bec369454b19be18cbf9803b08fe'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9c6fa065_e41c_4263_9b40_c06cf43f89f8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-3286c1d34d.sock'), ('GNOME_TERMINAL_SERVICE', ':1.580'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '7'), ('AMENT_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy')]), 'shell': False}
+[20.154913] (-) TimerEvent: {}
+[20.169832] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[20.170661] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[20.171700] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/can_data_processor\n'}
+[20.172177] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/data_parser_node\n'}
+[20.172666] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/IMU_processing_node\n'}
+[20.173924] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/ament_index/resource_index/package_run_dependencies/wearable_robot_data_processing\n'}
+[20.174442] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/ament_index/resource_index/parent_prefix_path/wearable_robot_data_processing\n'}
+[20.174964] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/ament_prefix_path.sh\n'}
+[20.175473] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/ament_prefix_path.dsv\n'}
+[20.176034] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/path.sh\n'}
+[20.176487] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/path.dsv\n'}
+[20.176942] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.bash\n'}
+[20.177415] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.sh\n'}
+[20.177894] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.zsh\n'}
+[20.178408] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.dsv\n'}
+[20.178821] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.dsv\n'}
+[20.201716] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/ament_index/resource_index/packages/wearable_robot_data_processing\n'}
+[20.202421] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/cmake/wearable_robot_data_processingConfig.cmake\n'}
+[20.202939] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/cmake/wearable_robot_data_processingConfig-version.cmake\n'}
+[20.203203] (wearable_robot_data_processing) StdoutLine: {'line': b'-- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.xml\n'}
+[20.208921] (wearable_robot_data_processing) CommandEnded: {'returncode': 0}
+[20.250902] (wearable_robot_data_processing) JobEnded: {'identifier': 'wearable_robot_data_processing', 'rc': 0}
+[20.252987] (-) EventReactorShutdown: {}

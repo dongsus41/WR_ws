@@ -1,0 +1,88 @@
+[0.060s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing
+[0.198s] -- The C compiler identification is GNU 9.4.0
+[0.317s] -- The CXX compiler identification is GNU 9.4.0
+[0.329s] -- Check for working C compiler: /usr/bin/cc
+[0.503s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.503s] -- Detecting C compiler ABI info
+[0.674s] -- Detecting C compiler ABI info - done
+[0.691s] -- Detecting C compile features
+[0.691s] -- Detecting C compile features - done
+[0.697s] -- Check for working CXX compiler: /usr/bin/c++
+[0.880s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.882s] -- Detecting CXX compiler ABI info
+[1.067s] -- Detecting CXX compiler ABI info - done
+[1.087s] -- Detecting CXX compile features
+[1.088s] -- Detecting CXX compile features - done
+[1.093s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[1.150s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[1.151s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.587s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.652s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.765s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.783s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[2.001s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[2.071s] -- Found FastRTPS: /opt/ros/foxy/include  
+[2.246s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.367s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.371s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.373s] -- Looking for pthread.h
+[2.552s] -- Looking for pthread.h - found
+[2.552s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.727s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[2.727s] -- Looking for pthread_create in pthreads
+[2.923s] -- Looking for pthread_create in pthreads - not found
+[2.924s] -- Looking for pthread_create in pthread
+[3.106s] -- Looking for pthread_create in pthread - found
+[3.108s] -- Found Threads: TRUE  
+[3.414s] -- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)
+[3.485s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[3.668s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.670s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.670s] -- Configured cppcheck include dirs: 
+[3.671s] -- Configured cppcheck exclude dirs and/or files: 
+[3.673s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.673s] -- Configured cpplint exclude dirs and/or files: 
+[3.674s] -- Added test 'lint_cmake' to check CMake code style
+[3.676s] -- Added test 'uncrustify' to check C / C++ code style
+[3.676s] -- Configured uncrustify additional arguments: 
+[3.677s] -- Added test 'xmllint' to check XML markup files
+[3.688s] -- Configuring done
+[3.720s] -- Generating done
+[3.735s] -- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[3.772s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing
+[3.774s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing -- -j8 -l8
+[3.882s] [35m[1mScanning dependencies of target data_parser_node[0m
+[3.882s] [35m[1mScanning dependencies of target IMU_processing_node[0m
+[3.882s] [35m[1mScanning dependencies of target displacement_processing_node[0m
+[3.970s] [ 16%] [32mBuilding CXX object CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o[0m
+[4.012s] [ 33%] [32mBuilding CXX object CMakeFiles/data_parser_node.dir/src/data_parser_node.cpp.o[0m
+[4.013s] [ 50%] [32mBuilding CXX object CMakeFiles/IMU_processing_node.dir/src/IMU_processing_node.cpp.o[0m
+[19.998s] [ 66%] [32m[1mLinking CXX executable IMU_processing_node[0m
+[20.329s] [ 83%] [32m[1mLinking CXX executable displacement_processing_node[0m
+[20.673s] [ 83%] Built target IMU_processing_node
+[20.987s] [ 83%] Built target displacement_processing_node
+[22.878s] [100%] [32m[1mLinking CXX executable data_parser_node[0m
+[23.625s] [100%] Built target data_parser_node
+[23.660s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing -- -j8 -l8
+[23.670s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[23.695s] -- Install configuration: ""
+[23.695s] -- Execute custom install script
+[23.697s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/data_parser_node
+[23.720s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/displacement_processing_node
+[23.743s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/IMU_processing_node
+[23.765s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/ament_index/resource_index/package_run_dependencies/wearable_robot_data_processing
+[23.793s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/ament_index/resource_index/parent_prefix_path/wearable_robot_data_processing
+[23.817s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/ament_prefix_path.sh
+[23.840s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/ament_prefix_path.dsv
+[23.865s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/path.sh
+[23.886s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/environment/path.dsv
+[23.909s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.bash
+[23.932s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.sh
+[23.961s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.zsh
+[23.991s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/local_setup.dsv
+[24.021s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.dsv
+[24.048s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/ament_index/resource_index/packages/wearable_robot_data_processing
+[24.100s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/cmake/wearable_robot_data_processingConfig.cmake
+[24.125s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/cmake/wearable_robot_data_processingConfig-version.cmake
+[24.151s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.xml
+[24.182s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing

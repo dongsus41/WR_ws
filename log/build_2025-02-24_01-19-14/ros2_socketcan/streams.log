@@ -1,0 +1,27 @@
+[0.069s] Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8
+[0.264s] [35m[1mScanning dependencies of target can_id_splitter_node[0m
+[0.311s] [  8%] Built target socket_can_receiver_node_exe
+[0.332s] [ 26%] Built target gtest
+[0.333s] [ 26%] Built target gtest_main
+[0.367s] [ 30%] [32mBuilding CXX object CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o[0m
+[0.373s] [ 52%] Built target ros2_socketcan
+[0.413s] [ 60%] Built target socket_can_sender_node_exe
+[0.421s] [35m[1mScanning dependencies of target socket_can_receiver_node[0m
+[0.431s] [35m[1mScanning dependencies of target ros2_socketcan_test[0m
+[0.493s] [ 65%] [32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/gtest_main.cpp.o[0m
+[0.506s] [ 69%] [32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o[0m
+[0.516s] [ 73%] [32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/sanity_checks.cpp.o[0m
+[0.541s] [ 78%] [32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/receiver.cpp.o[0m
+[0.861s] [01m[K/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/can_id_splitter_node.cpp:2:10:[m[K [01;31m[Kfatal error: [m[Kros2_socketcan/socket_can_receiver_node.hpp: No such file or directory
+[0.861s]     2 | #include [01;31m[K"ros2_socketcan/socket_can_receiver_node.hpp"[m[K
+[0.861s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.862s] compilation terminated.
+[0.867s] make[2]: *** [CMakeFiles/can_id_splitter_node.dir/build.make:63: CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o] Error 1
+[0.868s] make[1]: *** [CMakeFiles/Makefile2:330: CMakeFiles/can_id_splitter_node.dir/all] Error 2
+[0.868s] make[1]: *** Waiting for unfinished jobs....
+[3.469s] [ 82%] [32m[1mLinking CXX executable ros2_socketcan_test[0m
+[3.886s] [ 82%] Built target ros2_socketcan_test
+[9.765s] [ 86%] [32m[1mLinking CXX shared library libsocket_can_receiver_node.so[0m
+[10.242s] [ 86%] Built target socket_can_receiver_node
+[10.245s] make: *** [Makefile:141: all] Error 2
+[10.251s] Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan' returned '2': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8

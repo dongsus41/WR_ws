@@ -1,0 +1,398 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found std_msgs: 2.0.5 (/opt/ros/foxy/share/std_msgs/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so
+-- Found PythonExtra: .so  
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces
+[35m[1mScanning dependencies of target wearable_robot_interfaces__cpp[0m
+[  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[  1%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[  1%] Built target wearable_robot_interfaces__cpp
+[  4%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[  4%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[  4%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_generator_c[0m
+[  5%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/imu_raw_data__functions.c.o[0m
+[  6%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__functions.c.o[0m
+[  7%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/imu_data__functions.c.o[0m
+[  8%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/displacement_data__functions.c.o[0m
+[  9%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/imu_type__functions.c.o[0m
+[ 10%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/temperature_data__functions.c.o[0m
+[ 11%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__functions.c.o[0m
+[ 12%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/fan_command__functions.c.o[0m
+[ 13%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data__functions.c.o[0m
+[ 14%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/joint_state__functions.c.o[0m
+[ 15%] [32m[1mLinking C shared library libwearable_robot_interfaces__rosidl_generator_c.so[0m
+[ 15%] Built target wearable_robot_interfaces__rosidl_generator_c
+[ 17%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[ 17%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_cpp[0m
+[ 18%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o[0m
+[ 19%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o[0m
+[ 20%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_data__type_support.cpp.o[0m
+[ 21%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_raw_data__type_support.cpp.o[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_c[0m
+[ 22%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_introspection_cpp[0m
+[ 23%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_type__type_support.cpp.o[0m
+[ 24%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.cpp.o[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/temperature_data__type_support.cpp.o[0m
+[ 26%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/displacement_raw_data__type_support.cpp.o[0m
+[ 27%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_raw_data__type_support.cpp.o[0m
+[ 28%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/imu_raw_data__type_support.cpp.o[0m
+[ 29%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o[0m
+[ 29%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/displacement_data__type_support.cpp.o[0m
+[ 30%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_data__type_support.cpp.o[0m
+[ 31%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_type__type_support.cpp.o[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_introspection_c[0m
+[ 32%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/temperature_data__type_support.cpp.o[0m
+[ 33%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.c.o[0m
+[ 34%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o[0m
+[ 35%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o[0m
+[ 36%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.c.o[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o[0m
+[ 38%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o[0m
+[ 39%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/displacement_data__type_support.c.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data__type_support.cpp.o[0m
+[ 41%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/imu_data__type_support.c.o[0m
+[ 42%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/joint_state__type_support.cpp.o[0m
+[ 43%] [32m[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_c.so[0m
+[ 44%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/imu_type__type_support.c.o[0m
+[ 45%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/temperature_data__type_support.c.o[0m
+[ 46%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/actuator_command__type_support.c.o[0m
+[ 46%] Built target wearable_robot_interfaces__rosidl_typesupport_c
+[ 47%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/fan_command__type_support.c.o[0m
+[ 48%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/joint_state__type_support.c.o[0m
+[ 49%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/wearable_robot_interfaces/msg/detail/can_data__type_support.c.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/imu_data__type_support.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/can_data__type_support.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/imu_type__type_support.cpp.o[0m
+[ 53%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/temperature_data__type_support.cpp.o[0m
+[ 54%] [32m[1mLinking C shared library libwearable_robot_interfaces__rosidl_typesupport_introspection_c.so[0m
+[ 55%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/joint_state__type_support.cpp.o[0m
+[ 56%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/actuator_command__type_support.cpp.o[0m
+[ 57%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/displacement_data__type_support.cpp.o[0m
+[ 57%] Built target wearable_robot_interfaces__rosidl_typesupport_introspection_c
+[ 58%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/imu_data__type_support.cpp.o[0m
+[ 59%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/fan_command__type_support.cpp.o[0m
+[ 60%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/can_data__type_support.cpp.o[0m
+[ 61%] [32m[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_cpp.so[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/imu_type__type_support.cpp.o[0m
+[ 62%] Built target wearable_robot_interfaces__rosidl_typesupport_cpp
+[ 63%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/temperature_data__type_support.cpp.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/actuator_command__type_support.cpp.o[0m
+[ 65%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/wearable_robot_interfaces/msg/detail/dds_fastrtps/joint_state__type_support.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/fan_command__type_support.cpp.o[0m
+[ 67%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/can_data__type_support.cpp.o[0m
+[ 68%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/joint_state__type_support.cpp.o[0m
+[ 69%] [32m[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[ 70%] [32m[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[ 70%] Built target wearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp
+[ 70%] Built target wearable_robot_interfaces__rosidl_typesupport_introspection_cpp
+[ 71%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c[0m
+[ 72%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support_c.cpp.o[0m
+[ 73%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/imu_data__type_support_c.cpp.o[0m
+[ 74%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support_c.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/displacement_data__type_support_c.cpp.o[0m
+[ 76%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/temperature_data__type_support_c.cpp.o[0m
+[ 77%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/imu_type__type_support_c.cpp.o[0m
+[ 78%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/actuator_command__type_support_c.cpp.o[0m
+[ 79%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/fan_command__type_support_c.cpp.o[0m
+[ 80%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/can_data__type_support_c.cpp.o[0m
+[ 81%] [32mBuilding CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/wearable_robot_interfaces/msg/detail/joint_state__type_support_c.cpp.o[0m
+[ 82%] [32m[1mLinking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[ 82%] Built target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c
+[35m[1mScanning dependencies of target wearable_robot_interfaces[0m
+[ 82%] Built target wearable_robot_interfaces
+[35m[1mScanning dependencies of target wearable_robot_interfaces__py[0m
+[ 83%] [34m[1mGenerating Python code for ROS interfaces[0m
+[ 83%] Built target wearable_robot_interfaces__py
+[35m[1mScanning dependencies of target wearable_robot_interfaces__python[0m
+[ 84%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_data_s.c.o[0m
+[ 85%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_raw_data_s.c.o[0m
+[ 86%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_imu_raw_data_s.c.o[0m
+[ 87%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_imu_type_s.c.o[0m
+[ 88%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_temperature_data_s.c.o[0m
+[ 89%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_imu_data_s.c.o[0m
+[ 90%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command_s.c.o[0m
+[ 91%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_fan_command_s.c.o[0m
+[ 92%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_s.c.o[0m
+[ 93%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_joint_state_s.c.o[0m
+[ 94%] [32m[1mLinking C shared library rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so[0m
+[ 94%] Built target wearable_robot_interfaces__python
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext[0m
+[35m[1mScanning dependencies of target wearable_robot_interfaces__rosidl_typesupport_c__pyext[0m
+[ 95%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/wearable_robot_interfaces/_wearable_robot_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[ 96%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/wearable_robot_interfaces/_wearable_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[ 97%] [32mBuilding C object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/wearable_robot_interfaces/_wearable_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[ 98%] [32m[1mLinking C shared library rosidl_generator_py/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so[0m
+[ 99%] [32m[1mLinking C shared library rosidl_generator_py/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so[0m
+[100%] [32m[1mLinking CXX shared library rosidl_generator_py/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so[0m
+[100%] Built target wearable_robot_interfaces__rosidl_typesupport_c__pyext
+[100%] Built target wearable_robot_interfaces__rosidl_typesupport_introspection_c__pyext
+[100%] Built target wearable_robot_interfaces__rosidl_typesupport_fastrtps_c__pyext
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/rosidl_interfaces/wearable_robot_interfaces
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/actuator_command.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/can_data.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__functions.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__struct.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__type_support.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_data.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_raw_data.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/fan_command.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_data.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_raw_data.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_type.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/joint_state.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_generator_c__visibility_control.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/temperature_data.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/library_path.sh
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/library_path.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_fastrtps_c.so
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_fastrtps_cpp.so
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/actuator_command.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/can_data.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__builder.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__struct.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__traits.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__type_support.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_data.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/displacement_raw_data.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/fan_command.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_data.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_raw_data.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/imu_type.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/joint_state.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/temperature_data.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/actuator_command__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_data__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/displacement_raw_data__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/fan_command__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_data__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_raw_data__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/imu_type__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/joint_state__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/include/wearable_robot_interfaces/msg/detail/temperature_data__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/pythonpath.sh
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/pythonpath.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/__init__.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/__init__.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_actuator_command.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_can_data.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_displacement_data.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_displacement_raw_data.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_fan_command.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_imu_data.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_imu_raw_data.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_imu_type.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_joint_state.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/msg/_temperature_data.py
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/wearable_robot_interfaces_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__python.so
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementRawData.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMURawData.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementData.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUData.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUType.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/TemperatureData.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/ActuatorCommand.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/FanCommand.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/CANData.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/JointState.idl
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementRawData.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMURawData.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/DisplacementData.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUData.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/IMUType.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/TemperatureData.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/ActuatorCommand.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/FanCommand.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/CANData.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/msg/JointState.msg
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/package_run_dependencies/wearable_robot_interfaces
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/parent_prefix_path/wearable_robot_interfaces
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/ament_prefix_path.sh
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/ament_prefix_path.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/path.sh
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/environment/path.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.bash
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.sh
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.zsh
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/local_setup.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.dsv
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/ament_index/resource_index/packages/wearable_robot_interfaces
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/rosidl_cmake-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfacesConfig.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfacesConfig-version.cmake
+-- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.xml
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_generator_c.so
+-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_generator_c.so" to ""
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_c.so
+-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_c.so
+-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_c.so" to ""
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so
+-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_cpp.so
+-- Set runtime path of "/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_cpp.so" to ""
+Compiling '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages/wearable_robot_interfaces/__init__.py'...
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_generator_cExport.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_generator_cExport-noconfig.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cExport.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_generator_cppExport.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake/wearable_robot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake

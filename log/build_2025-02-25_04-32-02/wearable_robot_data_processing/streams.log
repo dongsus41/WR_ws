@@ -1,0 +1,53 @@
+[0.049s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing -- -j8 -l8
+[0.335s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.394s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.891s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.923s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.012s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.020s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.313s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.424s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.428s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.737s] -- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)
+[1.797s] -- Found rclcpp_lifecycle: 2.4.3 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)
+[1.855s] -- Found ros2_socketcan_msgs: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake)
+[1.923s] -- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)
+[2.183s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[2.390s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.392s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.393s] -- Configured cppcheck include dirs: /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/include
+[2.393s] -- Configured cppcheck exclude dirs and/or files: 
+[2.395s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.395s] -- Configured cpplint exclude dirs and/or files: 
+[2.397s] -- Added test 'lint_cmake' to check CMake code style
+[2.399s] -- Added test 'uncrustify' to check C / C++ code style
+[2.399s] -- Configured uncrustify additional arguments: 
+[2.399s] -- Added test 'xmllint' to check XML markup files
+[2.408s] -- Configuring done
+[2.491s] -- Generating done
+[2.510s] -- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[2.580s] [35m[1mScanning dependencies of target displacement_processing_node[0m
+[2.581s] [35m[1mScanning dependencies of target can_data_processor[0m
+[2.581s] [35m[1mScanning dependencies of target data_parser_node[0m
+[2.626s] [ 25%] Built target IMU_processing_node
+[2.653s] [ 37%] [32mBuilding CXX object CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o[0m
+[2.656s] [ 50%] [32mBuilding CXX object CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o[0m
+[2.664s] [ 62%] [32mBuilding CXX object CMakeFiles/data_parser_node.dir/src/data_parser_node.cpp.o[0m
+[6.538s] [01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:[m[K In member function ‘[01m[Kvoid DisplacementProcessingNode::displacement_callback(wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >::SharedPtr)[m[K’:
+[6.539s] [01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:95:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+[6.539s]    95 |         size_t num_received_sensors = msg->[01;31m[Kdisplacement[m[K.size();
+[6.539s]       |                                            [01;31m[K^~~~~~~~~~~~[m[K
+[6.539s]       |                                            [32m[Kdisplacement_raw[m[K
+[6.540s] [01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/displacement_processing_node.cpp:104:67:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdisplacement[m[K’; did you mean ‘[01m[Kdisplacement_raw[m[K’?
+[6.540s]   104 |             float filtered_voltage = filterDisplacementValue(msg->[01;31m[Kdisplacement[m[K[i], displacement_queues_[i]);
+[6.540s]       |                                                                   [01;31m[K^~~~~~~~~~~~[m[K
+[6.540s]       |                                                                   [32m[Kdisplacement_raw[m[K
+[10.886s] make[2]: *** [CMakeFiles/displacement_processing_node.dir/build.make:63: CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o] Error 1
+[10.886s] make[1]: *** [CMakeFiles/Makefile2:192: CMakeFiles/displacement_processing_node.dir/all] Error 2
+[10.887s] make[1]: *** Waiting for unfinished jobs....
+[16.186s] [ 75%] [32m[1mLinking CXX executable can_data_processor[0m
+[16.854s] [ 75%] Built target can_data_processor
+[19.694s] [ 87%] [32m[1mLinking CXX executable data_parser_node[0m
+[20.396s] [ 87%] Built target data_parser_node
+[20.399s] make: *** [Makefile:141: all] Error 2
+[20.405s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing' returned '2': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_hw:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/can_comm:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing -- -j8 -l8

@@ -1,0 +1,4 @@
+source;share/wearable_robot_data_processing/local_setup.bash
+source;share/wearable_robot_data_processing/local_setup.dsv
+source;share/wearable_robot_data_processing/local_setup.sh
+source;share/wearable_robot_data_processing/local_setup.zsh

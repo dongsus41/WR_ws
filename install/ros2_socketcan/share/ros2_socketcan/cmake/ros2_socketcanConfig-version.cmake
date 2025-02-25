@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/build/ros2_socketcan/ament_cmake_core/ros2_socketcanConfig-version.cmake

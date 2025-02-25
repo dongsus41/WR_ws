@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_introspection_cpp/wearable_robot_interfaces/msg/detail/can_data__rosidl_typesupport_introspection_cpp.hpp

@@ -1,0 +1,4 @@
+source;share/wearable_robot_bringup/local_setup.bash
+source;share/wearable_robot_bringup/local_setup.dsv
+source;share/wearable_robot_bringup/local_setup.sh
+source;share/wearable_robot_bringup/local_setup.zsh

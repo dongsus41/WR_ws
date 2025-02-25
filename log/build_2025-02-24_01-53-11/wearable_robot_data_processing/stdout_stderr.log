@@ -1,0 +1,47 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)
+-- Found rclcpp_lifecycle: 2.4.3 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)
+-- Found can_msgs: 2.0.0 (/opt/ros/foxy/share/can_msgs/cmake)
+-- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/include
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[  8%] [32mBuilding CXX object CMakeFiles/can_receiver_100_node.dir/src/can_receiver_100_node.cpp.o[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/can_receiver_401_node.dir/src/can_receiver_401_node.cpp.o[0m
+[ 50%] Built target displacement_processing_node
+[ 50%] Built target IMU_processing_node
+[ 66%] Built target displacement_data_logger
+[ 83%] Built target data_parser_node
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_receiver_100_node.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kcan_receiver_100_node.hpp: No such file or directory
+    1 | #include [01;31m[K"can_receiver_100_node.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing/src/can_receiver_401_node.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kcan_receiver_401_node.hpp: No such file or directory
+    1 | #include [01;31m[K"can_receiver_401_node.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+compilation terminated.
+make[2]: *** [CMakeFiles/can_receiver_100_node.dir/build.make:63: CMakeFiles/can_receiver_100_node.dir/src/can_receiver_100_node.cpp.o] Error 1
+make[2]: *** [CMakeFiles/can_receiver_401_node.dir/build.make:63: CMakeFiles/can_receiver_401_node.dir/src/can_receiver_401_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:88: CMakeFiles/can_receiver_100_node.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/Makefile2:115: CMakeFiles/can_receiver_401_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

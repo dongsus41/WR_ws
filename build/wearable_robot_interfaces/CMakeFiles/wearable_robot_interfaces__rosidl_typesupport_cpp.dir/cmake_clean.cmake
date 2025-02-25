@@ -1,0 +1,27 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_data__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_type__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/joint_state__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/temperature_data__type_support.cpp.o"
+  "libwearable_robot_interfaces__rosidl_typesupport_cpp.pdb"
+  "libwearable_robot_interfaces__rosidl_typesupport_cpp.so"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/actuator_command__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_data__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/fan_command__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_data__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/imu_type__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/joint_state__type_support.cpp"
+  "rosidl_typesupport_cpp/wearable_robot_interfaces/msg/temperature_data__type_support.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
