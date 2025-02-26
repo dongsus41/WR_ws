@@ -1,0 +1,46 @@
+[0.087s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[0.140s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.235s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.685s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.701s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.771s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.782s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.043s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.142s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.145s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.417s] -- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)
+[1.475s] -- Found ros2_socketcan_msgs: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake)
+[1.539s] -- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)
+[1.823s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.968s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.970s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.970s] -- Configured cppcheck include dirs: 
+[1.970s] -- Configured cppcheck exclude dirs and/or files: 
+[1.971s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.971s] -- Configured cpplint exclude dirs and/or files: 
+[1.972s] -- Added test 'lint_cmake' to check CMake code style
+[1.974s] -- Added test 'uncrustify' to check C / C++ code style
+[1.974s] -- Configured uncrustify additional arguments: 
+[1.974s] -- Added test 'xmllint' to check XML markup files
+[1.983s] -- Configuring done
+[2.015s] -- Generating done
+[2.028s] -- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_control
+[2.090s] [35m[1mScanning dependencies of target actuator_temp_control_node[0m
+[2.090s] [35m[1mScanning dependencies of target temperature_logger_node[0m
+[2.090s] [35m[1mScanning dependencies of target waist_robot_control_node[0m
+[2.172s] [ 33%] [32mBuilding CXX object CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o[0m
+[2.173s] [ 33%] [32mBuilding CXX object CMakeFiles/temperature_logger_node.dir/src/temperature_logger_node.cpp.o[0m
+[2.174s] [ 50%] [32mBuilding CXX object CMakeFiles/waist_robot_control_node.dir/src/waist_robot_control_node.cpp.o[0m
+[2.405s] [01m[K/home/kimm/wearable_robot_ws/src/wearable_robot_control/src/waist_robot_control_node.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Kwearable_robot_interfaces/msg/intension_data.hpp: No such file or directory
+[2.405s]     6 | #include [01;31m[K<wearable_robot_interfaces/msg/intension_data.hpp>[m[K
+[2.405s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.406s] compilation terminated.
+[2.411s] make[2]: *** [CMakeFiles/waist_robot_control_node.dir/build.make:63: CMakeFiles/waist_robot_control_node.dir/src/waist_robot_control_node.cpp.o] Error 1
+[2.412s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/waist_robot_control_node.dir/all] Error 2
+[2.412s] make[1]: *** Waiting for unfinished jobs....
+[15.724s] [ 66%] [32m[1mLinking CXX executable actuator_temp_control_node[0m
+[16.302s] [ 66%] Built target actuator_temp_control_node
+[17.566s] [ 83%] [32m[1mLinking CXX executable temperature_logger_node[0m
+[18.231s] [ 83%] Built target temperature_logger_node
+[18.234s] make: *** [Makefile:141: all] Error 2
+[18.240s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8

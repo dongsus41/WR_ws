@@ -1,0 +1,579 @@
+[0.414s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.414s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff9eaaed00>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=8, paths=None, symlink_install=True, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff9eaaed00>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffff9ea50f10>)
+[0.735s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.735s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.735s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.735s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.736s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.736s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.736s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/kimm/wearable_robot_ws'
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.760s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.760s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.761s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.761s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.761s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.761s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.761s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.762s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.762s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.762s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.762s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.762s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extensions ['ignore', 'ignore_ament_install']
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'ignore'
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'ignore_ament_install'
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extensions ['colcon_pkg']
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'colcon_pkg'
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extensions ['colcon_meta']
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'colcon_meta'
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extensions ['ros']
+[0.763s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'ros'
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extensions ['cmake', 'python']
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'cmake'
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'python'
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extensions ['python_setup_py']
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files) by extension 'python_setup_py'
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extensions ['ignore', 'ignore_ament_install']
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'ignore'
+[0.764s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'ignore_ament_install'
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extensions ['colcon_pkg']
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'colcon_pkg'
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extensions ['colcon_meta']
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'colcon_meta'
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extensions ['ros']
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'ros'
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extensions ['cmake', 'python']
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'cmake'
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'python'
+[0.765s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extensions ['python_setup_py']
+[0.766s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw) by extension 'python_setup_py'
+[0.766s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extensions ['ignore', 'ignore_ament_install']
+[0.766s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'ignore'
+[0.766s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'ignore_ament_install'
+[0.766s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extensions ['colcon_pkg']
+[0.766s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'colcon_pkg'
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extensions ['colcon_meta']
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'colcon_meta'
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extensions ['ros']
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'ros'
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extensions ['cmake', 'python']
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'cmake'
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'python'
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extensions ['python_setup_py']
+[0.767s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src) by extension 'python_setup_py'
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extensions ['ignore', 'ignore_ament_install']
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'ignore'
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'ignore_ament_install'
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extensions ['colcon_pkg']
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'colcon_pkg'
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extensions ['colcon_meta']
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'colcon_meta'
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extensions ['ros']
+[0.768s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'ros'
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extensions ['cmake', 'python']
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'cmake'
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'python'
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extensions ['python_setup_py']
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(legacy_files/wearable_robot_hw/src/oldversion) by extension 'python_setup_py'
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.769s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.770s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.771s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ignore', 'ignore_ament_install']
+[0.772s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore'
+[0.772s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) ignored
+[0.772s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extensions ['ignore', 'ignore_ament_install']
+[0.772s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extension 'ignore'
+[0.772s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) ignored
+[0.772s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extensions ['ignore', 'ignore_ament_install']
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extension 'ignore'
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) ignored
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extensions ['ignore', 'ignore_ament_install']
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'ignore'
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'ignore_ament_install'
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extensions ['colcon_pkg']
+[0.773s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'colcon_pkg'
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extensions ['colcon_meta']
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'colcon_meta'
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extensions ['ros']
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'ros'
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extensions ['cmake', 'python']
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'cmake'
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'python'
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extensions ['python_setup_py']
+[0.774s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan) by extension 'python_setup_py'
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extensions ['ignore', 'ignore_ament_install']
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extension 'ignore'
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extension 'ignore_ament_install'
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extensions ['colcon_pkg']
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extension 'colcon_pkg'
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extensions ['colcon_meta']
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extension 'colcon_meta'
+[0.775s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extensions ['ros']
+[0.776s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan) by extension 'ros'
+[0.782s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ros2_socketcan/ros2_socketcan' with type 'ros.ament_cmake' and name 'ros2_socketcan'
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extension 'ignore'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extension 'ignore_ament_install'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extensions ['colcon_pkg']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extension 'colcon_pkg'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extensions ['colcon_meta']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extension 'colcon_meta'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extensions ['ros']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_socketcan/ros2_socketcan_msgs) by extension 'ros'
+[0.785s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ros2_socketcan/ros2_socketcan_msgs' with type 'ros.ament_cmake' and name 'ros2_socketcan_msgs'
+[0.785s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.785s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extension 'ignore'
+[0.785s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extension 'ignore_ament_install'
+[0.785s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extensions ['colcon_pkg']
+[0.786s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extension 'colcon_pkg'
+[0.786s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extensions ['colcon_meta']
+[0.786s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extension 'colcon_meta'
+[0.786s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extensions ['ros']
+[0.786s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_bringup) by extension 'ros'
+[0.787s] DEBUG:colcon.colcon_core.package_identification:Package 'src/wearable_robot_bringup' with type 'ros.ament_cmake' and name 'wearable_robot_bringup'
+[0.787s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extensions ['ignore', 'ignore_ament_install']
+[0.787s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extension 'ignore'
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extension 'ignore_ament_install'
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extensions ['colcon_pkg']
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extension 'colcon_pkg'
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extensions ['colcon_meta']
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extension 'colcon_meta'
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extensions ['ros']
+[0.788s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_control) by extension 'ros'
+[0.789s] DEBUG:colcon.colcon_core.package_identification:Package 'src/wearable_robot_control' with type 'ros.ament_cmake' and name 'wearable_robot_control'
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extensions ['ignore', 'ignore_ament_install']
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extension 'ignore'
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extension 'ignore_ament_install'
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extensions ['colcon_pkg']
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extension 'colcon_pkg'
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extensions ['colcon_meta']
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extension 'colcon_meta'
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extensions ['ros']
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_data_processing) by extension 'ros'
+[0.793s] DEBUG:colcon.colcon_core.package_identification:Package 'src/wearable_robot_data_processing' with type 'ros.ament_cmake' and name 'wearable_robot_data_processing'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extension 'ignore'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extension 'ignore_ament_install'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extensions ['colcon_pkg']
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extension 'colcon_pkg'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extensions ['colcon_meta']
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extension 'colcon_meta'
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extensions ['ros']
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src/wearable_robot_interfaces) by extension 'ros'
+[0.795s] DEBUG:colcon.colcon_core.package_identification:Package 'src/wearable_robot_interfaces' with type 'ros.ament_cmake' and name 'wearable_robot_interfaces'
+[0.795s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.795s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.795s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.795s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.795s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.833s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.833s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.838s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/kimm/wearable_robot_ws/install
+[0.839s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/kimm/install
+[0.841s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 262 installed packages in /opt/ros/foxy
+[0.844s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.007s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'cmake_args' from command line to 'None'
+[1.007s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'cmake_target' from command line to 'None'
+[1.007s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.007s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[1.008s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[1.008s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[1.008s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[1.008s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[1.008s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.008s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_socketcan_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs', 'merge_install': False, 'path': '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan_msgs', 'symlink_install': True, 'test_result_base': None}
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'cmake_args' from command line to 'None'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'cmake_target' from command line to 'None'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[1.009s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.009s] DEBUG:colcon.colcon_core.verb:Building package 'wearable_robot_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup', 'merge_install': False, 'path': '/home/kimm/wearable_robot_ws/src/wearable_robot_bringup', 'symlink_install': True, 'test_result_base': None}
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'cmake_args' from command line to 'None'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'cmake_target' from command line to 'None'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'cmake_clean_cache' from command line to 'False'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'cmake_clean_first' from command line to 'False'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'cmake_force_configure' from command line to 'False'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'ament_cmake_args' from command line to 'None'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'catkin_cmake_args' from command line to 'None'
+[1.010s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.011s] DEBUG:colcon.colcon_core.verb:Building package 'wearable_robot_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/kimm/wearable_robot_ws/build/wearable_robot_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/kimm/wearable_robot_ws/install/wearable_robot_control', 'merge_install': False, 'path': '/home/kimm/wearable_robot_ws/src/wearable_robot_control', 'symlink_install': True, 'test_result_base': None}
+[1.011s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'cmake_args' from command line to 'None'
+[1.011s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'cmake_target' from command line to 'None'
+[1.011s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.011s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[1.012s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[1.012s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[1.012s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[1.012s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[1.012s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.012s] DEBUG:colcon.colcon_core.verb:Building package 'wearable_robot_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces', 'merge_install': False, 'path': '/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces', 'symlink_install': True, 'test_result_base': None}
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'cmake_args' from command line to 'None'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'cmake_target' from command line to 'None'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'cmake_clean_cache' from command line to 'False'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'cmake_clean_first' from command line to 'False'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'cmake_force_configure' from command line to 'False'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'ament_cmake_args' from command line to 'None'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'catkin_cmake_args' from command line to 'None'
+[1.013s] Level 5:colcon.colcon_core.verb:set package 'ros2_socketcan' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.013s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_socketcan' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/kimm/wearable_robot_ws/build/ros2_socketcan', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/kimm/wearable_robot_ws/install/ros2_socketcan', 'merge_install': False, 'path': '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan', 'symlink_install': True, 'test_result_base': None}
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'cmake_args' from command line to 'None'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'cmake_target' from command line to 'None'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'cmake_clean_cache' from command line to 'False'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'cmake_clean_first' from command line to 'False'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'cmake_force_configure' from command line to 'False'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'ament_cmake_args' from command line to 'None'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'catkin_cmake_args' from command line to 'None'
+[1.014s] Level 5:colcon.colcon_core.verb:set package 'wearable_robot_data_processing' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.014s] DEBUG:colcon.colcon_core.verb:Building package 'wearable_robot_data_processing' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing', 'merge_install': False, 'path': '/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing', 'symlink_install': True, 'test_result_base': None}
+[1.015s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.017s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.018s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan_msgs' with build type 'ament_cmake'
+[1.018s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan_msgs'
+[1.023s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.024s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.024s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.038s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces' with build type 'ament_cmake'
+[1.038s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces'
+[1.040s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.040s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.052s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/kimm/wearable_robot_ws/src/wearable_robot_bringup' with build type 'ament_cmake'
+[1.052s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/kimm/wearable_robot_ws/src/wearable_robot_bringup'
+[1.053s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.054s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.065s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/kimm/wearable_robot_ws/src/wearable_robot_control' with build type 'ament_cmake'
+[1.066s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/kimm/wearable_robot_ws/src/wearable_robot_control'
+[1.067s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.067s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.095s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs -- -j8 -l8
+[1.115s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces -- -j8 -l8
+[1.129s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_bringup -- -j8 -l8
+[1.159s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[1.228s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_bringup -- -j8 -l8
+[1.257s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_bringup
+[1.331s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_bringup)
+[1.335s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_bringup
+[1.340s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup' for CMake module files
+[1.344s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup' for CMake config files
+[1.345s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_bringup', 'cmake_prefix_path')
+[1.346s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/hook/cmake_prefix_path.ps1'
+[1.348s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/hook/cmake_prefix_path.dsv'
+[1.349s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/hook/cmake_prefix_path.sh'
+[1.351s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/bin'
+[1.352s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/lib/pkgconfig/wearable_robot_bringup.pc'
+[1.352s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/lib/python3.8/site-packages'
+[1.353s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/bin'
+[1.353s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.ps1'
+[1.356s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.dsv'
+[1.358s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.sh'
+[1.360s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.bash'
+[1.362s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.zsh'
+[1.363s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/colcon-core/packages/wearable_robot_bringup)
+[1.367s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_bringup)
+[1.370s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup' for CMake module files
+[1.371s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup' for CMake config files
+[1.371s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_bringup', 'cmake_prefix_path')
+[1.372s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/hook/cmake_prefix_path.ps1'
+[1.374s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/hook/cmake_prefix_path.dsv'
+[1.375s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/hook/cmake_prefix_path.sh'
+[1.377s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/bin'
+[1.377s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/lib/pkgconfig/wearable_robot_bringup.pc'
+[1.377s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/lib/python3.8/site-packages'
+[1.378s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/bin'
+[1.379s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.ps1'
+[1.380s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.dsv'
+[1.381s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.sh'
+[1.382s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.bash'
+[1.384s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/package.zsh'
+[1.385s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/colcon-core/packages/wearable_robot_bringup)
+[1.390s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[1.398s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_control
+[1.506s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_control)
+[1.507s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control' for CMake module files
+[1.509s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control' for CMake config files
+[1.509s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_control', 'cmake_prefix_path')
+[1.510s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/hook/cmake_prefix_path.ps1'
+[1.512s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_control
+[1.512s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/hook/cmake_prefix_path.dsv'
+[1.513s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/hook/cmake_prefix_path.sh'
+[1.515s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib'
+[1.516s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/bin'
+[1.516s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/pkgconfig/wearable_robot_control.pc'
+[1.517s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/python3.8/site-packages'
+[1.517s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/bin'
+[1.518s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.ps1'
+[1.520s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.dsv'
+[1.521s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.sh'
+[1.521s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.bash'
+[1.522s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.zsh'
+[1.523s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/colcon-core/packages/wearable_robot_control)
+[1.525s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_control)
+[1.525s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control' for CMake module files
+[1.527s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control' for CMake config files
+[1.527s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_control', 'cmake_prefix_path')
+[1.528s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/hook/cmake_prefix_path.ps1'
+[1.529s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/hook/cmake_prefix_path.dsv'
+[1.529s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/hook/cmake_prefix_path.sh'
+[1.530s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib'
+[1.531s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/bin'
+[1.531s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/pkgconfig/wearable_robot_control.pc'
+[1.531s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/python3.8/site-packages'
+[1.532s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_control/bin'
+[1.532s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.ps1'
+[1.534s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.dsv'
+[1.535s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.sh'
+[1.536s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.bash'
+[1.537s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.zsh'
+[1.537s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_control/share/colcon-core/packages/wearable_robot_control)
+[1.662s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs -- -j8 -l8
+[1.669s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs
+[1.686s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces -- -j8 -l8
+[1.698s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces
+[1.832s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_socketcan_msgs)
+[1.833s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs' for CMake module files
+[1.834s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/ros2_socketcan_msgs
+[1.836s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs' for CMake config files
+[1.836s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan_msgs', 'cmake_prefix_path')
+[1.837s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/cmake_prefix_path.ps1'
+[1.838s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/cmake_prefix_path.dsv'
+[1.839s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/cmake_prefix_path.sh'
+[1.840s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib'
+[1.840s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan_msgs', 'ld_library_path_lib')
+[1.841s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/ld_library_path_lib.ps1'
+[1.841s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/ld_library_path_lib.dsv'
+[1.842s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/ld_library_path_lib.sh'
+[1.843s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/bin'
+[1.843s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/pkgconfig/ros2_socketcan_msgs.pc'
+[1.844s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages'
+[1.844s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan_msgs', 'pythonpath')
+[1.844s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/pythonpath.ps1'
+[1.845s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/pythonpath.dsv'
+[1.846s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/pythonpath.sh'
+[1.847s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/bin'
+[1.847s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.ps1'
+[1.849s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.dsv'
+[1.850s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.sh'
+[1.850s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.bash'
+[1.851s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.zsh'
+[1.852s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/colcon-core/packages/ros2_socketcan_msgs)
+[1.853s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_socketcan_msgs)
+[1.854s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs' for CMake module files
+[1.856s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs' for CMake config files
+[1.856s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan_msgs', 'cmake_prefix_path')
+[1.857s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/cmake_prefix_path.ps1'
+[1.858s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/cmake_prefix_path.dsv'
+[1.858s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/cmake_prefix_path.sh'
+[1.860s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib'
+[1.860s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan_msgs', 'ld_library_path_lib')
+[1.860s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/ld_library_path_lib.ps1'
+[1.861s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/ld_library_path_lib.dsv'
+[1.862s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/ld_library_path_lib.sh'
+[1.862s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/bin'
+[1.863s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/pkgconfig/ros2_socketcan_msgs.pc'
+[1.863s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages'
+[1.863s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan_msgs', 'pythonpath')
+[1.864s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/pythonpath.ps1'
+[1.864s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/pythonpath.dsv'
+[1.865s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/hook/pythonpath.sh'
+[1.866s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/bin'
+[1.867s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.ps1'
+[1.868s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.dsv'
+[1.869s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.sh'
+[1.870s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.bash'
+[1.871s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.zsh'
+[1.871s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/colcon-core/packages/ros2_socketcan_msgs)
+[1.872s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan' with build type 'ament_cmake'
+[1.873s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan'
+[1.874s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.874s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.904s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8
+[1.911s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_interfaces)
+[1.913s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces' for CMake module files
+[1.914s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces
+[1.915s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces' for CMake config files
+[1.916s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_interfaces', 'cmake_prefix_path')
+[1.917s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/cmake_prefix_path.ps1'
+[1.918s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/cmake_prefix_path.dsv'
+[1.919s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/cmake_prefix_path.sh'
+[1.922s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib'
+[1.923s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_interfaces', 'ld_library_path_lib')
+[1.923s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/ld_library_path_lib.ps1'
+[1.924s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/ld_library_path_lib.dsv'
+[1.925s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/ld_library_path_lib.sh'
+[1.926s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/bin'
+[1.926s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/pkgconfig/wearable_robot_interfaces.pc'
+[1.927s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages'
+[1.927s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_interfaces', 'pythonpath')
+[1.928s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/pythonpath.ps1'
+[1.929s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/pythonpath.dsv'
+[1.929s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/pythonpath.sh'
+[1.930s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/bin'
+[1.931s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.ps1'
+[1.932s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.dsv'
+[1.933s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.sh'
+[1.934s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.bash'
+[1.935s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.zsh'
+[1.936s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/colcon-core/packages/wearable_robot_interfaces)
+[1.937s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_interfaces)
+[1.937s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces' for CMake module files
+[1.939s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces' for CMake config files
+[1.940s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_interfaces', 'cmake_prefix_path')
+[1.940s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/cmake_prefix_path.ps1'
+[1.941s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/cmake_prefix_path.dsv'
+[1.942s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/cmake_prefix_path.sh'
+[1.943s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib'
+[1.944s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_interfaces', 'ld_library_path_lib')
+[1.944s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/ld_library_path_lib.ps1'
+[1.945s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/ld_library_path_lib.dsv'
+[1.946s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/ld_library_path_lib.sh'
+[1.947s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/bin'
+[1.947s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/pkgconfig/wearable_robot_interfaces.pc'
+[1.947s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages'
+[1.947s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_interfaces', 'pythonpath')
+[1.948s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/pythonpath.ps1'
+[1.949s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/pythonpath.dsv'
+[1.949s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/hook/pythonpath.sh'
+[1.951s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/bin'
+[1.951s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.ps1'
+[1.953s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.dsv'
+[1.954s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.sh'
+[1.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.bash'
+[1.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/package.zsh'
+[1.957s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/colcon-core/packages/wearable_robot_interfaces)
+[2.195s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/ros2_socketcan -- -j8 -l8
+[2.204s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/ros2_socketcan
+[2.270s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_socketcan)
+[2.271s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan' for CMake module files
+[2.273s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/ros2_socketcan' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib/python3.8/site-packages:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/ros2_socketcan
+[2.274s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan' for CMake config files
+[2.275s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan', 'cmake_prefix_path')
+[2.276s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/cmake_prefix_path.ps1'
+[2.278s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/cmake_prefix_path.dsv'
+[2.279s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/cmake_prefix_path.sh'
+[2.281s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib'
+[2.281s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan', 'ld_library_path_lib')
+[2.282s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/ld_library_path_lib.ps1'
+[2.283s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/ld_library_path_lib.dsv'
+[2.284s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/ld_library_path_lib.sh'
+[2.286s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/bin'
+[2.286s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib/pkgconfig/ros2_socketcan.pc'
+[2.287s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib/python3.8/site-packages'
+[2.287s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/bin'
+[2.288s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.ps1'
+[2.290s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.dsv'
+[2.291s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.sh'
+[2.293s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.bash'
+[2.294s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.zsh'
+[2.295s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/colcon-core/packages/ros2_socketcan)
+[2.296s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_socketcan)
+[2.297s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan' for CMake module files
+[2.298s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan' for CMake config files
+[2.299s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan', 'cmake_prefix_path')
+[2.299s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/cmake_prefix_path.ps1'
+[2.300s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/cmake_prefix_path.dsv'
+[2.301s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/cmake_prefix_path.sh'
+[2.302s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib'
+[2.302s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_socketcan', 'ld_library_path_lib')
+[2.302s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/ld_library_path_lib.ps1'
+[2.303s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/ld_library_path_lib.dsv'
+[2.304s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/hook/ld_library_path_lib.sh'
+[2.305s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/bin'
+[2.305s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib/pkgconfig/ros2_socketcan.pc'
+[2.305s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib/python3.8/site-packages'
+[2.306s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/ros2_socketcan/bin'
+[2.306s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.ps1'
+[2.307s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.dsv'
+[2.308s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.sh'
+[2.309s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.bash'
+[2.310s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/package.zsh'
+[2.311s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/colcon-core/packages/ros2_socketcan)
+[2.311s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing' with build type 'ament_cmake'
+[2.312s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing'
+[2.312s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.313s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.351s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing -- -j8 -l8
+[2.513s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing -- -j8 -l8
+[2.521s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[2.584s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_data_processing)
+[2.585s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing' for CMake module files
+[2.586s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing' for CMake config files
+[2.587s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_data_processing', 'cmake_prefix_path')
+[2.588s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/hook/cmake_prefix_path.ps1'
+[2.589s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/hook/cmake_prefix_path.dsv'
+[2.591s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing' returned '0': CMAKE_PREFIX_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs:/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing:/home/kimm/wearable_robot_ws/install/wearable_robot_control:/home/kimm/wearable_robot_ws/install/wearable_robot_bringup:/home/kimm/install/can_data_extractor:/opt/ros/foxy LD_LIBRARY_PATH=/home/kimm/wearable_robot_ws/install/ros2_socketcan/lib:/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib:/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing
+[2.592s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/hook/cmake_prefix_path.sh'
+[2.593s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib'
+[2.594s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/bin'
+[2.594s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/pkgconfig/wearable_robot_data_processing.pc'
+[2.595s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/python3.8/site-packages'
+[2.595s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/bin'
+[2.596s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.ps1'
+[2.597s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.dsv'
+[2.598s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.sh'
+[2.599s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.bash'
+[2.600s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.zsh'
+[2.601s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/colcon-core/packages/wearable_robot_data_processing)
+[2.602s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wearable_robot_data_processing)
+[2.603s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing' for CMake module files
+[2.604s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing' for CMake config files
+[2.604s] Level 1:colcon.colcon_core.shell:create_environment_hook('wearable_robot_data_processing', 'cmake_prefix_path')
+[2.605s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/hook/cmake_prefix_path.ps1'
+[2.606s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/hook/cmake_prefix_path.dsv'
+[2.607s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/hook/cmake_prefix_path.sh'
+[2.608s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib'
+[2.608s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/bin'
+[2.608s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/pkgconfig/wearable_robot_data_processing.pc'
+[2.609s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/python3.8/site-packages'
+[2.609s] Level 1:colcon.colcon_core.environment:checking '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/bin'
+[2.610s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.ps1'
+[2.611s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.dsv'
+[2.612s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.sh'
+[2.613s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.bash'
+[2.614s] INFO:colcon.colcon_core.shell:Creating package script '/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/wearable_robot_data_processing/package.zsh'
+[2.615s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/share/colcon-core/packages/wearable_robot_data_processing)
+[2.616s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.617s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.623s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.623s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.636s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.637s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.637s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.685s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.686s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/kimm/wearable_robot_ws/install/local_setup.ps1'
+[2.689s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/kimm/wearable_robot_ws/install/_local_setup_util_ps1.py'
+[2.692s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/kimm/wearable_robot_ws/install/setup.ps1'
+[2.695s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/kimm/wearable_robot_ws/install/local_setup.sh'
+[2.696s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/kimm/wearable_robot_ws/install/_local_setup_util_sh.py'
+[2.697s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/kimm/wearable_robot_ws/install/setup.sh'
+[2.699s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/kimm/wearable_robot_ws/install/local_setup.bash'
+[2.700s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/kimm/wearable_robot_ws/install/setup.bash'
+[2.703s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/kimm/wearable_robot_ws/install/local_setup.zsh'
+[2.704s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/kimm/wearable_robot_ws/install/setup.zsh'

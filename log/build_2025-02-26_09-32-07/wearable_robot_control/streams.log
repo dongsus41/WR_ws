@@ -1,0 +1,52 @@
+[0.081s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[0.144s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.198s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.645s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.661s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.755s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.770s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.958s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.027s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.194s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.307s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.312s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.313s] -- Looking for pthread.h
+[1.467s] -- Looking for pthread.h - found
+[1.468s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.625s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.626s] -- Looking for pthread_create in pthreads
+[1.781s] -- Looking for pthread_create in pthreads - not found
+[1.781s] -- Looking for pthread_create in pthread
+[1.932s] -- Looking for pthread_create in pthread - found
+[1.934s] -- Found Threads: TRUE  
+[2.234s] -- Found wearable_robot_interfaces: 0.0.0 (/home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/share/wearable_robot_interfaces/cmake)
+[2.292s] -- Found ros2_socketcan_msgs: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake)
+[2.355s] -- Found ros2_socketcan: 1.3.0 (/home/kimm/wearable_robot_ws/install/ros2_socketcan/share/ros2_socketcan/cmake)
+[2.664s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[2.832s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.833s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.834s] -- Configured cppcheck include dirs: 
+[2.834s] -- Configured cppcheck exclude dirs and/or files: 
+[2.835s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.835s] -- Configured cpplint exclude dirs and/or files: 
+[2.836s] -- Added test 'lint_cmake' to check CMake code style
+[2.837s] -- Added test 'uncrustify' to check C / C++ code style
+[2.838s] -- Configured uncrustify additional arguments: 
+[2.838s] -- Added test 'xmllint' to check XML markup files
+[2.845s] -- Configuring done
+[2.849s] CMake Error at CMakeLists.txt:48 (add_executable):
+[2.850s]   Cannot find source file:
+[2.850s] 
+[2.850s]     src/body_control_node.cpp
+[2.851s] 
+[2.851s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+[2.851s]   .hpp .hxx .in .txx
+[2.851s] 
+[2.852s] 
+[2.852s] CMake Error at CMakeLists.txt:48 (add_executable):
+[2.852s]   No SOURCES given to target: body_control_node
+[2.852s] 
+[2.853s] 
+[2.853s] CMake Generate step failed.  Build files cannot be regenerated correctly.
+[2.871s] make: *** [Makefile:222: cmake_check_build_system] Error 1
+[2.876s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8

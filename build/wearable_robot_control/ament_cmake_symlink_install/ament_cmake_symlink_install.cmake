@@ -310,6 +310,15 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
+# install("TARGETS" "actuator_temp_control_node" "temperature_logger_node" "DESTINATION" "lib/wearable_robot_control")
+include("/home/kimm/wearable_robot_ws/build/wearable_robot_control/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+
+# install(DIRECTORY "include/" "DESTINATION" "include" "OPTIONAL")
+ament_cmake_symlink_install_directory("/home/kimm/wearable_robot_ws/src/wearable_robot_control" DIRECTORY "include/" "DESTINATION" "include" "OPTIONAL")
+
+# install(DIRECTORY "launch" "config" "DESTINATION" "share/wearable_robot_control" "OPTIONAL")
+ament_cmake_symlink_install_directory("/home/kimm/wearable_robot_ws/src/wearable_robot_control" DIRECTORY "launch" "config" "DESTINATION" "share/wearable_robot_control" "OPTIONAL")
+
 # install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_control/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wearable_robot_control" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_control" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_control/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wearable_robot_control" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 

@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/kimm/wearable_robot_ws/build/wearable_robot_control/actuator_temp_control_node" "/home/kimm/wearable_robot_ws/build/wearable_robot_control/temperature_logger_node" "TARGETS" "actuator_temp_control_node" "temperature_logger_node" "DESTINATION" "lib/wearable_robot_control")

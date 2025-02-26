@@ -73,8 +73,6 @@ ament_target_dependencies(IMU_processing_node
 )
 
 
-
-
 # 실행 파일 설치
 install(TARGETS
   can_data_processor
