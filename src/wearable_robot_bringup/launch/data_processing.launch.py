@@ -19,6 +19,15 @@ def generate_launch_description():
         description='Path to the calibration parameters YAML file'
     )
 
+    #CAN Data Node
+    parser_node = Node(
+        package='wearable_robot_data_processing',
+        executable='can_data_processor',
+        name='can_data_processor',
+        output='screen',
+        parameters=[{'use_sim_time': False}]
+    )
+
     # Data Parser Node
     parser_node = Node(
         package='wearable_robot_data_processing',

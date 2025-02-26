@@ -115,19 +115,26 @@ private:
         // CAN 메시지 생성
         auto can_msg = ros2_socketcan_msgs::msg::FdFrame();
         can_msg.header.stamp = this->now();
-        can_msg.id = 0x401;  // PWM 명령용 CAN ID (시스템에 맞게 조정)
+        can_msg.id = 0x400;  // board 명령용 CAN ID 400
         can_msg.is_extended = false;
         can_msg.is_error = false;
-        can_msg.len = 6;  // 6개 PWM 채널
+        can_msg.len = 64;  // CAN FD 프레임 - 64바이트
 
         // 데이터 채우기
-        can_msg.data.resize(6, 0);  // 6바이트 초기화
+        can_msg.data.resize(64, 0);  // 64 바이트 초기화
         for (int i = 0; i < 6; i++) {
             can_msg.data[i] = (i == actuator_idx) ? pwm_value : 0;
         }
 
+        // 다음 6바이트는 팬 상태 (현재는 모두 0으로 설정)
+        // 필요시 팬 상태 설정 로직 추가
+
         // CAN 메시지 발행
         can_publisher_->publish(can_msg);
+
+        RCLCPP_DEBUG(this->get_logger(),
+        "Sent CAN command - ID: 0x400, PWM[%d]: %d",
+        actuator_idx, pwm_value);
     }
 
     rcl_interfaces::msg::SetParametersResult parameter_callback(

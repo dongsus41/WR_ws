@@ -7,11 +7,9 @@ from ament_index_python.packages import get_package_share_directory
 import os
 
 def generate_launch_description():
-    # 패키지 경로 가져오기
-    bringup_pkg_share = get_package_share_directory('wearable_robot_bringup')
-
     # config 파일 경로
-    temp_control_config = os.path.join(bringup_pkg_share, 'config', 'temperature_control_params.yaml')
+    control_pkg_share = get_package_share_directory('wearable_robot_control')
+    temp_control_config = os.path.join(control_pkg_share, 'config', 'temperature_control_params.yaml')
 
     # CAN 데이터 처리 노드
     can_processor_node = Node(

@@ -1,0 +1,30 @@
+[0.127s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[0.261s] [35m[1mScanning dependencies of target actuator_temp_control_node[0m
+[0.334s] [ 50%] Built target temperature_logger_node
+[0.347s] [ 75%] [32mBuilding CXX object CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o[0m
+[14.479s] [100%] [32m[1mLinking CXX executable actuator_temp_control_node[0m
+[15.070s] [100%] Built target actuator_temp_control_node
+[15.099s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[15.105s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_control
+[15.127s] -- Install configuration: ""
+[15.127s] -- Execute custom install script
+[15.128s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/wearable_robot_control/actuator_temp_control_node
+[15.129s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/wearable_robot_control/temperature_logger_node
+[15.130s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/launch/temperature_control.launch.py
+[15.131s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/config/temperature_control_params.yaml
+[15.132s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/package_run_dependencies/wearable_robot_control
+[15.132s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/parent_prefix_path/wearable_robot_control
+[15.132s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/ament_prefix_path.sh
+[15.134s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/ament_prefix_path.dsv
+[15.134s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/path.sh
+[15.135s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/path.dsv
+[15.135s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.bash
+[15.135s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.sh
+[15.135s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.zsh
+[15.136s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.dsv
+[15.136s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.dsv
+[15.159s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/packages/wearable_robot_control
+[15.160s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/cmake/wearable_robot_controlConfig.cmake
+[15.160s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/cmake/wearable_robot_controlConfig-version.cmake
+[15.160s] -- Up-to-date symlink: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.xml
+[15.167s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_control
