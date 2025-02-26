@@ -1,4 +1,0 @@
-make[2]: *** No rule to make target '/home/kimm/wearable_robot_ws/src/ros2_socketcan/ros2_socketcan/src/can_id_splitter_node.cpp', needed by 'CMakeFiles/can_id_splitter_node.dir/src/can_id_splitter_node.cpp.o'.  Stop.
-make[1]: *** [CMakeFiles/Makefile2:330: CMakeFiles/can_id_splitter_node.dir/all] Error 2
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:141: all] Error 2

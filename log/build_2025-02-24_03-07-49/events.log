@@ -1,9 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.001213] (-) JobUnselected: {'identifier': 'ros2_socketcan'}
-[0.001817] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
-[0.002070] (-) JobUnselected: {'identifier': 'wearable_robot_bringup'}
-[0.002142] (-) JobUnselected: {'identifier': 'wearable_robot_control'}
-[0.002402] (-) JobUnselected: {'identifier': 'wearable_robot_data_processing'}
-[0.002500] (-) JobUnselected: {'identifier': 'wearable_robot_hw'}
-[0.002543] (-) JobUnselected: {'identifier': 'wearable_robot_interfaces'}
-[0.002585] (-) EventReactorShutdown: {}

@@ -1,7 +1,0 @@
-/usr/bin/ld: CMakeFiles/displacement_processing_node.dir/src/displacement_processing_node.cpp.o: in function `DisplacementProcessingNode::displacement_callback(std::shared_ptr<wearable_robot_interfaces::msg::DisplacementRawData_<std::allocator<void> > >)':
-displacement_processing_node.cpp:(.text._ZN26DisplacementProcessingNode21displacement_callbackESt10shared_ptrIN25wearable_robot_interfaces3msg20DisplacementRawData_ISaIvEEEE[_ZN26DisplacementProcessingNode21displacement_callbackESt10shared_ptrIN25wearable_robot_interfaces3msg20DisplacementRawData_ISaIvEEEE]+0x68): undefined reference to `DisplacementProcessingNode::NUM_SENSORS'
-/usr/bin/ld: displacement_processing_node.cpp:(.text._ZN26DisplacementProcessingNode21displacement_callbackESt10shared_ptrIN25wearable_robot_interfaces3msg20DisplacementRawData_ISaIvEEEE[_ZN26DisplacementProcessingNode21displacement_callbackESt10shared_ptrIN25wearable_robot_interfaces3msg20DisplacementRawData_ISaIvEEEE]+0x6c): undefined reference to `DisplacementProcessingNode::NUM_SENSORS'
-collect2: error: ld returned 1 exit status
-make[2]: *** [CMakeFiles/displacement_processing_node.dir/build.make:136: displacement_processing_node] Error 1
-make[1]: *** [CMakeFiles/Makefile2:192: CMakeFiles/displacement_processing_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

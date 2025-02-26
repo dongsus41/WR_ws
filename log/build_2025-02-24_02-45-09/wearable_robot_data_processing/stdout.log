@@ -1,6 +1,0 @@
-[35m[1mScanning dependencies of target can_data_processor[0m
-[ 40%] Built target data_parser_node
-[ 40%] Built target displacement_data_logger
-[ 60%] Built target displacement_processing_node
-[ 80%] Built target IMU_processing_node
-[ 90%] [32mBuilding CXX object CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.o[0m

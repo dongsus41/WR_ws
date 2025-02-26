@@ -1,8 +1,0 @@
-[35m[1mScanning dependencies of target can_receiver_401_node[0m
-[35m[1mScanning dependencies of target can_receiver_100_node[0m
-[ 16%] Built target displacement_data_logger
-[ 25%] [32mBuilding CXX object CMakeFiles/can_receiver_100_node.dir/src/can_receiver_100_node.cpp.o[0m
-[ 33%] [32mBuilding CXX object CMakeFiles/can_receiver_401_node.dir/src/can_receiver_401_node.cpp.o[0m
-[ 50%] Built target data_parser_node
-[ 66%] Built target displacement_processing_node
-[ 83%] Built target IMU_processing_node

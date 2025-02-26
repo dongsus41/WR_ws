@@ -10,7 +10,7 @@ module wearable_robot_interfaces {
       std_msgs::msg::Header header;
 
       @verbatim (language="comment", text=
-        " 변위센서 값 0 (mm)")
+        " 변위센서 값 (mm)")
       sequence<float> displacement;
     };
   };

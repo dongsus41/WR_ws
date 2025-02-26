@@ -1,0 +1,1 @@
+/home/kimm/wearable_robot_ws/src/wearable_robot_bringup/launch/bringup_all.launch.py

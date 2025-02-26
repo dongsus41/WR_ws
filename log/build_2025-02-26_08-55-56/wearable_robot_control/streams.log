@@ -1,0 +1,55 @@
+[0.065s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/kimm/wearable_robot_ws/src/wearable_robot_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/wearable_robot_control
+[0.207s] -- The C compiler identification is GNU 9.4.0
+[0.312s] -- The CXX compiler identification is GNU 9.4.0
+[0.321s] -- Check for working C compiler: /usr/bin/cc
+[0.465s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.466s] -- Detecting C compiler ABI info
+[0.625s] -- Detecting C compiler ABI info - done
+[0.644s] -- Detecting C compile features
+[0.644s] -- Detecting C compile features - done
+[0.651s] -- Check for working CXX compiler: /usr/bin/c++
+[0.837s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.840s] -- Detecting CXX compiler ABI info
+[1.009s] -- Detecting CXX compiler ABI info - done
+[1.033s] -- Detecting CXX compile features
+[1.034s] -- Detecting CXX compile features - done
+[1.039s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[1.094s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[1.094s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.514s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.558s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.731s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.731s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.731s] -- Configured cppcheck include dirs: 
+[1.731s] -- Configured cppcheck exclude dirs and/or files: 
+[1.738s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.738s] -- Configured cpplint exclude dirs and/or files: 
+[1.739s] -- Added test 'lint_cmake' to check CMake code style
+[1.739s] -- Added test 'uncrustify' to check C / C++ code style
+[1.739s] -- Configured uncrustify additional arguments: 
+[1.739s] -- Added test 'xmllint' to check XML markup files
+[1.745s] -- Configuring done
+[1.755s] -- Generating done
+[1.755s] -- Build files have been written to: /home/kimm/wearable_robot_ws/build/wearable_robot_control
+[1.764s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/kimm/wearable_robot_ws/src/wearable_robot_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/wearable_robot_control
+[1.767s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[1.861s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_control -- -j8 -l8
+[1.869s] Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_control
+[1.887s] -- Install configuration: ""
+[1.887s] -- Execute custom install script
+[1.887s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/package_run_dependencies/wearable_robot_control
+[1.907s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/parent_prefix_path/wearable_robot_control
+[1.930s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/ament_prefix_path.sh
+[1.949s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/ament_prefix_path.dsv
+[1.969s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/path.sh
+[1.997s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/environment/path.dsv
+[2.016s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.bash
+[2.035s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.sh
+[2.054s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.zsh
+[2.076s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/local_setup.dsv
+[2.098s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.dsv
+[2.122s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/packages/wearable_robot_control
+[2.144s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/cmake/wearable_robot_controlConfig.cmake
+[2.162s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/cmake/wearable_robot_controlConfig-version.cmake
+[2.185s] -- Symlinking: /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/package.xml
+[2.213s] Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_control

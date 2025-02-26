@@ -1,1 +1,0 @@
-/home/kimm/wearable_robot_ws/src/wearable_robot_bringup/launch/multi_serial_nodes.launch.py

@@ -1,6 +1,0 @@
-Invoking command in '/home/kimm/wearable_robot_ws/build/can_comm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/kimm/wearable_robot_ws/src/can_comm -DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/can_comm
-Invoked command in '/home/kimm/wearable_robot_ws/build/can_comm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/kimm/wearable_robot_ws/src/can_comm -DCMAKE_INSTALL_PREFIX=/home/kimm/wearable_robot_ws/install/can_comm
-Invoking command in '/home/kimm/wearable_robot_ws/build/can_comm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/can_comm -- -j8 -l8
-Invoked command in '/home/kimm/wearable_robot_ws/build/can_comm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/can_comm -- -j8 -l8
-Invoking command in '/home/kimm/wearable_robot_ws/build/can_comm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/can_comm
-Invoked command in '/home/kimm/wearable_robot_ws/build/can_comm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/can_comm

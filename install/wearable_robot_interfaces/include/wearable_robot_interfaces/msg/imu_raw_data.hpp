@@ -1,1 +1,0 @@
-/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_cpp/wearable_robot_interfaces/msg/imu_raw_data.hpp

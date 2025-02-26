@@ -13,7 +13,7 @@ public:
       "from_can_bus_fd", 1000,
       std::bind(&CanDataProcessor::canFdCallback, this, std::placeholders::_1));
 
-    // CAN ID 별로 발행
+    // CAN ID 별로 topic 발행
     pub_id_100_ = this->create_publisher<wearable_robot_interfaces::msg::CANDataFrame>(
       "can_data_100", 1000);
     pub_id_401_ = this->create_publisher<wearable_robot_interfaces::msg::CANDataFrame>(
@@ -38,7 +38,7 @@ private:
           return;
         }
 
-        // 48바이트 데이터를 처리합니다.
+        // 48바이트 데이터를 처리
         processed_data.data.resize(48);
         for (size_t i = 0; i < 48 && i < msg->data.size(); ++i) {
           processed_data.data[i] = msg->data[i];
@@ -54,7 +54,7 @@ private:
           return;
         }
 
-        // 24바이트 데이터를 처리합니다.
+        // 24바이트 데이터를 처리
         processed_data.data.resize(24);
         for (size_t i = 0; i < 24 && i < msg->data.size(); ++i) {
           processed_data.data[i] = msg->data[i];

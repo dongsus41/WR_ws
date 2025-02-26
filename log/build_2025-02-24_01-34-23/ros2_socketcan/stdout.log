@@ -1,8 +1,0 @@
-[ 19%] Built target gtest_main
-[ 19%] Built target gtest
-[ 42%] Built target ros2_socketcan
-[ 52%] Built target socket_can_sender_node_exe
-[35m[1mScanning dependencies of target socket_can_receiver_node[0m
-[ 61%] Built target socket_can_receiver_node_exe
-[ 80%] Built target ros2_socketcan_test
-[ 85%] [32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o[0m
