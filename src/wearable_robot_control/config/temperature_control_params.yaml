@@ -1,8 +1,9 @@
 actuator_temp_control_node:
   ros__parameters:
-    # 제어 대상 설정
+ # 제어 대상 설정
     active_actuator: 5                # 제어할 구동기 번호 (5번만 제어)
     target_temperature: 50.0          # 목표 온도 (섭씨)
+    can_interface: "can0"             # CAN 인터페이스 이름
 
     # PI 제어기 파라미터
     kp: 2.0                           # 비례 게인
@@ -13,7 +14,7 @@ actuator_temp_control_node:
     min_pwm: 0.0                      # 최소 PWM 출력 (0-100)
 
     # 제어 안전 장치
-    max_safe_temperature: 80.0        # 안전 최대 온도 (이 온도 초과시 제어 중단)
+    max_safe_temperature: 80.0        # 안전 최대 온도
     control_frequency: 10.0           # 제어 주파수 (Hz)
 
 temperature_logger_node:

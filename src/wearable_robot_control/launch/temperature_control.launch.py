@@ -1,21 +1,26 @@
-
 from launch import LaunchDescription
+from launch.actions import ExecuteProcess
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
 import os
 
 def generate_launch_description():
-    # config 파일 경로
+    # 패키지 경로 가져오기
     control_pkg_share = get_package_share_directory('wearable_robot_control')
+
+    # config 파일 경로
     temp_control_config = os.path.join(control_pkg_share, 'config', 'temperature_control_params.yaml')
 
-    # CAN 데이터 처리 노드
-    can_processor_node = Node(
-        package='wearable_robot_data_processing',
-        executable='can_data_processor',
-        name='can_data_processor',
+    # CAN FD 설정 명령어 실행
+    can_setup = ExecuteProcess(
+        cmd=[
+            'bash', '-c',
+            'sudo ip link set can0 down && '
+            'sudo ip link set can0 type can bitrate 1000000 dbitrate 1000000 berr-reporting on fd on && '
+            'sudo ip link set can0 up'
+        ],
+        name='can_setup',
+        shell=True,
         output='screen'
     )
 
@@ -46,7 +51,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        can_processor_node,
+        can_setup,
         parser_node,
         temp_control_node,
         temp_logger_node
