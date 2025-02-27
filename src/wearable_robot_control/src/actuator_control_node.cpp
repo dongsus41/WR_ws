@@ -36,7 +36,7 @@ public:
 
         // 제어 타이머 (10Hz로 제어)
         control_timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(100),
+            std::chrono::milliseconds(10),
             std::bind(&ActuatorTempControlNode::control_callback, this));
 
         // 내부 변수 초기화
@@ -75,7 +75,7 @@ private:
 
         // PI 제어 연산
         double error = target_temp - current_temp_;
-        integral_ += error * 0.1;  // dt = 0.1s (10Hz)
+        integral_ += error * 0.01;  // dt = 0.1s (10Hz)
 
         // Anti-windup
         if (integral_ > max_pwm) integral_ = max_pwm;
@@ -123,7 +123,7 @@ private:
         // cansend 명령을 위한 데이터 문자열 생성
         std::stringstream ss;
         ss << "cansend " << this->get_parameter("can_interface").as_string()
-           << " 400#"; // CAN ID 0x400 (1024)
+           << " 400##0"; // CANFD ID 0x400 (1024)
 
         // 64바이트 데이터를 16진수 문자열로 변환
         for (uint8_t byte : data) {

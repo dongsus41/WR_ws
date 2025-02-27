@@ -12,15 +12,23 @@ def generate_launch_description():
     temp_control_config = os.path.join(control_pkg_share, 'config', 'temperature_control_params.yaml')
 
     # CAN FD 설정 명령어 실행
-    can_setup = ExecuteProcess(
-        cmd=[
-            'bash', '-c',
-            'sudo ip link set can0 down && '
-            'sudo ip link set can0 type can bitrate 1000000 dbitrate 1000000 berr-reporting on fd on && '
-            'sudo ip link set can0 up'
-        ],
-        name='can_setup',
-        shell=True,
+    # can_setup = ExecuteProcess(
+    #     cmd=[
+    #         'bash', '-c',
+    #         'sudo ip link set can0 down && '
+    #         'sudo ip link set can0 type can bitrate 1000000 dbitrate 1000000 berr-reporting on fd on && '
+    #         'sudo ip link set can0 up'
+    #     ],
+    #     name='can_setup',
+    #     shell=True,
+    #     output='screen'
+    # )
+
+    # can data processing 노드
+    can_processor_node = Node(
+        package='wearable_robot_data_processing',
+        executable='can_data_processor',
+        name='can_data_processor',
         output='screen'
     )
 
@@ -51,7 +59,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        can_setup,
+        can_processor_node,
         parser_node,
         temp_control_node,
         temp_logger_node

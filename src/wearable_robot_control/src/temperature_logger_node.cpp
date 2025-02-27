@@ -29,7 +29,7 @@ public:
 
         // 타이머 설정 (1초마다 로깅)
         timer_ = this->create_wall_timer(
-            std::chrono::seconds(1),
+            std::chrono::milliseconds(4),
             std::bind(&TemperatureLogger::log_data, this));
 
         RCLCPP_INFO(this->get_logger(), "Temperature Logger started. Saving to: %s", csv_filename_.c_str());
@@ -82,6 +82,9 @@ private:
         }
     }
 
+    int flush_counter_ = 0;
+    const int FLUSH_INTERVAL = 25;
+
     void log_data()
     {
         if (!csv_file_.is_open()) return;
@@ -97,8 +100,11 @@ private:
                  << static_cast<int>(current_pwm_)
                  << std::endl;
 
-        // 파일을 즉시 저장 (버퍼링 방지)
-        csv_file_.flush();
+        flush_counter_++;
+        if (flush_counter_ >= FLUSH_INTERVAL) {
+            csv_file_.flush();
+            flush_counter_ = 0;
+        }
 
         RCLCPP_DEBUG(this->get_logger(),
             "Logged: Time=%.3f, Temp=%.2f, Target=%.2f, PWM=%d",
