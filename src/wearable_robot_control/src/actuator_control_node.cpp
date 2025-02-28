@@ -1,6 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <wearable_robot_interfaces/msg/temperature_data.hpp>
 #include <wearable_robot_interfaces/msg/actuator_command.hpp>
+#include <std_msgs/msg/float64.hpp>
 #include <string>
 #include <vector>
 #include <cstdlib>  // std::system()
@@ -21,6 +22,11 @@ public:
         pwm_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::ActuatorCommand>(
             "actuator_command", 10);
 
+        // 목표 온도 구독 (GUI에서 오는 명령)
+        target_temp_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
+            "target_temperature", 10,
+            std::bind(&ActuatorTempControlNode::target_temp_callback, this, std::placeholders::_1));
+
         // PI 제어 파라미터 및 목표 온도 선언
         this->declare_parameter("target_temperature", 50.0);  // 기본값 50도
         this->declare_parameter("kp", 2.0);                  // 비례 게인
@@ -34,9 +40,18 @@ public:
         param_callback_handle_ = this->add_on_set_parameters_callback(
             std::bind(&ActuatorTempControlNode::parameter_callback, this, std::placeholders::_1));
 
-        // 제어 타이머 (10Hz로 제어)
+        // PI 게인 파라미터 구독
+        kp_param_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
+            "kp_param", 10,
+            std::bind(&ActuatorTempControlNode::kp_param_callback, this, std::placeholders::_1));
+
+        ki_param_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
+            "ki_param", 10,
+            std::bind(&ActuatorTempControlNode::ki_param_callback, this, std::placeholders::_1));
+
+        // 제어 타이머 (250Hz로 제어)
         control_timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(10),
+            std::chrono::milliseconds(4),  // 4ms (250Hz)
             std::bind(&ActuatorTempControlNode::control_callback, this));
 
         // 내부 변수 초기화
@@ -63,6 +78,27 @@ private:
         }
     }
 
+    void target_temp_callback(const std_msgs::msg::Float64::SharedPtr msg)
+    {
+        // GUI에서 온 목표 온도 업데이트
+        this->set_parameter(rclcpp::Parameter("target_temperature", msg->data));
+        RCLCPP_INFO(this->get_logger(), "Target temperature updated to: %.1f°C", msg->data);
+    }
+
+    void kp_param_callback(const std_msgs::msg::Float64::SharedPtr msg)
+    {
+        // GUI에서 온 Kp 게인 업데이트
+        this->set_parameter(rclcpp::Parameter("kp", msg->data));
+        RCLCPP_INFO(this->get_logger(), "Kp gain updated to: %.2f", msg->data);
+    }
+
+    void ki_param_callback(const std_msgs::msg::Float64::SharedPtr msg)
+    {
+        // GUI에서 온 Ki 게인 업데이트
+        this->set_parameter(rclcpp::Parameter("ki", msg->data));
+        RCLCPP_INFO(this->get_logger(), "Ki gain updated to: %.3f", msg->data);
+    }
+
     void control_callback()
     {
         // 파라미터 불러오기
@@ -75,7 +111,7 @@ private:
 
         // PI 제어 연산
         double error = target_temp - current_temp_;
-        integral_ += error * 0.01;  // dt = 0.1s (10Hz)
+        integral_ += error * 0.004;  // dt = 0.004s (250Hz)
 
         // Anti-windup
         if (integral_ > max_pwm) integral_ = max_pwm;
@@ -117,9 +153,6 @@ private:
         // 구동기 PWM 값 설정 (바이트 0-5)
         data[actuator_idx] = pwm_value;
 
-        // 팬 상태 설정 (바이트 6-11)
-        // 팬 상태 설정 로직은 필요에 따라 추가
-
         // cansend 명령을 위한 데이터 문자열 생성
         std::stringstream ss;
         ss << "cansend " << this->get_parameter("can_interface").as_string()
@@ -155,6 +188,12 @@ private:
             if (param.get_name() == "target_temperature") {
                 RCLCPP_INFO(this->get_logger(),
                     "Target temperature changed to: %.1f", param.as_double());
+            } else if (param.get_name() == "kp") {
+                RCLCPP_INFO(this->get_logger(),
+                    "Kp gain changed to: %.2f", param.as_double());
+            } else if (param.get_name() == "ki") {
+                RCLCPP_INFO(this->get_logger(),
+                    "Ki gain changed to: %.3f", param.as_double());
             }
         }
 
@@ -163,6 +202,9 @@ private:
 
     // 구독 및 발행
     rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr temp_subscription_;
+    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr target_temp_subscription_;
+    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr kp_param_subscription_;
+    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr ki_param_subscription_;
     rclcpp::Publisher<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr pwm_publisher_;
 
     // 파라미터 콜백

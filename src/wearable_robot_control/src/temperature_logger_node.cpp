@@ -27,7 +27,7 @@ public:
             "actuator_command", 10,
             std::bind(&TemperatureLogger::pwm_callback, this, std::placeholders::_1));
 
-        // 타이머 설정 (1초마다 로깅)
+        // 타이머 설정 (4ms마다 로깅)
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(4),
             std::bind(&TemperatureLogger::log_data, this));
@@ -88,6 +88,11 @@ private:
     void log_data()
     {
         if (!csv_file_.is_open()) return;
+
+        static int counter = 0;
+        counter++;
+
+        if (counter % 10!= 0) return;
 
         double target_temp = this->get_parameter("target_temperature").as_double();
         double timestamp = this->now().seconds();
