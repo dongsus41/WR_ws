@@ -84,6 +84,10 @@ temperature_logger_node: /home/kimm/wearable_robot_ws/install/wearable_robot_int
 temperature_logger_node: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_c.so
 temperature_logger_node: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_introspection_cpp.so
 temperature_logger_node: /home/kimm/wearable_robot_ws/install/wearable_robot_interfaces/lib/libwearable_robot_interfaces__rosidl_typesupport_cpp.so
+temperature_logger_node: /opt/ros/foxy/lib/libstd_srvs__rosidl_typesupport_introspection_c.so
+temperature_logger_node: /opt/ros/foxy/lib/libstd_srvs__rosidl_typesupport_c.so
+temperature_logger_node: /opt/ros/foxy/lib/libstd_srvs__rosidl_typesupport_introspection_cpp.so
+temperature_logger_node: /opt/ros/foxy/lib/libstd_srvs__rosidl_typesupport_cpp.so
 temperature_logger_node: /opt/ros/foxy/lib/liblibstatistics_collector.so
 temperature_logger_node: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_introspection_c.so
 temperature_logger_node: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_generator_c.so
@@ -123,9 +127,10 @@ temperature_logger_node: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesup
 temperature_logger_node: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
 temperature_logger_node: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 temperature_logger_node: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
+temperature_logger_node: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+temperature_logger_node: /opt/ros/foxy/lib/libstd_srvs__rosidl_generator_c.so
 temperature_logger_node: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
 temperature_logger_node: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
-temperature_logger_node: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
 temperature_logger_node: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
 temperature_logger_node: /opt/ros/foxy/lib/librosidl_typesupport_c.so
 temperature_logger_node: /opt/ros/foxy/lib/librcpputils.so

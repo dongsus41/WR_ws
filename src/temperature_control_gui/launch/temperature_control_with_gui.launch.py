@@ -45,9 +45,9 @@ def generate_launch_description():
         output='screen'
     )
 
-    # rqt 실행 (GUI 포함)
+    # GUI 플러그인 실행 (perspective 파일 옵션 제거)
     rqt_with_gui = ExecuteProcess(
-        cmd=['rqt', '--force-discover'],
+        cmd=['rqt', '--force-discover', '--standalone', 'temperature_control_gui'],
         output='screen'
     )
 

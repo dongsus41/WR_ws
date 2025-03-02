@@ -11,7 +11,8 @@
     "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces:msg/ActuatorCommand.idl",
     "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces:msg/FanCommand.idl",
     "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces:msg/CANDataFrame.idl",
-    "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces:msg/JointState.idl"
+    "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces:msg/JointState.idl",
+    "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces:msg/EmergencyStop.idl"
   ],
   "ros_interface_dependencies": [
     "std_msgs:/opt/ros/foxy/share/std_msgs/msg/Bool.idl",
@@ -63,6 +64,7 @@
     "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/FanCommand.idl",
     "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/CANDataFrame.idl",
     "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/JointState.idl",
+    "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/EmergencyStop.idl",
     "/opt/ros/foxy/share/std_msgs/msg/Bool.idl",
     "/opt/ros/foxy/share/std_msgs/msg/Byte.idl",
     "/opt/ros/foxy/share/std_msgs/msg/ByteMultiArray.idl",

@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_data_s.c"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_raw_data.py"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_raw_data_s.c"
+  "../rosidl_generator_py/wearable_robot_interfaces/msg/_emergency_stop.py"
+  "../rosidl_generator_py/wearable_robot_interfaces/msg/_emergency_stop_s.c"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_fan_command.py"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_fan_command_s.c"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_imu_data.py"

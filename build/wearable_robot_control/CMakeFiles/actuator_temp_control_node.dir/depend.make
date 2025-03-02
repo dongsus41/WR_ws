@@ -303,6 +303,11 @@ CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/
 CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/statistics_msgs/msg/detail/statistic_data_point__struct.hpp
 CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/statistics_msgs/msg/metrics_message.hpp
 CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/statistics_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/bool.hpp
+CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/bool__builder.hpp
+CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/bool__struct.hpp
+CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/bool__traits.hpp
+CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/bool__type_support.hpp
 CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/float64__builder.hpp
 CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/float64__struct.hpp
 CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/float64__traits.hpp

@@ -394,6 +394,9 @@ ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_rob
 # install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/JointState.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/JointState.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
+# install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/EmergencyStop.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
+ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/EmergencyStop.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
+
 # install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/DisplacementRawData.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/DisplacementRawData.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
@@ -420,6 +423,9 @@ ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_rob
 
 # install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/JointState.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/JointState.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
+
+# install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/EmergencyStop.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
+ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/EmergencyStop.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
 # install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wearable_robot_interfaces" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wearable_robot_interfaces" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

@@ -62,6 +62,7 @@ CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/FanCommand.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/CANDataFrame.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/JointState.msg
+CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/EmergencyStop.msg
 CMakeFiles/wearable_robot_interfaces: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
 CMakeFiles/wearable_robot_interfaces: /opt/ros/foxy/share/std_msgs/msg/Byte.idl
 CMakeFiles/wearable_robot_interfaces: /opt/ros/foxy/share/std_msgs/msg/ByteMultiArray.idl

@@ -22,6 +22,7 @@ find_package(std_msgs REQUIRED)
 find_package(wearable_robot_interfaces REQUIRED)
 find_package(ros2_socketcan_msgs REQUIRED)
 find_package(ros2_socketcan REQUIRED)
+find_package(std_srvs REQUIRED)
 
 # 온도 제어 노드 추가
 add_executable(actuator_temp_control_node
@@ -34,6 +35,7 @@ ament_target_dependencies(actuator_temp_control_node
   ros2_socketcan_msgs
 )
 
+
 # 온도 로거 노드 추가
 add_executable(temperature_logger_node
   src/temperature_logger_node.cpp
@@ -42,6 +44,7 @@ ament_target_dependencies(temperature_logger_node
   rclcpp
   std_msgs
   wearable_robot_interfaces
+  std_srvs
 )
 
 # 바디 컨트롤 노드는 주석 처리 (현재 파일명에 공백이 있어 문제 발생)

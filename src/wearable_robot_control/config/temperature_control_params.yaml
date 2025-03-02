@@ -1,6 +1,6 @@
 actuator_temp_control_node:
   ros__parameters:
- # 제어 대상 설정
+    # 제어 대상 설정
     active_actuator: 5                # 제어할 구동기 번호 (5번만 제어)
     target_temperature: 50.0          # 목표 온도 (섭씨)
     can_interface: "can0"             # CAN 인터페이스 이름
@@ -14,7 +14,7 @@ actuator_temp_control_node:
     min_pwm: 0.0                      # 최소 PWM 출력 (0-100)
 
     # 제어 안전 장치
-    max_safe_temperature: 80.0        # 안전 최대 온도
+    safety_threshold: 80.0            # 안전 온도 임계값 (섭씨)
     control_frequency: 10.0           # 제어 주파수 (Hz)
 
 temperature_logger_node:
@@ -22,3 +22,4 @@ temperature_logger_node:
     active_actuator: 5                # 로깅할 구동기 번호
     logging_frequency: 1.0            # 로깅 주파수 (Hz)
     log_directory: "~/temp_logs"      # 로그 파일 저장 경로
+    safety_threshold: 80.0            # 안전 온도 임계값 (섭씨)
