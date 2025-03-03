@@ -56,6 +56,18 @@ CMAKE_BINARY_DIR = /home/kimm/wearable_robot_ws/build/wearable_robot_control
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -123,18 +135,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/progress.marks
@@ -168,30 +168,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named actuator_temp_control_node
+# Target rules for targets named command_send_node
 
 # Build rule for target.
-actuator_temp_control_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 actuator_temp_control_node
-.PHONY : actuator_temp_control_node
+command_send_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 command_send_node
+.PHONY : command_send_node
 
 # fast build rule for target.
-actuator_temp_control_node/fast:
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/build
-.PHONY : actuator_temp_control_node/fast
+command_send_node/fast:
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/build
+.PHONY : command_send_node/fast
 
 #=============================================================================
-# Target rules for targets named temperature_logger_node
+# Target rules for targets named actuator_control_node
 
 # Build rule for target.
-temperature_logger_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 temperature_logger_node
-.PHONY : temperature_logger_node
+actuator_control_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actuator_control_node
+.PHONY : actuator_control_node
 
 # fast build rule for target.
-temperature_logger_node/fast:
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/build
-.PHONY : temperature_logger_node/fast
+actuator_control_node/fast:
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/build
+.PHONY : actuator_control_node/fast
 
 #=============================================================================
 # Target rules for targets named wearable_robot_control_uninstall
@@ -225,7 +225,7 @@ src/actuator_control_node.o: src/actuator_control_node.cpp.o
 
 # target to build an object file
 src/actuator_control_node.cpp.o:
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.o
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/src/actuator_control_node.cpp.o
 .PHONY : src/actuator_control_node.cpp.o
 
 src/actuator_control_node.i: src/actuator_control_node.cpp.i
@@ -234,7 +234,7 @@ src/actuator_control_node.i: src/actuator_control_node.cpp.i
 
 # target to preprocess a source file
 src/actuator_control_node.cpp.i:
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.i
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/src/actuator_control_node.cpp.i
 .PHONY : src/actuator_control_node.cpp.i
 
 src/actuator_control_node.s: src/actuator_control_node.cpp.s
@@ -243,35 +243,35 @@ src/actuator_control_node.s: src/actuator_control_node.cpp.s
 
 # target to generate assembly for a file
 src/actuator_control_node.cpp.s:
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/src/actuator_control_node.cpp.s
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/src/actuator_control_node.cpp.s
 .PHONY : src/actuator_control_node.cpp.s
 
-src/temperature_logger_node.o: src/temperature_logger_node.cpp.o
+src/command_send_node.o: src/command_send_node.cpp.o
 
-.PHONY : src/temperature_logger_node.o
+.PHONY : src/command_send_node.o
 
 # target to build an object file
-src/temperature_logger_node.cpp.o:
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/src/temperature_logger_node.cpp.o
-.PHONY : src/temperature_logger_node.cpp.o
+src/command_send_node.cpp.o:
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/src/command_send_node.cpp.o
+.PHONY : src/command_send_node.cpp.o
 
-src/temperature_logger_node.i: src/temperature_logger_node.cpp.i
+src/command_send_node.i: src/command_send_node.cpp.i
 
-.PHONY : src/temperature_logger_node.i
+.PHONY : src/command_send_node.i
 
 # target to preprocess a source file
-src/temperature_logger_node.cpp.i:
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/src/temperature_logger_node.cpp.i
-.PHONY : src/temperature_logger_node.cpp.i
+src/command_send_node.cpp.i:
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/src/command_send_node.cpp.i
+.PHONY : src/command_send_node.cpp.i
 
-src/temperature_logger_node.s: src/temperature_logger_node.cpp.s
+src/command_send_node.s: src/command_send_node.cpp.s
 
-.PHONY : src/temperature_logger_node.s
+.PHONY : src/command_send_node.s
 
 # target to generate assembly for a file
-src/temperature_logger_node.cpp.s:
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/src/temperature_logger_node.cpp.s
-.PHONY : src/temperature_logger_node.cpp.s
+src/command_send_node.cpp.s:
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/src/command_send_node.cpp.s
+.PHONY : src/command_send_node.cpp.s
 
 # Help Target
 help:
@@ -279,23 +279,23 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... install/strip"
-	@echo "... actuator_temp_control_node"
-	@echo "... temperature_logger_node"
+	@echo "... command_send_node"
+	@echo "... actuator_control_node"
 	@echo "... wearable_robot_control_uninstall"
 	@echo "... uninstall"
 	@echo "... src/actuator_control_node.o"
 	@echo "... src/actuator_control_node.i"
 	@echo "... src/actuator_control_node.s"
-	@echo "... src/temperature_logger_node.o"
-	@echo "... src/temperature_logger_node.i"
-	@echo "... src/temperature_logger_node.s"
+	@echo "... src/command_send_node.o"
+	@echo "... src/command_send_node.i"
+	@echo "... src/command_send_node.s"
 .PHONY : help
 
 

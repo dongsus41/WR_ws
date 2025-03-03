@@ -53,8 +53,8 @@ CMAKE_BINARY_DIR = /home/kimm/wearable_robot_ws/build/wearable_robot_control
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/actuator_temp_control_node.dir/all
-all: CMakeFiles/temperature_logger_node.dir/all
+all: CMakeFiles/command_send_node.dir/all
+all: CMakeFiles/actuator_control_node.dir/all
 
 .PHONY : all
 
@@ -64,66 +64,66 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/actuator_temp_control_node.dir/clean
-clean: CMakeFiles/temperature_logger_node.dir/clean
+clean: CMakeFiles/command_send_node.dir/clean
+clean: CMakeFiles/actuator_control_node.dir/clean
 clean: CMakeFiles/wearable_robot_control_uninstall.dir/clean
 clean: CMakeFiles/uninstall.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/actuator_temp_control_node.dir
+# Target rules for target CMakeFiles/command_send_node.dir
 
 # All Build rule for target.
-CMakeFiles/actuator_temp_control_node.dir/all:
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/depend
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles --progress-num=1,2 "Built target actuator_temp_control_node"
-.PHONY : CMakeFiles/actuator_temp_control_node.dir/all
+CMakeFiles/command_send_node.dir/all:
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/depend
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles --progress-num=3,4 "Built target command_send_node"
+.PHONY : CMakeFiles/command_send_node.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/actuator_temp_control_node.dir/rule: cmake_check_build_system
+CMakeFiles/command_send_node.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/actuator_temp_control_node.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/command_send_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles 0
-.PHONY : CMakeFiles/actuator_temp_control_node.dir/rule
+.PHONY : CMakeFiles/command_send_node.dir/rule
 
 # Convenience name for target.
-actuator_temp_control_node: CMakeFiles/actuator_temp_control_node.dir/rule
+command_send_node: CMakeFiles/command_send_node.dir/rule
 
-.PHONY : actuator_temp_control_node
+.PHONY : command_send_node
 
 # clean rule for target.
-CMakeFiles/actuator_temp_control_node.dir/clean:
-	$(MAKE) -f CMakeFiles/actuator_temp_control_node.dir/build.make CMakeFiles/actuator_temp_control_node.dir/clean
-.PHONY : CMakeFiles/actuator_temp_control_node.dir/clean
+CMakeFiles/command_send_node.dir/clean:
+	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/clean
+.PHONY : CMakeFiles/command_send_node.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/temperature_logger_node.dir
+# Target rules for target CMakeFiles/actuator_control_node.dir
 
 # All Build rule for target.
-CMakeFiles/temperature_logger_node.dir/all:
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/depend
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles --progress-num=3,4 "Built target temperature_logger_node"
-.PHONY : CMakeFiles/temperature_logger_node.dir/all
+CMakeFiles/actuator_control_node.dir/all:
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/depend
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles --progress-num=1,2 "Built target actuator_control_node"
+.PHONY : CMakeFiles/actuator_control_node.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/temperature_logger_node.dir/rule: cmake_check_build_system
+CMakeFiles/actuator_control_node.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/temperature_logger_node.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/actuator_control_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles 0
-.PHONY : CMakeFiles/temperature_logger_node.dir/rule
+.PHONY : CMakeFiles/actuator_control_node.dir/rule
 
 # Convenience name for target.
-temperature_logger_node: CMakeFiles/temperature_logger_node.dir/rule
+actuator_control_node: CMakeFiles/actuator_control_node.dir/rule
 
-.PHONY : temperature_logger_node
+.PHONY : actuator_control_node
 
 # clean rule for target.
-CMakeFiles/temperature_logger_node.dir/clean:
-	$(MAKE) -f CMakeFiles/temperature_logger_node.dir/build.make CMakeFiles/temperature_logger_node.dir/clean
-.PHONY : CMakeFiles/temperature_logger_node.dir/clean
+CMakeFiles/actuator_control_node.dir/clean:
+	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/clean
+.PHONY : CMakeFiles/actuator_control_node.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/wearable_robot_control_uninstall.dir

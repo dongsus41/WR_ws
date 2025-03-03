@@ -24,11 +24,22 @@ find_package(ros2_socketcan_msgs REQUIRED)
 find_package(ros2_socketcan REQUIRED)
 find_package(std_srvs REQUIRED)
 
-# 온도 제어 노드 추가
-add_executable(actuator_temp_control_node
+# 온도 제어 노드
+add_executable(actuator_control_node
   src/actuator_control_node.cpp
 )
-ament_target_dependencies(actuator_temp_control_node
+ament_target_dependencies(actuator_control_node
+  rclcpp
+  std_msgs
+  wearable_robot_interfaces
+  ros2_socketcan_msgs
+)
+
+# 명령 노드
+add_executable(command_send_node
+  src/command_send_node.cpp
+)
+ament_target_dependencies(command_send_node
   rclcpp
   std_msgs
   wearable_robot_interfaces
@@ -36,55 +47,23 @@ ament_target_dependencies(actuator_temp_control_node
 )
 
 
-# 온도 로거 노드 추가
-add_executable(temperature_logger_node
-  src/temperature_logger_node.cpp
-)
-ament_target_dependencies(temperature_logger_node
-  rclcpp
-  std_msgs
-  wearable_robot_interfaces
-  std_srvs
-)
-
-# 바디 컨트롤 노드는 주석 처리 (현재 파일명에 공백이 있어 문제 발생)
-# add_executable(body_control_node
-#   src/body_control_node\ copy.cpp
-# )
-# ament_target_dependencies(body_control_node
-#   rclcpp
-#   wearable_robot_interfaces
-# )
-
-# 허리 로봇 제어 노드 추가
-# add_executable(waist_robot_control_node
-#   src/waist_robot_control_node.cpp
-# )
-# ament_target_dependencies(waist_robot_control_node
-#   rclcpp
-#   wearable_robot_interfaces
-# )
-
 # 실행 파일 설치
 install(TARGETS
-  actuator_temp_control_node
-  temperature_logger_node
-  # body_control_node - 주석 처리
-  #waist_robot_control_node
+  actuator_control_node
+  command_send_node
   DESTINATION lib/${PROJECT_NAME}
+)
+
+# 설정 파일 및 런치 파일 설치
+install(
+  DIRECTORY launch config
+  DESTINATION share/${PROJECT_NAME}
 )
 
 # 헤더 파일 설치 (있는 경우)
 install(
   DIRECTORY include/
   DESTINATION include
-  OPTIONAL
-)
-
-# 시작 스크립트 및 설정 파일 설치 (있는 경우)
-install(
-  DIRECTORY launch config
-  DESTINATION share/${PROJECT_NAME}
   OPTIONAL
 )
 

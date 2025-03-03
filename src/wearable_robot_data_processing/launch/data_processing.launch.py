@@ -1,35 +1,30 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
 import os
 
 def generate_launch_description():
+    """
+    wearable_robot_data_processing 패키지의 테스트를 위한 launch 파일
+    반드시 CAN 인터페이스 설정 선행 후 실행해야함!
+    """
+
     # 패키지 경로 가져오기
-    pkg_share = get_package_share_directory('wearable_robot_bringup')
+    data_processing_share = get_package_share_directory('wearable_robot_data_processing')
 
-    # config 파일 경로
-    config_file = os.path.join(pkg_share, 'config', 'calibration_params.yaml')
+    # 설정 파일 경로
+    config_file = os.path.join(data_processing_share, 'config', 'displacement_calibration_params.yaml')
 
-    # config 파일을 위한 launch argument
-    config_arg = DeclareLaunchArgument(
-        'config_file_path',
-        default_value=config_file,
-        description='Path to the calibration parameters YAML file'
-    )
-
-    #CAN Data Node
-    parser_node = Node(
+    # 데이터 처리 패키지의 노드들
+    can_data_processor = Node(
         package='wearable_robot_data_processing',
         executable='can_data_processor',
         name='can_data_processor',
         output='screen',
-        parameters=[{'use_sim_time': False}]
+        parameters=[{'use_sim_time': False}],
     )
 
-    # Data Parser Node
-    parser_node = Node(
+    data_parser_node = Node(
         package='wearable_robot_data_processing',
         executable='data_parser_node',
         name='data_parser_node',
@@ -37,30 +32,30 @@ def generate_launch_description():
         parameters=[{'use_sim_time': False}]
     )
 
-    # Displacement Processing Node
-    displacement_node = Node(
+    displacement_processing_node = Node(
         package='wearable_robot_data_processing',
         executable='displacement_processing_node',
         name='displacement_processing_node',
         output='screen',
         parameters=[
-            LaunchConfiguration('config_file_path'),
+            config_file,  # 직접 설정 파일 경로 전달
             {'use_sim_time': False}
         ]
     )
 
-    # IMU Processing Node
-    imu_node = Node(
+    imu_processing_node = Node(
         package='wearable_robot_data_processing',
-        executable='imu_processing_node',
+        executable='IMU_processing_node',
         name='imu_processing_node',
         output='screen',
         parameters=[{'use_sim_time': False}]
     )
 
+    # 모든 구성요소를 LaunchDescription에 추가
     return LaunchDescription([
-        config_arg,
-        parser_node,
-        displacement_node,
-        imu_node
+        # 데이터 처리 노드들
+        can_data_processor,
+        data_parser_node,
+        displacement_processing_node,
+        imu_processing_node,
     ])

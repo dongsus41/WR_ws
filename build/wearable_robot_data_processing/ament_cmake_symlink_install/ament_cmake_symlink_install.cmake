@@ -310,11 +310,17 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install("TARGETS" "can_data_processor" "data_parser_node" "IMU_processing_node" "DESTINATION" "lib/wearable_robot_data_processing")
+# install("TARGETS" "can_data_processor" "data_parser_node" "displacement_processing_node" "IMU_processing_node" "DESTINATION" "lib/wearable_robot_data_processing")
 include("/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install(DIRECTORY "include/" "DESTINATION" "include")
 ament_cmake_symlink_install_directory("/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing" DIRECTORY "include/" "DESTINATION" "include")
+
+# install(DIRECTORY "config/" "DESTINATION" "share/wearable_robot_data_processing/config")
+ament_cmake_symlink_install_directory("/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing" DIRECTORY "config/" "DESTINATION" "share/wearable_robot_data_processing/config")
+
+# install(DIRECTORY "launch/" "DESTINATION" "share/wearable_robot_data_processing/launch")
+ament_cmake_symlink_install_directory("/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing" DIRECTORY "launch/" "DESTINATION" "share/wearable_robot_data_processing/launch")
 
 # install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wearable_robot_data_processing" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_data_processing" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wearable_robot_data_processing" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

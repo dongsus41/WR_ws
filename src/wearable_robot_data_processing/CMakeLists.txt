@@ -1,12 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 project(wearable_robot_data_processing)
 
-# Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
-# Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
 endif()
@@ -20,17 +18,16 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(wearable_robot_interfaces REQUIRED)
-find_package(rclcpp_lifecycle REQUIRED)
+#find_package(rclcpp_lifecycle REQUIRED)
 find_package(ros2_socketcan_msgs REQUIRED)
 find_package(ros2_socketcan REQUIRED)
 
-# Include directories
 include_directories(
   include
   ${ros2_socketcan_INCLUDE_DIRS}
 )
 
-# CAN Receiver Node
+# CAN 데이터 리시빙 노드
 add_executable(can_data_processor src/can_data_processor.cpp)
 ament_target_dependencies(can_data_processor
   rclcpp
@@ -39,7 +36,7 @@ ament_target_dependencies(can_data_processor
   wearable_robot_interfaces
 )
 
-# Parser Node
+# 데이터 파싱 노드
 add_executable(data_parser_node
   src/data_parser_node.cpp
 )
@@ -49,10 +46,7 @@ ament_target_dependencies(data_parser_node
   wearable_robot_interfaces
 )
 
-# add_executable(displacement_data_logger src/displacement_data_logger_node.cpp)
-# ament_target_dependencies(displacement_data_logger rclcpp wearable_robot_interfaces)
-
-# Displacement Processing Node
+# 변위 데이터 처리 노드
 add_executable(displacement_processing_node
   src/displacement_processing_node.cpp
 )
@@ -62,7 +56,7 @@ ament_target_dependencies(displacement_processing_node
   wearable_robot_interfaces
 )
 
-# IMU Processing Node
+# IMU 데이터 프로세싱 노드
 add_executable(IMU_processing_node
   src/IMU_processing_node.cpp
 )
@@ -72,13 +66,11 @@ ament_target_dependencies(IMU_processing_node
   wearable_robot_interfaces
 )
 
-
 # 실행 파일 설치
 install(TARGETS
   can_data_processor
   data_parser_node
-  #displacement_data_logger
-  #displacement_processing_node
+  displacement_processing_node
   IMU_processing_node
   DESTINATION lib/${PROJECT_NAME}
 )
@@ -93,5 +85,17 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+# config 디렉토리 설치 (설정 파일)
+install(
+  DIRECTORY config/
+  DESTINATION share/${PROJECT_NAME}/config
+)
+
+# launch 디렉토리 설치 (런치 파일)
+install(
+  DIRECTORY launch/
+  DESTINATION share/${PROJECT_NAME}/launch
+)
 
 ament_package()

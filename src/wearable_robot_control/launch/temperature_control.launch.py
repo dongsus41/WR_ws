@@ -6,23 +6,11 @@ import os
 
 def generate_launch_description():
     # 패키지 경로 가져오기
+
     control_pkg_share = get_package_share_directory('wearable_robot_control')
 
     # config 파일 경로
     temp_control_config = os.path.join(control_pkg_share, 'config', 'temperature_control_params.yaml')
-
-    # CAN FD 설정 명령어 실행
-    # can_setup = ExecuteProcess(
-    #     cmd=[
-    #         'bash', '-c',
-    #         'sudo ip link set can0 down && '
-    #         'sudo ip link set can0 type can bitrate 1000000 dbitrate 1000000 berr-reporting on fd on && '
-    #         'sudo ip link set can0 up'
-    #     ],
-    #     name='can_setup',
-    #     shell=True,
-    #     output='screen'
-    # )
 
     # can data processing 노드
     can_processor_node = Node(
@@ -41,19 +29,20 @@ def generate_launch_description():
     )
 
     # 온도 제어 노드
-    temp_control_node = Node(
+    actuator_control_node = Node(
         package='wearable_robot_control',
-        executable='actuator_temp_control_node',
-        name='actuator_temp_control_node',
+        executable='actuator_control_node',
+        name='actuator_control_node',
         parameters=[temp_control_config],
         output='screen'
     )
 
-    # 온도 로깅 노드
-    temp_logger_node = Node(
+
+    # command 노드
+    command_send_node = Node(
         package='wearable_robot_control',
-        executable='temperature_logger_node',
-        name='temperature_logger_node',
+        executable='command_send_node',
+        name='command_send_node',
         parameters=[temp_control_config],
         output='screen'
     )
@@ -61,6 +50,6 @@ def generate_launch_description():
     return LaunchDescription([
         can_processor_node,
         parser_node,
-        temp_control_node,
-        temp_logger_node
+        actuator_control_node,
+        command_send_node
     ])

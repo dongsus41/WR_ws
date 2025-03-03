@@ -1,5 +1,5 @@
-/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/wearable_robot_control/actuator_temp_control_node
-/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/wearable_robot_control/temperature_logger_node
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/wearable_robot_control/actuator_control_node
+/home/kimm/wearable_robot_ws/install/wearable_robot_control/lib/wearable_robot_control/command_send_node
 /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/launch/temperature_control.launch.py
 /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/wearable_robot_control/config/temperature_control_params.yaml
 /home/kimm/wearable_robot_ws/install/wearable_robot_control/share/ament_index/resource_index/package_run_dependencies/wearable_robot_control

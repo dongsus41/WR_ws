@@ -13,23 +13,28 @@ public:
 
     DisplacementProcessingNode() : Node("displacement_processing_node")
     {
-        // Subscriber for raw displacement data
+        // 필터 큐 초기화
+        displacement_queues_.resize(NUM_SENSORS);
+        calibration_coeffs_.resize(NUM_SENSORS);
+
+        // 다항식 차수 파라미터 선언 및 로드
+        this->declare_parameter("polynomial_order", 1);
+        polynomial_order_ = this->get_parameter("polynomial_order").as_int();
+
+        // 캘리브레이션 계수 초기화
+        initializeCalibrationCoefficients();
+
+        // Raw 변위 데이터 구독
         subscription_ = this->create_subscription<wearable_robot_interfaces::msg::DisplacementRawData>(
             "displacement_raw_data", 10,
             std::bind(&DisplacementProcessingNode::displacement_callback, this, std::placeholders::_1));
 
-        // Publisher for processed displacement data
+        // 처리된 변위 데이터 발행
         publisher_ = this->create_publisher<wearable_robot_interfaces::msg::DisplacementData>(
             "displacement_data", 10);
 
-        // Initialize filter queues for each sensor
-        displacement_queues_.resize(NUM_SENSORS);
-        calibration_coeffs_.resize(NUM_SENSORS);
-
-        // Initialize calibration coefficients
-        initializeCalibrationCoefficients();
-
-        RCLCPP_INFO(this->get_logger(), "Displacement Processing Node has been started");
+        RCLCPP_INFO(this->get_logger(), "Displacement Processing Node has been started (Polynomial Order: %d)",
+                   polynomial_order_);
     }
 
 private:
@@ -57,6 +62,12 @@ private:
             calibration_coeffs_[i].d = this->get_parameter(sensor_prefix + ".d").as_double();
             calibration_coeffs_[i].e = this->get_parameter(sensor_prefix + ".e").as_double();
             calibration_coeffs_[i].f = this->get_parameter(sensor_prefix + ".f").as_double();
+
+            RCLCPP_DEBUG(this->get_logger(),
+                "Sensor %zu calibration: a=%.6f, b=%.6f, c=%.6f, d=%.6f, e=%.6f, f=%.6f",
+                i, calibration_coeffs_[i].a, calibration_coeffs_[i].b,
+                calibration_coeffs_[i].c, calibration_coeffs_[i].d,
+                calibration_coeffs_[i].e, calibration_coeffs_[i].f);
         }
     }
 
@@ -78,12 +89,30 @@ private:
 
     double calibrateDisplacement(float voltage, const CalibrationCoefficients& coeff)
     {
-        return coeff.a * std::pow(voltage, 5) +
-               coeff.b * std::pow(voltage, 4) +
-               coeff.c * std::pow(voltage, 3) +
-               coeff.d * std::pow(voltage, 2) +
-               coeff.e * voltage +
-               coeff.f;
+        // 선택된 다항식 차수에 따라 캘리브레이션 적용
+        double result = coeff.f; // 상수항
+
+        if (polynomial_order_ >= 1) {
+            result += coeff.e * voltage; // 1차항
+        }
+
+        if (polynomial_order_ >= 2) {
+            result += coeff.d * std::pow(voltage, 2); // 2차항
+        }
+
+        if (polynomial_order_ >= 3) {
+            result += coeff.c * std::pow(voltage, 3); // 3차항
+        }
+
+        if (polynomial_order_ >= 4) {
+            result += coeff.b * std::pow(voltage, 4); // 4차항
+        }
+
+        if (polynomial_order_ >= 5) {
+            result += coeff.a * std::pow(voltage, 5); // 5차항
+        }
+
+        return result;
     }
 
     void displacement_callback(const wearable_robot_interfaces::msg::DisplacementRawData::SharedPtr msg)
@@ -102,6 +131,7 @@ private:
         for (size_t i = 0; i < num_sensors_to_process; ++i) {
             // 필터링
             float filtered_voltage = filterDisplacementValue(msg->displacement_raw[i], displacement_queues_[i]);
+
             // 캘리브레이션
             double calibrated_value = calibrateDisplacement(filtered_voltage, calibration_coeffs_[i]);
 
@@ -122,6 +152,7 @@ private:
     rclcpp::Publisher<wearable_robot_interfaces::msg::DisplacementData>::SharedPtr publisher_;
     std::vector<std::deque<float>> displacement_queues_;
     std::vector<CalibrationCoefficients> calibration_coeffs_;
+    int polynomial_order_; // 다항식 차수
 };
 
 int main(int argc, char* argv[])
