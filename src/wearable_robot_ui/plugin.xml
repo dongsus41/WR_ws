@@ -5,11 +5,11 @@
     </description>
     <qtgui>
       <group>
-        <label>WearableRobot</label>
+        <label>Wearable Robot</label>
         <icon type="theme">folder</icon>
         <statustip>웨어러블 로봇 시스템 제어</statustip>
       </group>
-      <label>온도 제어</label>
+      <label>Temperature Control</label>
       <icon type="theme">utilities-system-monitor</icon>
       <statustip>온도 모니터링 및 팬 제어</statustip>
     </qtgui>

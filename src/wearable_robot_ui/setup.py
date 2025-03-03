@@ -9,7 +9,7 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     data_files=[
-        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/ament_index/resource_index/packages', ['resource/wearable_robot_ui']),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name, ['plugin.xml']),
         (os.path.join('share', package_name, 'resource'), glob('resource/*')),
