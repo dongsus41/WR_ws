@@ -8,6 +8,7 @@
 #include <cstdlib>  // std::system()
 #include <sstream>  // std::stringstream
 #include <iomanip>  // std::setfill, std::setw, std::hex
+#include <algorithm> // std::abs
 
 class ActuatorTempControlNode : public rclcpp::Node
 {
@@ -43,6 +44,10 @@ public:
         this->declare_parameter("can_interface", "can0");    // CAN 인터페이스
         this->declare_parameter("safety_threshold", 80.0);   // 안전 온도 임계값 (섭씨)
 
+        // 2단계 제어 파라미터 추가
+        this->declare_parameter("precontrol_percentage", 0.8);  // 사전 제어 비율
+        this->declare_parameter("precontrol_threshold", 2.0);   // 전환 임계값
+
         // 파라미터 변경 콜백 등록
         param_callback_handle_ = this->add_on_set_parameters_callback(
             std::bind(&ActuatorTempControlNode::parameter_callback, this, std::placeholders::_1));
@@ -63,14 +68,31 @@ public:
 
         // 내부 변수 초기화
         current_temp_ = 0.0;
+        previous_temp_ = 0.0;
         previous_error_ = 0.0;
         integral_ = 0.0;
         pwm_output_ = 0;
         is_emergency_stop_ = false;
         is_temperature_safe_ = true;
 
-        RCLCPP_INFO(this->get_logger(), "Temperature Control Node (using cansend) has been started");
+        // 온도 그래디언트 관련 변수 초기화
+        temp_gradient_ = 0.0;
+        gradient_threshold_ = 0.5;  // 온도 변화율 임계값 (°C/s)
+        stable_count_ = 0;          // 안정화 카운터 초기화
+
+        // 2단계 제어 변수 초기화
+        using_precontrol_ = false;
+        final_target_temp_ = this->get_parameter("target_temperature").as_double();
+        precontrol_percentage_ = this->get_parameter("precontrol_percentage").as_double();
+        precontrol_threshold_ = this->get_parameter("precontrol_threshold").as_double();
+
+        // 그래디언트 임계값 파라미터 선언
+        this->declare_parameter("gradient_threshold", 0.5);  // 기본값 0.5°C/s
+
+        RCLCPP_INFO(this->get_logger(), "온도 제어 노드 (cansend 사용)가 시작되었습니다");
         RCLCPP_INFO(this->get_logger(), "안전 온도 임계값: %.1f°C", this->get_parameter("safety_threshold").as_double());
+        RCLCPP_INFO(this->get_logger(), "2단계 온도 제어 활성화: 사전 제어 비율 = %.1f%%", precontrol_percentage_ * 100.0);
+        RCLCPP_INFO(this->get_logger(), "그래디언트 기반 제어 전환: 임계값 = %.2f°C/s", gradient_threshold_);
     }
 
 private:
@@ -80,14 +102,22 @@ private:
 
         // 온도 센서 데이터 확인
         if (msg->temperature.size() > actuator_idx) {
+            // 이전 온도 저장
+            previous_temp_ = current_temp_;
+
+            // 현재 온도 업데이트
             current_temp_ = msg->temperature[actuator_idx];
-            RCLCPP_DEBUG(this->get_logger(), "Current temperature of actuator %zu: %.2f",
+
+            // 온도 그래디언트 계산 (°C/s) - 구독 주기가 일정하지 않을 수 있으므로
+            // 실제 시간 간격을 고려한 계산은 control_callback에서 수행
+
+            RCLCPP_DEBUG(this->get_logger(), "구동기 %zu의 현재 온도: %.2f",
                 actuator_idx, current_temp_);
 
             // 온도 안전성 검사
             check_temperature_safety();
         } else {
-            RCLCPP_WARN(this->get_logger(), "Temperature data missing for actuator %zu", actuator_idx);
+            RCLCPP_WARN(this->get_logger(), "구동기 %zu의 온도 데이터가 없습니다", actuator_idx);
         }
     }
 
@@ -115,9 +145,28 @@ private:
             return;
         }
 
-        // GUI에서 온 목표 온도 업데이트
+        // GUI에서 온 최종 목표 온도 업데이트
+        final_target_temp_ = msg->data;
+
+        // 현재 온도가 새 목표 온도보다 낮고, 차이가 크면 사전 제어 모드 활성화
+        double temp_diff = std::abs(final_target_temp_ - current_temp_);
+        if (temp_diff > precontrol_threshold_ * 2.0) {
+            using_precontrol_ = true;
+
+            // 적분항 리셋으로 오버슈팅 방지
+            integral_ = 0.0;
+
+            RCLCPP_INFO(this->get_logger(),
+                "사전 제어 모드 활성화: 현재=%.1f°C, 최종 목표=%.1f°C, 사전 목표=%.1f°C",
+                current_temp_, final_target_temp_, final_target_temp_ * precontrol_percentage_);
+        } else {
+            // 차이가 작으면 바로 최종 목표 사용
+            using_precontrol_ = false;
+            RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 직접 설정됩니다", final_target_temp_);
+        }
+
+        // 파라미터 업데이트 (기존 로직 유지)
         this->set_parameter(rclcpp::Parameter("target_temperature", msg->data));
-        RCLCPP_INFO(this->get_logger(), "Target temperature updated to: %.1f°C", msg->data);
     }
 
     void emergency_callback(const std_msgs::msg::Bool::SharedPtr msg)
@@ -151,20 +200,22 @@ private:
 
         // 적분기 초기화
         integral_ = 0.0;
+        // 사전 제어 모드 비활성화
+        using_precontrol_ = false;
     }
 
     void kp_param_callback(const std_msgs::msg::Float64::SharedPtr msg)
     {
         // 비상 정지 중에는 게인 변경 허용 (제어에는 영향 없음)
         this->set_parameter(rclcpp::Parameter("kp", msg->data));
-        RCLCPP_INFO(this->get_logger(), "Kp gain updated to: %.2f", msg->data);
+        RCLCPP_INFO(this->get_logger(), "Kp 게인이 %.2f로 업데이트되었습니다", msg->data);
     }
 
     void ki_param_callback(const std_msgs::msg::Float64::SharedPtr msg)
     {
         // 비상 정지 중에는 게인 변경 허용 (제어에는 영향 없음)
         this->set_parameter(rclcpp::Parameter("ki", msg->data));
-        RCLCPP_INFO(this->get_logger(), "Ki gain updated to: %.3f", msg->data);
+        RCLCPP_INFO(this->get_logger(), "Ki 게인이 %.3f로 업데이트되었습니다", msg->data);
     }
 
     void control_callback()
@@ -177,20 +228,66 @@ private:
         }
 
         // 파라미터 불러오기
-        double target_temp = this->get_parameter("target_temperature").as_double();
+        double base_target_temp = this->get_parameter("target_temperature").as_double();
         double kp = this->get_parameter("kp").as_double();
         double ki = this->get_parameter("ki").as_double();
         double max_pwm = this->get_parameter("max_pwm").as_double();
         double min_pwm = this->get_parameter("min_pwm").as_double();
         int actuator_idx = this->get_parameter("active_actuator").as_int();
 
+        // 온도 그래디언트 계산 (250Hz 제어 주기 = 0.004초)
+        double dt = 0.004;  // 제어 주기 (초)
+        temp_gradient_ = (current_temp_ - previous_temp_) / dt;  // °C/s
+
+        // 그래디언트 임계값 가져오기
+        gradient_threshold_ = this->get_parameter("gradient_threshold").as_double();
+
+        // 2단계 제어 로직 적용
+        double effective_target = base_target_temp;
+
+        if (using_precontrol_) {
+            // 사전 제어 목표 계산 (최종 목표의 일정 비율)
+            double precontrol_target = final_target_temp_ * precontrol_percentage_;
+            effective_target = precontrol_target;
+
+            // 온도 그래디언트가 임계값 이하로 감소하면 최종 목표로 전환
+            // (온도 상승이 둔화되고 안정화 단계에 진입했다고 판단)
+            if (temp_gradient_ > 0 && temp_gradient_ < gradient_threshold_) {
+                // 안정화 카운터 증가
+                stable_count_++;
+
+                // 3회 연속으로 안정화 조건을 만족하면 전환 (노이즈 영향 최소화)
+                if (stable_count_ >= 3) {
+                    using_precontrol_ = false;
+                    effective_target = final_target_temp_;
+                    // 전환 시 적분항 리셋으로 급격한 변화 방지
+                    integral_ *= 0.5;  // 적분항을 완전히 리셋하지 않고 감소
+
+                    RCLCPP_INFO(this->get_logger(),
+                        "사전 제어에서 최종 제어로 전환 (그래디언트 기반): 현재=%.1f°C, 그래디언트=%.2f°C/s, 목표=%.1f°C",
+                        current_temp_, temp_gradient_, final_target_temp_);
+
+                    // 안정화 카운터 초기화
+                    stable_count_ = 0;
+                }
+            } else {
+                // 안정화되지 않은 경우 카운터 초기화
+                stable_count_ = 0;
+            }
+
+            // 디버그 정보 - 그래디언트 상태 표시
+            RCLCPP_DEBUG(this->get_logger(),
+                "온도 그래디언트: %.2f°C/s (임계값: %.2f°C/s), 안정화 카운터: %d",
+                temp_gradient_, gradient_threshold_, stable_count_);
+        }
+
         // PI 제어 연산
-        double error = target_temp - current_temp_;
+        double error = effective_target - current_temp_;
         integral_ += error * 0.004;  // dt = 0.004s (250Hz)
 
         // Anti-windup
-        if (integral_ > max_pwm) integral_ = max_pwm;
-        if (integral_ < min_pwm) integral_ = min_pwm;
+        if (integral_ > max_pwm / ki) integral_ = max_pwm / ki;
+        if (integral_ < min_pwm / ki) integral_ = min_pwm / ki;
 
         // PI 출력 계산
         double output = kp * error + ki * integral_;
@@ -205,10 +302,16 @@ private:
         // CAN 메시지 생성 및 발행
         send_pwm_command_via_cansend(pwm_output_, actuator_idx);
 
-        // 디버그 정보
-        RCLCPP_DEBUG(this->get_logger(),
-            "Control: Target=%.1f, Current=%.1f, Error=%.1f, Output=%d",
-            target_temp, current_temp_, error, pwm_output_);
+        // 디버그 정보 - 2단계 제어 상태 포함
+        if (using_precontrol_) {
+            RCLCPP_DEBUG(this->get_logger(),
+                "제어(사전): 목표=%.1f, 최종=%.1f, 현재=%.1f, 오차=%.1f, 출력=%d",
+                effective_target, final_target_temp_, current_temp_, error, pwm_output_);
+        } else {
+            RCLCPP_DEBUG(this->get_logger(),
+                "제어(최종): 목표=%.1f, 현재=%.1f, 오차=%.1f, 출력=%d",
+                effective_target, current_temp_, error, pwm_output_);
+        }
     }
 
     void send_pwm_command_via_cansend(uint8_t pwm_value, int actuator_idx)
@@ -245,11 +348,11 @@ private:
 
         if (result != 0) {
             RCLCPP_ERROR(this->get_logger(),
-                "Failed to send CAN command: %s (error code: %d)",
+                "CAN 명령 전송 실패: %s (오류 코드: %d)",
                 cmd.c_str(), result);
         } else {
             RCLCPP_DEBUG(this->get_logger(),
-                "Sent CAN command via cansend: %s", cmd.c_str());
+                "cansend를 통해 CAN 명령 전송: %s", cmd.c_str());
         }
     }
 
@@ -262,16 +365,28 @@ private:
         for (const auto &param : parameters) {
             if (param.get_name() == "target_temperature") {
                 RCLCPP_INFO(this->get_logger(),
-                    "Target temperature changed to: %.1f", param.as_double());
+                    "목표 온도가 %.1f로 변경되었습니다", param.as_double());
             } else if (param.get_name() == "kp") {
                 RCLCPP_INFO(this->get_logger(),
-                    "Kp gain changed to: %.2f", param.as_double());
+                    "Kp 게인이 %.2f로 변경되었습니다", param.as_double());
             } else if (param.get_name() == "ki") {
                 RCLCPP_INFO(this->get_logger(),
-                    "Ki gain changed to: %.3f", param.as_double());
+                    "Ki 게인이 %.3f로 변경되었습니다", param.as_double());
             } else if (param.get_name() == "safety_threshold") {
                 RCLCPP_INFO(this->get_logger(),
-                    "Safety temperature threshold changed to: %.1f", param.as_double());
+                    "안전 온도 임계값이 %.1f로 변경되었습니다", param.as_double());
+            } else if (param.get_name() == "precontrol_percentage") {
+                precontrol_percentage_ = param.as_double();
+                RCLCPP_INFO(this->get_logger(),
+                    "사전 제어 비율이 %.2f로 변경되었습니다", param.as_double());
+            } else if (param.get_name() == "precontrol_threshold") {
+                precontrol_threshold_ = param.as_double();
+                RCLCPP_INFO(this->get_logger(),
+                    "사전 제어 전환 임계값이 %.1f°C로 변경되었습니다", param.as_double());
+            } else if (param.get_name() == "gradient_threshold") {
+                gradient_threshold_ = param.as_double();
+                RCLCPP_INFO(this->get_logger(),
+                    "온도 그래디언트 임계값이 %.2f°C/s로 변경되었습니다", param.as_double());
             }
         }
 
@@ -294,9 +409,21 @@ private:
 
     // 제어 변수
     double current_temp_;
+    double previous_temp_;          // 이전 온도 값 저장
     double previous_error_;
     double integral_;
     uint8_t pwm_output_;
+
+    // 온도 그래디언트 계산용 변수
+    double temp_gradient_;          // 온도 변화율 (°C/s)
+    double gradient_threshold_;     // 그래디언트 임계값
+    int stable_count_;              // 안정화 카운터
+
+    // 2단계 제어 변수
+    bool using_precontrol_;
+    double final_target_temp_;
+    double precontrol_percentage_;
+    double precontrol_threshold_;
 
     // 안전 관련 변수
     bool is_emergency_stop_;

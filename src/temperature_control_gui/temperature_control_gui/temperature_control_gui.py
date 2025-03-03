@@ -9,7 +9,7 @@ from python_qt_binding.QtCore import Qt, QTimer, Signal, Slot
 from python_qt_binding.QtWidgets import (QWidget, QVBoxLayout, QPushButton, QSlider, QLabel,
                                          QHBoxLayout, QLineEdit, QGroupBox, QSplitter,
                                          QDoubleSpinBox, QSpinBox, QGridLayout, QFileDialog,
-                                         QMessageBox, QComboBox)
+                                         QMessageBox, QComboBox, QCheckBox, QFrame)
 from python_qt_binding.QtGui import QFont, QColor, QPalette, QIntValidator, QDoubleValidator
 import pyqtgraph as pg
 import math
@@ -17,7 +17,7 @@ import math
 from rqt_gui_py.plugin import Plugin
 from ament_index_python.packages import get_package_share_directory, get_package_prefix
 
-from std_msgs.msg import Float64, Bool
+from std_msgs.msg import Float64, Bool, Int8
 from wearable_robot_interfaces.msg import TemperatureData, ActuatorCommand
 
 from std_srvs.srv import Trigger, SetBool
@@ -56,6 +56,9 @@ class TemperatureControlGUI(Plugin):
         self._pending_target_temp = self._target_temp  # 적용 대기 중인 목표 온도
         self._pwm_value = 0  # PWM 5번 채널
         self._actuator_idx = 5  # 제어할 구동기 번호 (5번 고정)
+
+        # 전원 상태 추적
+        self._is_power_on = False  # 기본 전원 상태 (꺼짐)
 
         # PI 제어 파라미터
         self._kp = 2.0  # 비례 게인 기본값
@@ -135,6 +138,12 @@ class TemperatureControlGUI(Plugin):
             10
         )
 
+        # 전원 제어 발행자 추가
+        self._power_pub = self._node.create_publisher(
+            Bool,
+            'actuator_power',
+            10
+        )
 
         self._current_log_filename = ""
         self._log_filename_sub = self._node.create_subscription(
@@ -149,7 +158,7 @@ class TemperatureControlGUI(Plugin):
         # 타이머 설정
         self._update_timer = QTimer()
         self._update_timer.timeout.connect(self._update_gui)
-        self._update_timer.start(50)  # 100ms 간격으로 업데이트
+        self._update_timer.start(50)  # 50ms 간격으로 업데이트
 
         # rqt에 위젯 추가
         context.add_widget(self._widget)
@@ -242,6 +251,48 @@ class TemperatureControlGUI(Plugin):
         left_widget = QWidget()
         left_layout = QVBoxLayout(left_widget)
 
+        # 전원 제어 그룹 추가
+        power_group = QGroupBox("전원 제어")
+        power_layout = QGridLayout(power_group)
+
+        # 전원 상태 표시
+        self._power_status_label = QLabel("전원 상태: OFF")
+        self._power_status_label.setStyleSheet("color: gray; font-weight: bold;")
+        power_layout.addWidget(self._power_status_label, 0, 0)
+
+        # 전원 버튼 컨테이너 (가로 배치)
+        power_buttons = QWidget()
+        power_buttons_layout = QHBoxLayout(power_buttons)
+        power_buttons_layout.setContentsMargins(0, 0, 0, 0)
+
+        # 전원 ON 버튼
+        self._power_on_button = QPushButton("전원 ON")
+        self._power_on_button.setStyleSheet(
+            "background-color: #2ecc71; color: white; font-weight: bold; min-height: 30px;"
+        )
+        self._power_on_button.clicked.connect(self._on_power_on)
+        power_buttons_layout.addWidget(self._power_on_button)
+
+        # 전원 OFF 버튼
+        self._power_off_button = QPushButton("전원 OFF")
+        self._power_off_button.setStyleSheet(
+            "background-color: #e74c3c; color: white; font-weight: bold; min-height: 30px;"
+        )
+        self._power_off_button.clicked.connect(self._on_power_off)
+        power_buttons_layout.addWidget(self._power_off_button)
+
+        # 버튼 컨테이너 추가
+        power_layout.addWidget(power_buttons, 1, 0)
+
+        # 전원 제어 그룹 추가
+        left_layout.addWidget(power_group)
+
+        # 구분선 추가
+        line = QFrame()
+        line.setFrameShape(QFrame.HLine)
+        line.setFrameShadow(QFrame.Sunken)
+        left_layout.addWidget(line)
+
         # 온도 제어 그룹
         temp_group = QGroupBox("온도 제어")
         temp_layout = QGridLayout(temp_group)
@@ -250,7 +301,7 @@ class TemperatureControlGUI(Plugin):
         temp_layout.addWidget(QLabel("목표 온도:"), 0, 0)
 
         self._temp_slider = QSlider(Qt.Horizontal)
-        self._temp_slider.setMinimum(30)
+        self._temp_slider.setMinimum(20)
         self._temp_slider.setMaximum(80)
         self._temp_slider.setValue(int(self._target_temp))
         self._temp_slider.setTickPosition(QSlider.TicksBelow)
@@ -260,7 +311,7 @@ class TemperatureControlGUI(Plugin):
 
         # 온도 직접 입력 필드 추가
         self._temp_input = QDoubleSpinBox()
-        self._temp_input.setMinimum(30.0)
+        self._temp_input.setMinimum(20.0)
         self._temp_input.setMaximum(80.0)
         self._temp_input.setValue(self._target_temp)
         self._temp_input.setSingleStep(0.5)
@@ -406,7 +457,7 @@ class TemperatureControlGUI(Plugin):
         # 최소 온도 설정
         param_layout.addWidget(QLabel("최소 온도 (°C):"), 0, 0)
         self._min_temp_spinbox = QDoubleSpinBox()
-        self._min_temp_spinbox.setMinimum(30.0)
+        self._min_temp_spinbox.setMinimum(20.0)
         self._min_temp_spinbox.setMaximum(75.0)
         self._min_temp_spinbox.setValue(40.0)
         self._min_temp_spinbox.setSingleStep(1.0)
@@ -415,7 +466,7 @@ class TemperatureControlGUI(Plugin):
         # 최대 온도 설정
         param_layout.addWidget(QLabel("최대 온도 (°C):"), 1, 0)
         self._max_temp_spinbox = QDoubleSpinBox()
-        self._max_temp_spinbox.setMinimum(35.0)
+        self._max_temp_spinbox.setMinimum(25.0)
         self._max_temp_spinbox.setMaximum(78.0)
         self._max_temp_spinbox.setValue(60.0)
         self._max_temp_spinbox.setSingleStep(1.0)
@@ -445,6 +496,9 @@ class TemperatureControlGUI(Plugin):
         control_layout.addWidget(left_widget, 2)  # 왼쪽 영역
         control_layout.addWidget(middle_widget, 1)  # 중앙 영역
         control_layout.addWidget(right_widget, 2)  # 오른쪽 영역
+
+        # 초기 버튼 상태 설정
+        self._update_power_ui(False)  # 초기 상태는 전원 꺼짐
 
     def _temp_callback(self, msg):
         """
@@ -560,6 +614,14 @@ class TemperatureControlGUI(Plugin):
         """
         목표 온도 적용 버튼 핸들러
         """
+        # 전원이 꺼져 있으면 경고
+        if not self._is_power_on:
+            QMessageBox.warning(self._widget,
+                "전원 꺼짐",
+                "구동기 전원이 꺼져 있습니다. 전원을 켜고 목표 온도를 설정하세요.",
+                QMessageBox.Ok)
+            return
+
         self._target_temp = self._pending_target_temp
         # 새 목표 온도 발행
         self._publish_target_temp()
@@ -572,6 +634,87 @@ class TemperatureControlGUI(Plugin):
         msg.data = self._target_temp
         self._param_pub.publish(msg)
         self.logger.info(f"목표 온도 설정: {self._target_temp:.1f}°C")
+
+    def _on_power_on(self):
+        """
+        전원 ON 버튼 핸들러
+        """
+        if self._is_power_on:
+            return  # 이미 켜져 있으면 무시
+
+        try:
+            # 전원 켜기 명령 발행
+            msg = Bool()
+            msg.data = True
+            self._power_pub.publish(msg)
+
+            # UI 업데이트
+            self._is_power_on = True
+            self._update_power_ui(True)
+
+            self.logger.info("구동기 전원이 켜졌습니다.")
+
+            # 비상 정지 상태면 초기화
+            if self._is_emergency_stop:
+                self._on_reset_emergency()
+
+        except Exception as e:
+            self.logger.error(f"전원 켜기 실패: {str(e)}")
+            QMessageBox.critical(self._widget,
+                "전원 오류",
+                f"구동기 전원을 켜는 중 오류가 발생했습니다: {str(e)}",
+                QMessageBox.Ok)
+
+    def _on_power_off(self):
+        """
+        전원 OFF 버튼 핸들러
+        """
+        if not self._is_power_on:
+            return  # 이미 꺼져 있으면 무시
+
+        try:
+            # 전원 끄기 명령 발행
+            msg = Bool()
+            msg.data = False
+            self._power_pub.publish(msg)
+
+            # 프로필 중지
+            if self._is_profile_running:
+                self._on_stop_profile()
+
+            # UI 업데이트
+            self._is_power_on = False
+            self._update_power_ui(False)
+
+            self.logger.info("구동기 전원이 꺼졌습니다.")
+
+        except Exception as e:
+            self.logger.error(f"전원 끄기 실패: {str(e)}")
+            QMessageBox.critical(self._widget,
+                "전원 오류",
+                f"구동기 전원을 끄는 중 오류가 발생했습니다: {str(e)}",
+                QMessageBox.Ok)
+
+    def _update_power_ui(self, is_on):
+        """
+        전원 상태에 따라 UI 업데이트
+        """
+        if is_on:
+            # 전원 ON 상태
+            self._power_status_label.setText("전원 상태: ON")
+            self._power_status_label.setStyleSheet("color: green; font-weight: bold;")
+            self._power_on_button.setEnabled(False)
+            self._power_off_button.setEnabled(True)
+            self._apply_temp_button.setEnabled(True)
+            self._run_profile_button.setEnabled(True)
+        else:
+            # 전원 OFF 상태
+            self._power_status_label.setText("전원 상태: OFF")
+            self._power_status_label.setStyleSheet("color: gray; font-weight: bold;")
+            self._power_on_button.setEnabled(True)
+            self._power_off_button.setEnabled(False)
+            self._apply_temp_button.setEnabled(False)
+            self._run_profile_button.setEnabled(False)
 
     def _on_kp_changed(self, value):
         """
@@ -589,6 +732,14 @@ class TemperatureControlGUI(Plugin):
         """
         PI 게인 설정 적용
         """
+        # 전원이 꺼져 있으면 경고
+        if not self._is_power_on:
+            QMessageBox.warning(self._widget,
+                "전원 꺼짐",
+                "구동기 전원이 꺼져 있습니다. 전원을 켜고 게인 설정을 적용하세요.",
+                QMessageBox.Ok)
+            return
+
         # PI 게인 메시지 발행
         kp_msg = Float64()
         kp_msg.data = self._kp
@@ -718,10 +869,17 @@ class TemperatureControlGUI(Plugin):
         msg.data = True
         self._emergency_pub.publish(msg)
 
+        # 전원도 끄기
+        power_msg = Bool()
+        power_msg.data = False
+        self._power_pub.publish(power_msg)
+        self._is_power_on = False
+
         # 버튼 상태 업데이트
         self._emergency_button.setEnabled(False)
         self._apply_temp_button.setEnabled(False)
         self._run_profile_button.setEnabled(False)
+        self._update_power_ui(False)  # 전원 UI 업데이트
 
         # 프로필 중지
         if self._is_profile_running:
@@ -745,8 +903,7 @@ class TemperatureControlGUI(Plugin):
 
             # 버튼 상태 초기화
             self._emergency_button.setEnabled(True)
-            self._apply_temp_button.setEnabled(True)
-            self._run_profile_button.setEnabled(True)
+            self._power_on_button.setEnabled(True)  # 전원 켜기 버튼 활성화
 
             # 상태 초기화
             self._is_emergency_stop = False
@@ -907,6 +1064,14 @@ class TemperatureControlGUI(Plugin):
         온도 프로필 실행 버튼 핸들러
         """
         try:
+            # 전원이 꺼져 있으면 실행 불가
+            if not self._is_power_on:
+                QMessageBox.warning(self._widget,
+                    "전원 꺼짐",
+                    "구동기 전원이 꺼져 있습니다. 전원을 켜고 프로필을 실행하세요.",
+                    QMessageBox.Ok)
+                return
+
             if self._is_profile_running:
                 return
 
@@ -953,7 +1118,8 @@ class TemperatureControlGUI(Plugin):
         self._current_profile = None
 
         # 버튼 상태 업데이트
-        self._run_profile_button.setEnabled(True)
+        if self._is_power_on:  # 전원이 켜져 있을 때만 실행 버튼 활성화
+            self._run_profile_button.setEnabled(True)
         self._stop_profile_button.setEnabled(False)
         self._profile_status.setText("프로필 상태: 정지")
 
@@ -1047,6 +1213,15 @@ class TemperatureControlGUI(Plugin):
             except Exception:
                 pass
 
+        # 전원 끄기 메시지 발행
+        try:
+            if self._is_power_on:
+                power_msg = Bool()
+                power_msg.data = False
+                self._power_pub.publish(power_msg)
+        except Exception:
+            pass
+
         self.logger.info('온도 제어 GUI 플러그인이 종료되었습니다.')
 
     def save_settings(self, plugin_settings, instance_settings):
@@ -1058,6 +1233,7 @@ class TemperatureControlGUI(Plugin):
         instance_settings.set_value('ki', self._ki)
         instance_settings.set_value('period', self._period_spinbox.value())
         instance_settings.set_value('duration', self._duration_spinbox.value())
+        instance_settings.set_value('power_on', self._is_power_on)
 
     def restore_settings(self, plugin_settings, instance_settings):
         """
@@ -1068,7 +1244,6 @@ class TemperatureControlGUI(Plugin):
         self._pending_target_temp = self._target_temp
         self._temp_slider.setValue(int(self._target_temp))
         self._temp_input.setValue(self._target_temp)
-        self._target_line.setValue(self._target_temp)
 
         # PI 게인 복원
         self._kp = float(instance_settings.value('kp', 2.0))
@@ -1082,6 +1257,9 @@ class TemperatureControlGUI(Plugin):
         self._period_spinbox.setValue(period)
         self._duration_spinbox.setValue(duration)
 
+        # 전원 상태 복원 - 항상 OFF로 시작
+        self._is_power_on = False
+        self._update_power_ui(False)
 
     def _save_log_file(self):
       """
