@@ -31,14 +31,40 @@ class TempControlPlugin(Plugin):
         # 플러그인 제목 설정
         self.setObjectName('TempControlPlugin')
 
+        # QoS 설정
+        qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.RELIABLE,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=10
+        )
+
         # ROS 2 노드 생성
         self.node = rclpy.create_node('temp_control_plugin')
 
-        # 기본 변수 초기화
-        self.active_actuator = 5  # 제어 대상 구동기 번호
+        # 발행자 및 구독자 생성
+        self.pwm_pub = self.node.create_publisher(
+            ActuatorCommand, 'direct_pwm_command', qos_profile)
+        self.kp_pub = self.node.create_publisher(
+            Float64, 'kp_param', qos_profile)
+        self.ki_pub = self.node.create_publisher(
+            Float64, 'ki_param', qos_profile)
+        self.target_temp_pub = self.node.create_publisher(
+            Float64, 'target_temperature', qos_profile)
+        self.emergency_pub = self.node.create_publisher(
+            Bool, 'emergency_stop', qos_profile)
+
+        self.temp_sub = self.node.create_subscription(
+            TemperatureData, 'temperature_data', self.temp_callback, qos_profile)
+        self.pwm_state_sub = self.node.create_subscription(
+            ActuatorCommand, 'pwm_state', self.pwm_state_callback, qos_profile)
 
         # UI 설정
         self._widget = QWidget()
+
+        self._widget.Kp_spin.setValue(2.0)  # 기본 Kp 값
+        self._widget.Ki_spin.setValue(0.1)  # 기본 Ki 값
+
+        self.active_actuator = 5
 
         # UI 파일 경로를 찾기 위한 여러 가능한 위치를 시도
         ui_file = None
@@ -71,30 +97,6 @@ class TempControlPlugin(Plugin):
             self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
         context.add_widget(self._widget)
 
-        # QoS 설정
-        qos_profile = QoSProfile(
-            reliability=ReliabilityPolicy.RELIABLE,
-            history=HistoryPolicy.KEEP_LAST,
-            depth=10
-        )
-
-        # 발행자 및 구독자 생성
-        self.pwm_pub = self.node.create_publisher(
-            ActuatorCommand, 'direct_pwm_command', qos_profile)
-        self.kp_pub = self.node.create_publisher(
-            Float64, 'kp_param', qos_profile)
-        self.ki_pub = self.node.create_publisher(
-            Float64, 'ki_param', qos_profile)
-        self.target_temp_pub = self.node.create_publisher(
-            Float64, 'target_temperature', qos_profile)
-        self.emergency_pub = self.node.create_publisher(
-            Bool, 'emergency_stop', qos_profile)
-
-        self.temp_sub = self.node.create_subscription(
-            TemperatureData, 'temperature_data', self.temp_callback, qos_profile)
-        self.pwm_state_sub = self.node.create_subscription(
-            ActuatorCommand, 'pwm_state', self.pwm_state_callback, qos_profile)
-
         # 내부 변수 초기화
         self.initialize_variables()
 
@@ -116,7 +118,6 @@ class TempControlPlugin(Plugin):
 
         # 초기화 완료
         self._widget.status_label.setText('플러그인이 초기화되었습니다')
-        self.last_data_time = datetime.now()
 
     def initialize_variables(self):
         """
@@ -147,18 +148,12 @@ class TempControlPlugin(Plugin):
 
         # 데이터 저장 변수
         self.start_time = datetime.now()
-
-        # 데이터 락 생성
-        self.data_lock = threading.Lock()
+        self.active_actuator = 5  # 기본 액티브 액추에이터 인덱스는 5
 
     def setup_ui_connections(self):
         """
         UI 요소와 콜백 함수 연결
         """
-        # 초기 UI 값 설정
-        self._widget.Kp_spin.setValue(2.0)  # 기본 Kp 값
-        self._widget.Ki_spin.setValue(0.1)  # 기본 Ki 값
-
         # 모드 선택 라디오 버튼
         self._widget.manual_mode_radio.toggled.connect(self.mode_changed)
         self._widget.auto_mode_radio.toggled.connect(self.mode_changed)
@@ -229,48 +224,45 @@ class TempControlPlugin(Plugin):
         별도의 스레드에서 ROS 2 스핀을 실행합니다.
         """
         try:
+            # 노드가 활성화된 동안만 스핀합니다
             while rclpy.ok():
                 rclpy.spin_once(self.node, timeout_sec=0.1)
         except Exception as e:
-            if rclpy.ok():
-                self.node.get_logger().error(f'ROS 스핀 스레드 오류: {str(e)}')
+            if rclpy.ok():  # ROS가 여전히 활성화된 상태에서 오류가 발생한 경우만 로그
+                self.node.get_logger().error(f'Error in ROS spin thread: {str(e)}')
 
     def temp_callback(self, msg):
         """
         온도 데이터 수신 콜백
         """
-        with self.data_lock:
-            # 데이터 수신 시간 업데이트
-            self.last_data_time = datetime.now()
+        # 온도 데이터 저장
+        for i in range(min(len(msg.temperature), 6)):
+            self.temperatures[i] = msg.temperature[i]
 
-            # 온도 데이터 저장
-            for i in range(min(len(msg.temperature), 6)):
-                self.temperatures[i] = msg.temperature[i]
+        # 현재 시간 계산 (시작 시점부터의 경과 시간)
+        current_time = (datetime.now() - self.start_time).total_seconds()
 
-            # 현재 시간 계산 (시작 시점부터의 경과 시간)
-            current_time = (datetime.now() - self.start_time).total_seconds()
+        # 그래프가 실행 중인 경우에만 데이터 추가
+        if self.graph_running:
+            # 시간 데이터 추가
+            self.time_data.append(current_time)
+            self.target_temp_data.append(self.target_temperature)
 
-            # 그래프가 실행 중인 경우에만 데이터 추가
-            if self.graph_running:
-                # 시간 데이터 추가
-                self.time_data.append(current_time)
-                self.target_temp_data.append(self.target_temperature)
+            # 온도 및 PWM 데이터 추가
+            for i in range(6):
+                self.temp_data[i].append(self.temperatures[i])
+                self.pwm_data[i].append(self.pwm_values[i])
 
-                # 온도 및 PWM 데이터 추가
-                for i in range(6):
-                    self.temp_data[i].append(self.temperatures[i])
-                    self.pwm_data[i].append(self.pwm_values[i])
+            # 자동 모드인 경우 온도 체크 (제한 온도 초과 시 비상 정지)
+            self.check_temperature_safety()
 
-                # 자동 모드인 경우 온도 체크 (제한 온도 초과 시 비상 정지)
-                self.check_temperature_safety()
-
-                # 데이터 로깅
-                if self.log_enabled and self.log_file:
-                    self.log_data()
+            # 데이터 로깅
+            if self.log_enabled and self.log_file:
+                self.log_data()
 
         # LCD 디스플레이 업데이트 (액티브 액추에이터 온도 표시)
         try:
-            active_idx = self.active_actuator - 1  # 인덱스는 0부터 시작
+            active_idx = 5  # 기본값은 5번째 구동기
             if len(self.temperatures) > active_idx:
                 self._widget.CurrentTemp.display(f"{self.temperatures[active_idx]:.1f}")
             else:
@@ -282,17 +274,16 @@ class TempControlPlugin(Plugin):
         """
         PWM 상태 데이터 수신 콜백
         """
-        with self.data_lock:
-            # PWM 상태 데이터 저장
-            for i in range(min(len(msg.pwm), 6)):
-                self.pwm_values[i] = msg.pwm[i]
+        # PWM 상태 데이터 저장
+        for i in range(min(len(msg.pwm), 6)):
+            self.pwm_values[i] = msg.pwm[i]
 
     def check_temperature_safety(self):
         """
         온도가 제한 값을 초과하는지 확인하고 비상 정지 실행
         """
         limit_temp = self._widget.limit_temp_spin.value()
-        active_idx = self.active_actuator - 1  # 인덱스는 0부터 시작
+        active_idx = self.active_actuator - 1  # 인덱스는 0부터 시작하므로 액티브 구동기 번호에서 1을 뺌
 
         # 온도가 제한 값을 초과하면 비상 정지
         if active_idx < len(self.temperatures) and self.temperatures[active_idx] >= limit_temp:
@@ -304,58 +295,49 @@ class TempControlPlugin(Plugin):
         """
         비상 정지 실행
         """
-        try:
-            # 비상 정지 메시지 발행
-            msg = Bool()
-            msg.data = True
-            self.emergency_pub.publish(msg)
+        # 비상 정지 메시지 발행
+        msg = Bool()
+        msg.data = True
+        self.emergency_pub.publish(msg)
 
-            # PWM 값을 0으로 설정
-            self.pwm_active = False
-            self._widget.apply_pwm_button.setChecked(False)
-            self._widget.apply_pwm_button.setText("PWM on")
+        # PWM 값을 0으로 설정
+        self.pwm_active = False
+        self._widget.apply_pwm_button.setChecked(False)
+        self._widget.apply_pwm_button.setText("PWM on")
 
-            # PWM 메시지 발행 (모든 값 0)
-            pwm_msg = ActuatorCommand()
-            pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
-            pwm_msg.pwm = [0] * 6
-            self.pwm_pub.publish(pwm_msg)
+        # PWM 메시지 발행 (모든 값 0)
+        pwm_msg = ActuatorCommand()
+        pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
+        pwm_msg.pwm = [0] * 6
+        self.pwm_pub.publish(pwm_msg)
 
-            self.node.get_logger().warn("비상 정지가 실행되었습니다")
-        except Exception as e:
-            self.node.get_logger().error(f"비상 정지 발행 오류: {str(e)}")
+        self.node.get_logger().warn("비상 정지가 실행되었습니다")
 
     def update_plots(self):
         """
         그래프 업데이트 함수 (타이머에 의해 주기적으로 호출)
         """
-        # 데이터 타임아웃 확인
-        current_time = datetime.now()
-        if (current_time - self.last_data_time).total_seconds() > 3.0:
-            self._widget.status_label.setText("데이터 수신 없음 - 연결 확인 필요")
+        if not self.graph_running or len(self.time_data) == 0:
+            return
 
-        with self.data_lock:
-            if not self.graph_running or len(self.time_data) == 0:
-                return
+        # 최대 표시할 데이터 포인트 수 (약 5분치 데이터)
+        max_points = 7500  # 25Hz에서 5분 = 7500개 포인트
 
-            # 최대 표시할 데이터 포인트 수 (약 5분치 데이터)
-            max_points = 7500  # 25Hz에서 5분 = 7500개 포인트
-
-            # 데이터가 너무 많으면 오래된 데이터 제거
-            if len(self.time_data) > max_points:
-                self.time_data = self.time_data[-max_points:]
-                self.target_temp_data = self.target_temp_data[-max_points:]
-                for i in range(6):
-                    self.temp_data[i] = self.temp_data[i][-max_points:]
-                    self.pwm_data[i] = self.pwm_data[i][-max_points:]
-
-            # 그래프 업데이트
+        # 데이터가 너무 많으면 오래된 데이터 제거
+        if len(self.time_data) > max_points:
+            self.time_data = self.time_data[-max_points:]
+            self.target_temp_data = self.target_temp_data[-max_points:]
             for i in range(6):
-                self.temp_curves[i].setData(self.time_data, self.temp_data[i])
-                self.pwm_curves[i].setData(self.time_data, self.pwm_data[i])
+                self.temp_data[i] = self.temp_data[i][-max_points:]
+                self.pwm_data[i] = self.pwm_data[i][-max_points:]
 
-            # 목표 온도 곡선 업데이트
-            self.target_temp_curve.setData(self.time_data, self.target_temp_data)
+        # 그래프 업데이트
+        for i in range(6):
+            self.temp_curves[i].setData(self.time_data, self.temp_data[i])
+            self.pwm_curves[i].setData(self.time_data, self.pwm_data[i])
+
+        # 목표 온도 곡선 업데이트
+        self.target_temp_curve.setData(self.time_data, self.target_temp_data)
 
     def mode_changed(self, checked):
         """
@@ -366,7 +348,10 @@ class TempControlPlugin(Plugin):
             self._widget.auto_settings_group.setEnabled(True)
             self._widget.pid_settings_group.setEnabled(False)
             self._widget.status_label.setText('자동 모드 활성화')
-            self._widget.status_label.setStyleSheet("")
+
+            # PID 제어 초기화
+            self.integral = 0.0
+            self.prev_error = 0.0
 
             # 현재 설정된 목표 온도 발행
             self.update_target_temperature(self._widget.target_temp_spin.value())
@@ -379,7 +364,6 @@ class TempControlPlugin(Plugin):
             self._widget.auto_settings_group.setEnabled(False)
             self._widget.pid_settings_group.setEnabled(True)
             self._widget.status_label.setText('수동 모드 활성화')
-            self._widget.status_label.setStyleSheet("")
 
             # PWM 버튼 상태에 따라 PWM 출력 재설정
             if self._widget.apply_pwm_button.isChecked():
@@ -389,16 +373,15 @@ class TempControlPlugin(Plugin):
         """
         그래프 모니터링 시작
         """
-        with self.data_lock:
-            self.graph_running = True
-            self.start_time = datetime.now()
-            self.time_data = []
-            self.target_temp_data = []
+        self.graph_running = True
+        self.start_time = datetime.now()
+        self.time_data = []
+        self.target_temp_data = []
 
-            # 각 채널별 데이터 초기화
-            for i in range(6):
-                self.temp_data[i] = []
-                self.pwm_data[i] = []
+        # 각 채널별 데이터 초기화
+        for i in range(6):
+            self.temp_data[i] = []
+            self.pwm_data[i] = []
 
         self._widget.status_label.setText('그래프 모니터링이 시작되었습니다')
         self._widget.status_label.setStyleSheet("")
@@ -407,9 +390,7 @@ class TempControlPlugin(Plugin):
         """
         그래프 모니터링 중지 및 비상 정지
         """
-        with self.data_lock:
-            self.graph_running = False
-
+        self.graph_running = False
         self._widget.status_label.setText('그래프 모니터링이 중지되었습니다')
 
         # 비상 정지 실행
@@ -464,7 +445,7 @@ class TempControlPlugin(Plugin):
 
     def log_data(self):
         """
-        현재 온도 및 PWM 상태 데이터를 로그 파일에 기록
+        현재 온도 및 팬 상태 데이터를 로그 파일에 기록
         """
         if not self.log_enabled or not self.log_file or not self.csv_writer:
             return
@@ -490,73 +471,71 @@ class TempControlPlugin(Plugin):
         """
         현재 수집된 그래프 데이터를 CSV 파일로 저장
         """
-        with self.data_lock:
-            if len(self.time_data) == 0:
-                self._widget.status_label.setText("저장할 데이터가 없습니다")
-                return
+        if len(self.time_data) == 0:
+            self._widget.status_label.setText("저장할 데이터가 없습니다")
+            return
 
-            # 파일 이름 설정
-            filename = self._widget.FileName.text()
-            if not filename:
-                filename = "temperature_data"
+        # 파일 이름 설정
+        filename = self._widget.FileName.text()
+        if not filename:
+            filename = "temperature_data"
 
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            save_dir = os.path.expanduser("~/wearable_robot_data")
-            os.makedirs(save_dir, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        save_dir = os.path.expanduser("~/wearable_robot_data")
+        os.makedirs(save_dir, exist_ok=True)
 
-            filepath = f"{save_dir}/{filename}_{timestamp}.csv"
+        filepath = f"{save_dir}/{filename}_{timestamp}.csv"
 
-            try:
-                with open(filepath, 'w', newline='') as csvfile:
-                    csv_writer = csv.writer(csvfile)
+        try:
+            with open(filepath, 'w', newline='') as csvfile:
+                csv_writer = csv.writer(csvfile)
 
-                    # 헤더 행 작성
-                    header = ["time"]
-                    for i in range(6):
-                        header.append(f"temp{i+1}")
-                    for i in range(6):
-                        header.append(f"pwm{i+1}")
-                    header.append("target_temp")
-                    csv_writer.writerow(header)
+                # 헤더 행 작성
+                header = ["time"]
+                for i in range(6):
+                    header.append(f"temp{i+1}")
+                for i in range(6):
+                    header.append(f"pwm{i+1}")
+                header.append("target_temp")
+                csv_writer.writerow(header)
 
-                    # 데이터 행 작성
-                    for i in range(len(self.time_data)):
-                        row = [self.time_data[i]]
-                        for j in range(6):
-                            if i < len(self.temp_data[j]):
-                                row.append(self.temp_data[j][i])
-                            else:
-                                row.append(0.0)
-                        for j in range(6):
-                            if i < len(self.pwm_data[j]):
-                                row.append(self.pwm_data[j][i])
-                            else:
-                                row.append(0)
-                        if i < len(self.target_temp_data):
-                            row.append(self.target_temp_data[i])
+                # 데이터 행 작성
+                for i in range(len(self.time_data)):
+                    row = [self.time_data[i]]
+                    for j in range(6):
+                        if i < len(self.temp_data[j]):
+                            row.append(self.temp_data[j][i])
                         else:
-                            row.append(self.target_temperature)
-                        csv_writer.writerow(row)
+                            row.append(0.0)
+                    for j in range(6):
+                        if i < len(self.pwm_data[j]):
+                            row.append(self.pwm_data[j][i])
+                        else:
+                            row.append(0)
+                    if i < len(self.target_temp_data):
+                        row.append(self.target_temp_data[i])
+                    else:
+                        row.append(self.target_temperature)
+                    csv_writer.writerow(row)
 
-                self._widget.status_label.setText(f"데이터가 저장되었습니다: {filepath}")
+            self._widget.status_label.setText(f"데이터가 저장되었습니다: {filepath}")
 
-            except Exception as e:
-                self._widget.status_label.setText(f"데이터 저장 오류: {str(e)}")
+        except Exception as e:
+            self._widget.status_label.setText(f"데이터 저장 오류: {str(e)}")
 
     def clear_data(self):
         """
         수집된 데이터 초기화 및 새로운 세션 시작
         """
-        with self.data_lock:
-            # 데이터 초기화
-            self.time_data = []
-            self.target_temp_data = []
-            for i in range(6):
-                self.temp_data[i] = []
-                self.pwm_data[i] = []
+        # 데이터 초기화
+        self.time_data = []
+        self.target_temp_data = []
+        for i in range(6):
+            self.temp_data[i] = []
+            self.pwm_data[i] = []
 
-            # 새로운 시작 시간 설정
-            self.start_time = datetime.now()
+        # 새로운 시작 시간 설정
+        self.start_time = datetime.now()
 
         # 로깅 중인 경우 새 로그 파일 시작
         if self.log_enabled:
@@ -574,77 +553,71 @@ class TempControlPlugin(Plugin):
             self._widget.status_label.setText("수동 PWM 적용을 위해 수동 모드로 전환하세요")
             return
 
-        try:
-            # 버튼 상태 확인
-            if self._widget.apply_pwm_button.isChecked():
-                # PWM ON - 설정된 값 적용
-                pwm_value = int(self._widget.duty_spin.value())
-                self.pwm_active = True
-                self._widget.apply_pwm_button.setText("PWM off")
+        # 버튼 상태 확인
+        if self._widget.apply_pwm_button.isChecked():
+            # PWM ON - 설정된 값 적용
+            pwm_value = int(self._widget.duty_spin.value())
+            self.pwm_active = True
+            self._widget.apply_pwm_button.setText("PWM off")
 
-                # PWM 메시지 발행
-                pwm_msg = ActuatorCommand()
-                pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
-                pwm_msg.pwm = [0] * 6
-                pwm_msg.pwm[self.active_actuator - 1] = pwm_value  # active_actuator(5)에 대응하는 인덱스는 4
-                self.pwm_pub.publish(pwm_msg)
+            # PWM 메시지 발행
+            pwm_msg = ActuatorCommand()
+            pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
+            pwm_msg.pwm = [0] * 6
+            pwm_msg.pwm[self.active_actuator - 1] = pwm_value  # 5번 구동기에만 PWM 적용
+            self.pwm_pub.publish(pwm_msg)
 
-                self._widget.status_label.setText(f"PWM 출력 {pwm_value}%가 적용되었습니다")
-            else:
-                # PWM OFF - 모든 PWM 값 0으로 초기화
-                self.pwm_active = False
-                self._widget.apply_pwm_button.setText("PWM on")
+            self._widget.status_label.setText(f"PWM 출력 {pwm_value}%가 적용되었습니다")
+        else:
+            # PWM OFF - 모든 PWM 값 0으로 초기화
+            self.pwm_active = False
+            self._widget.apply_pwm_button.setText("PWM on")
 
-                # PWM 메시지 발행 (모든 값 0)
-                pwm_msg = ActuatorCommand()
-                pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
-                pwm_msg.pwm = [0] * 6
-                self.pwm_pub.publish(pwm_msg)
+            # PWM 메시지 발행 (모든 값 0)
+            pwm_msg = ActuatorCommand()
+            pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
+            pwm_msg.pwm = [0] * 6
+            self.pwm_pub.publish(pwm_msg)
 
-                self._widget.status_label.setText("PWM 출력이 중지되었습니다")
-        except Exception as e:
-            self.node.get_logger().error(f"PWM 제어 오류: {str(e)}")
-            self._widget.status_label.setText(f"PWM 적용 오류: {str(e)}")
+            self._widget.status_label.setText("PWM 출력이 중지되었습니다")
+
+
 
     def apply_pi_gains(self):
         """
         PI 제어 게인 적용
         """
-        try:
-            # PI 게인 값 가져오기
-            kp = self._widget.Kp_spin.value()
-            ki = self._widget.Ki_spin.value()
+        # PI 게인 값 가져오기
+        kp = self._widget.Kp_spin.value()
+        ki = self._widget.Ki_spin.value()
 
-            # PI 게인 메시지 발행
-            kp_msg = Float64()
-            ki_msg = Float64()
-            kp_msg.data = float(kp)
-            ki_msg.data = float(ki)
+        # PI 게인 메시지 발행
+        kp_msg = Float64()
+        ki_msg = Float64()
+        kp_msg.data = float(kp)
+        ki_msg.data = float(ki)
 
-            self.kp_pub.publish(kp_msg)
-            self.ki_pub.publish(ki_msg)
+        self.kp_pub.publish(kp_msg)
+        self.ki_pub.publish(ki_msg)
 
-            self._widget.status_label.setText(f"PI 게인이 적용되었습니다: Kp={kp}, Ki={ki}")
-        except Exception as e:
-            self.node.get_logger().error(f"PI 게인 설정 오류: {str(e)}")
-            self._widget.status_label.setText(f"게인 설정 오류: {str(e)}")
+        self._widget.status_label.setText(f"PI 게인이 적용되었습니다: Kp={kp}, Ki={ki}")
+
+        # 적분항 초기화
+        self.integral = 0.0
+        self.prev_error = 0.0
 
     def update_target_temperature(self, value):
         """
         목표 온도 업데이트
         """
-        try:
-            self.target_temperature = value
+        self.target_temperature = value
 
-            # 목표 온도 메시지 발행
-            target_temp_msg = Float64()
-            target_temp_msg.data = float(value)
-            self.target_temp_pub.publish(target_temp_msg)
+        # 목표 온도 메시지 발행
+        target_temp_msg = Float64()
+        target_temp_msg.data = float(value)
+        self.target_temp_pub.publish(target_temp_msg)
 
-            self._widget.status_label.setText(f"목표 온도가 {value}°C로 설정되었습니다")
-        except Exception as e:
-            self.node.get_logger().error(f"목표 온도 설정 오류: {str(e)}")
-            self._widget.status_label.setText(f"목표 온도 설정 오류: {str(e)}")
+        self._widget.status_label.setText(f"목표 온도가 {value}°C로 설정되었습니다")
 
     def update_limit_temperature(self, value):
         """
@@ -666,28 +639,11 @@ class TempControlPlugin(Plugin):
 
         # 모든 PWM 출력 중지
         try:
-            # 비상 정지 메시지 발행
-            msg = Bool()
-            msg.data = True
-            self.emergency_pub.publish(msg)
-
             # PWM 메시지 발행 (모든 값 0)
             pwm_msg = ActuatorCommand()
             pwm_msg.header.stamp = self.node.get_clock().now().to_msg()
             pwm_msg.pwm = [0] * 6
             self.pwm_pub.publish(pwm_msg)
-        except Exception:
-            pass
-
-        # 구독자 및 발행자 정리
-        try:
-            self.node.destroy_subscription(self.temp_sub)
-            self.node.destroy_subscription(self.pwm_state_sub)
-            self.node.destroy_publisher(self.pwm_pub)
-            self.node.destroy_publisher(self.kp_pub)
-            self.node.destroy_publisher(self.ki_pub)
-            self.node.destroy_publisher(self.target_temp_pub)
-            self.node.destroy_publisher(self.emergency_pub)
         except Exception:
             pass
 

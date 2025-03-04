@@ -1,4 +1,0 @@
-Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_bringup -- -j8 -l8
-Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/kimm/wearable_robot_ws/build/wearable_robot_bringup -- -j8 -l8
-Invoking command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_bringup
-Invoked command in '/home/kimm/wearable_robot_ws/build/wearable_robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/kimm/wearable_robot_ws/build/wearable_robot_bringup
