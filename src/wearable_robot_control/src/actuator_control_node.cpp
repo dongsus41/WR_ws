@@ -18,20 +18,21 @@ public:
             "temperature_data", 10,
             std::bind(&ActuatorControlNode::temperature_callback, this, std::placeholders::_1));
 
-        // PWM 명령 발행
+        // 제어 모드 구독 (자동/수동 모드 전환)
+        control_mode_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
+            "control_mode", 10,
+            std::bind(&ActuatorControlNode::control_mode_callback, this, std::placeholders::_1));
+
+        // 명령 발행
         pwm_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::ActuatorCommand>(
             "actuator_command", 10);
 
-        // PWM 상태 발행 (RQT UI에서 현재 상태를 확인하기 위함)
-        pwm_state_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::ActuatorCommand>(
-            "pwm_state", 10);
-
-        // 목표 온도 구독 (온도 제어용)
+        // auto mode: 목표 온도 구독
         target_temp_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
             "target_temperature", 10,
             std::bind(&ActuatorControlNode::target_temp_callback, this, std::placeholders::_1));
 
-        // 직접 PWM 값 구독 (직접 제어용)
+        // pwm mode: 직접 PWM 값 구독
         direct_pwm_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::ActuatorCommand>(
             "direct_pwm_command", 10,
             std::bind(&ActuatorControlNode::direct_pwm_callback, this, std::placeholders::_1));
@@ -40,6 +41,8 @@ public:
         emergency_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
             "emergency_stop", 10,
             std::bind(&ActuatorControlNode::emergency_callback, this, std::placeholders::_1));
+
+
 
         // PI 제어 파라미터 및 목표 온도 선언
         this->declare_parameter("target_temperature", 50.0);  // 기본값 50도
@@ -79,19 +82,23 @@ public:
         pwm_output_ = 0;
         is_emergency_stop_ = false;
         is_temperature_safe_ = true;
-        use_direct_pwm_ = false;       // 기본적으로 온도 제어 모드 사용
+        use_direct_pwm_ = true;       // 기본적으로 수동 제어 모드 사용
 
         // PWM 값 배열 초기화
         current_pwm_values_.resize(6, 0);
 
         // 액티브 액추에이터 인덱스 초기화
-        active_actuator_idx_ = this->get_parameter("active_actuator").as_int() - 1;  // 인덱스는 0부터 시작
+        active_actuator_idx_ = this->get_parameter("active_actuator").as_int();  // 인덱스는 0부터 시작
 
         RCLCPP_INFO(this->get_logger(), "액추에이터 제어 노드가 시작되었습니다");
-        RCLCPP_INFO(this->get_logger(), "액티브 액추에이터: %d번 (인덱스: %d)",
-                    active_actuator_idx_ + 1, active_actuator_idx_);
+        RCLCPP_INFO(this->get_logger(), "액티브 액추에이터: %d번 (actuator 0 ~ 5)",
+                    active_actuator_idx_);
         RCLCPP_INFO(this->get_logger(), "안전 온도 임계값: %.1f°C", this->get_parameter("safety_threshold").as_double());
         RCLCPP_INFO(this->get_logger(), "제어 주파수: %.1fHz", control_frequency);
+        RCLCPP_INFO(this->get_logger(), "초기 제어 모드: %s", use_direct_pwm_ ? "수동 제어" : "자동 제어");
+
+        // 초기 PWM 상태 발행
+        publish_pwm_command();
     }
 
 private:
@@ -124,18 +131,43 @@ private:
             return;
         }
 
-        // 직접 PWM 값을 사용하도록 설정
-        use_direct_pwm_ = true;
+        // 자동 모드일 때는 명령 무시
+        if (!use_direct_pwm_) {
+            RCLCPP_INFO(this->get_logger(), "자동 제어 모드에서 직접 PWM 명령이 수신되었습니다. 자동 모드에서는 수동 제어가 무시됩니다.");
+            return;
+        }
 
         // 해당 구동기의 PWM 값 가져오기
         if (msg->pwm.size() > static_cast<size_t>(active_actuator_idx_)) {
             direct_pwm_value_ = msg->pwm[active_actuator_idx_];
-            RCLCPP_DEBUG(this->get_logger(),
-                "직접 PWM 제어 모드: 구동기 %d, PWM 값: %d",
+            RCLCPP_INFO(this->get_logger(),
+                "직접 PWM 제어 명령 수신: 구동기 %d, PWM 값: %d",
                 active_actuator_idx_ + 1, direct_pwm_value_);
+
+            // 직접 제어 모드에서는 명령 즉시 적용
+            current_pwm_values_[active_actuator_idx_] = direct_pwm_value_;
+            publish_pwm_command();
         } else {
             RCLCPP_WARN(this->get_logger(),
                 "유효하지 않은 PWM 명령: 구동기 %d의 데이터가 없습니다", active_actuator_idx_ + 1);
+        }
+    }
+
+    // 제어 모드 콜백 (자동/수동)
+    void control_mode_callback(const std_msgs::msg::Bool::SharedPtr msg)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        // true: 자동 모드, false: 수동 모드
+        bool auto_mode = msg->data;
+        use_direct_pwm_ = !auto_mode;  // 자동 모드의 반대가 수동 모드(직접 PWM 제어)
+
+        RCLCPP_INFO(this->get_logger(),
+            "제어 모드가 %s로 변경되었습니다", auto_mode ? "자동 온도 제어" : "수동 PWM 제어");
+
+        // 모드 전환 시 적분 누적값 초기화
+        if (auto_mode) {
+            integral_ = 0.0;
         }
     }
 
@@ -167,10 +199,13 @@ private:
             return;
         }
 
-        // 온도 제어 모드로 전환
-        use_direct_pwm_ = false;
+        // 수동 제어 모드인 경우 정보 메시지만 출력하고 계속 진행
+        if (use_direct_pwm_) {
+            RCLCPP_INFO(this->get_logger(),
+                "수동 제어 모드에서 목표 온도가 설정되었습니다. 온도 제어는 자동 모드에서만 활성화됩니다.");
+        }
 
-        // 목표 온도 업데이트
+        // 목표 온도 업데이트 (수동 모드여도 저장은 함)
         this->set_parameter(rclcpp::Parameter("target_temperature", msg->data));
         RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 업데이트되었습니다", msg->data);
     }
@@ -248,16 +283,16 @@ private:
             return;
         }
 
-        uint8_t pwm_value = 0;
-
-        // 직접 PWM 제어 모드일 경우
+        // 직접 PWM 제어 모드일 경우 (PWM 명령은 콜백에서 즉시 처리하므로 여기서는 추가 처리 없음)
         if (use_direct_pwm_) {
-            pwm_value = direct_pwm_value_;
             RCLCPP_DEBUG(this->get_logger(),
-                "직접 PWM 제어: 구동기 %d, PWM 값: %d",
-                active_actuator_idx_ + 1, pwm_value);
+                "직접 PWM 제어 모드: 구동기 %d, PWM 값: %d",
+                active_actuator_idx_ + 1, current_pwm_values_[active_actuator_idx_]);
+
+            // 현재 상태 발행 (필수는 아니지만 상태 모니터링을 위해 주기적으로 발행)
+            publish_pwm_command();
         }
-        // 온도 제어 모드일 경우
+        // 자동 온도 제어 모드일 경우
         else {
             // 파라미터 불러오기
             double target_temp = this->get_parameter("target_temperature").as_double();
@@ -284,18 +319,18 @@ private:
             if (output < min_pwm) output = min_pwm;
 
             // 정수화
-            pwm_value = static_cast<uint8_t>(output);
+            uint8_t pwm_value = static_cast<uint8_t>(output);
+
+            // 액티브 액추에이터 PWM 값 설정
+            current_pwm_values_[active_actuator_idx_] = pwm_value;
 
             RCLCPP_DEBUG(this->get_logger(),
                 "온도 제어: 목표=%.1f°C, 현재=%.1f°C, 오차=%.1f°C, 출력=%d",
                 target_temp, current_temp_, error, pwm_value);
+
+            // PWM 명령 발행
+            publish_pwm_command();
         }
-
-        // 액티브 액추에이터 PWM 값 설정
-        current_pwm_values_[active_actuator_idx_] = pwm_value;
-
-        // PWM 명령 발행
-        publish_pwm_command();
     }
 
     // PWM 명령 발행 함수
@@ -307,9 +342,6 @@ private:
 
         // 메시지 발행
         pwm_publisher_->publish(pwm_msg);
-
-        // PWM 상태 발행 (UI용)
-        pwm_state_publisher_->publish(pwm_msg);
     }
 
     // 파라미터 설정 콜백
@@ -333,11 +365,10 @@ private:
                 RCLCPP_INFO(this->get_logger(),
                     "안전 온도 임계값이 %.1f°C로 변경되었습니다", param.as_double());
             } else if (param.get_name() == "active_actuator") {
-                int new_actuator = param.as_int();
-                active_actuator_idx_ = new_actuator - 1;  // 인덱스는 0부터 시작
+                active_actuator_idx_ = param.as_int();
                 RCLCPP_INFO(this->get_logger(),
-                    "액티브 액추에이터가 %d번으로 변경되었습니다 (인덱스: %d)",
-                    new_actuator, active_actuator_idx_);
+                    "액티브 액추에이터가 %d번으로 변경되었습니다 (actuator 0 ~ 5)",
+                    active_actuator_idx_);
             }
         }
 
@@ -350,9 +381,10 @@ private:
     rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr kp_param_subscription_;
     rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr ki_param_subscription_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr emergency_subscription_;
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr control_mode_subscription_;
     rclcpp::Subscription<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr direct_pwm_subscription_;
     rclcpp::Publisher<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr pwm_publisher_;
-    rclcpp::Publisher<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr pwm_state_publisher_;
+
 
     // 파라미터 콜백
     rclcpp::node_interfaces::OnSetParametersCallbackHandle::SharedPtr param_callback_handle_;
@@ -366,7 +398,7 @@ private:
     double integral_;           // 적분 누적값
     uint8_t pwm_output_;        // 현재 PWM 출력값
     uint8_t direct_pwm_value_;  // 직접 제어 모드 PWM 값
-    bool use_direct_pwm_;       // 직접 PWM 제어 모드 사용 여부
+    bool use_direct_pwm_;       // 직접 PWM 제어 모드 사용 여부 (true: 수동 모드, false: 자동 모드)
     int active_actuator_idx_;   // 활성 액추에이터 인덱스 (0부터 시작)
     std::vector<uint8_t> current_pwm_values_;  // 현재 PWM 값 배열
     std::mutex control_mutex_;  // 제어 로직 동기화를 위한 뮤텍스
