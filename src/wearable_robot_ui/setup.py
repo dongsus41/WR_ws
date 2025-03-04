@@ -26,7 +26,8 @@ setup(
         'console_scripts': [
         ],
         'rqt_gui.plugin': [
-            'temperature_control_plugin = wearable_robot_ui.temperature_control_plugin:TemperatureControlPlugin',
+            'TemperatureControlPlugin = wearable_robot_ui.temperature_control_plugin:TemperatureControlPlugin',
         ],
     },
+
 )

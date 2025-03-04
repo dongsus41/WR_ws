@@ -22,22 +22,33 @@ from ament_index_python.packages import get_package_share_directory
 
 class TemperatureControlPlugin(Plugin):
     def __init__(self, context):
+        print("객체 이름 설정 완료")
         super(TemperatureControlPlugin, self).__init__(context)
         # 플러그인 설정
         self.setObjectName('TemperatureControlPlugin')
+        print("객체 이름 설정 완료")
 
         # ROS 노드 초기화
         self._node = context.node
         self.logger = self._node.get_logger()
         self.logger.info('온도 제어 플러그인이 시작되었습니다.')
+        print("ROS 노드 초기화 완료")
 
         # 메인 위젯 생성
         self._widget = QWidget()
         self._widget.setObjectName('TemperatureControlUi')
+        print("메인 위젯 생성 완료")
 
         # UI 파일 로드
         ui_file = os.path.join(get_package_share_directory('wearable_robot_ui'), 'resource', 'temperature_control.ui')
-        loadUi(ui_file, self._widget)
+        print(f"UI 파일 경로: {ui_file}")
+        print(f"UI 파일 존재 여부: {os.path.exists(ui_file)}")
+
+        try:
+            loadUi(ui_file, self._widget)
+            print("UI 파일 로드 성공")
+        except Exception as e:
+            print(f"UI 파일 로드 실패: {e}")
 
         # 데이터 초기화
         self._initialize_data()

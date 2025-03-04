@@ -1,0 +1,17 @@
+<library path="wearable_robot_rqt_plugins">
+  <class name="TempControlPlugin" type="wearable_robot_rqt_plugins.temp_control_plugin.TempControlPlugin" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      웨어러블 로봇의 온도 제어 및 모니터링을 위한 rqt 플러그인
+    </description>
+    <qtgui>
+      <group>
+        <label>웨어러블 로봇</label>
+        <icon type="theme">folder</icon>
+        <statustip>웨어러블 로봇 관련 플러그인</statustip>
+      </group>
+      <label>온도 제어</label>
+      <icon type="theme">preferences-system-power</icon>
+      <statustip>온도 제어 및 모니터링 플러그인</statustip>
+    </qtgui>
+  </class>
+</library>

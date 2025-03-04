@@ -1,11 +1,9 @@
 <library path="wearable_robot_ui">
   <class name="TemperatureControlPlugin" type="wearable_robot_ui.temperature_control_plugin:TemperatureControlPlugin" base_class_type="rqt_gui_py::Plugin">
-    <description>
-      웨어러블 로봇의 온도 및 팬 제어를 위한 플러그인
-    </description>
+    <description>웨어러블 로봇의 온도 및 팬 제어를 위한 플러그인</description>
     <qtgui>
       <group>
-        <label>Wearable Robot</label>
+        <label>WearableRobot</label>
         <icon type="theme">folder</icon>
         <statustip>웨어러블 로봇 시스템 제어</statustip>
       </group>
@@ -15,3 +13,5 @@
     </qtgui>
   </class>
 </library>
+
+
