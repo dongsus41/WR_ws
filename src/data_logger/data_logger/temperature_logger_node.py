@@ -10,6 +10,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy
 from std_msgs.msg import Bool, String, Float64
 from std_srvs.srv import Trigger, SetBool
 from wearable_robot_interfaces.msg import TemperatureData, ActuatorCommand
+from collections import deque
 
 class TemperatureLoggerNode(Node):
     """
@@ -18,10 +19,16 @@ class TemperatureLoggerNode(Node):
     def __init__(self):
         super().__init__('temperature_logger_node')
 
+        qos = QoSProfile(
+            depth=10,
+            reliability=ReliabilityPolicy.BEST_EFFORT  # 빠른 데이터 전송 우선
+        )
+
         # 파라미터 선언
         self.declare_parameter('log_directory', '~/temp_logs')
-        self.declare_parameter('active_actuator', 5)
-        self.declare_parameter('logging_frequency', 1.0)  # 1Hz 로깅 기본값
+        self.declare_parameter('active_actuator', 5) # 0~5중 5번 구동기 & 5번 온도센서
+        self.declare_parameter('logging_frequency', 250.0)  # 250Hz 로깅 기본값
+        self.declare_parameter('max_buffer_size', 150000)  # 10분(250Hz * 60초 * 4) 데이터 저장 가능
 
         # 경로 설정
         self.log_dir = os.path.expanduser(self.get_parameter('log_directory').value)
@@ -35,21 +42,21 @@ class TemperatureLoggerNode(Node):
             TemperatureData,
             'temperature_data',
             self.temperature_callback,
-            10
+            qos
         )
 
         self.actuator_subscription = self.create_subscription(
             ActuatorCommand,
             'actuator_command',
             self.actuator_callback,
-            10
+            qos
         )
 
         self.target_temp_subscription = self.create_subscription(
-            Float64,
+            TemperatureData,
             'target_temperature',
             self.target_temp_callback,
-            10
+            qos
         )
 
         # 로깅 타이머 설정
@@ -64,6 +71,12 @@ class TemperatureLoggerNode(Node):
             'current_log_filename',
             10
         )
+
+        user_filename = os.environ.get('TEMPERATURE_LOG_FILENAME', '')
+        if user_filename:
+            self.user_filename_prefix = user_filename
+        else:
+            self.user_filename_prefix = 'temperature_log'
 
         # 서비스 서버 설정
         self.reset_service = self.create_service(
@@ -87,25 +100,27 @@ class TemperatureLoggerNode(Node):
         self.get_logger().info(f'로그 디렉토리: {self.log_dir}')
 
     def reset_data(self):
-        """데이터 배열 초기화"""
-        self.temperatures = []
-        self.pwm_values = []
-        self.target_temperatures = []
-        self.timestamps = []
+        """데이터 배열 초기화 - deque 사용으로 성능 개선"""
+        self.max_buffer_size = self.get_parameter('max_buffer_size').value
+        self.temperatures = deque(maxlen=self.max_buffer_size)
+        self.pwm_values = deque(maxlen=self.max_buffer_size)
+        self.target_temperatures = deque(maxlen=self.max_buffer_size)
+        self.timestamps = deque(maxlen=self.max_buffer_size)
 
-        # 마지막 수신 데이터 저장 변수
+        # 마지막 수신 데이터 저장 변수 초기화
         self.current_temperature = 0.0
         self.current_pwm = 0
         self.current_target_temp = 0.0
         self.active_actuator = self.get_parameter('active_actuator').value
 
-        # 새 로그 파일 이름 생성
+        # 새 로그 파일 이름 초기화
         self.current_log_filename = None
 
     def temperature_callback(self, msg):
         """온도 데이터 콜백"""
         if len(msg.temperature) > self.active_actuator:
             self.current_temperature = msg.temperature[self.active_actuator]
+
 
     def actuator_callback(self, msg):
         """액추에이터 PWM 데이터 콜백"""
@@ -114,7 +129,8 @@ class TemperatureLoggerNode(Node):
 
     def target_temp_callback(self, msg):
         """목표 온도 데이터 콜백"""
-        self.current_target_temp = msg.data
+        if len(msg.temperature) > self.active_actuator:
+            self.current_target_temp = msg.temperature[self.active_actuator]
 
     def log_data(self):
         """주기적으로 데이터를 메모리에 기록"""
@@ -123,6 +139,7 @@ class TemperatureLoggerNode(Node):
         self.temperatures.append(self.current_temperature)
         self.pwm_values.append(self.current_pwm)
         self.target_temperatures.append(self.current_target_temp)
+
 
         # 활성 로깅 중이라면 CSV에 바로 저장
         if self.is_logging and self.csv_writer is not None:
@@ -135,7 +152,8 @@ class TemperatureLoggerNode(Node):
                 self.current_pwm,
                 self.current_target_temp
             ])
-            self.csv_file.flush()  # 즉시 디스크에 쓰기
+            if len(self.timestamps) % 100 == 0:
+                self.csv_file.flush()
 
     def start_logging(self):
         """CSV 로깅 시작"""
@@ -217,7 +235,7 @@ class TemperatureLoggerNode(Node):
         # 파일 이름 생성
         if custom_filename is None:
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"temp_log_{timestamp}.csv"
+            filename = f"{self.user_filename_prefix}_{timestamp}.csv"
         else:
             filename = custom_filename
 
