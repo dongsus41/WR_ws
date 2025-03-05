@@ -58,6 +58,8 @@ class ActuatorControlPlugin(Plugin):
             Float64, 'ki_param', qos_profile)  # PI 제어기 Ki 게인
         self.emergency_pub = self.node.create_publisher(
             Bool, 'emergency_stop', qos_profile)  # 비상 정지 명령
+        self.control_mode_publisher = self.node.create_publisher(
+            Bool, 'control_mode', qos_profile)  # 제어 모드 (자동/수동)
 
         # 구독자 생성
         self.temp_sub = self.node.create_subscription(
@@ -344,16 +346,13 @@ class ActuatorControlPlugin(Plugin):
             # 자동 모드: 목표 온도와 PI 제어 파라미터 발행
             self.publish_control_parameters()
             self._widget.status_label.setText('자동 제어 파라미터가 적용되었습니다')
-            self.node.get_logger().info('자동 제어 파라미터 적용: 목표 온도=%.1f°C, Kp=%.2f, Ki=%.3f',
-                                     self._widget.target_temp_spin.value(),
-                                     self._widget.kp_spin.value(),
-                                     self._widget.ki_spin.value())
+            self.node.get_logger().info(f'자동 제어 파라미터 적용: 목표 온도={self._widget.target_temp_spin.value():.1f}°C, Kp={self._widget.kp_spin.value():.2f}, Ki={self._widget.ki_spin.value():.3f}')
         else:
             # 수동 모드: PWM 값 직접 설정
             pwm_value = self._widget.pwm_spin.value()
             self.publish_actuator_command(pwm_value)
             self._widget.status_label.setText(f'구동기 5번 PWM이 {pwm_value}으로 설정되었습니다')
-            self.node.get_logger().info('수동 PWM 제어 적용: 구동기 5번, PWM=%d', pwm_value)
+            self.node.get_logger().info(f'수동 PWM 제어 적용: 구동기 5번, PWM={pwm_value}')
 
     def publish_control_parameters(self):
         """
@@ -361,8 +360,12 @@ class ActuatorControlPlugin(Plugin):
         """
         try:
             # 목표 온도 발행
-            target_temp_msg = Float64()
-            target_temp_msg.data = self._widget.target_temp_spin.value()
+            target_temp_msg = TemperatureData()
+            target_temp_msg.header.stamp = self.node.get_clock().now().to_msg()
+
+            target_temp_msg.temperature = [0.0] * 6
+
+            target_temp_msg.temperature[5] = self._widget.target_temp_spin.value()
             self.target_temp_pub.publish(target_temp_msg)
 
             # Kp 값 발행
@@ -446,20 +449,4 @@ if __name__ == '__main__':
     main()
 
 
-def main(args=None):
-    """
-    rqt 플러그인 메인 함수 (독립 실행 모드에서 사용)
-    """
-    # 독립 실행 모드일 때만 rclpy.init을 호출합니다
-    # rqt 내에서 실행될 때는 이미 초기화되어 있으므로 호출하지 않습니다
 
-    from rqt_gui.main import Main
-    main = Main()
-    sys.exit(main.main(sys.argv, standalone='wearable_robot_rqt_plugins.actuator_control_plugin.ActuatorControlPlugin'))
-
-if __name__ == '__main__':
-    import sys
-
-    # 독립 실행 모드일 때는 rclpy를 직접 초기화합니다
-    rclpy.init(args=sys.argv)
-    main()
