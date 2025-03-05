@@ -28,7 +28,7 @@ public:
             "actuator_command", 10);
 
         // auto mode: 목표 온도 구독
-        target_temp_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
+        target_temp_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::TemperatureData>(
             "target_temperature", 10,
             std::bind(&ActuatorControlNode::target_temp_callback, this, std::placeholders::_1));
 
@@ -189,7 +189,7 @@ private:
     }
 
     // 목표 온도 설정 콜백
-    void target_temp_callback(const std_msgs::msg::Float64::SharedPtr msg)
+    void target_temp_callback(const wearable_robot_interfaces::msg::TemperatureData::SharedPtr msg)
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
 
@@ -206,8 +206,16 @@ private:
         }
 
         // 목표 온도 업데이트 (수동 모드여도 저장은 함)
-        this->set_parameter(rclcpp::Parameter("target_temperature", msg->data));
-        RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 업데이트되었습니다", msg->data);
+        if (msg->temperature.size() > static_cast<size_t>(active_actuator_idx_)) {
+            double target_temp = msg->temperature[active_actuator_idx_];
+
+            // 목표 온도 업데이트
+            this->set_parameter(rclcpp::Parameter("target_temperature", target_temp));
+            RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 업데이트되었습니다", target_temp);
+        } else {
+            RCLCPP_WARN(this->get_logger(),
+                "유효하지 않은 목표 온도 메시지: 구동기 %d의 데이터가 없습니다", active_actuator_idx_ + 1);
+        }
     }
 
     // 비상 정지 콜백
@@ -377,7 +385,7 @@ private:
 
     // 구독 및 발행
     rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr temp_subscription_;
-    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr target_temp_subscription_;
+    rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr target_temp_subscription_;
     rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr kp_param_subscription_;
     rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr ki_param_subscription_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr emergency_subscription_;

@@ -70,6 +70,8 @@ class ActuatorControlPlugin(Plugin):
         # 주기적인 작업을 위한 타이머 (1초마다 안전 검사)
         self.timer = self.node.create_timer(1.0, self.timer_callback)
 
+        self._shutdown_flag = False
+
         # ROS 2 스핀을 위한 스레드 생성
         self.spin_thread = threading.Thread(target=self.spin_ros)
         self.spin_thread.daemon = True
@@ -165,6 +167,9 @@ class ActuatorControlPlugin(Plugin):
 
     def shutdown_plugin(self):
         """플러그인이 종료될 때 호출되는 메서드"""
+
+        self._shutdown_flag = True
+
         # Qt 타이머 중지
         if hasattr(self, 'qt_timer') and self.qt_timer.isActive():
             self.qt_timer.stop()
@@ -175,14 +180,16 @@ class ActuatorControlPlugin(Plugin):
             msg.data = False
             self.emergency_pub.publish(msg)
 
+        # 스핀 스레드 종료 대기
+        if hasattr(self, 'spin_thread') and self.spin_thread.is_alive():
+            self.spin_thread.join(timeout=1.0)  # 최대 1초 대기
+
         # ROS 노드 정리
         if hasattr(self, 'node') and self.node:
             self.node.get_logger().info("플러그인 종료 중...")
             self.node.destroy_node()
 
-        # 스핀 스레드 종료 대기
-        if hasattr(self, 'spin_thread') and self.spin_thread.is_alive():
-            self.spin_thread.join(timeout=1.0)  # 최대 1초 대기
+
 
         print("[INFO]: 플러그인 자원이 정상적으로 해제되었습니다")
 
@@ -195,10 +202,12 @@ class ActuatorControlPlugin(Plugin):
             executor.add_node(self.node)
 
             # executor 스핀
-            while rclpy.ok():
+            while rclpy.ok() and not self._shutdown_flag:
                 executor.spin_once(timeout_sec=0.1)  # 100ms 타임아웃으로 반응성 유지
         except Exception as e:
-            self.node.get_logger().error(f"ROS 스핀 스레드 오류: {str(e)}")
+            if hasattr(self, 'node') and self.node:
+                self.node.get_logger().error(f"ROS 스핀 스레드 오류: {str(e)}")
+
         finally:
             if hasattr(self, 'node') and self.node:
                 self.node.get_logger().info("스핀 스레드가 종료됩니다")
@@ -315,6 +324,10 @@ class ActuatorControlPlugin(Plugin):
         """
         제어 모드 변경 이벤트 처리
         """
+
+        if not checked:
+            return
+
         if self._widget.auto_mode_radio.isChecked():
             self.auto_mode = True
             self._widget.auto_settings_group.setEnabled(True)
@@ -325,6 +338,7 @@ class ActuatorControlPlugin(Plugin):
             # 자동 모드로 전환 시 현재 설정된 파라미터 즉시 발행
             self.publish_control_parameters()
             self.node.get_logger().info('자동 제어 모드로 전환합니다')
+            self.publish_control_mode(True)
         else:
             self.auto_mode = False
             self._widget.auto_settings_group.setEnabled(False)
@@ -333,6 +347,7 @@ class ActuatorControlPlugin(Plugin):
             self._widget.status_label.setStyleSheet("")
 
             self.node.get_logger().info('수동 제어 모드로 전환합니다')
+            self.publish_control_mode(False)
 
     def apply_settings(self):
         """
