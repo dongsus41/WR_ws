@@ -6,15 +6,14 @@ import csv
 import datetime
 import numpy as np
 import rclpy
-
+import sys
 from std_srvs.srv import Trigger
 from std_srvs.srv import SetBool
-from std_msgs.msg import String
+from std_msgs.msg import String, Bool, Float64
 import rclpy.task
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 from wearable_robot_interfaces.msg import ActuatorCommand, TemperatureData
-from std_msgs.msg import Bool, Float64
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QVBoxLayout, QLabel
@@ -49,7 +48,7 @@ class ActuatorControlPlugin(Plugin):
         self.temp_data = []                 # 온도 데이터
         self.target_temp_data = []          # 목표 온도 데이터
         self.pwm_data = []                  # PWM 데이터
-        self.start_time = None              # 그래프 시작 시간
+        self.start_time = 0.0              # 그래프 시작 시간
 
         # 내부 상태 변수 초기화
         self.temperature = 0.0              # 현재 온도
@@ -57,6 +56,8 @@ class ActuatorControlPlugin(Plugin):
         self.auto_mode = False              # 자동 제어 모드 여부
         self.is_emergency_stop = False      # 비상 정지 상태
         self.safety_temp_threshold = 80.0   # 안전 온도 임계값 (°C)
+        self.is_data_logger_available = False  # 데이터 로거 사용 가능 여부
+        self.is_logger_active = False       # 로거 활성화 상태
 
         # 그래프 관련 객체 초기화
         self.temp_plot_widget = None
@@ -72,8 +73,8 @@ class ActuatorControlPlugin(Plugin):
             if not rclpy.ok():
                 rclpy.init()
 
-            import time
-            node_name = f'actuator_control_plugin_{int(time.time())}'
+
+            node_name = "actuator_control_plugin_internal"
             self.node = Node(node_name)
 
             self.node.get_logger().info(f"노드 생성 성공: {node_name}")
@@ -102,12 +103,16 @@ class ActuatorControlPlugin(Plugin):
             Bool, 'emergency_stop', qos_profile)  # 비상 정지 명령
         self.control_mode_publisher = self.node.create_publisher(
             Bool, 'control_mode', qos_profile)  # 제어 모드 (자동/수동)
+        self.filename_publisher = self.node.create_publisher(
+            String, 'set_log_filename', qos_profile)  # 로깅 파일명 설정
 
         # 구독자 생성
         self.temp_sub = self.node.create_subscription(
             TemperatureData, 'temperature_data', self.temp_callback, qos_profile)  # 온도 데이터
         self.pwm_sub = self.node.create_subscription(
             ActuatorCommand, 'pwm_state', self.pwm_callback, qos_profile)  # 현재 PWM 상태
+        self.logging_status_sub = self.node.create_subscription(
+            Bool, 'logging_status', self.logging_status_callback, qos_profile)  # 로깅 상태
 
         # 주기적인 작업을 위한 타이머 (1초마다 안전 검사)
         self.timer = self.node.create_timer(1.0, self.timer_callback)
@@ -118,6 +123,9 @@ class ActuatorControlPlugin(Plugin):
         self.spin_thread = threading.Thread(target=self.spin_ros)
         self.spin_thread.daemon = True
         self.spin_thread.start()
+
+        # 클래스 내 __init__에 추가
+        self.data_lock = threading.RLock()  # 재진입 가능한 락 사용
 
         # UI 설정
         self._widget = QWidget()
@@ -178,20 +186,22 @@ class ActuatorControlPlugin(Plugin):
         self._widget.graph_stop_button.clicked.connect(self.stop_plotting)
         self._widget.reset_graph_button.clicked.connect(self.reset_graph_data)
 
+        # 로깅 서비스 클라이언트 초기화
         self.reset_logger_client = self.node.create_client(Trigger, 'reset_temperature_log')
         self.save_logger_client = self.node.create_client(SetBool, 'save_temperature_log')
 
-        if not self.reset_logger_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().warn("reset_temperature_log 서비스를 사용할 수 없습니다. data_logger 노드가 실행 중인지 확인하세요.")
+        # 서비스 가용성 검사 타이머 (5초마다)
+        self.service_check_timer = QTimer()
+        self.service_check_timer.timeout.connect(self.check_logger_services)
+        self.service_check_timer.start(5000)  # 5초마다 검사
 
-        if not self.save_logger_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().warn("save_temperature_log 서비스를 사용할 수 없습니다. data_logger 노드가 실행 중인지 확인하세요.")
-
-
-        self.logging_status_sub = self.node.create_subscription(String, 'current_log_filename', self.logging_status_callback, 10)
-
+        # 데이터 저장 버튼 연결
         self._widget.save_data_button.clicked.connect(self.request_data_save)
         self._widget.reset_graph_button.clicked.connect(self.reset_data_logging)
+
+        # 로그 파일명 수신 구독
+        self.log_filename_sub = self.node.create_subscription(
+            String, 'current_log_filename', self.log_filename_callback, qos_profile)
 
         # Qt 타이머 추가 (UI 업데이트용)
         self.qt_timer = QTimer()
@@ -201,7 +211,7 @@ class ActuatorControlPlugin(Plugin):
         # 그래프 업데이트 타이머
         self.graph_timer = QTimer()
         self.graph_timer.timeout.connect(self.update_graphs)
-        self.graph_timer.setInterval(40)  # 500ms마다 그래프 업데이트 (성능 개선)
+        self.graph_timer.setInterval(100)  # 100ms마다 그래프 업데이트 (10Hz)
 
         # 초기화를 완료했음을 표시
         self._widget.status_label.setText('플러그인이 초기화되었습니다')
@@ -209,6 +219,48 @@ class ActuatorControlPlugin(Plugin):
 
         # 초기 모드 발행 (기본: 수동 모드)
         self.publish_control_mode(False)
+
+        # 초기 서비스 가용성 검사
+        self.check_logger_services()
+
+    def log_filename_callback(self, msg):
+        """로그 파일 이름 수신 콜백"""
+        if msg.data:
+            self._widget.log_status_label.setText(f"로깅 상태: 활성화 - {msg.data}")
+            self.node.get_logger().info(f"로그 파일명 업데이트: {msg.data}")
+
+    def check_logger_services(self):
+        """데이터 로거 서비스 가용성 검사"""
+        reset_available = self.reset_logger_client.service_is_ready()
+        save_available = self.save_logger_client.service_is_ready()
+
+        # 이전 상태와 비교하여 변경이 있을 때만 로그 출력
+        if reset_available and save_available != self.is_data_logger_available:
+            self.is_data_logger_available = True
+            self.node.get_logger().info("데이터 로거 서비스 연결 성공")
+            self._widget.status_label.setText("데이터 로거 서비스 연결됨")
+        elif not (reset_available and save_available) and self.is_data_logger_available:
+            self.is_data_logger_available = False
+            self.node.get_logger().warn("데이터 로거 서비스를 사용할 수 없습니다. data_logger 노드가 실행 중인지 확인하세요.")
+            self._widget.status_label.setText("데이터 로거 서비스 연결 실패")
+
+        # UI 버튼 상태 업데이트
+        self._widget.save_data_button.setEnabled(self.is_data_logger_available)
+
+    def logging_status_callback(self, msg):
+        """로깅 상태 콜백"""
+        self.is_logger_active = msg.data
+        if msg.data:
+            if not self.is_plotting:
+                # 그래프 플로팅도 자동으로 시작
+                self.start_plotting()
+            self._widget.log_status_label.setText("로깅 상태: 활성화")
+            self._widget.save_data_button.setText("로깅 중지")
+        else:
+            self._widget.log_status_label.setText("로깅 상태: 대기 중")
+            self._widget.save_data_button.setText("데이터 저장")
+
+        self.node.get_logger().debug(f"로깅 상태 업데이트: {msg.data}")
 
     def setup_graphs(self):
         """
@@ -238,7 +290,7 @@ class ActuatorControlPlugin(Plugin):
             self.temp_plot_widget.showGrid(x=True, y=True, alpha=0.3)
 
             # 온도 Y축 범위 설정 (20°C ~ 80°C)
-            self.temp_plot_widget.setYRange(20, 80, padding=0.05)
+            self.temp_plot_widget.setYRange(20, 100, padding=0.05)
 
             # 사용자 확대/축소 활성화 (자동 범위 조정은 유지)
             self.temp_plot_widget.setMouseEnabled(x=True, y=True)
@@ -327,144 +379,11 @@ class ActuatorControlPlugin(Plugin):
             pwm_layout.addWidget(self.pwm_plot_widget)
             self._widget.pwm_graph_frame.setLayout(pwm_layout)
 
-            # 더미 데이터로 테스트 (그래프가 표시되는지 확인)
-            init_time = list(range(5))
-            init_temp = [30, 35, 40, 38, 36]
-            init_target = [50] * 5
-            init_pwm = [10, 30, 50, 40, 20]
 
-            self.temp_line.setData(init_time, init_temp)
-            self.target_temp_line.setData(init_time, init_target)
-            self.pwm_line.setData(init_time, init_pwm)
 
             # 그래프 자동 범위 설정
-            self.temp_plot_widget.autoRange()
-            self.pwm_plot_widget.autoRange()
-
-            self.node.get_logger().info("그래프 초기화 완료")
-        except Exception as e:
-            import traceback
-            self.node.get_logger().error(f"그래프 초기화 오류: {str(e)}")
-            self.node.get_logger().error(traceback.format_exc())
-            # UI에 오류 메시지 표시
-            error_layout = QVBoxLayout()
-            error_label = QLabel(f"그래프 초기화 오류: {str(e)}")
-            error_label.setStyleSheet("color: red; font-weight: bold;")
-            error_layout.addWidget(error_label)
-            self._widget.temp_graph_frame.setLayout(error_layout)
-            self._widget.pwm_graph_frame.setLayout(QVBoxLayout())
-
-        """
-        그래프 위젯 초기화 및 설정
-        """
-        try:
-            if not PYQTGRAPH_AVAILABLE:
-                self.node.get_logger().error("PyQtGraph 라이브러리가 설치되지 않았습니다. 그래프 기능을 사용할 수 없습니다.")
-                # 그래프 영역에 오류 메시지 표시
-                error_layout = QVBoxLayout()
-                error_label = QLabel("PyQtGraph 라이브러리가 설치되지 않았습니다.\n'pip install pyqtgraph' 명령어로 설치하세요.")
-                error_label.setStyleSheet("color: red; font-weight: bold;")
-                error_layout.addWidget(error_label)
-                self._widget.temp_graph_frame.setLayout(error_layout)
-                self._widget.pwm_graph_frame.setLayout(QVBoxLayout())
-                return
-
-            # PyQtGraph 기본 설정
-            pg.setConfigOptions(antialias=True, useOpenGL=False)  # OpenGL 비활성화로 호환성 향상
-
-            # 온도 그래프 설정
-            self.temp_plot_widget = pg.PlotWidget()
-            self.temp_plot_widget.setBackground('w')
-            self.temp_plot_widget.setTitle("온도 그래프", color="k", size="12pt")
-            self.temp_plot_widget.setLabel("left", "온도 (°C)", color="k")
-            self.temp_plot_widget.setLabel("bottom", "시간 (초)", color="k")
-            self.temp_plot_widget.showGrid(x=True, y=True, alpha=0.3)
-            self.temp_plot_widget.setYRange(20, 90)  # 온도 범위 0-100°C
-            self.temp_plot_widget.setMouseEnabled(x=True, y=True)  # 사용자 확대/축소 활성화
-
-            self.temp_plot_widget.enableAutoRange()
-
-            # 온도 그래프 데이터 라인 생성
-            self.temp_line = self.temp_plot_widget.plot(
-                pen=pg.mkPen(color=(255, 0, 0), width=2),
-                name="현재 온도",
-                symbol='o',  # 원형 마커
-                symbolSize=3,  # 마커 크기
-                symbolBrush=(255, 0, 0)  # 마커 색상
-            )
-            self.target_temp_line = self.temp_plot_widget.plot(
-                pen=pg.mkPen(color=(0, 0, 255), width=2, style=Qt.DashLine),
-                name="목표 온도"
-            )
-
-            # 범례 추가
-            self.temp_legend = pg.LegendItem(offset=(30, 30))
-            self.temp_legend.setParentItem(self.temp_plot_widget.graphicsItem())
-            self.temp_legend.addItem(self.temp_line, "현재 온도")
-            self.temp_legend.addItem(self.target_temp_line, "목표 온도")
-
-            # PWM 그래프 설정
-            self.pwm_plot_widget = pg.PlotWidget()
-            self.pwm_plot_widget.setBackground('w')
-            self.pwm_plot_widget.setTitle("PWM 그래프", color="k", size="12pt")
-            self.pwm_plot_widget.setLabel("left", "PWM 값", color="k")
-            self.pwm_plot_widget.setLabel("bottom", "시간 (초)", color="k")
-            self.pwm_plot_widget.showGrid(x=True, y=True, alpha=0.3)
-            self.pwm_plot_widget.setYRange(0, 100)  # PWM 범위 0-100
-            self.pwm_plot_widget.setMouseEnabled(x=True, y=True)  # 사용자 확대/축소 활성화
-            self.pwm_plot_widget.enableAutoRange()
-
-            # PWM 그래프 데이터 라인 생성
-            self.pwm_line = self.pwm_plot_widget.plot(
-                pen=pg.mkPen(color=(0, 128, 0), width=2),
-                name="PWM 값",
-                symbol='o',  # 원형 마커
-                symbolSize=3,  # 마커 크기
-                symbolBrush=(0, 128, 0)  # 마커 색상
-            )
-
-            # 기존 레이아웃 제거 (이미 레이아웃이 있을 경우)
-            if self._widget.temp_graph_frame.layout() is not None:
-                old_layout = self._widget.temp_graph_frame.layout()
-                while old_layout.count():
-                    item = old_layout.takeAt(0)
-                    widget = item.widget()
-                    if widget is not None:
-                        widget.deleteLater()
-                # Qt는 레이아웃을 직접 삭제하지 않으므로 빈 위젯으로 대체
-                QWidget().setLayout(old_layout)
-
-            if self._widget.pwm_graph_frame.layout() is not None:
-                old_layout = self._widget.pwm_graph_frame.layout()
-                while old_layout.count():
-                    item = old_layout.takeAt(0)
-                    widget = item.widget()
-                    if widget is not None:
-                        widget.deleteLater()
-                QWidget().setLayout(old_layout)
-
-            # 그래프 프레임에 위젯 추가
-            temp_layout = QVBoxLayout()
-            temp_layout.addWidget(self.temp_plot_widget)
-            self._widget.temp_graph_frame.setLayout(temp_layout)
-
-            pwm_layout = QVBoxLayout()
-            pwm_layout.addWidget(self.pwm_plot_widget)
-            self._widget.pwm_graph_frame.setLayout(pwm_layout)
-
-            # 더미 데이터로 테스트 (그래프가 표시되는지 확인)
-            init_time = list(range(5))
-            init_temp = [30, 35, 40, 38, 36]
-            init_target = [50] * 5
-            init_pwm = [10, 30, 50, 40, 20]
-
-            self.temp_line.setData(init_time, init_temp)
-            self.target_temp_line.setData(init_time, init_target)
-            self.pwm_line.setData(init_time, init_pwm)
-
-            # 그래프 범위 재설정
-            self.temp_plot_widget.autoRange()
-            self.pwm_plot_widget.autoRange()
+            #self.temp_plot_widget.autoRange()
+            #self.pwm_plot_widget.autoRange()
 
             self.node.get_logger().info("그래프 초기화 완료")
         except Exception as e:
@@ -515,6 +434,10 @@ class ActuatorControlPlugin(Plugin):
         # 그래프 타이머 중지
         if hasattr(self, 'graph_timer') and self.graph_timer.isActive():
             self.graph_timer.stop()
+
+        # 서비스 검사 타이머 중지
+        if hasattr(self, 'service_check_timer') and self.service_check_timer.isActive():
+            self.service_check_timer.stop()
 
         # 비상 정지 해제 (안전을 위해)
         if hasattr(self, 'emergency_pub'):
@@ -577,7 +500,7 @@ class ActuatorControlPlugin(Plugin):
             if self.auto_mode:
                 target_temp = self._widget.target_temp_spin.value()
             else:
-                target_temp = 0.0  # 수동 모드일 때는 목표 온도 없음
+                target_temp = 0.0 # 수동 모드일 때는 목표 온도 없음
 
             # 비상 정지 상태 표시
             if self.is_emergency_stop:
@@ -617,9 +540,25 @@ class ActuatorControlPlugin(Plugin):
                 elapsed_time = 0
                 if self.start_time:
                     elapsed_time = (datetime.datetime.now() - self.start_time).total_seconds()
-                self._widget.log_status_label.setText(f"로깅 상태: 활성화 (경과 시간: {int(elapsed_time)}초)")
+
+                # 이미 로깅 상태 문자열이 있는지 확인하고, 없으면 기본 메시지 표시
+                status_text = self._widget.log_status_label.text()
+                if "로깅 상태: 활성화" not in status_text:
+                    self._widget.log_status_label.setText(f"로깅 상태: 활성화 (경과 시간: {int(elapsed_time)}초)")
+                else:
+                    # 기존 텍스트에서 시간 부분만 업데이트
+                    time_text = f"(경과 시간: {int(elapsed_time)}초)"
+                    if " (" in status_text:
+                        parts = status_text.split(" (")
+                        self._widget.log_status_label.setText(f"{parts[0]} {time_text}")
+                    else:
+                        self._widget.log_status_label.setText(f"{status_text} {time_text}")
+
+            # 저장 버튼 텍스트 업데이트
+            if self.is_logger_active:
+                self._widget.save_data_button.setText("로깅 중지")
             else:
-                self._widget.log_status_label.setText("로깅 상태: 대기 중")
+                self._widget.save_data_button.setText("데이터 저장")
 
         except RuntimeError as e:
             if "deleted" in str(e):
@@ -642,10 +581,8 @@ class ActuatorControlPlugin(Plugin):
                     current_time = datetime.datetime.now()
                     elapsed_time = (current_time - self.start_time).total_seconds()
 
-                    # 매초 또는 큰 변화가 있을 때만 데이터 추가 (성능 최적화)
-                    if (not self.time_data) or (elapsed_time - self.time_data[-1]) >= 1.0 or (
-                        abs(self.temperature - self.temp_data[-1]) > 0.5  # 온도 변화가 0.5°C 이상일 때
-                    ):
+                    # 데이터 락 획득 후 배열 수정
+                    with self.data_lock:
                         self.time_data.append(elapsed_time)
                         self.temp_data.append(self.temperature)
 
@@ -659,15 +596,123 @@ class ActuatorControlPlugin(Plugin):
                         # PWM 값
                         self.pwm_data.append(self.current_pwm)
 
-                        # 버퍼 크기 제한 (5분 = 300초)
-                        if len(self.time_data) > self.buffer_size:
+                        # 버퍼 크기 제한 (5분 = 300초 기준, 하지만 데이터 포인트가 많아질 수 있음)
+                        # 시간 기준으로 오래된 데이터 제거
+                        max_age = 300.0  # 5분
+                        while self.time_data and (elapsed_time - self.time_data[0]) > max_age:
                             self.time_data.pop(0)
                             self.temp_data.pop(0)
                             self.target_temp_data.pop(0)
                             self.pwm_data.pop(0)
+
+                    # 로그 출력
+                    if len(self.time_data) % 1000 == 0:  # 500개마다 로그 출력
+                        self.node.get_logger().info(f"데이터 개수: {len(self.time_data)}, 시간 범위: {elapsed_time - self.time_data[0]:.1f}초")
         except Exception as e:
             import traceback
             self.node.get_logger().error(f'온도 데이터 처리 오류: {str(e)}')
+            self.node.get_logger().error(traceback.format_exc())
+
+    def update_graphs(self):
+        """
+        그래프 데이터 업데이트 (그래프 타이머에서 호출)
+        """
+        if not self.is_plotting or not PYQTGRAPH_AVAILABLE:
+            return
+
+        try:
+            # 데이터가 있을 경우에만 그래프 업데이트
+            if hasattr(self, 'temp_line') and hasattr(self, 'pwm_line'):
+                # 락 획득 후 데이터 복사 (스레드 안전)
+                with self.data_lock:
+                    if not self.time_data or len(self.time_data) < 2:
+                        return  # 데이터가 없거나 불충분하면 업데이트 중단
+
+                    # 데이터 안전하게 복사
+                    time_data = list(self.time_data)
+                    temp_data = list(self.temp_data)
+                    target_temp_data = list(self.target_temp_data)
+                    pwm_data = list(self.pwm_data)
+
+                # 일관성 검사 (추가 보호)
+                min_length = min(len(time_data), len(temp_data), len(target_temp_data), len(pwm_data))
+                if min_length < 2:
+                    return  # 충분한 데이터가 없으면 업데이트 중단
+
+                # 모든 배열을 같은 길이로 자름
+                time_data = time_data[:min_length]
+                temp_data = temp_data[:min_length]
+                target_temp_data = target_temp_data[:min_length]
+                pwm_data = pwm_data[:min_length]
+
+                # 시간 창 계산 (지정된 시간 창만 표시)
+                window_size = 60.0  # 60초 창
+                latest_time = time_data[-1]
+                start_time = max(0, latest_time - window_size)
+
+                # 시간 범위로 필터링
+                visible_data = [(i, t, v1, v2, v3) for i, (t, v1, v2, v3) in
+                                enumerate(zip(time_data, temp_data, target_temp_data, pwm_data))
+                                if t >= start_time]
+
+                if not visible_data:
+                    return
+
+                # 인덱스, 시간, 온도, 타겟 온도, PWM으로 분리
+                indices, display_time, display_temp, display_target, display_pwm = zip(*visible_data)
+
+                # 다운샘플링 로직 - 최대 400개 포인트로 제한
+                target_points = 400
+
+                if len(display_time) > target_points:
+                    # 다운샘플링 인덱스 계산
+                    indices = list(indices)  # 튜플을 리스트로 변환
+
+                    # 다운샘플링 방법: 시간 기준 균등 분할
+                    # 시작과 끝 포인트는 항상 포함
+                    # 중간 부분은 균등하게 분포
+                    if len(indices) >= 2:
+                        # 첫 포인트와 마지막 포인트
+                        sampled_indices = [indices[0]]
+
+                        # 중간 포인트들 (균등 간격)
+                        step = (len(indices) - 2) / (target_points - 2)
+                        for i in range(1, target_points - 1):
+                            idx = indices[min(int(i * step) + 1, len(indices) - 1)]
+                            sampled_indices.append(idx)
+
+                        # 마지막 포인트 추가
+                        sampled_indices.append(indices[-1])
+
+                        # 중복 제거 및 정렬
+                        sampled_indices = sorted(set(sampled_indices))
+
+                        # 샘플링된 데이터로 새로운 데이터셋 생성
+                        display_time = [time_data[i] for i in sampled_indices]
+                        display_temp = [temp_data[i] for i in sampled_indices]
+                        display_target = [target_temp_data[i] for i in sampled_indices]
+                        display_pwm = [pwm_data[i] for i in sampled_indices]
+
+                # 그래프 업데이트
+                self.temp_line.setData(display_time, display_temp)
+                self.target_temp_line.setData(display_time, display_target)
+                self.pwm_line.setData(display_time, display_pwm)
+
+                # X축 범위 고정 (60초 창)
+                self.temp_plot_widget.setXRange(start_time, latest_time, padding=0.02)
+                self.pwm_plot_widget.setXRange(start_time, latest_time, padding=0.02)
+
+                # 자동 범위 조정 비활성화
+                self.temp_plot_widget.getViewBox().setAutoVisible(y=True, x=False)
+                self.pwm_plot_widget.getViewBox().setAutoVisible(y=True, x=False)
+
+                # 상태 업데이트
+                if hasattr(self, '_widget'):
+                    self._widget.status_label.setText(f"데이터 플로팅 중: {len(display_time)}포인트 ({len(time_data)}개 중)")
+
+        except Exception as e:
+            import traceback
+            self.node.get_logger().error(f"그래프 업데이트 오류: {str(e)}")
             self.node.get_logger().error(traceback.format_exc())
 
     def pwm_callback(self, msg):
@@ -681,62 +726,6 @@ class ActuatorControlPlugin(Plugin):
                 self.node.get_logger().debug(f'구동기 5번 현재 PWM: {self.current_pwm}')
         except Exception as e:
             self.node.get_logger().error(f'PWM 데이터 처리 오류: {str(e)}')
-
-    def update_graphs(self):
-        """
-        그래프 데이터 업데이트 (그래프 타이머에서 호출)
-        """
-        if not self.is_plotting or not PYQTGRAPH_AVAILABLE:
-            return
-
-        try:
-            # 데이터가 있을 경우에만 그래프 업데이트
-            if hasattr(self, 'temp_line') and hasattr(self, 'pwm_line') and self.time_data and self.temp_data:
-                # 효율적인 그래프 업데이트를 위한 다운샘플링
-                # 데이터가 300개 이상일 경우 다운샘플링
-                if len(self.time_data) > 300:
-                    # 30개씩 건너뛰며 시각화 (모든 포인트를 그리지 않음)
-                    downsample_factor = max(1, len(self.time_data) // 100)
-                    time_data = self.time_data[::downsample_factor]
-                    temp_data = self.temp_data[::downsample_factor]
-                    target_temp_data = self.target_temp_data[::downsample_factor]
-                    pwm_data = self.pwm_data[::downsample_factor]
-
-                    # 마지막 데이터는 항상 포함
-                    if time_data[-1] != self.time_data[-1]:
-                        time_data.append(self.time_data[-1])
-                        temp_data.append(self.temp_data[-1])
-                        target_temp_data.append(self.target_temp_data[-1])
-                        pwm_data.append(self.pwm_data[-1])
-                else:
-                    time_data = self.time_data
-                    temp_data = self.temp_data
-                    target_temp_data = self.target_temp_data
-                    pwm_data = self.pwm_data
-
-                # 온도 그래프 업데이트
-                self.temp_line.setData(time_data, temp_data)
-                self.target_temp_line.setData(time_data, target_temp_data)
-
-                # PWM 그래프 업데이트
-                self.pwm_line.setData(time_data, pwm_data)
-
-                # 자동 X축 범위 조정 (필요한 경우에만)
-                if len(time_data) > 5 and (len(time_data) % 10 == 0):
-                    # 데이터가 충분히 변경된 경우에만 자동 범위 조정 (성능 개선)
-                    x_min = min(time_data)
-                    x_max = max(time_data)
-                    x_padding = (x_max - x_min) * 0.05  # 5% 여백
-                    self.temp_plot_widget.setXRange(x_min-x_padding, x_max+x_padding, padding=0)
-                    self.pwm_plot_widget.setXRange(x_min-x_padding, x_max+x_padding, padding=0)
-
-                # 디버그 로그 (개발 중에만 사용)
-                if len(self.time_data) % 50 == 0:  # 50개 데이터마다 로그 기록 (빈도 감소)
-                    self.node.get_logger().debug(f"그래프 데이터: 시간={self.time_data[-1]:.1f}, 온도={self.temp_data[-1]:.1f}, PWM={self.pwm_data[-1]}")
-        except Exception as e:
-            import traceback
-            self.node.get_logger().error(f"그래프 업데이트 오류: {str(e)}")
-            self.node.get_logger().error(traceback.format_exc())
 
     def start_plotting(self):
         """
@@ -761,19 +750,17 @@ class ActuatorControlPlugin(Plugin):
         self._widget.status_label.setText("그래프 플로팅이 시작되었습니다")
         self.node.get_logger().info("그래프 플로팅이 시작되었습니다")
 
-        # 처음 데이터 포인트 추가 (현재 온도)
-        self.time_data.append(0.0)
-        self.temp_data.append(self.temperature)
+        # 초기 데이터 추가
+        with self.data_lock:
+            self.time_data = [0.0]
+            self.temp_data = [self.temperature]
 
-        # 목표 온도 (자동 모드일 때는 설정값, 수동 모드일 때는 0)
-        if self.auto_mode:
-            target_temp = self._widget.target_temp_spin.value()
-        else:
-            target_temp = 0.0
-        self.target_temp_data.append(target_temp)
-
-        # PWM 값
-        self.pwm_data.append(self.current_pwm)
+            if self.auto_mode:
+                target_temp = self._widget.target_temp_spin.value()
+            else:
+                target_temp = 0.0
+            self.target_temp_data = [target_temp]
+            self.pwm_data = [self.current_pwm]
 
     def stop_plotting(self):
         """
@@ -831,7 +818,7 @@ class ActuatorControlPlugin(Plugin):
         self._widget.status_label.setText("그래프 데이터가 초기화되었습니다")
         self.node.get_logger().info("그래프 데이터가 초기화되었습니다")
 
-    def save_data_to_file(self):
+    def save_data_to_file(self, custom_filename=None):
         """
         수집된 데이터를 CSV 파일로 저장
         """
@@ -840,10 +827,10 @@ class ActuatorControlPlugin(Plugin):
             if not self.time_data:
                 self._widget.status_label.setText("저장할 데이터가 없습니다")
                 self.node.get_logger().warn("저장할 데이터가 없습니다")
-                return
+                return False, "저장할 데이터가 없습니다"
 
             # 파일 이름 생성 (사용자 입력 + 날짜시간)
-            base_filename = self._widget.filename_edit.text()
+            base_filename = self._widget.filename_edit.text() if not custom_filename else custom_filename
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"{base_filename}_{timestamp}.csv"
             filepath = os.path.join(self.data_logging_path, filename)
@@ -870,13 +857,16 @@ class ActuatorControlPlugin(Plugin):
             # 성공 메시지 표시
             QMessageBox.information(self._widget, "저장 완료",
                                    f"데이터가 성공적으로 저장되었습니다.\n파일 위치: {filepath}")
+            return True, filepath
 
         except Exception as e:
-            self._widget.status_label.setText(f"데이터 저장 중 오류 발생: {str(e)}")
+            error_msg = f"데이터 저장 중 오류 발생: {str(e)}"
+            self._widget.status_label.setText(error_msg)
             self.node.get_logger().error(f"데이터 저장 오류: {str(e)}")
 
             # 오류 메시지 표시
             QMessageBox.critical(self._widget, "저장 오류", f"데이터 저장 중 오류가 발생했습니다.\n{str(e)}")
+            return False, error_msg
 
     def check_temperature_safety(self):
         """
@@ -1033,49 +1023,83 @@ class ActuatorControlPlugin(Plugin):
 
     def request_data_save(self):
         """
-        data_logger에 데이터 저장 요청
+        data_logger에 데이터 저장 요청하거나, 이미 로깅 중이면 중지 요청
         """
-        if not self.save_logger_client.service_is_ready():
-            self._widget.status_label.setText("데이터 로거 서비스에 연결할 수 없습니다")
-            self.node.get_logger().error("save_temperature_log 서비스에 연결할 수 없습니다")
+        # 로거 노드가 없는 경우 자체적으로 파일 저장
+        if not self.is_data_logger_available:
+            self.node.get_logger().warn("데이터 로거 서비스가 사용 불가능합니다. 내부 저장 기능 사용")
+            self._widget.status_label.setText("데이터 로거 서비스 연결 실패. 내부 저장 기능 사용 중...")
+
+            # 파일명 설정
+            custom_filename = self._widget.filename_edit.text()
+            success, result = self.save_data_to_file(custom_filename)
+
+            if success:
+                self._widget.status_label.setText(f"내부 저장 성공: {os.path.basename(result)}")
+            else:
+                self._widget.status_label.setText(f"내부 저장 실패: {result}")
+
             return
 
-        # 사용자 파일명 가져오기
-        filename = self._widget.filename_edit.text()
+        try:
+            # 로깅 상태에 따라 시작/중지 결정
+            if self.is_logger_active:
+                # 로깅 중지 요청
+                request = SetBool.Request()
+                request.data = False
+                self._widget.status_label.setText("로깅 중지 요청 중...")
+                self.node.get_logger().info("로깅 중지 요청")
+            else:
+                # 로깅 시작 요청
+                # 사용자 파일명 발행
+                filename_msg = String()
+                filename_msg.data = self._widget.filename_edit.text()
+                self.filename_publisher.publish(filename_msg)
+                self.node.get_logger().info(f"파일명 설정: {filename_msg.data}")
 
-        # 환경 변수로 전달 (또는 파라미터 서버 사용)
-        os.environ['TEMPERATURE_LOG_FILENAME'] = filename
+                # 로깅 시작 요청
+                request = SetBool.Request()
+                request.data = True
+                self._widget.status_label.setText("로깅 시작 요청 중...")
+                self.node.get_logger().info("로깅 시작 요청")
 
-        request = SetBool.Request()
-        request.data = True  # True = 로깅 시작/저장
+            # 비동기 서비스 호출
+            future = self.save_logger_client.call_async(request)
+            future.add_done_callback(self.handle_save_response)
 
-        # 비동기 서비스 호출
-        future = self.save_logger_client.call_async(request)
-        future.add_done_callback(self.handle_save_response)
+        except Exception as e:
+            error_msg = f"데이터 저장 요청 오류: {str(e)}"
+            self._widget.status_label.setText(error_msg)
+            self.node.get_logger().error(error_msg)
+
+            # 오류 메시지 표시
+            QMessageBox.critical(self._widget, "서비스 오류", f"데이터 저장 요청 중 오류가 발생했습니다.\n{str(e)}")
 
     def reset_data_logging(self):
         """data_logger에 로깅 초기화 요청"""
-        if not self.reset_logger_client.wait_for_service(timeout_sec=1.0):
-            self._widget.status_label.setText("데이터 로거 서비스에 연결할 수 없습니다")
+        if not self.is_data_logger_available:
+            self.node.get_logger().warn("데이터 로거 서비스가 사용 불가능합니다")
+            self._widget.status_label.setText("데이터 로거 서비스 연결 실패. 내부 그래프만 초기화합니다.")
+            self.reset_graph_data()
             return
 
-        request = Trigger.Request()
-        self.reset_logger_client.call_async(request).add_done_callback(
-            lambda future: self.handle_reset_response(future))
-
-        # 그래프도 초기화
-        self.reset_graph_data()
-
-    def logging_status_callback(self, msg):
-        """
-        로깅 상태 메시지 수신 콜백
-        """
         try:
-            if msg.data:
-                self._widget.log_status_label.setText(f"로깅 상태: {msg.data}")
-                self.node.get_logger().info(f"로깅 파일 업데이트: {msg.data}")
+            request = Trigger.Request()
+            future = self.reset_logger_client.call_async(request)
+            future.add_done_callback(self.handle_reset_response)
+
+            self._widget.status_label.setText("로그 데이터 초기화 요청 중...")
+            self.node.get_logger().info("로그 데이터 초기화 요청")
+
+            # 그래프도 초기화
+            self.reset_graph_data()
         except Exception as e:
-            self.node.get_logger().error(f"로깅 상태 처리 오류: {str(e)}")
+            error_msg = f"로그 초기화 요청 오류: {str(e)}"
+            self._widget.status_label.setText(error_msg)
+            self.node.get_logger().error(error_msg)
+
+            # 오류 메시지 표시
+            QMessageBox.critical(self._widget, "서비스 오류", f"데이터 초기화 요청 중 오류가 발생했습니다.\n{str(e)}")
 
     def handle_save_response(self, future):
         """
@@ -1084,14 +1108,48 @@ class ActuatorControlPlugin(Plugin):
         try:
             response = future.result()
             if response.success:
-                self._widget.status_label.setText(f"데이터 저장 성공: {response.message}")
-                self.node.get_logger().info(f"데이터 저장 성공: {response.message}")
+                self._widget.status_label.setText(f"데이터 저장/로깅 요청 성공: {response.message}")
+                self.node.get_logger().info(f"데이터 저장/로깅 요청 성공: {response.message}")
+
+                # 로깅 시작시 그래프도 시작
+                if "시작" in response.message and not self.is_plotting:
+                    self.start_plotting()
             else:
-                self._widget.status_label.setText(f"데이터 저장 실패: {response.message}")
-                self.node.get_logger().warn(f"데이터 저장 실패: {response.message}")
+                self._widget.status_label.setText(f"데이터 저장/로깅 요청 실패: {response.message}")
+                self.node.get_logger().warn(f"데이터 저장/로깅 요청 실패: {response.message}")
+
+                # 실패 메시지 표시
+                QMessageBox.warning(self._widget, "요청 실패", f"데이터 저장/로깅 요청이 실패했습니다.\n{response.message}")
         except Exception as e:
-            self._widget.status_label.setText("데이터 저장 중 오류 발생")
-            self.node.get_logger().error(f"저장 응답 처리 오류: {str(e)}")
+            error_msg = f"저장 응답 처리 오류: {str(e)}"
+            self._widget.status_label.setText(error_msg)
+            self.node.get_logger().error(error_msg)
+
+            # 오류 메시지 표시
+            QMessageBox.critical(self._widget, "응답 처리 오류", f"서비스 응답 처리 중 오류가 발생했습니다.\n{str(e)}")
+
+    def handle_reset_response(self, future):
+        """
+        초기화 서비스 응답 처리
+        """
+        try:
+            response = future.result()
+            if response.success:
+                self._widget.status_label.setText(f"데이터 초기화 성공: {response.message}")
+                self.node.get_logger().info(f"데이터 초기화 성공: {response.message}")
+            else:
+                self._widget.status_label.setText(f"데이터 초기화 실패: {response.message}")
+                self.node.get_logger().warn(f"데이터 초기화 실패: {response.message}")
+
+                # 실패 메시지 표시
+                QMessageBox.warning(self._widget, "초기화 실패", f"데이터 초기화가 실패했습니다.\n{response.message}")
+        except Exception as e:
+            error_msg = f"초기화 응답 처리 오류: {str(e)}"
+            self._widget.status_label.setText(error_msg)
+            self.node.get_logger().error(error_msg)
+
+            # 오류 메시지 표시
+            QMessageBox.critical(self._widget, "응답 처리 오류", f"초기화 응답 처리 중 오류가 발생했습니다.\n{str(e)}")
 
 def main(args=None):
     """

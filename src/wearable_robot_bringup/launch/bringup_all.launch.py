@@ -1,65 +1,59 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess, RegisterEventHandler, LogInfo
+from launch.actions import IncludeLaunchDescription, ExecuteProcess, RegisterEventHandler, LogInfo, Shutdown
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PythonExpression
-from launch.event_handlers import OnProcessStart
+from launch.event_handlers import OnShutdown
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 import os
+
+
 
 def generate_launch_description():
     """
     웨어러블 로봇 시스템의 모든 구성 요소를 시작하는 메인 런치 파일입니다.
     1. CAN 초기화 명령어 자동 실행
-    2. ros2_socketcan 런치 파일 실행
+    2. ros2_socketcan receiver 런치 파일 실행
     3. data_processing 패키지의 모든 노드 실행
     """
 
     # 패키지 경로 설정
-    bringup_pkg_share = get_package_share_directory('wearable_robot_bringup')
     socketcan_pkg_share = get_package_share_directory('ros2_socketcan')
+    control_pkg_share = get_package_share_directory('wearable_robot_control')
 
-    # 런치 파일 경로
-    data_processing_launch = os.path.join(
-        bringup_pkg_share,
-        'launch',
-        'data_processing_all.launch.py'
-    )
-
-    socketcan_launch = os.path.join(
+    socketcan_receiver_launch = os.path.join(
         socketcan_pkg_share,
         'launch',
-        'socket_can_bridge.launch.py'  # ros2_socketcan 패키지의 런치 파일명 (실제 파일명에 맞게 수정 필요)
+        'socket_can_receiver.launch.py'  # ros2_socketcan 패키지의 런치 파일명 (실제 파일명에 맞게 수정 필요)
     )
-
-    # CAN 인터페이스 설정
-    can_interface = LaunchConfiguration('can_interface', default='can0')
-    bitrate = LaunchConfiguration('bitrate', default='1000000')  # 1Mbps
 
     # 1. CAN 초기화 명령어 실행
     # can0 인터페이스 다운 (만약 이미 실행 중이라면)
     can_down = ExecuteProcess(
-        cmd=['sudo', 'ifconfig', can_interface, 'down'],
+        cmd=['sudo ip link set down can0'],
         name='can_down',
         shell=True,
         output='screen'
     )
 
-    # can0 인터페이스 설정 (bitrate 지정)
-    can_setup = ExecuteProcess(
-        cmd=[
-            'sudo', 'ip', 'link', 'set',
-            can_interface, 'type', 'can',
-            'bitrate', bitrate
-        ],
-        name='can_setup',
-        shell=True,
-        output='screen'
+        # 종료 이벤트 핸들러 등록
+    shutdown_handler = RegisterEventHandler(
+        OnShutdown(
+            on_shutdown=[can_down]
+        )
     )
+
+    # can0 인터페이스 설정 (os 부팅 시 실행 됨)
+    # can_setup = ExecuteProcess(
+    #     cmd=['setup_can'],
+    #     name='can_setup',
+    #     shell=True,
+    #     output='screen'
+    # )
 
     # can0 인터페이스 활성화
     can_up = ExecuteProcess(
-        cmd=['sudo', 'ifconfig', can_interface, 'up'],
+        cmd=['sudo ip link set up can0'],
         name='can_up',
         shell=True,
         output='screen'
@@ -67,40 +61,83 @@ def generate_launch_description():
 
     # 2. ros2_socketcan 런치 파일 실행 (CAN 설정 완료 후)
     socketcan_launch_include = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([socketcan_launch]),
+        PythonLaunchDescriptionSource([socketcan_receiver_launch]),
         launch_arguments={
-            'interface': can_interface,
+            'interface':'can0',
+            'enable_can_fd':'true',
+            'interval_sec':'0.012',
+            'filters':"0:0"
         }.items()
     )
 
-    # CAN 설정 완료 후 socketcan 실행을 위한 이벤트 핸들러
-    socketcan_event = RegisterEventHandler(
-        OnProcessStart(
-            target_action=can_up,
-            on_start=[
-                LogInfo(msg='CAN interface is up. Starting socketcan bridge...'),
-                socketcan_launch_include
-            ]
-        )
+
+    # config 파일 경로
+    temp_control_config = os.path.join(control_pkg_share, 'config', 'temperature_control_params.yaml')
+
+    # can data processing 노드
+    can_processor_node = Node(
+        package= 'wearable_robot_data_processing',
+        executable='can_data_processor',
+        name='can_data_processor',
+        output='screen'
     )
 
-    # 3. data_processing 패키지의 모든 노드 실행
-    data_processing_include = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([data_processing_launch])
+    # 데이터 파싱 노드
+    parser_node = Node(
+        package= 'wearable_robot_data_processing',
+        executable='data_parser_node',
+        name='data_parser_node',
+        output='screen'
     )
 
-    # socketcan 실행 후 data_processing 실행을 위한 이벤트 핸들러
-    # 이 부분은 실제 구현에서 더 정교하게 수정이 필요할 수 있습니다.
-    # 현재는 socketcan 이벤트 핸들러를 사용하는 대신 직접 등록만 합니다.
+    # 온도 제어 노드
+    actuator_control_node = Node(
+        package= 'wearable_robot_control',
+        executable='actuator_control_node',
+        name='actuator_control_node',
+        parameters=[temp_control_config],
+        output='screen'
+    )
 
-    # 런치 설명 구성
+
+    # command 노드
+    command_send_node = Node(
+        package= 'wearable_robot_control',
+        executable='command_send_node',
+        name='command_send_node',
+        parameters=[temp_control_config],
+        output='screen'
+    )
+
+
+    # command 노드
+    logger_node = Node(
+        package= 'data_logger',
+        executable='temperature_logger_node',
+        name='temperature_logger_node',
+        output='screen'
+    )
+
+    # command 노드
+    gui_node = Node(
+        package= 'wearable_robot_rqt_plugins',
+        executable='actuator_control_plugin',
+        name='actuator_control_plugin',
+        output='screen',
+        on_exit=Shutdown()
+    )
+
     return LaunchDescription([
         # CAN 초기화 명령어 실행
-        can_down,
-        can_setup,
+        #can_down,
+        #can_setup,
         can_up,
-        socketcan_event,
-
-        # data_processing 런치 (CAN 설정과 독립적으로 실행)
-        data_processing_include
+        socketcan_launch_include,
+        can_processor_node,
+        parser_node,
+        actuator_control_node,
+        command_send_node,
+        logger_node,
+        gui_node,
+        shutdown_handler
     ])
