@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o"
@@ -7,11 +8,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_data__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_type__type_support.cpp.o"
-  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/joint_state__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/temperature_data__type_support.cpp.o"
   "libwearable_robot_interfaces__rosidl_typesupport_c.pdb"
   "libwearable_robot_interfaces__rosidl_typesupport_c.so"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp"
+  "rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_data__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp"
@@ -19,7 +20,6 @@ file(REMOVE_RECURSE
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_data__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/imu_type__type_support.cpp"
-  "rosidl_typesupport_c/wearable_robot_interfaces/msg/joint_state__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/temperature_data__type_support.cpp"
 )
 

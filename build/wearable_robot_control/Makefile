@@ -181,6 +181,19 @@ command_send_node/fast:
 .PHONY : command_send_node/fast
 
 #=============================================================================
+# Target rules for targets named waist_support_control_node
+
+# Build rule for target.
+waist_support_control_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 waist_support_control_node
+.PHONY : waist_support_control_node
+
+# fast build rule for target.
+waist_support_control_node/fast:
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/build
+.PHONY : waist_support_control_node/fast
+
+#=============================================================================
 # Target rules for targets named actuator_control_node
 
 # Build rule for target.
@@ -273,6 +286,33 @@ src/command_send_node.cpp.s:
 	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/src/command_send_node.cpp.s
 .PHONY : src/command_send_node.cpp.s
 
+src/waist_support_control_node.o: src/waist_support_control_node.cpp.o
+
+.PHONY : src/waist_support_control_node.o
+
+# target to build an object file
+src/waist_support_control_node.cpp.o:
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/src/waist_support_control_node.cpp.o
+.PHONY : src/waist_support_control_node.cpp.o
+
+src/waist_support_control_node.i: src/waist_support_control_node.cpp.i
+
+.PHONY : src/waist_support_control_node.i
+
+# target to preprocess a source file
+src/waist_support_control_node.cpp.i:
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/src/waist_support_control_node.cpp.i
+.PHONY : src/waist_support_control_node.cpp.i
+
+src/waist_support_control_node.s: src/waist_support_control_node.cpp.s
+
+.PHONY : src/waist_support_control_node.s
+
+# target to generate assembly for a file
+src/waist_support_control_node.cpp.s:
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/src/waist_support_control_node.cpp.s
+.PHONY : src/waist_support_control_node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -287,6 +327,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... command_send_node"
+	@echo "... waist_support_control_node"
 	@echo "... actuator_control_node"
 	@echo "... wearable_robot_control_uninstall"
 	@echo "... uninstall"
@@ -296,6 +337,9 @@ help:
 	@echo "... src/command_send_node.o"
 	@echo "... src/command_send_node.i"
 	@echo "... src/command_send_node.s"
+	@echo "... src/waist_support_control_node.o"
+	@echo "... src/waist_support_control_node.i"
+	@echo "... src/waist_support_control_node.s"
 .PHONY : help
 
 

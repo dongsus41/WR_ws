@@ -1,0 +1,26 @@
+waist_support_control_node:
+  ros__parameters:
+    # 구동기 및 센서 설정
+    actuator_indices: [4, 5]        # 제어할 구동기 번호 (4, 5번)
+    waist_sensor_index: 0           # 허리 변위 센서 번호
+
+    # 허리 보조 제어 설정
+    waist_assist_active: true       # 허리 보조 활성화 여부
+    waist_angle_threshold: 30.0     # 허리 각도 임계값 (도)
+    max_assist_power: 80            # 최대 보조력 (0-100)
+
+    # 온도 제어 설정 (구동기 4번)
+    target_temperature_0: 50.0      # 목표 온도 (섭씨)
+    kp_0: 2.0                       # 비례 게인
+    ki_0: 0.1                       # 적분 게인
+
+    # 온도 제어 설정 (구동기 5번)
+    target_temperature_1: 50.0      # 목표 온도 (섭씨)
+    kp_1: 2.0                       # 비례 게인
+    ki_1: 0.1                       # 적분 게인
+
+    # 공통 제어 설정
+    max_pwm: 100.0                  # 최대 PWM 출력
+    min_pwm: 0.0                    # 최소 PWM 출력
+    safety_threshold: 80.0          # 안전 온도 임계값 (섭씨)
+    control_frequency: 250.0        # 제어 주파수 (Hz)

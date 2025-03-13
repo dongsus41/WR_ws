@@ -111,14 +111,6 @@ def generate_launch_description():
 
 
     # command 노드
-    logger_node = Node(
-        package= 'data_logger',
-        executable='temperature_logger_node',
-        name='temperature_logger_node',
-        output='screen'
-    )
-
-    # command 노드
     gui_node = Node(
         package= 'wearable_robot_rqt_plugins',
         executable='actuator_control_plugin',
@@ -137,7 +129,6 @@ def generate_launch_description():
         parser_node,
         actuator_control_node,
         command_send_node,
-        logger_node,
         gui_node,
         shutdown_handler
     ])

@@ -9,8 +9,6 @@ module wearable_robot_interfaces {
     struct DisplacementRawData {
       std_msgs::msg::Header header;
 
-      @verbatim (language="comment", text=
-        " 변위센서 0번")
       sequence<int32> displacement_raw;
     };
   };

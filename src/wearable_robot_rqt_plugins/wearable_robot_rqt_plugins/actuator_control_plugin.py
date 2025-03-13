@@ -2,14 +2,12 @@
 
 import os
 import threading
-import csv
+import subprocess
+import signal
 import datetime
-import numpy as np
 import rclpy
 import sys
-from std_srvs.srv import Trigger
-from std_srvs.srv import SetBool
-from std_msgs.msg import String, Bool, Float64
+from std_msgs.msg import Bool, Float64
 import rclpy.task
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
@@ -18,17 +16,7 @@ from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QVBoxLayout, QLabel
 from python_qt_binding.QtCore import Qt, QTimer
-
-
-
-# PyQtGraph 라이브러리 가져오기 및 확실한 오류 처리
-try:
-    import pyqtgraph as pg
-    PYQTGRAPH_AVAILABLE = True
-except ImportError:
-    PYQTGRAPH_AVAILABLE = False
-    print("[ERROR]: PyQtGraph 라이브러리가 설치되지 않았습니다.")
-    print("pip install pyqtgraph 명령어로 설치하세요.")
+import pyqtgraph as pg
 
 
 class ActuatorControlPlugin(Plugin):
@@ -56,8 +44,8 @@ class ActuatorControlPlugin(Plugin):
         self.auto_mode = False              # 자동 제어 모드 여부
         self.is_emergency_stop = False      # 비상 정지 상태
         self.safety_temp_threshold = 80.0   # 안전 온도 임계값 (°C)
-        self.is_data_logger_available = False  # 데이터 로거 사용 가능 여부
         self.is_logger_active = False       # 로거 활성화 상태
+        self.recording_process = None
 
         # 그래프 관련 객체 초기화
         self.temp_plot_widget = None
@@ -66,6 +54,8 @@ class ActuatorControlPlugin(Plugin):
         self.target_temp_line = None
         self.pwm_line = None
         self.temp_legend = None
+
+
 
         # ROS 노드 초기화
         try:
@@ -103,16 +93,12 @@ class ActuatorControlPlugin(Plugin):
             Bool, 'emergency_stop', qos_profile)  # 비상 정지 명령
         self.control_mode_publisher = self.node.create_publisher(
             Bool, 'control_mode', qos_profile)  # 제어 모드 (자동/수동)
-        self.filename_publisher = self.node.create_publisher(
-            String, 'set_log_filename', qos_profile)  # 로깅 파일명 설정
 
         # 구독자 생성
         self.temp_sub = self.node.create_subscription(
             TemperatureData, 'temperature_data', self.temp_callback, qos_profile)  # 온도 데이터
         self.pwm_sub = self.node.create_subscription(
             ActuatorCommand, 'pwm_state', self.pwm_callback, qos_profile)  # 현재 PWM 상태
-        self.logging_status_sub = self.node.create_subscription(
-            Bool, 'logging_status', self.logging_status_callback, qos_profile)  # 로깅 상태
 
         # 주기적인 작업을 위한 타이머 (1초마다 안전 검사)
         self.timer = self.node.create_timer(1.0, self.timer_callback)
@@ -186,22 +172,8 @@ class ActuatorControlPlugin(Plugin):
         self._widget.graph_stop_button.clicked.connect(self.stop_plotting)
         self._widget.reset_graph_button.clicked.connect(self.reset_graph_data)
 
-        # 로깅 서비스 클라이언트 초기화
-        self.reset_logger_client = self.node.create_client(Trigger, 'reset_temperature_log')
-        self.save_logger_client = self.node.create_client(SetBool, 'save_temperature_log')
-
-        # 서비스 가용성 검사 타이머 (5초마다)
-        self.service_check_timer = QTimer()
-        self.service_check_timer.timeout.connect(self.check_logger_services)
-        self.service_check_timer.start(5000)  # 5초마다 검사
-
         # 데이터 저장 버튼 연결
         self._widget.save_data_button.clicked.connect(self.request_data_save)
-        self._widget.reset_graph_button.clicked.connect(self.reset_data_logging)
-
-        # 로그 파일명 수신 구독
-        self.log_filename_sub = self.node.create_subscription(
-            String, 'current_log_filename', self.log_filename_callback, qos_profile)
 
         # Qt 타이머 추가 (UI 업데이트용)
         self.qt_timer = QTimer()
@@ -220,63 +192,13 @@ class ActuatorControlPlugin(Plugin):
         # 초기 모드 발행 (기본: 수동 모드)
         self.publish_control_mode(False)
 
-        # 초기 서비스 가용성 검사
-        self.check_logger_services()
 
-    def log_filename_callback(self, msg):
-        """로그 파일 이름 수신 콜백"""
-        if msg.data:
-            self._widget.log_status_label.setText(f"로깅 상태: 활성화 - {msg.data}")
-            self.node.get_logger().info(f"로그 파일명 업데이트: {msg.data}")
-
-    def check_logger_services(self):
-        """데이터 로거 서비스 가용성 검사"""
-        reset_available = self.reset_logger_client.service_is_ready()
-        save_available = self.save_logger_client.service_is_ready()
-
-        # 이전 상태와 비교하여 변경이 있을 때만 로그 출력
-        if reset_available and save_available != self.is_data_logger_available:
-            self.is_data_logger_available = True
-            self.node.get_logger().info("데이터 로거 서비스 연결 성공")
-            self._widget.status_label.setText("데이터 로거 서비스 연결됨")
-        elif not (reset_available and save_available) and self.is_data_logger_available:
-            self.is_data_logger_available = False
-            self.node.get_logger().warn("데이터 로거 서비스를 사용할 수 없습니다. data_logger 노드가 실행 중인지 확인하세요.")
-            self._widget.status_label.setText("데이터 로거 서비스 연결 실패")
-
-        # UI 버튼 상태 업데이트
-        self._widget.save_data_button.setEnabled(self.is_data_logger_available)
-
-    def logging_status_callback(self, msg):
-        """로깅 상태 콜백"""
-        self.is_logger_active = msg.data
-        if msg.data:
-            if not self.is_plotting:
-                # 그래프 플로팅도 자동으로 시작
-                self.start_plotting()
-            self._widget.log_status_label.setText("로깅 상태: 활성화")
-            self._widget.save_data_button.setText("로깅 중지")
-        else:
-            self._widget.log_status_label.setText("로깅 상태: 대기 중")
-            self._widget.save_data_button.setText("데이터 저장")
-
-        self.node.get_logger().debug(f"로깅 상태 업데이트: {msg.data}")
 
     def setup_graphs(self):
         """
         그래프 위젯 초기화 및 설정
         """
         try:
-            if not PYQTGRAPH_AVAILABLE:
-                self.node.get_logger().error("PyQtGraph 라이브러리가 설치되지 않았습니다. 그래프 기능을 사용할 수 없습니다.")
-                # 그래프 영역에 오류 메시지 표시
-                error_layout = QVBoxLayout()
-                error_label = QLabel("PyQtGraph 라이브러리가 설치되지 않았습니다.\n'pip install pyqtgraph' 명령어로 설치하세요.")
-                error_label.setStyleSheet("color: red; font-weight: bold;")
-                error_layout.addWidget(error_label)
-                self._widget.temp_graph_frame.setLayout(error_layout)
-                self._widget.pwm_graph_frame.setLayout(QVBoxLayout())
-                return
 
             # PyQtGraph 기본 설정
             pg.setConfigOptions(antialias=True, useOpenGL=False)  # OpenGL 비활성화로 호환성 향상
@@ -435,9 +357,13 @@ class ActuatorControlPlugin(Plugin):
         if hasattr(self, 'graph_timer') and self.graph_timer.isActive():
             self.graph_timer.stop()
 
-        # 서비스 검사 타이머 중지
-        if hasattr(self, 'service_check_timer') and self.service_check_timer.isActive():
-            self.service_check_timer.stop()
+        # ROS2 bag 녹화 프로세스 종료
+        if hasattr(self, 'recording_process') and self.recording_process is not None:
+            try:
+                os.killpg(os.getpgid(self.recording_process.pid), signal.SIGTERM)
+                self.node.get_logger().info("ROS2 bag 녹화가 종료되었습니다")
+            except:
+                pass
 
         # 비상 정지 해제 (안전을 위해)
         if hasattr(self, 'emergency_pub'):
@@ -536,23 +462,11 @@ class ActuatorControlPlugin(Plugin):
             self._widget.graph_stop_button.setEnabled(self.is_plotting)
 
             # 로깅 상태 업데이트
-            if self.is_plotting:
-                elapsed_time = 0
-                if self.start_time:
-                    elapsed_time = (datetime.datetime.now() - self.start_time).total_seconds()
-
+            if self.recording_process is not None:
                 # 이미 로깅 상태 문자열이 있는지 확인하고, 없으면 기본 메시지 표시
                 status_text = self._widget.log_status_label.text()
                 if "로깅 상태: 활성화" not in status_text:
-                    self._widget.log_status_label.setText(f"로깅 상태: 활성화 (경과 시간: {int(elapsed_time)}초)")
-                else:
-                    # 기존 텍스트에서 시간 부분만 업데이트
-                    time_text = f"(경과 시간: {int(elapsed_time)}초)"
-                    if " (" in status_text:
-                        parts = status_text.split(" (")
-                        self._widget.log_status_label.setText(f"{parts[0]} {time_text}")
-                    else:
-                        self._widget.log_status_label.setText(f"{status_text} {time_text}")
+                    self._widget.log_status_label.setText("로깅 상태: 활성화")
 
             # 저장 버튼 텍스트 업데이트
             if self.is_logger_active:
@@ -617,7 +531,7 @@ class ActuatorControlPlugin(Plugin):
         """
         그래프 데이터 업데이트 (그래프 타이머에서 호출)
         """
-        if not self.is_plotting or not PYQTGRAPH_AVAILABLE:
+        if not self.is_plotting:
             return
 
         try:
@@ -731,7 +645,7 @@ class ActuatorControlPlugin(Plugin):
         """
         그래프 플로팅 시작
         """
-        if self.is_plotting or not PYQTGRAPH_AVAILABLE:
+        if self.is_plotting:
             return
 
         # 그래프 데이터 초기화
@@ -805,68 +719,8 @@ class ActuatorControlPlugin(Plugin):
                 self.temp_plot_widget.setXRange(0, 300)
                 self.pwm_plot_widget.setXRange(0, 300)
 
-                # 빠른 초기화를 위한 더미 데이터 추가
-                init_time = list(range(5))
-                init_temp = [30, 35, 40, 38, 36]
-                init_target = [50] * 5
-                init_pwm = [10, 30, 50, 40, 20]
-
-                self.temp_line.setData(init_time, init_temp)
-                self.target_temp_line.setData(init_time, init_target)
-                self.pwm_line.setData(init_time, init_pwm)
-
         self._widget.status_label.setText("그래프 데이터가 초기화되었습니다")
         self.node.get_logger().info("그래프 데이터가 초기화되었습니다")
-
-    def save_data_to_file(self, custom_filename=None):
-        """
-        수집된 데이터를 CSV 파일로 저장
-        """
-        try:
-            # 데이터가 없으면 저장하지 않음
-            if not self.time_data:
-                self._widget.status_label.setText("저장할 데이터가 없습니다")
-                self.node.get_logger().warn("저장할 데이터가 없습니다")
-                return False, "저장할 데이터가 없습니다"
-
-            # 파일 이름 생성 (사용자 입력 + 날짜시간)
-            base_filename = self._widget.filename_edit.text() if not custom_filename else custom_filename
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{base_filename}_{timestamp}.csv"
-            filepath = os.path.join(self.data_logging_path, filename)
-
-            # CSV 파일 작성
-            with open(filepath, 'w', newline='') as csvfile:
-                csv_writer = csv.writer(csvfile)
-
-                # 헤더 작성
-                csv_writer.writerow(["시간(초)", "온도(°C)", "목표온도(°C)", "PWM"])
-
-                # 데이터 작성
-                for i in range(len(self.time_data)):
-                    csv_writer.writerow([
-                        f"{self.time_data[i]:.2f}",
-                        f"{self.temp_data[i]:.2f}",
-                        f"{self.target_temp_data[i]:.2f}",
-                        self.pwm_data[i]
-                    ])
-
-            self._widget.status_label.setText(f"데이터가 저장되었습니다: {filename}")
-            self.node.get_logger().info(f"데이터가 저장되었습니다: {filepath}")
-
-            # 성공 메시지 표시
-            QMessageBox.information(self._widget, "저장 완료",
-                                   f"데이터가 성공적으로 저장되었습니다.\n파일 위치: {filepath}")
-            return True, filepath
-
-        except Exception as e:
-            error_msg = f"데이터 저장 중 오류 발생: {str(e)}"
-            self._widget.status_label.setText(error_msg)
-            self.node.get_logger().error(f"데이터 저장 오류: {str(e)}")
-
-            # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "저장 오류", f"데이터 저장 중 오류가 발생했습니다.\n{str(e)}")
-            return False, error_msg
 
     def check_temperature_safety(self):
         """
@@ -1025,81 +879,82 @@ class ActuatorControlPlugin(Plugin):
         """
         data_logger에 데이터 저장 요청하거나, 이미 로깅 중이면 중지 요청
         """
-        # 로거 노드가 없는 경우 자체적으로 파일 저장
-        if not self.is_data_logger_available:
-            self.node.get_logger().warn("데이터 로거 서비스가 사용 불가능합니다. 내부 저장 기능 사용")
-            self._widget.status_label.setText("데이터 로거 서비스 연결 실패. 내부 저장 기능 사용 중...")
-
-            # 파일명 설정
-            custom_filename = self._widget.filename_edit.text()
-            success, result = self.save_data_to_file(custom_filename)
-
-            if success:
-                self._widget.status_label.setText(f"내부 저장 성공: {os.path.basename(result)}")
-            else:
-                self._widget.status_label.setText(f"내부 저장 실패: {result}")
-
-            return
 
         try:
-            # 로깅 상태에 따라 시작/중지 결정
-            if self.is_logger_active:
-                # 로깅 중지 요청
-                request = SetBool.Request()
-                request.data = False
-                self._widget.status_label.setText("로깅 중지 요청 중...")
-                self.node.get_logger().info("로깅 중지 요청")
+            # 이미 녹화 중인지 확인
+            if self.recording_process is not None:
+                # 녹화 중지
+                try:
+                    # 프로세스 그룹 전체를 종료하여 자식 프로세스도 함께 종료
+                    os.killpg(os.getpgid(self.recording_process.pid), signal.SIGTERM)
+                except:
+                    # 이미 종료된 경우 등의 예외 처리
+                    pass
+
+                self.recording_process = None
+                self.is_logger_active = False
+
+                self._widget.status_label.setText("녹화가 중지되었습니다")
+                self._widget.save_data_button.setText("데이터 저장")
+                self.node.get_logger().info("ROS2 bag 녹화가 중지되었습니다")
+
+                # 로깅 상태 메시지 업데이트
+                self._widget.log_status_label.setText("로깅 상태: 대기 중")
+
             else:
-                # 로깅 시작 요청
-                # 사용자 파일명 발행
-                filename_msg = String()
-                filename_msg.data = self._widget.filename_edit.text()
-                self.filename_publisher.publish(filename_msg)
-                self.node.get_logger().info(f"파일명 설정: {filename_msg.data}")
+                # 녹화 시작
+                # 파일명에 날짜/시간 추가
+                base_name = self._widget.filename_edit.text()
+                if not base_name:
+                    base_name = "wearable_robot"
 
-                # 로깅 시작 요청
-                request = SetBool.Request()
-                request.data = True
-                self._widget.status_label.setText("로깅 시작 요청 중...")
-                self.node.get_logger().info("로깅 시작 요청")
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+                output_dir = os.path.expanduser(f"~/ros2_bags/{base_name}_{timestamp}")
 
-            # 비동기 서비스 호출
-            future = self.save_logger_client.call_async(request)
-            future.add_done_callback(self.handle_save_response)
+                # 디렉토리가 없으면 생성
+                os.makedirs(os.path.dirname(output_dir), exist_ok=True)
+
+                # 저장할 토픽 목록
+                topics = [
+                    "/temperature_data",
+                    "/displacement_data",
+                    "/imu_raw_data",
+                    "/fan_state",
+                    "/pwm_state"
+                ]
+
+                # ROS2 bag 녹화 명령 구성
+                cmd = ["ros2", "bag", "record", "-o", output_dir]
+                cmd.extend(topics)
+
+                # 새 프로세스 그룹으로 실행 (나중에 종료하기 쉽게)
+                self.recording_process = subprocess.Popen(
+                    cmd,
+                    preexec_fn=os.setsid,
+                    stdout=subprocess.DEVNULL,  # 출력 리다이렉션으로 오버헤드 감소
+                    stderr=subprocess.DEVNULL
+                )
+
+                self.is_logger_active = True
+
+                self._widget.status_label.setText(f"녹화가 시작되었습니다: {os.path.basename(output_dir)}")
+                self._widget.save_data_button.setText("녹화 중지")
+                self.node.get_logger().info(f"ROS2 bag 녹화가 시작되었습니다: {output_dir}")
+
+                # 로깅 상태 메시지 업데이트
+                self._widget.log_status_label.setText(f"로깅 상태: 활성화 - {os.path.basename(output_dir)}")
+
+                # 그래프 플로팅도 자동으로 시작
+                if not self.is_plotting:
+                    self.start_plotting()
 
         except Exception as e:
-            error_msg = f"데이터 저장 요청 오류: {str(e)}"
+            error_msg = f"ROS2 bag 녹화 오류: {str(e)}"
             self._widget.status_label.setText(error_msg)
             self.node.get_logger().error(error_msg)
 
             # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "서비스 오류", f"데이터 저장 요청 중 오류가 발생했습니다.\n{str(e)}")
-
-    def reset_data_logging(self):
-        """data_logger에 로깅 초기화 요청"""
-        if not self.is_data_logger_available:
-            self.node.get_logger().warn("데이터 로거 서비스가 사용 불가능합니다")
-            self._widget.status_label.setText("데이터 로거 서비스 연결 실패. 내부 그래프만 초기화합니다.")
-            self.reset_graph_data()
-            return
-
-        try:
-            request = Trigger.Request()
-            future = self.reset_logger_client.call_async(request)
-            future.add_done_callback(self.handle_reset_response)
-
-            self._widget.status_label.setText("로그 데이터 초기화 요청 중...")
-            self.node.get_logger().info("로그 데이터 초기화 요청")
-
-            # 그래프도 초기화
-            self.reset_graph_data()
-        except Exception as e:
-            error_msg = f"로그 초기화 요청 오류: {str(e)}"
-            self._widget.status_label.setText(error_msg)
-            self.node.get_logger().error(error_msg)
-
-            # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "서비스 오류", f"데이터 초기화 요청 중 오류가 발생했습니다.\n{str(e)}")
+            QMessageBox.critical(self._widget, "녹화 오류", f"ROS2 bag 녹화 중 오류가 발생했습니다.\n{str(e)}")
 
     def handle_save_response(self, future):
         """
@@ -1127,29 +982,6 @@ class ActuatorControlPlugin(Plugin):
 
             # 오류 메시지 표시
             QMessageBox.critical(self._widget, "응답 처리 오류", f"서비스 응답 처리 중 오류가 발생했습니다.\n{str(e)}")
-
-    def handle_reset_response(self, future):
-        """
-        초기화 서비스 응답 처리
-        """
-        try:
-            response = future.result()
-            if response.success:
-                self._widget.status_label.setText(f"데이터 초기화 성공: {response.message}")
-                self.node.get_logger().info(f"데이터 초기화 성공: {response.message}")
-            else:
-                self._widget.status_label.setText(f"데이터 초기화 실패: {response.message}")
-                self.node.get_logger().warn(f"데이터 초기화 실패: {response.message}")
-
-                # 실패 메시지 표시
-                QMessageBox.warning(self._widget, "초기화 실패", f"데이터 초기화가 실패했습니다.\n{response.message}")
-        except Exception as e:
-            error_msg = f"초기화 응답 처리 오류: {str(e)}"
-            self._widget.status_label.setText(error_msg)
-            self.node.get_logger().error(error_msg)
-
-            # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "응답 처리 오류", f"초기화 응답 처리 중 오류가 발생했습니다.\n{str(e)}")
 
 def main(args=None):
     """

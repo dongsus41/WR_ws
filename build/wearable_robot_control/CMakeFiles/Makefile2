@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/kimm/wearable_robot_ws/build/wearable_robot_control
 
 # The main recursive "all" target.
 all: CMakeFiles/command_send_node.dir/all
+all: CMakeFiles/waist_support_control_node.dir/all
 all: CMakeFiles/actuator_control_node.dir/all
 
 .PHONY : all
@@ -65,6 +66,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/command_send_node.dir/clean
+clean: CMakeFiles/waist_support_control_node.dir/clean
 clean: CMakeFiles/actuator_control_node.dir/clean
 clean: CMakeFiles/wearable_robot_control_uninstall.dir/clean
 clean: CMakeFiles/uninstall.dir/clean
@@ -97,6 +99,33 @@ command_send_node: CMakeFiles/command_send_node.dir/rule
 CMakeFiles/command_send_node.dir/clean:
 	$(MAKE) -f CMakeFiles/command_send_node.dir/build.make CMakeFiles/command_send_node.dir/clean
 .PHONY : CMakeFiles/command_send_node.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/waist_support_control_node.dir
+
+# All Build rule for target.
+CMakeFiles/waist_support_control_node.dir/all:
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/depend
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles --progress-num=5,6 "Built target waist_support_control_node"
+.PHONY : CMakeFiles/waist_support_control_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/waist_support_control_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/waist_support_control_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles 0
+.PHONY : CMakeFiles/waist_support_control_node.dir/rule
+
+# Convenience name for target.
+waist_support_control_node: CMakeFiles/waist_support_control_node.dir/rule
+
+.PHONY : waist_support_control_node
+
+# clean rule for target.
+CMakeFiles/waist_support_control_node.dir/clean:
+	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/clean
+.PHONY : CMakeFiles/waist_support_control_node.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/actuator_control_node.dir

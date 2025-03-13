@@ -1,5 +1,7 @@
 msg/ActuatorCommand.idl
 msg/ActuatorCommand.msg
+msg/BackIntension.idl
+msg/BackIntension.msg
 msg/CANDataFrame.idl
 msg/CANDataFrame.msg
 msg/DisplacementData.idl
@@ -14,7 +16,5 @@ msg/IMUData.idl
 msg/IMUData.msg
 msg/IMUType.idl
 msg/IMUType.msg
-msg/JointState.idl
-msg/JointState.msg
 msg/TemperatureData.idl
 msg/TemperatureData.msg

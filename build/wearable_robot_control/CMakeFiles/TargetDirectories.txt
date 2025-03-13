@@ -6,6 +6,7 @@
 /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/edit_cache.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/test.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/command_send_node.dir
+/home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/waist_support_control_node.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/actuator_control_node.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/wearable_robot_control_uninstall.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/uninstall.dir

@@ -1,6 +1,5 @@
 #include <rclcpp/rclcpp.hpp>
 #include <wearable_robot_interfaces/msg/temperature_data.hpp>
-#include <wearable_robot_interfaces/msg/displacement_data.hpp>
 #include <wearable_robot_interfaces/msg/actuator_command.hpp>
 #include <std_msgs/msg/float64.hpp>
 #include <std_msgs/msg/bool.hpp>
@@ -71,6 +70,7 @@ public:
         double control_frequency = this->get_parameter("control_frequency").as_double();
         int period_ms = static_cast<int>(1000.0 / control_frequency);
 
+        // 제어 타이머 생성 (control callback 함수 250Hz로 호출)
         control_timer_ = this->create_wall_timer(
             std::chrono::milliseconds(period_ms),
             std::bind(&ActuatorControlNode::control_callback, this));
@@ -82,17 +82,17 @@ public:
         pwm_output_ = 0;
         is_emergency_stop_ = false;
         is_temperature_safe_ = true;
-        use_direct_pwm_ = true;       // 기본적으로 수동 제어 모드 사용
+        use_direct_pwm_ = true;
 
         // PWM 값 배열 초기화
         current_pwm_values_.resize(6, 0);
 
         // 액티브 액추에이터 인덱스 초기화
-        active_actuator_idx_ = this->get_parameter("active_actuator").as_int();  // 인덱스는 0부터 시작
+        active_actuator_idx_ = this->get_parameter("active_actuator").as_int();
 
+        // 초기화 후 메시지 출력
         RCLCPP_INFO(this->get_logger(), "액추에이터 제어 노드가 시작되었습니다");
-        RCLCPP_INFO(this->get_logger(), "액티브 액추에이터: %d번 (actuator 0 ~ 5)",
-                    active_actuator_idx_);
+        RCLCPP_INFO(this->get_logger(), "액티브 액추에이터: %d번 (actuator 0 ~ 5)",active_actuator_idx_);
         RCLCPP_INFO(this->get_logger(), "안전 온도 임계값: %.1f°C", this->get_parameter("safety_threshold").as_double());
         RCLCPP_INFO(this->get_logger(), "제어 주파수: %.1fHz", control_frequency);
         RCLCPP_INFO(this->get_logger(), "초기 제어 모드: %s", use_direct_pwm_ ? "수동 제어" : "자동 제어");
@@ -111,12 +111,12 @@ private:
         if (msg->temperature.size() > static_cast<size_t>(active_actuator_idx_)) {
             current_temp_ = msg->temperature[active_actuator_idx_];
             RCLCPP_DEBUG(this->get_logger(), "구동기 %d의 현재 온도: %.2f°C",
-                active_actuator_idx_ + 1, current_temp_);
+                active_actuator_idx_, current_temp_);
 
             // 온도 안전성 검사
             check_temperature_safety();
         } else {
-            RCLCPP_WARN(this->get_logger(), "구동기 %d의 온도 데이터가 없습니다", active_actuator_idx_ + 1);
+            RCLCPP_WARN(this->get_logger(), "구동기 %d의 온도 데이터가 없습니다", active_actuator_idx_);
         }
     }
 
@@ -142,14 +142,14 @@ private:
             direct_pwm_value_ = msg->pwm[active_actuator_idx_];
             RCLCPP_INFO(this->get_logger(),
                 "직접 PWM 제어 명령 수신: 구동기 %d, PWM 값: %d",
-                active_actuator_idx_ + 1, direct_pwm_value_);
+                active_actuator_idx_, direct_pwm_value_);
 
             // 직접 제어 모드에서는 명령 즉시 적용
             current_pwm_values_[active_actuator_idx_] = direct_pwm_value_;
             publish_pwm_command();
         } else {
             RCLCPP_WARN(this->get_logger(),
-                "유효하지 않은 PWM 명령: 구동기 %d의 데이터가 없습니다", active_actuator_idx_ + 1);
+                "유효하지 않은 PWM 명령: 구동기 %d의 데이터가 없습니다", active_actuator_idx_);
         }
     }
 
@@ -191,6 +191,7 @@ private:
     // 목표 온도 설정 콜백
     void target_temp_callback(const wearable_robot_interfaces::msg::TemperatureData::SharedPtr msg)
     {
+
         std::lock_guard<std::mutex> lock(control_mutex_);
 
         // 비상 정지 중에는 목표 온도 변경 무시
@@ -214,7 +215,7 @@ private:
             RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 업데이트되었습니다", target_temp);
         } else {
             RCLCPP_WARN(this->get_logger(),
-                "유효하지 않은 목표 온도 메시지: 구동기 %d의 데이터가 없습니다", active_actuator_idx_ + 1);
+                "유효하지 않은 목표 온도 메시지: 구동기 %d의 데이터가 없습니다", active_actuator_idx_);
         }
     }
 
@@ -295,7 +296,7 @@ private:
         if (use_direct_pwm_) {
             RCLCPP_DEBUG(this->get_logger(),
                 "직접 PWM 제어 모드: 구동기 %d, PWM 값: %d",
-                active_actuator_idx_ + 1, current_pwm_values_[active_actuator_idx_]);
+                active_actuator_idx_, current_pwm_values_[active_actuator_idx_]);
 
             // 현재 상태 발행 (필수는 아니지만 상태 모니터링을 위해 주기적으로 발행)
             publish_pwm_command();

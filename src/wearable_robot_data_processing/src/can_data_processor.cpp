@@ -10,14 +10,14 @@ public:
   {
     // CAN FD 프레임을 구독. ros2_socketcan 패키지로부터 발햄됨.
     can_sub_ = this->create_subscription<ros2_socketcan_msgs::msg::FdFrame>(
-      "from_can_bus_fd", 1000,
+      "from_can_bus_fd", 500,
       std::bind(&CanDataProcessor::canFdCallback, this, std::placeholders::_1));
 
     // CAN ID 별로 topic 발행
     pub_id_100_ = this->create_publisher<wearable_robot_interfaces::msg::CANDataFrame>(
-      "can_data_100", 1000);
+      "can_data_100", 500);
     pub_id_401_ = this->create_publisher<wearable_robot_interfaces::msg::CANDataFrame>(
-      "can_data_401", 1000);
+      "can_data_401", 500);
 
     RCLCPP_INFO(this->get_logger(), "CAN FD Data Processor initialized");
   }
