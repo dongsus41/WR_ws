@@ -33,8 +33,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/FanCommand.msg"
   "msg/CANDataFrame.msg"
   #"msg/JointState.msg"
-  "msg/EmergencyStop.msg"
   "msg/BackIntension.msg"
+  "srv/SetControlMode.srv"
+  "srv/SetPIParameters.srv"
+  "srv/EmergencyStop.srv"
   DEPENDENCIES std_msgs
 )
 

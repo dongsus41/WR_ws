@@ -1,0 +1,6 @@
+# 요청 (request)
+bool auto_mode  # true: 자동 온도 제어, false: 수동 PWM 제어
+---
+# 응답 (response)
+bool success
+string message

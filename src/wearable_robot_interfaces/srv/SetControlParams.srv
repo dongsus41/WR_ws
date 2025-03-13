@@ -1,0 +1,7 @@
+# 요청 (request)
+float64 kp
+float64 ki
+---
+# 응답 (response)
+bool success
+string message

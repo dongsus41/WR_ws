@@ -17,11 +17,6 @@ public:
             "temperature_data", 10,
             std::bind(&ActuatorControlNode::temperature_callback, this, std::placeholders::_1));
 
-        // 제어 모드 구독 (자동/수동 모드 전환)
-        control_mode_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
-            "control_mode", 10,
-            std::bind(&ActuatorControlNode::control_mode_callback, this, std::placeholders::_1));
-
         // 명령 발행
         pwm_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::ActuatorCommand>(
             "actuator_command", 10);
@@ -36,11 +31,23 @@ public:
             "direct_pwm_command", 10,
             std::bind(&ActuatorControlNode::direct_pwm_callback, this, std::placeholders::_1));
 
-        // 비상 정지 구독
-        emergency_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
-            "emergency_stop", 10,
-            std::bind(&ActuatorControlNode::emergency_callback, this, std::placeholders::_1));
+        // 제어 모드 변경 서비스
+        control_mode_service_ = this->create_service<wearable_robot_interfaces::srv::SetControlMode>(
+            "set_control_mode",
+            std::bind(&ActuatorControlNode::handle_control_mode, this,
+                      std::placeholders::_1, std::placeholders::_2));
 
+        // PI 파라미터 설정 서비스
+        pi_param_service_ = this->create_service<wearable_robot_interfaces::srv::SetPIParameters>(
+            "set_pi_parameters",
+            std::bind(&ActuatorControlNode::handle_pi_parameters, this,
+                      std::placeholders::_1, std::placeholders::_2));
+
+        // 비상 정지 서비스
+        emergency_service_ = this->create_service<wearable_robot_interfaces::srv::EmergencyStop>(
+            "set_emergency_stop",
+            std::bind(&ActuatorControlNode::handle_emergency_stop, this,
+                      std::placeholders::_1, std::placeholders::_2));
 
 
         // PI 제어 파라미터 및 목표 온도 선언
@@ -57,14 +64,6 @@ public:
         param_callback_handle_ = this->add_on_set_parameters_callback(
             std::bind(&ActuatorControlNode::parameter_callback, this, std::placeholders::_1));
 
-        // PI 게인 파라미터 구독
-        kp_param_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
-            "kp_param", 10,
-            std::bind(&ActuatorControlNode::kp_param_callback, this, std::placeholders::_1));
-
-        ki_param_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
-            "ki_param", 10,
-            std::bind(&ActuatorControlNode::ki_param_callback, this, std::placeholders::_1));
 
         // 제어 타이머 (250Hz로 제어)
         double control_frequency = this->get_parameter("control_frequency").as_double();
@@ -352,6 +351,107 @@ private:
         // 메시지 발행
         pwm_publisher_->publish(pwm_msg);
     }
+
+    void handle_control_mode(
+        const std::shared_ptr<wearable_robot_interfaces::srv::SetControlMode::Request> request,
+        std::shared_ptr<wearable_robot_interfaces::srv::SetControlMode::Response> response)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        try {
+            // true: 자동 모드, false: 수동 모드
+            bool auto_mode = request->auto_mode;
+            use_direct_pwm_ = !auto_mode;  // 자동 모드의 반대가 수동 모드
+
+            // 모드 전환 시 적분 누적값 초기화
+            if (auto_mode) {
+                integral_ = 0.0;
+            }
+
+            response->success = true;
+            response->message = "제어 모드가 " + std::string(auto_mode ? "자동 온도 제어" : "수동 PWM 제어") +
+                               "로 변경되었습니다";
+
+            RCLCPP_INFO(this->get_logger(), "%s", response->message.c_str());
+        } catch (const std::exception& e) {
+            response->success = false;
+            response->message = "제어 모드 변경 실패: " + std::string(e.what());
+            RCLCPP_ERROR(this->get_logger(), "%s", response->message.c_str());
+        }
+    }
+
+    // PI 파라미터 설정 서비스 핸들러
+    void handle_pi_parameters(
+        const std::shared_ptr<wearable_robot_interfaces::srv::SetPIParameters::Request> request,
+        std::shared_ptr<wearable_robot_interfaces::srv::SetPIParameters::Response> response)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        try {
+            // 파라미터 유효성 검사
+            if (request->kp < 0.0 || request->ki < 0.0) {
+                throw std::invalid_argument("게인 값은 음수가 될 수 없습니다");
+            }
+
+            // 파라미터 업데이트
+            this->set_parameter(rclcpp::Parameter("kp", request->kp));
+            this->set_parameter(rclcpp::Parameter("ki", request->ki));
+
+            response->success = true;
+            response->message = "PI 파라미터가 업데이트되었습니다 (Kp=" +
+                               std::to_string(request->kp) + ", Ki=" +
+                               std::to_string(request->ki) + ")";
+
+            RCLCPP_INFO(this->get_logger(), "%s", response->message.c_str());
+        } catch (const std::exception& e) {
+            response->success = false;
+            response->message = "PI 파라미터 업데이트 실패: " + std::string(e.what());
+            RCLCPP_ERROR(this->get_logger(), "%s", response->message.c_str());
+        }
+    }
+
+    // 비상 정지 서비스 핸들러
+    void handle_emergency_stop(
+        const std::shared_ptr<wearable_robot_interfaces::srv::SetEmergencyStop::Request> request,
+        std::shared_ptr<wearable_robot_interfaces::srv::SetEmergencyStop::Response> response)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        try {
+            if (request->activate) {
+                // 비상 정지 활성화
+                if (!is_emergency_stop_) {
+                    activate_emergency_stop();
+                    response->message = "비상 정지가 활성화되었습니다";
+                } else {
+                    response->message = "비상 정지가 이미 활성화되어 있습니다";
+                }
+            } else {
+                // 비상 정지 해제
+                if (is_emergency_stop_) {
+                    is_emergency_stop_ = false;
+                    response->message = "비상 정지가 해제되었습니다";
+
+                    // 온도가 안전하면 안전 상태도 초기화
+                    if (current_temp_ < this->get_parameter("safety_threshold").as_double()) {
+                        is_temperature_safe_ = true;
+                    } else {
+                        response->message += " (주의: 온도가 여전히 안전 임계값을 초과함)";
+                    }
+                } else {
+                    response->message = "비상 정지가 이미 해제되어 있습니다";
+                }
+            }
+
+            response->success = true;
+            RCLCPP_INFO(this->get_logger(), "%s", response->message.c_str());
+        } catch (const std::exception& e) {
+            response->success = false;
+            response->message = "비상 정지 상태 변경 실패: " + std::string(e.what());
+            RCLCPP_ERROR(this->get_logger(), "%s", response->message.c_str());
+        }
+    }
+
 
     // 파라미터 설정 콜백
     rcl_interfaces::msg::SetParametersResult parameter_callback(
