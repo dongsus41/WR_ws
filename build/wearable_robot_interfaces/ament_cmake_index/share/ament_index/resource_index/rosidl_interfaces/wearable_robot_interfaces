@@ -8,8 +8,6 @@ msg/DisplacementData.idl
 msg/DisplacementData.msg
 msg/DisplacementRawData.idl
 msg/DisplacementRawData.msg
-msg/EmergencyStop.idl
-msg/EmergencyStop.msg
 msg/FanCommand.idl
 msg/FanCommand.msg
 msg/IMUData.idl
@@ -18,3 +16,15 @@ msg/IMUType.idl
 msg/IMUType.msg
 msg/TemperatureData.idl
 msg/TemperatureData.msg
+srv/EmergencyStop.idl
+srv/EmergencyStop.srv
+srv/EmergencyStop_Request.msg
+srv/EmergencyStop_Response.msg
+srv/SetControlMode.idl
+srv/SetControlMode.srv
+srv/SetControlMode_Request.msg
+srv/SetControlMode_Response.msg
+srv/SetControlParams.idl
+srv/SetControlParams.srv
+srv/SetControlParams_Request.msg
+srv/SetControlParams_Response.msg

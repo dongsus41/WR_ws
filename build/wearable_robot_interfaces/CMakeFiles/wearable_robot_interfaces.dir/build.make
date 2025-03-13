@@ -61,8 +61,16 @@ CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/ActuatorCommand.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/FanCommand.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/CANDataFrame.msg
-CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/EmergencyStop.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntension.msg
+CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/srv/SetControlMode.srv
+CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/SetControlMode_Request.msg
+CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/SetControlMode_Response.msg
+CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/srv/SetControlParams.srv
+CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/SetControlParams_Request.msg
+CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/SetControlParams_Response.msg
+CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/srv/EmergencyStop.srv
+CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/EmergencyStop_Request.msg
+CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/EmergencyStop_Response.msg
 CMakeFiles/wearable_robot_interfaces: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
 CMakeFiles/wearable_robot_interfaces: /opt/ros/foxy/share/std_msgs/msg/Byte.idl
 CMakeFiles/wearable_robot_interfaces: /opt/ros/foxy/share/std_msgs/msg/ByteMultiArray.idl

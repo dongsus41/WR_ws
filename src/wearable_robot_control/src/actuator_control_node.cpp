@@ -1,6 +1,9 @@
 #include <rclcpp/rclcpp.hpp>
 #include <wearable_robot_interfaces/msg/temperature_data.hpp>
 #include <wearable_robot_interfaces/msg/actuator_command.hpp>
+#include <wearable_robot_interfaces/srv/set_control_mode.hpp>
+#include <wearable_robot_interfaces/srv/set_control_params.hpp>
+#include <wearable_robot_interfaces/srv/emergency_stop.hpp>
 #include <std_msgs/msg/float64.hpp>
 #include <std_msgs/msg/bool.hpp>
 #include <string>
@@ -38,7 +41,7 @@ public:
                       std::placeholders::_1, std::placeholders::_2));
 
         // PI 파라미터 설정 서비스
-        pi_param_service_ = this->create_service<wearable_robot_interfaces::srv::SetPIParameters>(
+        pi_param_service_ = this->create_service<wearable_robot_interfaces::srv::SetControlParams>(
             "set_pi_parameters",
             std::bind(&ActuatorControlNode::handle_pi_parameters, this,
                       std::placeholders::_1, std::placeholders::_2));
@@ -152,24 +155,6 @@ private:
         }
     }
 
-    // 제어 모드 콜백 (자동/수동)
-    void control_mode_callback(const std_msgs::msg::Bool::SharedPtr msg)
-    {
-        std::lock_guard<std::mutex> lock(control_mutex_);
-
-        // true: 자동 모드, false: 수동 모드
-        bool auto_mode = msg->data;
-        use_direct_pwm_ = !auto_mode;  // 자동 모드의 반대가 수동 모드(직접 PWM 제어)
-
-        RCLCPP_INFO(this->get_logger(),
-            "제어 모드가 %s로 변경되었습니다", auto_mode ? "자동 온도 제어" : "수동 PWM 제어");
-
-        // 모드 전환 시 적분 누적값 초기화
-        if (auto_mode) {
-            integral_ = 0.0;
-        }
-    }
-
     // 온도 안전성 검사
     void check_temperature_safety()
     {
@@ -218,30 +203,6 @@ private:
         }
     }
 
-    // 비상 정지 콜백
-    void emergency_callback(const std_msgs::msg::Bool::SharedPtr msg)
-    {
-        std::lock_guard<std::mutex> lock(control_mutex_);
-
-        if (msg->data) {
-            // 비상 정지 활성화
-            if (!is_emergency_stop_) {
-                activate_emergency_stop();
-            }
-        } else {
-            // 비상 정지 해제
-            if (is_emergency_stop_) {
-                is_emergency_stop_ = false;
-                RCLCPP_INFO(this->get_logger(), "비상 정지가 해제되었습니다. 제어 재개");
-
-                // 온도가 안전하면 안전 상태도 초기화
-                if (current_temp_ < this->get_parameter("safety_threshold").as_double()) {
-                    is_temperature_safe_ = true;
-                }
-            }
-        }
-    }
-
     // 비상 정지 활성화
     void activate_emergency_stop()
     {
@@ -256,24 +217,6 @@ private:
 
         // 적분기 초기화
         integral_ = 0.0;
-    }
-
-    // Kp 파라미터 업데이트 콜백
-    void kp_param_callback(const std_msgs::msg::Float64::SharedPtr msg)
-    {
-        std::lock_guard<std::mutex> lock(control_mutex_);
-
-        this->set_parameter(rclcpp::Parameter("kp", msg->data));
-        RCLCPP_INFO(this->get_logger(), "Kp 게인이 %.2f로 업데이트되었습니다", msg->data);
-    }
-
-    // Ki 파라미터 업데이트 콜백
-    void ki_param_callback(const std_msgs::msg::Float64::SharedPtr msg)
-    {
-        std::lock_guard<std::mutex> lock(control_mutex_);
-
-        this->set_parameter(rclcpp::Parameter("ki", msg->data));
-        RCLCPP_INFO(this->get_logger(), "Ki 게인이 %.3f로 업데이트되었습니다", msg->data);
     }
 
     // 주기적 제어 콜백
@@ -382,8 +325,8 @@ private:
 
     // PI 파라미터 설정 서비스 핸들러
     void handle_pi_parameters(
-        const std::shared_ptr<wearable_robot_interfaces::srv::SetPIParameters::Request> request,
-        std::shared_ptr<wearable_robot_interfaces::srv::SetPIParameters::Response> response)
+        const std::shared_ptr<wearable_robot_interfaces::srv::SetControlParams::Request> request,
+        std::shared_ptr<wearable_robot_interfaces::srv::SetControlParams::Response> response)
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
 
@@ -412,8 +355,8 @@ private:
 
     // 비상 정지 서비스 핸들러
     void handle_emergency_stop(
-        const std::shared_ptr<wearable_robot_interfaces::srv::SetEmergencyStop::Request> request,
-        std::shared_ptr<wearable_robot_interfaces::srv::SetEmergencyStop::Response> response)
+        const std::shared_ptr<wearable_robot_interfaces::srv::EmergencyStop::Request> request,
+        std::shared_ptr<wearable_robot_interfaces::srv::EmergencyStop::Response> response)
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
 
@@ -487,12 +430,13 @@ private:
     // 구독 및 발행
     rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr temp_subscription_;
     rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr target_temp_subscription_;
-    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr kp_param_subscription_;
-    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr ki_param_subscription_;
-    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr emergency_subscription_;
-    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr control_mode_subscription_;
     rclcpp::Subscription<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr direct_pwm_subscription_;
     rclcpp::Publisher<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr pwm_publisher_;
+
+    // 서비스
+    rclcpp::Service<wearable_robot_interfaces::srv::SetControlMode>::SharedPtr control_mode_service_;
+    rclcpp::Service<wearable_robot_interfaces::srv::SetControlParams>::SharedPtr pi_param_service_;
+    rclcpp::Service<wearable_robot_interfaces::srv::EmergencyStop>::SharedPtr emergency_service_;
 
 
     // 파라미터 콜백

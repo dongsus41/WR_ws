@@ -31,6 +31,7 @@ add_executable(actuator_control_node
 ament_target_dependencies(actuator_control_node
   rclcpp
   std_msgs
+  std_srvs
   wearable_robot_interfaces
   ros2_socketcan_msgs
 )

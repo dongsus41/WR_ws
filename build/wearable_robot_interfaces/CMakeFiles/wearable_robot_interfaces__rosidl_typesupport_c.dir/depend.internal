@@ -76,21 +76,6 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesuppor
  /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.h
  rosidl_generator_c/wearable_robot_interfaces/msg/detail/displacement_raw_data__struct.h
  rosidl_typesupport_c/wearable_robot_interfaces/msg/rosidl_typesupport_c__visibility_control.h
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o
- /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp
- /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.h
- /opt/ros/foxy/include/rosidl_runtime_c/message_type_support_struct.h
- /opt/ros/foxy/include/rosidl_runtime_c/primitives_sequence.h
- /opt/ros/foxy/include/rosidl_runtime_c/string.h
- /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
- /opt/ros/foxy/include/rosidl_typesupport_c/identifier.h
- /opt/ros/foxy/include/rosidl_typesupport_c/message_type_support_dispatch.h
- /opt/ros/foxy/include/rosidl_typesupport_c/type_support_map.h
- /opt/ros/foxy/include/rosidl_typesupport_c/visibility_control.h
- /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
- /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.h
- rosidl_generator_c/wearable_robot_interfaces/msg/detail/emergency_stop__struct.h
- rosidl_typesupport_c/wearable_robot_interfaces/msg/rosidl_typesupport_c__visibility_control.h
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o
  /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.h
@@ -147,4 +132,49 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesuppor
  /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
  /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.h
  rosidl_generator_c/wearable_robot_interfaces/msg/detail/temperature_data__struct.h
+ rosidl_typesupport_c/wearable_robot_interfaces/msg/rosidl_typesupport_c__visibility_control.h
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o
+ /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp
+ /opt/ros/foxy/include/rosidl_runtime_c/message_type_support_struct.h
+ /opt/ros/foxy/include/rosidl_runtime_c/primitives_sequence.h
+ /opt/ros/foxy/include/rosidl_runtime_c/service_type_support_struct.h
+ /opt/ros/foxy/include/rosidl_runtime_c/string.h
+ /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/identifier.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/message_type_support_dispatch.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/service_type_support_dispatch.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/type_support_map.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/visibility_control.h
+ /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
+ rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__struct.h
+ rosidl_typesupport_c/wearable_robot_interfaces/msg/rosidl_typesupport_c__visibility_control.h
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o
+ /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp
+ /opt/ros/foxy/include/rosidl_runtime_c/message_type_support_struct.h
+ /opt/ros/foxy/include/rosidl_runtime_c/primitives_sequence.h
+ /opt/ros/foxy/include/rosidl_runtime_c/service_type_support_struct.h
+ /opt/ros/foxy/include/rosidl_runtime_c/string.h
+ /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/identifier.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/message_type_support_dispatch.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/service_type_support_dispatch.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/type_support_map.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/visibility_control.h
+ /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
+ rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__struct.h
+ rosidl_typesupport_c/wearable_robot_interfaces/msg/rosidl_typesupport_c__visibility_control.h
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o
+ /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp
+ /opt/ros/foxy/include/rosidl_runtime_c/message_type_support_struct.h
+ /opt/ros/foxy/include/rosidl_runtime_c/primitives_sequence.h
+ /opt/ros/foxy/include/rosidl_runtime_c/service_type_support_struct.h
+ /opt/ros/foxy/include/rosidl_runtime_c/string.h
+ /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/identifier.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/message_type_support_dispatch.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/service_type_support_dispatch.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/type_support_map.h
+ /opt/ros/foxy/include/rosidl_typesupport_c/visibility_control.h
+ /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
+ rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__struct.h
  rosidl_typesupport_c/wearable_robot_interfaces/msg/rosidl_typesupport_c__visibility_control.h

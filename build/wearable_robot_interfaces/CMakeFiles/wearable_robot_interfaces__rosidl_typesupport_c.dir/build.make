@@ -71,8 +71,10 @@ rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_s
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/msg/ActuatorCommand.idl
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/msg/FanCommand.idl
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/msg/CANDataFrame.idl
-rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/msg/EmergencyStop.idl
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/msg/BackIntension.idl
+rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/srv/SetControlMode.idl
+rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/srv/SetControlParams.idl
+rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: rosidl_adapter/wearable_robot_interfaces/srv/EmergencyStop.idl
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: /opt/ros/foxy/share/std_msgs/msg/Byte.idl
 rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp: /opt/ros/foxy/share/std_msgs/msg/ByteMultiArray.idl
@@ -129,11 +131,17 @@ rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp
 rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp
 
-rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
-	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp
-
 rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp
+
+rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp
+
+rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp
+
+rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp
 
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o: rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp
@@ -239,22 +247,9 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesuppor
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.s
 
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/flags.make
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o: rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp
-
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp > CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.i
-
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.s
-
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o: rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp
 
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.i: cmake_force
@@ -264,6 +259,45 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesuppor
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.s
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/flags.make
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o: rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp > CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.i
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.s
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/flags.make
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o: rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp > CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.i
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.s
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/flags.make
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o: rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp > CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.i
+
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp -o CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.s
 
 # Object files for target wearable_robot_interfaces__rosidl_typesupport_c
 wearable_robot_interfaces__rosidl_typesupport_c_OBJECTS = \
@@ -275,8 +309,10 @@ wearable_robot_interfaces__rosidl_typesupport_c_OBJECTS = \
 "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o" \
-"CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o" \
-"CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o"
+"CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o" \
+"CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o" \
+"CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o" \
+"CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o"
 
 # External object files for target wearable_robot_interfaces__rosidl_typesupport_c
 wearable_robot_interfaces__rosidl_typesupport_c_EXTERNAL_OBJECTS =
@@ -289,8 +325,10 @@ libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot
 libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o
 libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp.o
 libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o
-libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp.o
 libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o
+libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp.o
+libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp.o
+libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp.o
 libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/build.make
 libwearable_robot_interfaces__rosidl_typesupport_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
 libwearable_robot_interfaces__rosidl_typesupport_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
@@ -310,7 +348,7 @@ libwearable_robot_interfaces__rosidl_typesupport_c.so: /opt/ros/foxy/lib/librosi
 libwearable_robot_interfaces__rosidl_typesupport_c.so: /opt/ros/foxy/lib/librcpputils.so
 libwearable_robot_interfaces__rosidl_typesupport_c.so: /opt/ros/foxy/lib/librcutils.so
 libwearable_robot_interfaces__rosidl_typesupport_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared library libwearable_robot_interfaces__rosidl_typesupport_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -330,8 +368,10 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_ty
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/msg/fan_command__type_support.cpp
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/msg/emergency_stop__type_support.cpp
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_mode__type_support.cpp
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/srv/set_control_params__type_support.cpp
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/wearable_robot_interfaces/srv/emergency_stop__type_support.cpp
 	cd /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/depend
 

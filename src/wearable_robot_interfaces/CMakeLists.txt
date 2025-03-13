@@ -35,7 +35,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   #"msg/JointState.msg"
   "msg/BackIntension.msg"
   "srv/SetControlMode.srv"
-  "srv/SetPIParameters.srv"
+  "srv/SetControlParams.srv"
   "srv/EmergencyStop.srv"
   DEPENDENCIES std_msgs
 )

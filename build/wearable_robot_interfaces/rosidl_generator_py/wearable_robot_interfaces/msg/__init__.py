@@ -3,7 +3,6 @@ from wearable_robot_interfaces.msg._back_intension import BackIntension  # noqa:
 from wearable_robot_interfaces.msg._can_data_frame import CANDataFrame  # noqa: F401
 from wearable_robot_interfaces.msg._displacement_data import DisplacementData  # noqa: F401
 from wearable_robot_interfaces.msg._displacement_raw_data import DisplacementRawData  # noqa: F401
-from wearable_robot_interfaces.msg._emergency_stop import EmergencyStop  # noqa: F401
 from wearable_robot_interfaces.msg._fan_command import FanCommand  # noqa: F401
 from wearable_robot_interfaces.msg._imu_data import IMUData  # noqa: F401
 from wearable_robot_interfaces.msg._imu_type import IMUType  # noqa: F401

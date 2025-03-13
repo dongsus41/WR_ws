@@ -1136,145 +1136,6 @@ _register_msg_type__msg__can_data_frame(PyObject * pymodule)
 // #include "rosidl_runtime_c/service_type_support_struct.h"
 // already included above
 // #include "rosidl_runtime_c/action_type_support_struct.h"
-#include "wearable_robot_interfaces/msg/detail/emergency_stop__type_support.h"
-#include "wearable_robot_interfaces/msg/detail/emergency_stop__struct.h"
-#include "wearable_robot_interfaces/msg/detail/emergency_stop__functions.h"
-
-static void * wearable_robot_interfaces__msg__emergency_stop__create_ros_message(void)
-{
-  return wearable_robot_interfaces__msg__EmergencyStop__create();
-}
-
-static void wearable_robot_interfaces__msg__emergency_stop__destroy_ros_message(void * raw_ros_message)
-{
-  wearable_robot_interfaces__msg__EmergencyStop * ros_message = (wearable_robot_interfaces__msg__EmergencyStop *)raw_ros_message;
-  wearable_robot_interfaces__msg__EmergencyStop__destroy(ros_message);
-}
-
-ROSIDL_GENERATOR_C_IMPORT
-bool wearable_robot_interfaces__msg__emergency_stop__convert_from_py(PyObject * _pymsg, void * ros_message);
-ROSIDL_GENERATOR_C_IMPORT
-PyObject * wearable_robot_interfaces__msg__emergency_stop__convert_to_py(void * raw_ros_message);
-
-
-ROSIDL_GENERATOR_C_IMPORT
-const rosidl_message_type_support_t *
-ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, msg, EmergencyStop);
-
-int8_t
-_register_msg_type__msg__emergency_stop(PyObject * pymodule)
-{
-  int8_t err;
-
-  PyObject * pyobject_create_ros_message = NULL;
-  pyobject_create_ros_message = PyCapsule_New(
-    (void *)&wearable_robot_interfaces__msg__emergency_stop__create_ros_message,
-    NULL, NULL);
-  if (!pyobject_create_ros_message) {
-    // previously added objects will be removed when the module is destroyed
-    return -1;
-  }
-  err = PyModule_AddObject(
-    pymodule,
-    "create_ros_message_msg__msg__emergency_stop",
-    pyobject_create_ros_message);
-  if (err) {
-    // the created capsule needs to be decremented
-    Py_XDECREF(pyobject_create_ros_message);
-    // previously added objects will be removed when the module is destroyed
-    return err;
-  }
-
-  PyObject * pyobject_destroy_ros_message = NULL;
-  pyobject_destroy_ros_message = PyCapsule_New(
-    (void *)&wearable_robot_interfaces__msg__emergency_stop__destroy_ros_message,
-    NULL, NULL);
-  if (!pyobject_destroy_ros_message) {
-    // previously added objects will be removed when the module is destroyed
-    return -1;
-  }
-  err = PyModule_AddObject(
-    pymodule,
-    "destroy_ros_message_msg__msg__emergency_stop",
-    pyobject_destroy_ros_message);
-  if (err) {
-    // the created capsule needs to be decremented
-    Py_XDECREF(pyobject_destroy_ros_message);
-    // previously added objects will be removed when the module is destroyed
-    return err;
-  }
-
-  PyObject * pyobject_convert_from_py = NULL;
-  pyobject_convert_from_py = PyCapsule_New(
-    (void *)&wearable_robot_interfaces__msg__emergency_stop__convert_from_py,
-    NULL, NULL);
-  if (!pyobject_convert_from_py) {
-    // previously added objects will be removed when the module is destroyed
-    return -1;
-  }
-  err = PyModule_AddObject(
-    pymodule,
-    "convert_from_py_msg__msg__emergency_stop",
-    pyobject_convert_from_py);
-  if (err) {
-    // the created capsule needs to be decremented
-    Py_XDECREF(pyobject_convert_from_py);
-    // previously added objects will be removed when the module is destroyed
-    return err;
-  }
-
-  PyObject * pyobject_convert_to_py = NULL;
-  pyobject_convert_to_py = PyCapsule_New(
-    (void *)&wearable_robot_interfaces__msg__emergency_stop__convert_to_py,
-    NULL, NULL);
-  if (!pyobject_convert_to_py) {
-    // previously added objects will be removed when the module is destroyed
-    return -1;
-  }
-  err = PyModule_AddObject(
-    pymodule,
-    "convert_to_py_msg__msg__emergency_stop",
-    pyobject_convert_to_py);
-  if (err) {
-    // the created capsule needs to be decremented
-    Py_XDECREF(pyobject_convert_to_py);
-    // previously added objects will be removed when the module is destroyed
-    return err;
-  }
-
-  PyObject * pyobject_type_support = NULL;
-  pyobject_type_support = PyCapsule_New(
-    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, msg, EmergencyStop),
-    NULL, NULL);
-  if (!pyobject_type_support) {
-    // previously added objects will be removed when the module is destroyed
-    return -1;
-  }
-  err = PyModule_AddObject(
-    pymodule,
-    "type_support_msg__msg__emergency_stop",
-    pyobject_type_support);
-  if (err) {
-    // the created capsule needs to be decremented
-    Py_XDECREF(pyobject_type_support);
-    // previously added objects will be removed when the module is destroyed
-    return err;
-  }
-  return 0;
-}
-
-// already included above
-// #include <stdbool.h>
-// already included above
-// #include <stdint.h>
-// already included above
-// #include "rosidl_runtime_c/visibility_control.h"
-// already included above
-// #include "rosidl_runtime_c/message_type_support_struct.h"
-// already included above
-// #include "rosidl_runtime_c/service_type_support_struct.h"
-// already included above
-// #include "rosidl_runtime_c/action_type_support_struct.h"
 #include "wearable_robot_interfaces/msg/detail/back_intension__type_support.h"
 #include "wearable_robot_interfaces/msg/detail/back_intension__struct.h"
 #include "wearable_robot_interfaces/msg/detail/back_intension__functions.h"
@@ -1402,6 +1263,936 @@ _register_msg_type__msg__back_intension(PyObject * pymodule)
   return 0;
 }
 
+// already included above
+// #include <stdbool.h>
+// already included above
+// #include <stdint.h>
+// already included above
+// #include "rosidl_runtime_c/visibility_control.h"
+// already included above
+// #include "rosidl_runtime_c/message_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/service_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/action_type_support_struct.h"
+#include "wearable_robot_interfaces/srv/detail/set_control_mode__type_support.h"
+#include "wearable_robot_interfaces/srv/detail/set_control_mode__struct.h"
+#include "wearable_robot_interfaces/srv/detail/set_control_mode__functions.h"
+
+static void * wearable_robot_interfaces__srv__set_control_mode__request__create_ros_message(void)
+{
+  return wearable_robot_interfaces__srv__SetControlMode_Request__create();
+}
+
+static void wearable_robot_interfaces__srv__set_control_mode__request__destroy_ros_message(void * raw_ros_message)
+{
+  wearable_robot_interfaces__srv__SetControlMode_Request * ros_message = (wearable_robot_interfaces__srv__SetControlMode_Request *)raw_ros_message;
+  wearable_robot_interfaces__srv__SetControlMode_Request__destroy(ros_message);
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+bool wearable_robot_interfaces__srv__set_control_mode__request__convert_from_py(PyObject * _pymsg, void * ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * wearable_robot_interfaces__srv__set_control_mode__request__convert_to_py(void * raw_ros_message);
+
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_message_type_support_t *
+ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlMode_Request);
+
+int8_t
+_register_msg_type__srv__set_control_mode__request(PyObject * pymodule)
+{
+  int8_t err;
+
+  PyObject * pyobject_create_ros_message = NULL;
+  pyobject_create_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__request__create_ros_message,
+    NULL, NULL);
+  if (!pyobject_create_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "create_ros_message_msg__srv__set_control_mode__request",
+    pyobject_create_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_create_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_destroy_ros_message = NULL;
+  pyobject_destroy_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__request__destroy_ros_message,
+    NULL, NULL);
+  if (!pyobject_destroy_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "destroy_ros_message_msg__srv__set_control_mode__request",
+    pyobject_destroy_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_destroy_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_from_py = NULL;
+  pyobject_convert_from_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__request__convert_from_py,
+    NULL, NULL);
+  if (!pyobject_convert_from_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_from_py_msg__srv__set_control_mode__request",
+    pyobject_convert_from_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_from_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_to_py = NULL;
+  pyobject_convert_to_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__request__convert_to_py,
+    NULL, NULL);
+  if (!pyobject_convert_to_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_to_py_msg__srv__set_control_mode__request",
+    pyobject_convert_to_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_to_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlMode_Request),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_msg__srv__set_control_mode__request",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+// already included above
+// #include <stdbool.h>
+// already included above
+// #include <stdint.h>
+// already included above
+// #include "rosidl_runtime_c/visibility_control.h"
+// already included above
+// #include "rosidl_runtime_c/message_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/service_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/action_type_support_struct.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/set_control_mode__type_support.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/set_control_mode__struct.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/set_control_mode__functions.h"
+
+static void * wearable_robot_interfaces__srv__set_control_mode__response__create_ros_message(void)
+{
+  return wearable_robot_interfaces__srv__SetControlMode_Response__create();
+}
+
+static void wearable_robot_interfaces__srv__set_control_mode__response__destroy_ros_message(void * raw_ros_message)
+{
+  wearable_robot_interfaces__srv__SetControlMode_Response * ros_message = (wearable_robot_interfaces__srv__SetControlMode_Response *)raw_ros_message;
+  wearable_robot_interfaces__srv__SetControlMode_Response__destroy(ros_message);
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+bool wearable_robot_interfaces__srv__set_control_mode__response__convert_from_py(PyObject * _pymsg, void * ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * wearable_robot_interfaces__srv__set_control_mode__response__convert_to_py(void * raw_ros_message);
+
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_message_type_support_t *
+ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlMode_Response);
+
+int8_t
+_register_msg_type__srv__set_control_mode__response(PyObject * pymodule)
+{
+  int8_t err;
+
+  PyObject * pyobject_create_ros_message = NULL;
+  pyobject_create_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__response__create_ros_message,
+    NULL, NULL);
+  if (!pyobject_create_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "create_ros_message_msg__srv__set_control_mode__response",
+    pyobject_create_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_create_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_destroy_ros_message = NULL;
+  pyobject_destroy_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__response__destroy_ros_message,
+    NULL, NULL);
+  if (!pyobject_destroy_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "destroy_ros_message_msg__srv__set_control_mode__response",
+    pyobject_destroy_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_destroy_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_from_py = NULL;
+  pyobject_convert_from_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__response__convert_from_py,
+    NULL, NULL);
+  if (!pyobject_convert_from_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_from_py_msg__srv__set_control_mode__response",
+    pyobject_convert_from_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_from_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_to_py = NULL;
+  pyobject_convert_to_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_mode__response__convert_to_py,
+    NULL, NULL);
+  if (!pyobject_convert_to_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_to_py_msg__srv__set_control_mode__response",
+    pyobject_convert_to_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_to_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlMode_Response),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_msg__srv__set_control_mode__response",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_service_type_support_t *
+ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, wearable_robot_interfaces, srv, SetControlMode)();
+
+int8_t
+_register_srv_type__srv__set_control_mode(PyObject * pymodule)
+{
+  int8_t err;
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, wearable_robot_interfaces, srv, SetControlMode)(),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_srv__srv__set_control_mode",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+// already included above
+// #include <stdbool.h>
+// already included above
+// #include <stdint.h>
+// already included above
+// #include "rosidl_runtime_c/visibility_control.h"
+// already included above
+// #include "rosidl_runtime_c/message_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/service_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/action_type_support_struct.h"
+#include "wearable_robot_interfaces/srv/detail/set_control_params__type_support.h"
+#include "wearable_robot_interfaces/srv/detail/set_control_params__struct.h"
+#include "wearable_robot_interfaces/srv/detail/set_control_params__functions.h"
+
+static void * wearable_robot_interfaces__srv__set_control_params__request__create_ros_message(void)
+{
+  return wearable_robot_interfaces__srv__SetControlParams_Request__create();
+}
+
+static void wearable_robot_interfaces__srv__set_control_params__request__destroy_ros_message(void * raw_ros_message)
+{
+  wearable_robot_interfaces__srv__SetControlParams_Request * ros_message = (wearable_robot_interfaces__srv__SetControlParams_Request *)raw_ros_message;
+  wearable_robot_interfaces__srv__SetControlParams_Request__destroy(ros_message);
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+bool wearable_robot_interfaces__srv__set_control_params__request__convert_from_py(PyObject * _pymsg, void * ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * wearable_robot_interfaces__srv__set_control_params__request__convert_to_py(void * raw_ros_message);
+
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_message_type_support_t *
+ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlParams_Request);
+
+int8_t
+_register_msg_type__srv__set_control_params__request(PyObject * pymodule)
+{
+  int8_t err;
+
+  PyObject * pyobject_create_ros_message = NULL;
+  pyobject_create_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__request__create_ros_message,
+    NULL, NULL);
+  if (!pyobject_create_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "create_ros_message_msg__srv__set_control_params__request",
+    pyobject_create_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_create_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_destroy_ros_message = NULL;
+  pyobject_destroy_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__request__destroy_ros_message,
+    NULL, NULL);
+  if (!pyobject_destroy_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "destroy_ros_message_msg__srv__set_control_params__request",
+    pyobject_destroy_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_destroy_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_from_py = NULL;
+  pyobject_convert_from_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__request__convert_from_py,
+    NULL, NULL);
+  if (!pyobject_convert_from_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_from_py_msg__srv__set_control_params__request",
+    pyobject_convert_from_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_from_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_to_py = NULL;
+  pyobject_convert_to_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__request__convert_to_py,
+    NULL, NULL);
+  if (!pyobject_convert_to_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_to_py_msg__srv__set_control_params__request",
+    pyobject_convert_to_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_to_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlParams_Request),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_msg__srv__set_control_params__request",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+// already included above
+// #include <stdbool.h>
+// already included above
+// #include <stdint.h>
+// already included above
+// #include "rosidl_runtime_c/visibility_control.h"
+// already included above
+// #include "rosidl_runtime_c/message_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/service_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/action_type_support_struct.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/set_control_params__type_support.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/set_control_params__struct.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/set_control_params__functions.h"
+
+static void * wearable_robot_interfaces__srv__set_control_params__response__create_ros_message(void)
+{
+  return wearable_robot_interfaces__srv__SetControlParams_Response__create();
+}
+
+static void wearable_robot_interfaces__srv__set_control_params__response__destroy_ros_message(void * raw_ros_message)
+{
+  wearable_robot_interfaces__srv__SetControlParams_Response * ros_message = (wearable_robot_interfaces__srv__SetControlParams_Response *)raw_ros_message;
+  wearable_robot_interfaces__srv__SetControlParams_Response__destroy(ros_message);
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+bool wearable_robot_interfaces__srv__set_control_params__response__convert_from_py(PyObject * _pymsg, void * ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * wearable_robot_interfaces__srv__set_control_params__response__convert_to_py(void * raw_ros_message);
+
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_message_type_support_t *
+ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlParams_Response);
+
+int8_t
+_register_msg_type__srv__set_control_params__response(PyObject * pymodule)
+{
+  int8_t err;
+
+  PyObject * pyobject_create_ros_message = NULL;
+  pyobject_create_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__response__create_ros_message,
+    NULL, NULL);
+  if (!pyobject_create_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "create_ros_message_msg__srv__set_control_params__response",
+    pyobject_create_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_create_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_destroy_ros_message = NULL;
+  pyobject_destroy_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__response__destroy_ros_message,
+    NULL, NULL);
+  if (!pyobject_destroy_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "destroy_ros_message_msg__srv__set_control_params__response",
+    pyobject_destroy_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_destroy_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_from_py = NULL;
+  pyobject_convert_from_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__response__convert_from_py,
+    NULL, NULL);
+  if (!pyobject_convert_from_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_from_py_msg__srv__set_control_params__response",
+    pyobject_convert_from_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_from_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_to_py = NULL;
+  pyobject_convert_to_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__set_control_params__response__convert_to_py,
+    NULL, NULL);
+  if (!pyobject_convert_to_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_to_py_msg__srv__set_control_params__response",
+    pyobject_convert_to_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_to_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, SetControlParams_Response),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_msg__srv__set_control_params__response",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_service_type_support_t *
+ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, wearable_robot_interfaces, srv, SetControlParams)();
+
+int8_t
+_register_srv_type__srv__set_control_params(PyObject * pymodule)
+{
+  int8_t err;
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, wearable_robot_interfaces, srv, SetControlParams)(),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_srv__srv__set_control_params",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+// already included above
+// #include <stdbool.h>
+// already included above
+// #include <stdint.h>
+// already included above
+// #include "rosidl_runtime_c/visibility_control.h"
+// already included above
+// #include "rosidl_runtime_c/message_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/service_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/action_type_support_struct.h"
+#include "wearable_robot_interfaces/srv/detail/emergency_stop__type_support.h"
+#include "wearable_robot_interfaces/srv/detail/emergency_stop__struct.h"
+#include "wearable_robot_interfaces/srv/detail/emergency_stop__functions.h"
+
+static void * wearable_robot_interfaces__srv__emergency_stop__request__create_ros_message(void)
+{
+  return wearable_robot_interfaces__srv__EmergencyStop_Request__create();
+}
+
+static void wearable_robot_interfaces__srv__emergency_stop__request__destroy_ros_message(void * raw_ros_message)
+{
+  wearable_robot_interfaces__srv__EmergencyStop_Request * ros_message = (wearable_robot_interfaces__srv__EmergencyStop_Request *)raw_ros_message;
+  wearable_robot_interfaces__srv__EmergencyStop_Request__destroy(ros_message);
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+bool wearable_robot_interfaces__srv__emergency_stop__request__convert_from_py(PyObject * _pymsg, void * ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * wearable_robot_interfaces__srv__emergency_stop__request__convert_to_py(void * raw_ros_message);
+
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_message_type_support_t *
+ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, EmergencyStop_Request);
+
+int8_t
+_register_msg_type__srv__emergency_stop__request(PyObject * pymodule)
+{
+  int8_t err;
+
+  PyObject * pyobject_create_ros_message = NULL;
+  pyobject_create_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__request__create_ros_message,
+    NULL, NULL);
+  if (!pyobject_create_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "create_ros_message_msg__srv__emergency_stop__request",
+    pyobject_create_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_create_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_destroy_ros_message = NULL;
+  pyobject_destroy_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__request__destroy_ros_message,
+    NULL, NULL);
+  if (!pyobject_destroy_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "destroy_ros_message_msg__srv__emergency_stop__request",
+    pyobject_destroy_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_destroy_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_from_py = NULL;
+  pyobject_convert_from_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__request__convert_from_py,
+    NULL, NULL);
+  if (!pyobject_convert_from_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_from_py_msg__srv__emergency_stop__request",
+    pyobject_convert_from_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_from_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_to_py = NULL;
+  pyobject_convert_to_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__request__convert_to_py,
+    NULL, NULL);
+  if (!pyobject_convert_to_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_to_py_msg__srv__emergency_stop__request",
+    pyobject_convert_to_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_to_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, EmergencyStop_Request),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_msg__srv__emergency_stop__request",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+// already included above
+// #include <stdbool.h>
+// already included above
+// #include <stdint.h>
+// already included above
+// #include "rosidl_runtime_c/visibility_control.h"
+// already included above
+// #include "rosidl_runtime_c/message_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/service_type_support_struct.h"
+// already included above
+// #include "rosidl_runtime_c/action_type_support_struct.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/emergency_stop__type_support.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/emergency_stop__struct.h"
+// already included above
+// #include "wearable_robot_interfaces/srv/detail/emergency_stop__functions.h"
+
+static void * wearable_robot_interfaces__srv__emergency_stop__response__create_ros_message(void)
+{
+  return wearable_robot_interfaces__srv__EmergencyStop_Response__create();
+}
+
+static void wearable_robot_interfaces__srv__emergency_stop__response__destroy_ros_message(void * raw_ros_message)
+{
+  wearable_robot_interfaces__srv__EmergencyStop_Response * ros_message = (wearable_robot_interfaces__srv__EmergencyStop_Response *)raw_ros_message;
+  wearable_robot_interfaces__srv__EmergencyStop_Response__destroy(ros_message);
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+bool wearable_robot_interfaces__srv__emergency_stop__response__convert_from_py(PyObject * _pymsg, void * ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * wearable_robot_interfaces__srv__emergency_stop__response__convert_to_py(void * raw_ros_message);
+
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_message_type_support_t *
+ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, EmergencyStop_Response);
+
+int8_t
+_register_msg_type__srv__emergency_stop__response(PyObject * pymodule)
+{
+  int8_t err;
+
+  PyObject * pyobject_create_ros_message = NULL;
+  pyobject_create_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__response__create_ros_message,
+    NULL, NULL);
+  if (!pyobject_create_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "create_ros_message_msg__srv__emergency_stop__response",
+    pyobject_create_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_create_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_destroy_ros_message = NULL;
+  pyobject_destroy_ros_message = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__response__destroy_ros_message,
+    NULL, NULL);
+  if (!pyobject_destroy_ros_message) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "destroy_ros_message_msg__srv__emergency_stop__response",
+    pyobject_destroy_ros_message);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_destroy_ros_message);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_from_py = NULL;
+  pyobject_convert_from_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__response__convert_from_py,
+    NULL, NULL);
+  if (!pyobject_convert_from_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_from_py_msg__srv__emergency_stop__response",
+    pyobject_convert_from_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_from_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_convert_to_py = NULL;
+  pyobject_convert_to_py = PyCapsule_New(
+    (void *)&wearable_robot_interfaces__srv__emergency_stop__response__convert_to_py,
+    NULL, NULL);
+  if (!pyobject_convert_to_py) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "convert_to_py_msg__srv__emergency_stop__response",
+    pyobject_convert_to_py);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_convert_to_py);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_GET_MSG_TYPE_SUPPORT(wearable_robot_interfaces, srv, EmergencyStop_Response),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_msg__srv__emergency_stop__response",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
+ROSIDL_GENERATOR_C_IMPORT
+const rosidl_service_type_support_t *
+ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, wearable_robot_interfaces, srv, EmergencyStop)();
+
+int8_t
+_register_srv_type__srv__emergency_stop(PyObject * pymodule)
+{
+  int8_t err;
+  PyObject * pyobject_type_support = NULL;
+  pyobject_type_support = PyCapsule_New(
+    (void *)ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, wearable_robot_interfaces, srv, EmergencyStop)(),
+    NULL, NULL);
+  if (!pyobject_type_support) {
+    // previously added objects will be removed when the module is destroyed
+    return -1;
+  }
+  err = PyModule_AddObject(
+    pymodule,
+    "type_support_srv__srv__emergency_stop",
+    pyobject_type_support);
+  if (err) {
+    // the created capsule needs to be decremented
+    Py_XDECREF(pyobject_type_support);
+    // previously added objects will be removed when the module is destroyed
+    return err;
+  }
+  return 0;
+}
+
 PyMODINIT_FUNC
 PyInit_wearable_robot_interfaces_s__rosidl_typesupport_introspection_c(void)
 {
@@ -1460,13 +2251,61 @@ PyInit_wearable_robot_interfaces_s__rosidl_typesupport_introspection_c(void)
     return NULL;
   }
 
-  err = _register_msg_type__msg__emergency_stop(pymodule);
+  err = _register_msg_type__msg__back_intension(pymodule);
   if (err) {
     Py_XDECREF(pymodule);
     return NULL;
   }
 
-  err = _register_msg_type__msg__back_intension(pymodule);
+  err = _register_msg_type__srv__set_control_mode__request(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_msg_type__srv__set_control_mode__response(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_srv_type__srv__set_control_mode(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_msg_type__srv__set_control_params__request(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_msg_type__srv__set_control_params__response(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_srv_type__srv__set_control_params(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_msg_type__srv__emergency_stop__request(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_msg_type__srv__emergency_stop__response(pymodule);
+  if (err) {
+    Py_XDECREF(pymodule);
+    return NULL;
+  }
+
+  err = _register_srv_type__srv__emergency_stop(pymodule);
   if (err) {
     Py_XDECREF(pymodule);
     return NULL;
