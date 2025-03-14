@@ -1,4 +1,6 @@
+/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/launch/bringup_actuator.launch.py
 /home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/launch/bringup_all.launch.py
+/home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/launch/bringup_actuator.launch.py
 /home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/wearable_robot_bringup/launch/bringup_all.launch.py
 /home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/ament_index/resource_index/package_run_dependencies/wearable_robot_bringup
 /home/kimm/wearable_robot_ws/install/wearable_robot_bringup/share/ament_index/resource_index/parent_prefix_path/wearable_robot_bringup

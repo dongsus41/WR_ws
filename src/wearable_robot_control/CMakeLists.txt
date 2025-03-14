@@ -58,18 +58,30 @@ ament_target_dependencies(waist_support_control_node
 #   ros2_socketcan_msgs
 # )
 
+  # can 송신 노드
+  add_executable(can_transmitter_node
+    src/can_transmitter_node.cpp
+  )
+  ament_target_dependencies(can_transmitter_node
+    rclcpp
+    std_msgs
+    wearable_robot_interfaces
+    ros2_socketcan_msgs
+  )
+
 
 # 실행 파일 설치
 install(TARGETS
   actuator_control_node
   waist_support_control_node
   #command_send_node
+  can_transmitter_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# 설정 파일 및 런치 파일 설치
+# 설정 파일 설치
 install(
-  DIRECTORY launch config
+  DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 

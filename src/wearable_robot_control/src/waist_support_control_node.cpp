@@ -1,5 +1,4 @@
 #include <rclcpp/rclcpp.hpp>
-#include <wearable_robot_interfaces/msg/temperature_data.hpp>
 #include <wearable_robot_interfaces/msg/actuator_command.hpp>
 #include <wearable_robot_interfaces/msg/displacement_data.hpp>
 #include <wearable_robot_interfaces/msg/back_intension.hpp>
@@ -19,11 +18,6 @@ public:
 
     WaistAssistControlNode() : Node("waist_support_control_node")
     {
-        // 온도 데이터 구독
-        temp_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::TemperatureData>(
-            "temperature_data", 10,
-            std::bind(&WaistAssistControlNode::temperature_callback, this, std::placeholders::_1));
-
         // 변위 센서 데이터 구독 (허리 각도 측정용)
         displacement_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::DisplacementData>(
             "displacement_data", 10,
@@ -42,11 +36,6 @@ public:
         // 액추에이터 명령 발행
         pwm_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::ActuatorCommand>(
             "actuator_command", 10);
-
-        // 목표 온도 구독
-        target_temp_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::TemperatureData>(
-            "target_temperature", 10,
-            std::bind(&WaistAssistControlNode::target_temp_callback, this, std::placeholders::_1));
 
         // 직접 PWM 값 구독
         direct_pwm_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::ActuatorCommand>(

@@ -168,6 +168,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named can_transmitter_node
+
+# Build rule for target.
+can_transmitter_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 can_transmitter_node
+.PHONY : can_transmitter_node
+
+# fast build rule for target.
+can_transmitter_node/fast:
+	$(MAKE) -f CMakeFiles/can_transmitter_node.dir/build.make CMakeFiles/can_transmitter_node.dir/build
+.PHONY : can_transmitter_node/fast
+
+#=============================================================================
 # Target rules for targets named waist_support_control_node
 
 # Build rule for target.
@@ -246,6 +259,33 @@ src/actuator_control_node.cpp.s:
 	$(MAKE) -f CMakeFiles/actuator_control_node.dir/build.make CMakeFiles/actuator_control_node.dir/src/actuator_control_node.cpp.s
 .PHONY : src/actuator_control_node.cpp.s
 
+src/can_transmitter_node.o: src/can_transmitter_node.cpp.o
+
+.PHONY : src/can_transmitter_node.o
+
+# target to build an object file
+src/can_transmitter_node.cpp.o:
+	$(MAKE) -f CMakeFiles/can_transmitter_node.dir/build.make CMakeFiles/can_transmitter_node.dir/src/can_transmitter_node.cpp.o
+.PHONY : src/can_transmitter_node.cpp.o
+
+src/can_transmitter_node.i: src/can_transmitter_node.cpp.i
+
+.PHONY : src/can_transmitter_node.i
+
+# target to preprocess a source file
+src/can_transmitter_node.cpp.i:
+	$(MAKE) -f CMakeFiles/can_transmitter_node.dir/build.make CMakeFiles/can_transmitter_node.dir/src/can_transmitter_node.cpp.i
+.PHONY : src/can_transmitter_node.cpp.i
+
+src/can_transmitter_node.s: src/can_transmitter_node.cpp.s
+
+.PHONY : src/can_transmitter_node.s
+
+# target to generate assembly for a file
+src/can_transmitter_node.cpp.s:
+	$(MAKE) -f CMakeFiles/can_transmitter_node.dir/build.make CMakeFiles/can_transmitter_node.dir/src/can_transmitter_node.cpp.s
+.PHONY : src/can_transmitter_node.cpp.s
+
 src/waist_support_control_node.o: src/waist_support_control_node.cpp.o
 
 .PHONY : src/waist_support_control_node.o
@@ -286,6 +326,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... can_transmitter_node"
 	@echo "... waist_support_control_node"
 	@echo "... actuator_control_node"
 	@echo "... wearable_robot_control_uninstall"
@@ -293,6 +334,9 @@ help:
 	@echo "... src/actuator_control_node.o"
 	@echo "... src/actuator_control_node.i"
 	@echo "... src/actuator_control_node.s"
+	@echo "... src/can_transmitter_node.o"
+	@echo "... src/can_transmitter_node.i"
+	@echo "... src/can_transmitter_node.s"
 	@echo "... src/waist_support_control_node.o"
 	@echo "... src/waist_support_control_node.i"
 	@echo "... src/waist_support_control_node.s"

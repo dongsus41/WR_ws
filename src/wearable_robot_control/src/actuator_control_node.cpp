@@ -4,8 +4,6 @@
 #include <wearable_robot_interfaces/srv/set_control_mode.hpp>
 #include <wearable_robot_interfaces/srv/set_control_params.hpp>
 #include <wearable_robot_interfaces/srv/emergency_stop.hpp>
-#include <std_msgs/msg/float64.hpp>
-#include <std_msgs/msg/bool.hpp>
 #include <string>
 #include <vector>
 #include <mutex>

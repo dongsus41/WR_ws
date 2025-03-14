@@ -72,7 +72,7 @@ def generate_launch_description():
 
 
     # config 파일 경로
-    waist_control_config = os.path.join(control_pkg_share, 'config', 'waist_support_params.yaml')
+    temp_control_config = os.path.join(control_pkg_share, 'config', 'temperature_control_params.yaml')
 
     # can data processing 노드
     can_processor_node = Node(
@@ -90,30 +90,22 @@ def generate_launch_description():
         output='screen'
     )
 
-    # 허리 제어 노드
-    wasit_control_node = Node(
-        package= 'wearable_robot_control',
-        executable='waist_support_control_node',
-        name='actuator_support_node',
-        parameters=[waist_control_config],
-        output='screen'
-    )
-
-    # 구동기 제어 노드
+    # 온도 제어 노드
     actuator_control_node = Node(
         package= 'wearable_robot_control',
-        executable='waist_actuator_control_node',
-        name='waist_actuator_control_node',
-        parameters=[waist_control_config],
+        executable='actuator_control_node',
+        name='actuator_control_node',
+        parameters=[temp_control_config],
         output='screen'
     )
 
-    # CAN 송신 노드
+
+    # command 노드
     command_send_node = Node(
         package= 'wearable_robot_control',
         executable='can_transmitter_node',
         name='can_transmitter_node',
-        parameters=[waist_control_config],
+        parameters=[temp_control_config],
         output='screen'
     )
 
@@ -121,8 +113,8 @@ def generate_launch_description():
     # command 노드
     gui_node = Node(
         package= 'wearable_robot_rqt_plugins',
-        executable='waist_control_plugin',
-        name='waist_control_plugin',
+        executable='actuator_control_plugin',
+        name='actuator_control_plugin',
         output='screen',
         on_exit=Shutdown()
     )
@@ -135,7 +127,6 @@ def generate_launch_description():
         socketcan_launch_include,
         can_processor_node,
         parser_node,
-        wasit_control_node,
         actuator_control_node,
         command_send_node,
         gui_node,

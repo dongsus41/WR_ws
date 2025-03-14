@@ -72,19 +72,6 @@ def generate_launch_description():
         condition=UnlessCondition(use_test_mode)  # 수정된 부분
     )
 
-    # 데이터 로거 노드
-    logger_node = Node(
-        package='data_logger',
-        executable='temperature_logger_node',
-        name='temperature_logger_node',
-        parameters=[
-            {'log_directory': '~/temp_logs'},
-            {'active_actuator': 5},
-            {'logging_frequency': 10.0}  # 10Hz 로깅
-        ],
-        output='screen'
-    )
-
     # RQT UI 실행
     rqt_with_plugin = ExecuteProcess(
         cmd=['rqt', '--force-discover', '--standalone', 'TemperatureControlPlugin'],
@@ -98,6 +85,5 @@ def generate_launch_description():
         parser_node,
         actuator_control_node,
         command_send_node,
-        logger_node,
         rqt_with_plugin
     ])

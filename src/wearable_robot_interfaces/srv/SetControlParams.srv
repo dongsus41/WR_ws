@@ -1,7 +1,8 @@
-# 요청 (request)
-float64 kp
-float64 ki
+# Request
+float64 kp           # 비례 게인
+float64 ki           # 적분 게인
+int32 actuator_id    # 제어할 구동기 ID (-1: 모든 구동기)
 ---
-# 응답 (response)
+# Response
 bool success
 string message
