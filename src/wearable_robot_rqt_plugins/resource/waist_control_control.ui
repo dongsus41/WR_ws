@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>700</height>
+    <width>1104</width>
+    <height>813</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>웨어러블 로봇 구동기 제어</string>
+   <string>웨어러블 로봇 허리 보조 제어</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -19,7 +19,6 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <!-- 그래프 영역 (좌측) -->
      <widget class="QWidget" name="graphAndLogWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -61,6 +60,22 @@
            </widget>
           </item>
           <item>
+           <widget class="QFrame" name="displacement_graph_frame">
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>120</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <widget class="QPushButton" name="graph_start_button">
@@ -71,18 +86,11 @@
             </item>
             <item>
              <widget class="QPushButton" name="graph_stop_button">
-              <property name="text">
-               <string>그래프 중지</string>
-              </property>
               <property name="enabled">
                <bool>false</bool>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="reset_graph_button">
               <property name="text">
-               <string>데이터 초기화</string>
+               <string>그래프 중지</string>
               </property>
              </widget>
             </item>
@@ -97,31 +105,31 @@
           <string>데이터 로깅</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_6">
+          <item row="5" column="0" colspan="2">
+           <widget class="QLabel" name="service_status_label">
             <property name="text">
-             <string>파일 이름:</string>
+             <string>서비스 상태: 확인 중</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="filename_edit">
+          <item row="4" column="0" colspan="2">
+           <widget class="QLabel" name="log_status_label">
             <property name="text">
-             <string>temperature_log</string>
+             <string>로깅 상태: 대기 중</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
+          <item row="3" column="0">
            <widget class="QPushButton" name="save_data_button">
             <property name="text">
              <string>데이터 저장</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0" colspan="3">
-           <widget class="QLabel" name="log_status_label">
+          <item row="3" column="1">
+           <widget class="QPushButton" name="reset_graph_button">
             <property name="text">
-             <string>로깅 상태: 대기 중</string>
+             <string>데이터 초기화</string>
             </property>
            </widget>
           </item>
@@ -130,18 +138,16 @@
        </item>
       </layout>
      </widget>
-
-     <!-- 제어 패널 (우측) -->
      <widget class="QWidget" name="controlWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QGroupBox" name="sensors_status_group">
          <property name="title">
-          <string>구동기 5번 상태</string>
+          <string>센서 상태</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="label_angle">
             <property name="font">
              <font>
               <pointsize>11</pointsize>
@@ -150,12 +156,12 @@
              </font>
             </property>
             <property name="text">
-             <string>현재 온도:</string>
+             <string>허리 변위 센서 :</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLabel" name="temp_label">
+           <widget class="QLabel" name="displacement_label">
             <property name="font">
              <font>
               <pointsize>11</pointsize>
@@ -163,32 +169,109 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="text">
+             <string>0.0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_act_status">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>동작 상태:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="activation_status_label">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>비활성화됨</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="intention_group">
+         <property name="title">
+          <string>의도 시뮬레이션</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_intention">
+          <item row="2" column="0" colspan="2">
+           <widget class="QLabel" name="intention_status_label">
+            <property name="text">
+             <string>현재 의도: 없음</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QPushButton" name="intention_button">
+            <property name="text">
+             <string>의도 on/off</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="actuator_status_group">
+         <property name="title">
+          <string>구동기 상태</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_actuator">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_act4">
+            <property name="text">
+             <string>구동기 4:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="temp_label_4">
             <property name="text">
              <string>0.0°C</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
+          <item row="0" column="2">
+           <widget class="QLabel" name="pwm_label_4">
             <property name="text">
-             <string>현재 PWM 값:</string>
+             <string>PWM: 0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_act5">
+            <property name="text">
+             <string>구동기 5:</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="pwm_label">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
+           <widget class="QLabel" name="temp_label_5">
             <property name="text">
-             <string>0</string>
+             <string>0.0°C</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="pwm_label_5">
+            <property name="text">
+             <string>PWM: 0</string>
             </property>
            </widget>
           </item>
@@ -196,83 +279,44 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_2">
+        <widget class="QGroupBox" name="settings_group">
          <property name="title">
-          <string>제어 모드</string>
+          <string>시스템 설정</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QRadioButton" name="manual_mode_radio">
-            <property name="text">
-             <string>수동 제어 (PWM)</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="auto_mode_radio">
-            <property name="text">
-             <string>자동 제어 (온도 기반)</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="manual_settings_group">
-         <property name="title">
-          <string>수동 제어 설정</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_3">
+         <layout class="QGridLayout" name="gridLayout_settings">
           <item row="0" column="0">
-           <widget class="QLabel" name="label_13">
-            <property name="text">
-             <string>PWM 값 (0-100):</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QSlider" name="pwm_slider">
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::TicksBelow</enum>
-            </property>
-            <property name="tickInterval">
-             <number>10</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QSpinBox" name="pwm_spin">
-            <property name="maximum">
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="auto_settings_group">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="title">
-          <string>자동 제어 설정</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_14">
+           <widget class="QLabel" name="label_target_temp">
             <property name="text">
              <string>목표 온도:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_angle_threshold">
+            <property name="text">
+             <string>허리 임계값:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDoubleSpinBox" name="angle_threshold_spin">
+            <property name="suffix">
+             <string> v</string>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>30.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>3.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -292,71 +336,19 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_15">
-            <property name="text">
-             <string>Kp 값:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDoubleSpinBox" name="kp_spin">
-            <property name="decimals">
-             <number>2</number>
-            </property>
-            <property name="minimum">
-             <double>0.100000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.100000000000000</double>
-            </property>
-            <property name="value">
-             <double>2.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_16">
-            <property name="text">
-             <string>Ki 값:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QDoubleSpinBox" name="ki_spin">
-            <property name="decimals">
-             <number>3</number>
-            </property>
-            <property name="minimum">
-             <double>0.001000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>1.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.010000000000000</double>
-            </property>
-            <property name="value">
-             <double>0.100000000000000</double>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QGroupBox" name="command_group">
          <property name="title">
           <string>제어 명령</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QPushButton" name="apply_button">
             <property name="text">
-             <string>적용</string>
+             <string>설정 적용</string>
             </property>
            </widget>
           </item>
@@ -395,4 +387,3 @@
  <resources/>
  <connections/>
 </ui>
-EOF

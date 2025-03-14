@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/kimm/wearable_robot_ws/build/wearable_robot_control
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -135,6 +123,18 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles /home/kimm/wearable_robot_ws/build/wearable_robot_control/CMakeFiles/progress.marks
@@ -192,6 +192,19 @@ waist_support_control_node: cmake_check_build_system
 waist_support_control_node/fast:
 	$(MAKE) -f CMakeFiles/waist_support_control_node.dir/build.make CMakeFiles/waist_support_control_node.dir/build
 .PHONY : waist_support_control_node/fast
+
+#=============================================================================
+# Target rules for targets named waist_actuator_control_node
+
+# Build rule for target.
+waist_actuator_control_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 waist_actuator_control_node
+.PHONY : waist_actuator_control_node
+
+# fast build rule for target.
+waist_actuator_control_node/fast:
+	$(MAKE) -f CMakeFiles/waist_actuator_control_node.dir/build.make CMakeFiles/waist_actuator_control_node.dir/build
+.PHONY : waist_actuator_control_node/fast
 
 #=============================================================================
 # Target rules for targets named actuator_control_node
@@ -286,6 +299,33 @@ src/can_transmitter_node.cpp.s:
 	$(MAKE) -f CMakeFiles/can_transmitter_node.dir/build.make CMakeFiles/can_transmitter_node.dir/src/can_transmitter_node.cpp.s
 .PHONY : src/can_transmitter_node.cpp.s
 
+src/waist_actuator_control_node.o: src/waist_actuator_control_node.cpp.o
+
+.PHONY : src/waist_actuator_control_node.o
+
+# target to build an object file
+src/waist_actuator_control_node.cpp.o:
+	$(MAKE) -f CMakeFiles/waist_actuator_control_node.dir/build.make CMakeFiles/waist_actuator_control_node.dir/src/waist_actuator_control_node.cpp.o
+.PHONY : src/waist_actuator_control_node.cpp.o
+
+src/waist_actuator_control_node.i: src/waist_actuator_control_node.cpp.i
+
+.PHONY : src/waist_actuator_control_node.i
+
+# target to preprocess a source file
+src/waist_actuator_control_node.cpp.i:
+	$(MAKE) -f CMakeFiles/waist_actuator_control_node.dir/build.make CMakeFiles/waist_actuator_control_node.dir/src/waist_actuator_control_node.cpp.i
+.PHONY : src/waist_actuator_control_node.cpp.i
+
+src/waist_actuator_control_node.s: src/waist_actuator_control_node.cpp.s
+
+.PHONY : src/waist_actuator_control_node.s
+
+# target to generate assembly for a file
+src/waist_actuator_control_node.cpp.s:
+	$(MAKE) -f CMakeFiles/waist_actuator_control_node.dir/build.make CMakeFiles/waist_actuator_control_node.dir/src/waist_actuator_control_node.cpp.s
+.PHONY : src/waist_actuator_control_node.cpp.s
+
 src/waist_support_control_node.o: src/waist_support_control_node.cpp.o
 
 .PHONY : src/waist_support_control_node.o
@@ -319,7 +359,6 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
@@ -328,6 +367,8 @@ help:
 	@echo "... test"
 	@echo "... can_transmitter_node"
 	@echo "... waist_support_control_node"
+	@echo "... install/strip"
+	@echo "... waist_actuator_control_node"
 	@echo "... actuator_control_node"
 	@echo "... wearable_robot_control_uninstall"
 	@echo "... uninstall"
@@ -337,6 +378,9 @@ help:
 	@echo "... src/can_transmitter_node.o"
 	@echo "... src/can_transmitter_node.i"
 	@echo "... src/can_transmitter_node.s"
+	@echo "... src/waist_actuator_control_node.o"
+	@echo "... src/waist_actuator_control_node.i"
+	@echo "... src/waist_actuator_control_node.s"
 	@echo "... src/waist_support_control_node.o"
 	@echo "... src/waist_support_control_node.i"
 	@echo "... src/waist_support_control_node.s"

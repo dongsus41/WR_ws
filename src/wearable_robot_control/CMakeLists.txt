@@ -36,6 +36,18 @@ ament_target_dependencies(actuator_control_node
   ros2_socketcan_msgs
 )
 
+# 허리 제어 노드
+add_executable(waist_actuator_control_node
+  src/waist_actuator_control_node.cpp
+)
+ament_target_dependencies(actuator_control_node
+  rclcpp
+  std_msgs
+  std_srvs
+  wearable_robot_interfaces
+  ros2_socketcan_msgs
+)
+
 # 허리 보조 제어 노드
 add_executable(waist_support_control_node
   src/waist_support_control_node.cpp
@@ -73,8 +85,8 @@ ament_target_dependencies(waist_support_control_node
 # 실행 파일 설치
 install(TARGETS
   actuator_control_node
+  waist_actuator_control_node
   waist_support_control_node
-  #command_send_node
   can_transmitter_node
   DESTINATION lib/${PROJECT_NAME}
 )

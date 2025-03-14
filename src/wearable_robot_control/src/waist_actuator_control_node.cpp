@@ -10,7 +10,7 @@
 #include <map>
 #include <set>
 
-class ActuatorControlNode : public rclcpp::Node
+class WaistActuatorControlNode : public rclcpp::Node
 {
 public:
     // 액추에이터 상태 정보를 담는 구조체
@@ -29,12 +29,12 @@ public:
               pwm_output(0), use_direct_pwm(true), kp(2.0), ki(0.1) {}
     };
 
-    ActuatorControlNode() : Node("actuator_control_node")
+    WaistActuatorControlNode() : Node("waist_actuator_control_node")
     {
         // 온도 데이터 구독
         temp_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::TemperatureData>(
             "temperature_data", 10,
-            std::bind(&ActuatorControlNode::temperature_callback, this, std::placeholders::_1));
+            std::bind(&WaistActuatorControlNode::temperature_callback, this, std::placeholders::_1));
 
         // 명령 발행
         pwm_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::ActuatorCommand>(
@@ -43,29 +43,29 @@ public:
         // auto mode: 목표 온도 구독
         target_temp_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::TemperatureData>(
             "target_temperature", 10,
-            std::bind(&ActuatorControlNode::target_temp_callback, this, std::placeholders::_1));
+            std::bind(&WaistActuatorControlNode::target_temp_callback, this, std::placeholders::_1));
 
         // pwm mode: 직접 PWM 값 구독
         direct_pwm_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::ActuatorCommand>(
             "direct_pwm_command", 10,
-            std::bind(&ActuatorControlNode::direct_pwm_callback, this, std::placeholders::_1));
+            std::bind(&WaistActuatorControlNode::direct_pwm_callback, this, std::placeholders::_1));
 
         // 제어 모드 변경 서비스
         control_mode_service_ = this->create_service<wearable_robot_interfaces::srv::SetControlMode>(
             "set_control_mode",
-            std::bind(&ActuatorControlNode::handle_control_mode, this,
+            std::bind(&WaistActuatorControlNode::handle_control_mode, this,
                       std::placeholders::_1, std::placeholders::_2));
 
         // PI 파라미터 설정 서비스
         pi_param_service_ = this->create_service<wearable_robot_interfaces::srv::SetControlParams>(
             "set_pi_parameters",
-            std::bind(&ActuatorControlNode::handle_pi_parameters, this,
+            std::bind(&WaistActuatorControlNode::handle_pi_parameters, this,
                       std::placeholders::_1, std::placeholders::_2));
 
         // 비상 정지 서비스
         emergency_service_ = this->create_service<wearable_robot_interfaces::srv::EmergencyStop>(
             "set_emergency_stop",
-            std::bind(&ActuatorControlNode::handle_emergency_stop, this,
+            std::bind(&WaistActuatorControlNode::handle_emergency_stop, this,
                       std::placeholders::_1, std::placeholders::_2));
 
         // 기본 파라미터 선언
@@ -84,7 +84,7 @@ public:
 
         // 파라미터 변경 콜백 등록
         param_callback_handle_ = this->add_on_set_parameters_callback(
-            std::bind(&ActuatorControlNode::parameter_callback, this, std::placeholders::_1));
+            std::bind(&WaistActuatorControlNode::parameter_callback, this, std::placeholders::_1));
 
         // 제어 타이머 설정
         double control_frequency = this->get_parameter("control_frequency").as_double();
@@ -92,7 +92,7 @@ public:
 
         control_timer_ = this->create_wall_timer(
             std::chrono::milliseconds(period_ms),
-            std::bind(&ActuatorControlNode::control_callback, this));
+            std::bind(&WaistActuatorControlNode::control_callback, this));
 
         // 내부 변수 초기화
         is_emergency_stop_ = false;
@@ -301,6 +301,7 @@ private:
             else {
                 // PI 제어 연산
                 double error = target_temp - state.current_temp;
+
                 state.integral += error * dt;
 
                 // Anti-windup
@@ -627,7 +628,7 @@ private:
 int main(int argc, char* argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<ActuatorControlNode>());
+    rclcpp::spin(std::make_shared<WaistActuatorControlNode>());
     rclcpp::shutdown();
     return 0;
 }
