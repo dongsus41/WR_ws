@@ -20,6 +20,7 @@ def generate_launch_description():
     # 패키지 경로 설정
     socketcan_pkg_share = get_package_share_directory('ros2_socketcan')
     control_pkg_share = get_package_share_directory('wearable_robot_control')
+    data_processing_pkg_share = get_package_share_directory('wearable_robot_data_processing')
 
     socketcan_receiver_launch = os.path.join(
         socketcan_pkg_share,
@@ -73,6 +74,7 @@ def generate_launch_description():
 
     # config 파일 경로
     waist_control_config = os.path.join(control_pkg_share, 'config', 'waist_support_params.yaml')
+    displacemet_calib_config = os.path.join(data_processing_pkg_share, 'config', 'displacement_calibration_params.yaml')
 
     # can data processing 노드
     can_processor_node = Node(
@@ -90,11 +92,21 @@ def generate_launch_description():
         output='screen'
     )
 
+
+    # 변위 데이터 캘리브레이션 노드
+    displacement_calib_node = Node(
+        package= 'wearable_robot_data_processing',
+        executable='displacement_processing_node',
+        name='displacement_processing_node',
+        parameters=[displacemet_calib_config],
+        output='screen'
+    )
+
     # 허리 제어 노드
     wasit_control_node = Node(
         package= 'wearable_robot_control',
         executable='waist_support_control_node',
-        name='actuator_support_node',
+        name='waist_support_control_node',
         parameters=[waist_control_config],
         output='screen'
     )
@@ -122,7 +134,7 @@ def generate_launch_description():
     gui_node = Node(
         package= 'wearable_robot_rqt_plugins',
         executable='waist_control_plugin',
-        name='waist_control_plugin',
+        name='waist_control_plugin_launch',
         output='screen',
         on_exit=Shutdown()
     )
@@ -135,6 +147,7 @@ def generate_launch_description():
         socketcan_launch_include,
         can_processor_node,
         parser_node,
+        displacement_calib_node,
         wasit_control_node,
         actuator_control_node,
         command_send_node,

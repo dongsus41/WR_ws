@@ -17,4 +17,39 @@ __pycache__/
 .catkin_workspace
 .catkin_tools/
 *.csv
+
+
+# ROS2 빌드 산출물
+build/
+install/
+log/
+
+# 컴파일된 파일
+*.pyc
+*.pyo
+*.so
+*.o
+*.a
+*.dylib
+*.dll
+*.exe
+
+# 편집기 임시 파일
+*~
+.*.swp
+.DS_Store
+
+# C/C++ 빌드 관련 파일
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# Python 관련
+__pycache__/
+*.egg-info/
+.venv/
+
+
 EOF

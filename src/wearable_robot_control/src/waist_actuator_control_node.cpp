@@ -261,7 +261,8 @@ private:
         publish_pwm_command();
 
         // 모든 액추에이터의 적분기 초기화
-        for (auto& [id, state] : actuator_states_) {
+        for (auto& pair : actuator_states_) {
+            ActuatorState& state = pair.second;
             state.integral = 0.0;
         }
     }

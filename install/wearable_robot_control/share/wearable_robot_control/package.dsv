@@ -1,3 +1,6 @@
+source;share/wearable_robot_control/hook/cmake_prefix_path.ps1
+source;share/wearable_robot_control/hook/cmake_prefix_path.dsv
+source;share/wearable_robot_control/hook/cmake_prefix_path.sh
 source;share/wearable_robot_control/local_setup.bash
 source;share/wearable_robot_control/local_setup.dsv
 source;share/wearable_robot_control/local_setup.ps1

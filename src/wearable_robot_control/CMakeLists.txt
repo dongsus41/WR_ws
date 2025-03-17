@@ -40,7 +40,7 @@ ament_target_dependencies(actuator_control_node
 add_executable(waist_actuator_control_node
   src/waist_actuator_control_node.cpp
 )
-ament_target_dependencies(actuator_control_node
+ament_target_dependencies(waist_actuator_control_node
   rclcpp
   std_msgs
   std_srvs
