@@ -8,8 +8,9 @@ displacement_processing_node:
       b: 0.0
       c: 0.0
       d: 0.0
-      e: 1.0
-      f: 0.0
+      e: 1000.0
+      f: -1200.0
+
 
     # 센서 1의 캘리브레이션 계수
     sensor1:

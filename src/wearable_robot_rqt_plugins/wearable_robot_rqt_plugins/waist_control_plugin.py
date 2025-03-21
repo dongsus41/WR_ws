@@ -226,7 +226,7 @@ class WaistControlPlugin(Plugin):
             self.displacement_plot_widget.showGrid(x=True, y=True, alpha=0.3)
 
             # 변위 센서 Y축 범위 설정 (0 ~ 30)
-            self.displacement_plot_widget.setYRange(0, 5, padding=0.05)
+            self.displacement_plot_widget.setYRange(0, 500, padding=0.05)
 
             # 사용자 확대/축소 활성화
             self.displacement_plot_widget.setMouseEnabled(x=True, y=True)
@@ -272,7 +272,7 @@ class WaistControlPlugin(Plugin):
                 angle=0,  # 수평선
                 pen=pg.mkPen(color=(255, 0, 0), width=1.5, style=Qt.DashLine),
                 label=f"안전 한계: {self.safety_temp_threshold}°C",
-                labelOpts={'color': (255, 0, 0), 'position': 0.95}
+                labelOpts={'color': (255, 0, 0), 'position': 0.2}
             )
             self.temp_plot_widget.addItem(limit_line)
 
@@ -999,7 +999,7 @@ class WaistControlPlugin(Plugin):
             else:
                 # 녹화 시작
                 # 파일명에 날짜/시간 추가
-                base_name = 'wearable_robot '
+                base_name = 'wearable_robot'
                 # if not base_name:
                 #     base_name = "waist_robot"
 

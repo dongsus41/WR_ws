@@ -43,8 +43,8 @@ public:
 
         // 허리 보조 제어 파라미터
         this->declare_parameter("waist_assist_active", true);  // 허리 보조 동작 활성화 여부
-        this->declare_parameter("waist_angle_threshold", 3.0);  // 허리 각도 임계값 (기본값: 3.0도)
-        this->declare_parameter("target_temperature", 50.0);  // 구동기 목표 온도 (기본값: 50도)
+        this->declare_parameter("waist_angle_threshold", 3.0);  // 허리 각도 임계값 (기본값: 3v)
+        this->declare_parameter("target_temperature", 60.0);  // 구동기 목표 온도 (기본값: 60도)
         this->declare_parameter("control_frequency", 250.0);  // 제어 주파수 (Hz)
 
         // 파라미터 변경 콜백 등록

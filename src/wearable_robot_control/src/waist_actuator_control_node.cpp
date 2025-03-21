@@ -26,7 +26,7 @@ public:
         // 기본 생성자
         ActuatorState()
             : current_temp(0.0), previous_error(0.0), integral(0.0),
-              pwm_output(0), use_direct_pwm(true), kp(2.0), ki(0.1) {}
+              pwm_output(0), use_direct_pwm(true), kp(2.0), ki(0.05) {}
     };
 
     WaistActuatorControlNode() : Node("waist_actuator_control_node")
@@ -78,9 +78,9 @@ public:
         // 구동기별 파라미터 선언
         this->declare_parameter("actuator_ids", std::vector<int64_t>{4, 5});  // 기본값으로 4, 5번 구동기 설정
         this->declare_parameter("actuator4.kp", 2.0);        // 4번 구동기 Kp
-        this->declare_parameter("actuator4.ki", 0.1);        // 4번 구동기 Ki
+        this->declare_parameter("actuator4.ki", 0.05);        // 4번 구동기 Ki
         this->declare_parameter("actuator5.kp", 2.0);        // 5번 구동기 Kp
-        this->declare_parameter("actuator5.ki", 0.1);        // 5번 구동기 Ki
+        this->declare_parameter("actuator5.ki", 0.05);        // 5번 구동기 Ki
 
         // 파라미터 변경 콜백 등록
         param_callback_handle_ = this->add_on_set_parameters_callback(
@@ -275,7 +275,7 @@ private:
         // 비상 정지 중일 때는 제어 스킵, 0 값만 발행
         if (is_emergency_stop_) {
             // 모든 PWM 값 0으로 설정
-            for (auto& value : current_pwm_values_) {
+            for (auto &value : current_pwm_values_) {
                 value = 0;
             }
             publish_pwm_command();
@@ -300,31 +300,37 @@ private:
             }
             // 자동 온도 제어 모드일 경우
             else {
-                // PI 제어 연산
-                double error = target_temp - state.current_temp;
+                if (target_temp <= 0.1) {  // 약간의 여유를 두어 0.1 이하로 설정
+                    current_pwm_values_[id] = 0;
+                }
 
-                state.integral += error * dt;
+                else{
+                    // PI 제어 연산
+                    double error = target_temp - state.current_temp;
 
-                // Anti-windup
-                if (state.integral > max_pwm / state.ki) state.integral = max_pwm / state.ki;
-                if (state.integral < min_pwm / state.ki) state.integral = min_pwm / state.ki;
+                    state.integral += error * dt;
 
-                // PI 출력 계산 - 각 구동기별 고유 게인 사용
-                double output = state.kp * error + state.ki * state.integral;
+                    // Anti-windup
+                    if (state.integral > max_pwm / state.ki) state.integral = max_pwm / state.ki;
+                    if (state.integral < min_pwm / state.ki) state.integral = min_pwm / state.ki;
 
-                // 출력 제한
-                if (output > max_pwm) output = max_pwm;
-                if (output < min_pwm) output = min_pwm;
+                    // PI 출력 계산 - 각 구동기별 고유 게인 사용
+                    double output = state.kp * error + state.ki * state.integral;
 
-                // 정수화
-                uint8_t pwm_value = static_cast<uint8_t>(output);
+                    // 출력 제한
+                    if (output > max_pwm) output = max_pwm;
+                    if (output < min_pwm) output = min_pwm;
 
-                // 액티브 액추에이터 PWM 값 설정
-                current_pwm_values_[id] = pwm_value;
+                    // 정수화
+                    uint8_t pwm_value = static_cast<uint8_t>(output);
 
-                RCLCPP_DEBUG(this->get_logger(),
-                    "구동기 %d 온도 제어: 목표=%.1f°C, 현재=%.1f°C, 오차=%.1f°C, 출력=%d, Kp=%.2f, Ki=%.3f",
-                    id, target_temp, state.current_temp, error, pwm_value, state.kp, state.ki);
+                    // 액티브 액추에이터 PWM 값 설정
+                    current_pwm_values_[id] = pwm_value;
+
+                    RCLCPP_DEBUG(this->get_logger(),
+                        "구동기 %d 온도 제어: 목표=%.1f°C, 현재=%.1f°C, 오차=%.1f°C, 출력=%d, Kp=%.2f, Ki=%.3f",
+                        id, target_temp, state.current_temp, error, pwm_value, state.kp, state.ki);
+                }
             }
         }
 

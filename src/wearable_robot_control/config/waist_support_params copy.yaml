@@ -8,12 +8,12 @@ waist_actuator_control_node:
     # 4번 구동기 PI 제어기 파라미터
     actuator4:
       kp: 2.0                    # 비례 게인
-      ki: 0.1                    # 적분 게인
+      ki: 0.05                   # 적분 게인
 
     # 5번 구동기 PI 제어기 파라미터
     actuator5:
       kp: 2.0                    # 비례 게인
-      ki: 0.1                    # 적분 게인
+      ki: 0.05                   # 적분 게인
 
     # 출력 제한 설정
     max_pwm: 60.0               # 최대 PWM 출력 (0-100)
