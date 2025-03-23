@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>700</height>
+    <width>1210</width>
+    <height>728</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,6 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <!-- 그래프 영역 (좌측) -->
      <widget class="QWidget" name="graphAndLogWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -71,11 +70,11 @@
             </item>
             <item>
              <widget class="QPushButton" name="graph_stop_button">
-              <property name="text">
-               <string>그래프 중지</string>
-              </property>
               <property name="enabled">
                <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>그래프 중지</string>
               </property>
              </widget>
             </item>
@@ -130,8 +129,6 @@
        </item>
       </layout>
      </widget>
-
-     <!-- 제어 패널 (우측) -->
      <widget class="QWidget" name="controlWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -305,7 +302,7 @@
              <number>2</number>
             </property>
             <property name="minimum">
-             <double>0.100000000000000</double>
+             <double>0.000000000000000</double>
             </property>
             <property name="maximum">
              <double>10.000000000000000</double>
@@ -331,7 +328,7 @@
              <number>3</number>
             </property>
             <property name="minimum">
-             <double>0.001000000000000</double>
+             <double>0.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -340,7 +337,7 @@
              <double>0.010000000000000</double>
             </property>
             <property name="value">
-             <double>0.100000000000000</double>
+             <double>0.050000000000000</double>
             </property>
            </widget>
           </item>

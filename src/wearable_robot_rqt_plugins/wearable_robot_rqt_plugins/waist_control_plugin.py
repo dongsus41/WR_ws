@@ -11,7 +11,7 @@ import rclpy.task
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 from wearable_robot_interfaces.msg import ActuatorCommand, TemperatureData, DisplacementData, BackIntension
-from wearable_robot_interfaces.srv import SetControlMode, SetControlParams, EmergencyStop
+from wearable_robot_interfaces.srv import SetControlParams, EmergencyStop
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QVBoxLayout, QLabel
@@ -51,7 +51,7 @@ class WaistControlPlugin(Plugin):
         self.is_emergency_stop = False      # 비상 정지 상태
         self.safety_temp_threshold = 80.0   # 안전 온도 임계값 (°C)
         self.recording_process = None
-        self.applied_angle_threshold = 2.0  # 허리 각도 임계값
+        self.applied_angle_threshold = 2.2  # 허리 각도 임계값
         self.applied_target_temp = 60.0     # 기본 목표 온도
         self.is_active = False
 
@@ -105,8 +105,6 @@ class WaistControlPlugin(Plugin):
             DisplacementData, 'displacement_data', self.displacement_callback, qos_profile)  # 변위 데이터
 
         # 서비스 클라이언트 생성
-        self.control_mode_client = self.node.create_client(
-            SetControlMode, 'set_control_mode')
         self.pi_params_client = self.node.create_client(
             SetControlParams, 'set_pi_parameters')
         self.emergency_client = self.node.create_client(
@@ -115,7 +113,6 @@ class WaistControlPlugin(Plugin):
         # 서비스 가용성 확인을 위한 타이머
         self.service_check_timer = self.node.create_timer(1.0, self.check_service_availability)
         self.service_availability = {
-            'set_control_mode': False,
             'set_pi_parameters': False,
             'set_emergency_stop': False
         }
@@ -178,12 +175,12 @@ class WaistControlPlugin(Plugin):
         # Qt 타이머 추가 (UI 업데이트용)
         self.qt_timer = QTimer()
         self.qt_timer.timeout.connect(self.update_ui)
-        self.qt_timer.start(100)  # 100ms 마다 UI 업데이트
+        self.qt_timer.start(50)  # 50ms 마다 UI 업데이트
 
         # 그래프 업데이트 타이머
         self.graph_timer = QTimer()
         self.graph_timer.timeout.connect(self.update_graphs)
-        self.graph_timer.setInterval(100)  # 100ms마다 그래프 업데이트 (10Hz)
+        self.graph_timer.setInterval(50)  # 50ms마다 그래프 업데이트 (20Hz)
 
         # 초기화를 완료했음을 표시
         self._widget.status_label.setText('플러그인이 초기화되었습니다')
@@ -226,7 +223,7 @@ class WaistControlPlugin(Plugin):
             self.displacement_plot_widget.showGrid(x=True, y=True, alpha=0.3)
 
             # 변위 센서 Y축 범위 설정 (0 ~ 30)
-            self.displacement_plot_widget.setYRange(0, 500, padding=0.05)
+            self.displacement_plot_widget.setYRange(0, 5, padding=0.05)
 
             # 사용자 확대/축소 활성화
             self.displacement_plot_widget.setMouseEnabled(x=True, y=True)
@@ -711,7 +708,6 @@ class WaistControlPlugin(Plugin):
 
             # 임계값 업데이트
             threshold_value = self._widget.angle_threshold_spin.value()
-            self.applied_angle_threshold = threshold_value
             self.applied_angle_threshold = threshold_value  # 내부 작업용 변수도 함께 업데이트
 
             self._widget.status_label.setText(f'목표 온도 {target_temp:.2f}°C, 임계값 {threshold_value:.2f}로 설정')
@@ -730,6 +726,9 @@ class WaistControlPlugin(Plugin):
             msg.data = float(target_temp)
             self.target_temp_pub.publish(msg)
             self.node.get_logger().info(f'목표 온도 설정 메시지 발행: {target_temp:.2f}°C')
+
+            # 내부 변수 업데이트
+            self.applied_target_temp = target_temp
         except Exception as e:
             self.node.get_logger().error(f'목표 온도 발행 오류: {str(e)}')
 
@@ -873,21 +872,21 @@ class WaistControlPlugin(Plugin):
         # 상태가 변경되었을 때만 처리
         if new_active_state != self.is_active:
             self.is_active = new_active_state
-            mode_str = "자동 온도제어" if self.is_active else "수동 PWM 제어"
-            self.node.get_logger().info(f"활성화 상태 변경: {self.is_active}")
+            state_str = "활성화" if self.is_active else "비활성화"
+            self.node.get_logger().info(f"허리 보조 시스템 상태 변경: {state_str}")
 
-            if self.control_mode_client.service_is_ready():
-                # 서비스 요청 생성
-                request = SetControlMode.Request()
-                request.auto_mode = self.is_active  # 활성화 상태에 따라 자동/수동 모드 설정
-                request.actuator_id = -1  # -1은 모든 구동기를 의미
-
-                # 비동기 서비스 호출
-                self.node.get_logger().info(f"서비스 호출: set_control_mode, auto_mode={self.is_active}")
-                future = self.control_mode_client.call_async(request)
-                future.add_done_callback(self.handle_control_mode_response)
+            # 활성화 상태에 따라 타겟 온도 설정
+            if self.is_active:
+                # 활성화 상태: 사용자가 설정한 목표 온도 사용
+                target_temp = self._widget.target_temp_spin.value()
             else:
-                self.node.get_logger().warn("제어 모드 서비스가 준비되지 않았습니다. 상태 변경이 적용되지 않습니다.")
+                # 비활성화 상태: 목표 온도 0으로 설정
+                target_temp = 0.0
+
+            # 목표 온도 메시지 발행
+            self.publish_target_temperature(target_temp)
+
+            self._widget.status_label.setText(f"허리 보조 시스템이 {state_str}되었습니다. 목표 온도: {target_temp:.1f}°C")
 
     def handle_control_mode_response(self, future):
         """제어 모드 서비스 응답 처리"""
@@ -1054,7 +1053,6 @@ class WaistControlPlugin(Plugin):
 
     def check_service_availability(self):
         """서비스 가용성 확인 및 UI 업데이트"""
-        self.service_availability['set_control_mode'] = self.control_mode_client.service_is_ready()
         self.service_availability['set_pi_parameters'] = self.pi_params_client.service_is_ready()
         self.service_availability['set_emergency_stop'] = self.emergency_client.service_is_ready()
 
@@ -1067,23 +1065,9 @@ class WaistControlPlugin(Plugin):
             self._widget.service_status_label.setText("모든 서비스 연결됨")
             self._widget.service_status_label.setStyleSheet("color: green;")
 
-        if all(self.service_availability.values()) and not hasattr(self, 'initial_state_sent'):
-            # 초기 제어 모드 설정 (기본값은 활성화 상태에 따라)
-            request = SetControlMode.Request()
-            request.auto_mode = self.is_active  # 현재 활성화 상태에 맞게 설정
-            request.actuator_id = -1  # 모든 구동기
-
-            # 비동기 서비스 호출
-            future = self.control_mode_client.call_async(request)
-            future.add_done_callback(self.handle_control_mode_response)
-
-            # 초기 상태 설정 완료 표시
-            self.initial_state_sent = True
-            self.node.get_logger().info("초기 제어 모드가 설정되었습니다")
-
         # 로그로 서비스 가용성 출력
         self.node.get_logger().debug(
-            f"서비스 가용성: 제어모드={self.service_availability['set_control_mode']}, "
+            f"서비스 가용성: "
             f"PI파라미터={self.service_availability['set_pi_parameters']}, "
             f"비상정지={self.service_availability['set_emergency_stop']}")
 
