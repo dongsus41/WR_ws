@@ -61,7 +61,7 @@ CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/ActuatorCommand.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/FanCommand.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/CANDataFrame.msg
-CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntension.msg
+CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntention.msg
 CMakeFiles/wearable_robot_interfaces: /home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/srv/SetControlMode.srv
 CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/SetControlMode_Request.msg
 CMakeFiles/wearable_robot_interfaces: rosidl_cmake/srv/SetControlMode_Response.msg

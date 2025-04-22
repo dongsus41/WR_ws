@@ -10,8 +10,8 @@ import sys
 import rclpy.task
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
-from wearable_robot_interfaces.msg import ActuatorCommand, TemperatureData, DisplacementData, BackIntension
-from wearable_robot_interfaces.srv import SetControlParams, EmergencyStop
+from wearable_robot_interfaces.msg import ActuatorCommand, TemperatureData, DisplacementData, BackIntention
+from wearable_robot_interfaces.srv import SetControlMode, SetControlParams, EmergencyStop
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QVBoxLayout, QLabel
@@ -47,12 +47,12 @@ class WaistControlPlugin(Plugin):
         self.temperatures = [0.0] * 6       # 모든 구동기 온도
         self.pwm_values = [0] * 6           # 모든 구동기 PWM 값
         self.displacement = 0.0             # 변위 센서 값
-        self.current_intention = 0          # 현재 의도 ID (0: 없음, 1: 있음)
+        self.current_intention = 0          # 현재 의도 ID (0: 없음, 3: 있음)
         self.is_emergency_stop = False      # 비상 정지 상태
         self.safety_temp_threshold = 80.0   # 안전 온도 임계값 (°C)
         self.recording_process = None
         self.applied_angle_threshold = 2.2  # 허리 각도 임계값
-        self.applied_target_temp = 60.0     # 기본 목표 온도
+        self.applied_target_temp = 50.0     # 기본 목표 온도
         self.is_active = False
 
         # 그래프 관련 객체 초기화
@@ -94,7 +94,7 @@ class WaistControlPlugin(Plugin):
         self.target_temp_pub = self.node.create_publisher(
             std_msgs.msg.Float64, 'target_temperature_setting', qos_profile)  # 상위 제어기로 목표 온도 설정
         self.intention_pub = self.node.create_publisher(
-            BackIntension, 'intention_data', qos_profile)  # 의도 데이터 발행
+            BackIntention, 'intention_data', qos_profile)  # 의도 데이터 발행
 
         # 구독자 생성
         self.temp_sub = self.node.create_subscription(
@@ -103,8 +103,12 @@ class WaistControlPlugin(Plugin):
             ActuatorCommand, 'pwm_state', self.pwm_callback, qos_profile)  # 현재 PWM 상태
         self.displacement_sub = self.node.create_subscription(
             DisplacementData, 'displacement_data', self.displacement_callback, qos_profile)  # 변위 데이터
+        self.threshold_pub = self.node.create_publisher(
+            std_msgs.msg.Float64, 'angle_threshold_setting', qos_profile)  # 각도 임계값 설정
 
         # 서비스 클라이언트 생성
+        self.control_mode_client = self.node.create_client(
+            SetControlMode, 'set_control_mode')
         self.pi_params_client = self.node.create_client(
             SetControlParams, 'set_pi_parameters')
         self.emergency_client = self.node.create_client(
@@ -113,6 +117,7 @@ class WaistControlPlugin(Plugin):
         # 서비스 가용성 확인을 위한 타이머
         self.service_check_timer = self.node.create_timer(1.0, self.check_service_availability)
         self.service_availability = {
+            'set_control_mode': False,
             'set_pi_parameters': False,
             'set_emergency_stop': False
         }
@@ -175,12 +180,12 @@ class WaistControlPlugin(Plugin):
         # Qt 타이머 추가 (UI 업데이트용)
         self.qt_timer = QTimer()
         self.qt_timer.timeout.connect(self.update_ui)
-        self.qt_timer.start(50)  # 50ms 마다 UI 업데이트
+        self.qt_timer.start(100)  # 100ms 마다 UI 업데이트
 
         # 그래프 업데이트 타이머
         self.graph_timer = QTimer()
         self.graph_timer.timeout.connect(self.update_graphs)
-        self.graph_timer.setInterval(50)  # 50ms마다 그래프 업데이트 (20Hz)
+        self.graph_timer.setInterval(100)  # 100ms마다 그래프 업데이트 (10Hz)
 
         # 초기화를 완료했음을 표시
         self._widget.status_label.setText('플러그인이 초기화되었습니다')
@@ -269,7 +274,7 @@ class WaistControlPlugin(Plugin):
                 angle=0,  # 수평선
                 pen=pg.mkPen(color=(255, 0, 0), width=1.5, style=Qt.DashLine),
                 label=f"안전 한계: {self.safety_temp_threshold}°C",
-                labelOpts={'color': (255, 0, 0), 'position': 0.2}
+                labelOpts={'color': (255, 0, 0), 'position': 0.95}
             )
             self.temp_plot_widget.addItem(limit_line)
 
@@ -315,25 +320,19 @@ class WaistControlPlugin(Plugin):
             self.pwm_plot_widget.setMouseEnabled(x=True, y=True)
 
             # PWM 그래프 데이터 라인 생성 (구동기 4번, 5번)
-            self.pwm_line_4 = self.pwm_plot_widget.plot(
-                pen=pg.mkPen(color=(0, 128, 255), width=2),  # 파란색 계열
-                name="구동기 4 PWM",
-                # symbol='o',
-                # symbolSize=4,
-                # symbolBrush=(0, 128, 255)
-            )
+            # self.pwm_line_4 = self.pwm_plot_widget.plot(
+            #     pen=pg.mkPen(color=(0, 128, 255), width=2),  # 파란색 계열
+            #     name="구동기 4 PWM"
+            # )
             self.pwm_line_5 = self.pwm_plot_widget.plot(
                 pen=pg.mkPen(color=(255, 0, 0), width=2),    # 빨간색
-                name="구동기 5 PWM",
-                # symbol='o',
-                # symbolSize=4,
-                # symbolBrush=(255, 0, 0)
+                name="구동기 5 PWM"
             )
 
             # PWM 범례 추가
             pwm_legend = pg.LegendItem(offset=(60, 40))
             pwm_legend.setParentItem(self.pwm_plot_widget.graphicsItem())
-            pwm_legend.addItem(self.pwm_line_4, "구동기 4 PWM")
+            # pwm_legend.addItem(self.pwm_line_4, "구동기 4 PWM")
             pwm_legend.addItem(self.pwm_line_5, "구동기 5 PWM")
 
             # X축 연결 (세 그래프의 시간축을 동기화)
@@ -611,7 +610,7 @@ class WaistControlPlugin(Plugin):
                 self.temp_line_4.setData(display_time, display_temp_4)
                 self.temp_line_5.setData(display_time, display_temp_5)
                 self.target_temp_line.setData(display_time, display_target)
-                self.pwm_line_4.setData(display_time, display_pwm_4)
+                # self.pwm_line_4.setData(display_time, display_pwm_4)
                 self.pwm_line_5.setData(display_time, display_pwm_5)
 
                 # X축 범위 고정 (60초 창)
@@ -679,7 +678,7 @@ class WaistControlPlugin(Plugin):
             new_intention = 0 if self.current_intention else 3  # 0: 없음, 3: 굽히기(기본 의도)
 
             # 의도 메시지 생성 및 발행
-            msg = BackIntension()
+            msg = BackIntention()
             msg.header.stamp = self.node.get_clock().now().to_msg()
             msg.intention_id = new_intention
 
@@ -709,6 +708,7 @@ class WaistControlPlugin(Plugin):
             # 임계값 업데이트
             threshold_value = self._widget.angle_threshold_spin.value()
             self.applied_angle_threshold = threshold_value  # 내부 작업용 변수도 함께 업데이트
+            self.publish_angle_threshold(threshold_value)
 
             self._widget.status_label.setText(f'목표 온도 {target_temp:.2f}°C, 임계값 {threshold_value:.2f}로 설정')
             self.node.get_logger().info(f'설정 적용: 목표 온도={target_temp:.2f}°C, 임계값={threshold_value:.2f}')
@@ -726,11 +726,21 @@ class WaistControlPlugin(Plugin):
             msg.data = float(target_temp)
             self.target_temp_pub.publish(msg)
             self.node.get_logger().info(f'목표 온도 설정 메시지 발행: {target_temp:.2f}°C')
-
-            # 내부 변수 업데이트
-            self.applied_target_temp = target_temp
         except Exception as e:
             self.node.get_logger().error(f'목표 온도 발행 오류: {str(e)}')
+
+    def publish_angle_threshold(self, threshold_value):
+        """
+        각도 임계값 설정 메시지 발행
+        """
+        try:
+            # 단일 값을 Float64 메시지로 발행
+            msg = std_msgs.msg.Float64()
+            msg.data = float(threshold_value)
+            self.threshold_pub.publish(msg)
+            self.node.get_logger().info(f'각도 임계값 설정 메시지 발행: {threshold_value:.2f}도')
+        except Exception as e:
+            self.node.get_logger().error(f'각도 임계값 발행 오류: {str(e)}')
 
     def start_plotting(self):
         """
@@ -819,7 +829,7 @@ class WaistControlPlugin(Plugin):
             self.temp_line_4.setData([], [])
             self.temp_line_5.setData([], [])
             self.target_temp_line.setData([], [])
-            self.pwm_line_4.setData([], [])
+            # self.pwm_line_4.setData([], [])
             self.pwm_line_5.setData([], [])
 
             # 그래프 범위 초기화
@@ -872,21 +882,21 @@ class WaistControlPlugin(Plugin):
         # 상태가 변경되었을 때만 처리
         if new_active_state != self.is_active:
             self.is_active = new_active_state
-            state_str = "활성화" if self.is_active else "비활성화"
-            self.node.get_logger().info(f"허리 보조 시스템 상태 변경: {state_str}")
+            mode_str = "자동 온도제어" if self.is_active else "수동 PWM 제어"
+            self.node.get_logger().info(f"활성화 상태 변경: {self.is_active}")
 
-            # 활성화 상태에 따라 타겟 온도 설정
-            if self.is_active:
-                # 활성화 상태: 사용자가 설정한 목표 온도 사용
-                target_temp = self._widget.target_temp_spin.value()
+            if self.control_mode_client.service_is_ready():
+                # 서비스 요청 생성
+                request = SetControlMode.Request()
+                request.auto_mode = self.is_active  # 활성화 상태에 따라 자동/수동 모드 설정
+                request.actuator_id = -1  # -1은 모든 구동기를 의미
+
+                # 비동기 서비스 호출
+                self.node.get_logger().info(f"서비스 호출: set_control_mode, auto_mode={self.is_active}")
+                future = self.control_mode_client.call_async(request)
+                future.add_done_callback(self.handle_control_mode_response)
             else:
-                # 비활성화 상태: 목표 온도 0으로 설정
-                target_temp = 0.0
-
-            # 목표 온도 메시지 발행
-            self.publish_target_temperature(target_temp)
-
-            self._widget.status_label.setText(f"허리 보조 시스템이 {state_str}되었습니다. 목표 온도: {target_temp:.1f}°C")
+                self.node.get_logger().warn("제어 모드 서비스가 준비되지 않았습니다. 상태 변경이 적용되지 않습니다.")
 
     def handle_control_mode_response(self, future):
         """제어 모드 서비스 응답 처리"""
@@ -1053,6 +1063,7 @@ class WaistControlPlugin(Plugin):
 
     def check_service_availability(self):
         """서비스 가용성 확인 및 UI 업데이트"""
+        self.service_availability['set_control_mode'] = self.control_mode_client.service_is_ready()
         self.service_availability['set_pi_parameters'] = self.pi_params_client.service_is_ready()
         self.service_availability['set_emergency_stop'] = self.emergency_client.service_is_ready()
 
@@ -1065,9 +1076,23 @@ class WaistControlPlugin(Plugin):
             self._widget.service_status_label.setText("모든 서비스 연결됨")
             self._widget.service_status_label.setStyleSheet("color: green;")
 
+        if all(self.service_availability.values()) and not hasattr(self, 'initial_state_sent'):
+            # 초기 제어 모드 설정 (기본값은 활성화 상태에 따라)
+            request = SetControlMode.Request()
+            request.auto_mode = self.is_active  # 현재 활성화 상태에 맞게 설정
+            request.actuator_id = -1  # 모든 구동기
+
+            # 비동기 서비스 호출
+            future = self.control_mode_client.call_async(request)
+            future.add_done_callback(self.handle_control_mode_response)
+
+            # 초기 상태 설정 완료 표시
+            self.initial_state_sent = True
+            self.node.get_logger().info("초기 제어 모드가 설정되었습니다")
+
         # 로그로 서비스 가용성 출력
         self.node.get_logger().debug(
-            f"서비스 가용성: "
+            f"서비스 가용성: 제어모드={self.service_availability['set_control_mode']}, "
             f"PI파라미터={self.service_availability['set_pi_parameters']}, "
             f"비상정지={self.service_availability['set_emergency_stop']}")
 

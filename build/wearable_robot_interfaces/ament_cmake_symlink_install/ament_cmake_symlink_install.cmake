@@ -394,8 +394,8 @@ ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_rob
 # install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/CANDataFrame.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/CANDataFrame.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
-# install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/BackIntension.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
-ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/BackIntension.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
+# install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/BackIntention.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
+ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/msg/BackIntention.idl" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
 # install(FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/srv/SetControlMode.idl" "DESTINATION" "share/wearable_robot_interfaces/srv")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_adapter/wearable_robot_interfaces/srv/SetControlMode.idl" "DESTINATION" "share/wearable_robot_interfaces/srv")
@@ -430,8 +430,8 @@ ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_rob
 # install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/CANDataFrame.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/CANDataFrame.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
-# install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntension.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
-ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntension.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
+# install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntention.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
+ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/msg/BackIntention.msg" "DESTINATION" "share/wearable_robot_interfaces/msg")
 
 # install(FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/srv/SetControlMode.srv" "DESTINATION" "share/wearable_robot_interfaces/srv")
 ament_cmake_symlink_install_files("/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces" FILES "/home/kimm/wearable_robot_ws/src/wearable_robot_interfaces/srv/SetControlMode.srv" "DESTINATION" "share/wearable_robot_interfaces/srv")

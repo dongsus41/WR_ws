@@ -1,5 +1,5 @@
 from wearable_robot_interfaces.msg._actuator_command import ActuatorCommand  # noqa: F401
-from wearable_robot_interfaces.msg._back_intension import BackIntension  # noqa: F401
+from wearable_robot_interfaces.msg._back_intention import BackIntention  # noqa: F401
 from wearable_robot_interfaces.msg._can_data_frame import CANDataFrame  # noqa: F401
 from wearable_robot_interfaces.msg._displacement_data import DisplacementData  # noqa: F401
 from wearable_robot_interfaces.msg._displacement_raw_data import DisplacementRawData  # noqa: F401

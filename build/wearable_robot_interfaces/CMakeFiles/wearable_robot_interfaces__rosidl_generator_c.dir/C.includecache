@@ -24,9 +24,9 @@ std_msgs/msg/detail/header__functions.h
 rosidl_runtime_c/primitives_sequence_functions.h
 /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/rosidl_runtime_c/primitives_sequence_functions.h
 
-/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intension__functions.c
-wearable_robot_interfaces/msg/detail/back_intension__functions.h
-/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/wearable_robot_interfaces/msg/detail/back_intension__functions.h
+/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c
+wearable_robot_interfaces/msg/detail/back_intention__functions.h
+/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/wearable_robot_interfaces/msg/detail/back_intention__functions.h
 assert.h
 -
 stdbool.h
@@ -342,7 +342,7 @@ rosidl_generator_c/wearable_robot_interfaces/msg/detail/std_msgs/msg/detail/head
 rosidl_runtime_c/primitives_sequence.h
 rosidl_generator_c/wearable_robot_interfaces/msg/detail/rosidl_runtime_c/primitives_sequence.h
 
-rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intension__functions.h
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.h
 stdbool.h
 -
 stdlib.h
@@ -351,10 +351,10 @@ rosidl_runtime_c/visibility_control.h
 rosidl_generator_c/wearable_robot_interfaces/msg/detail/rosidl_runtime_c/visibility_control.h
 wearable_robot_interfaces/msg/rosidl_generator_c__visibility_control.h
 rosidl_generator_c/wearable_robot_interfaces/msg/detail/wearable_robot_interfaces/msg/rosidl_generator_c__visibility_control.h
-wearable_robot_interfaces/msg/detail/back_intension__struct.h
-rosidl_generator_c/wearable_robot_interfaces/msg/detail/wearable_robot_interfaces/msg/detail/back_intension__struct.h
+wearable_robot_interfaces/msg/detail/back_intention__struct.h
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/wearable_robot_interfaces/msg/detail/back_intention__struct.h
 
-rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intension__struct.h
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__struct.h
 stdbool.h
 -
 stddef.h

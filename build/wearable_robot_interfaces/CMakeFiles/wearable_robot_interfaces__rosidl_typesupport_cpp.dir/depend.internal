@@ -17,8 +17,8 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupp
  /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
  /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp
  rosidl_generator_cpp/wearable_robot_interfaces/msg/detail/actuator_command__struct.hpp
-CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o
- /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/back_intension__type_support.cpp
+CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/back_intention__type_support.cpp.o
+ /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/back_intention__type_support.cpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.hpp
  /opt/ros/foxy/include/rosidl_runtime_c/message_initialization.h
  /opt/ros/foxy/include/rosidl_runtime_c/message_type_support_struct.h
@@ -32,7 +32,7 @@ CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupp
  /opt/ros/foxy/include/rosidl_typesupport_cpp/visibility_control.h
  /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
  /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp
- rosidl_generator_cpp/wearable_robot_interfaces/msg/detail/back_intension__struct.hpp
+ rosidl_generator_cpp/wearable_robot_interfaces/msg/detail/back_intention__struct.hpp
 CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o
  /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_typesupport_cpp/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.hpp

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command_s.c.o"
-  "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o"
+  "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o"
   "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.o"
   "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_data_s.c.o"
   "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_displacement_raw_data_s.c.o"

@@ -1,6 +1,6 @@
 #include <rclcpp/rclcpp.hpp>
 #include <wearable_robot_interfaces/msg/displacement_data.hpp>
-#include <wearable_robot_interfaces/msg/back_intension.hpp>
+#include <wearable_robot_interfaces/msg/back_intention.hpp>
 #include <wearable_robot_interfaces/msg/temperature_data.hpp>
 #include <std_msgs/msg/float64.hpp>
 #include <string>
@@ -12,10 +12,8 @@ class WaistAssistControlNode : public rclcpp::Node
 {
 public:
     // 상수 정의
-    static constexpr int NUM_ACTUATORS = 2;             // 허리 보조용 구동기 수
-    static constexpr int WAIST_SENSOR_INDEX = 0;        // 허리 변위 센서는 항상 0번 인덱스
-    static constexpr int TOTAL_CHANNELS = 6;            // 전체 채널 수
-    static constexpr int DEFAULT_INDICES[NUM_ACTUATORS] = {4, 5}; // 기본 구동기 인덱스
+    static constexpr int NUM_ACTUATORS = 2;  // 허리 보조용 구동기 수 (4번, 5번)
+    static constexpr int DEFAULT_ACTUATOR_INDICES[NUM_ACTUATORS] = {4, 5};  // 기본 구동기 인덱스
 
     WaistAssistControlNode() : Node("waist_support_control_node")
     {
@@ -24,8 +22,8 @@ public:
             "displacement_data", 10,
             std::bind(&WaistAssistControlNode::displacement_callback, this, std::placeholders::_1));
 
-        // 사용자 의도 데이터 구독
-        intention_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::BackIntension>(
+        // 사용자 의도 데이터 구독 (GUI에서 전송)
+        intention_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::BackIntention>(
             "intention_data", 10,
             std::bind(&WaistAssistControlNode::intention_callback, this, std::placeholders::_1));
 
@@ -38,14 +36,23 @@ public:
         target_temp_publisher_ = this->create_publisher<wearable_robot_interfaces::msg::TemperatureData>(
             "target_temperature", 10);
 
-        // ----- 파라미터 선언 -----
-        this->declare_parameter("actuator_indices", std::vector<int64_t>{4, 5});
-        this->declare_parameter("waist_assist_active", true);
-        this->declare_parameter("waist_angle_threshold", 3.0);
-        this->declare_parameter("target_temperature", 60.0);
-        this->declare_parameter("control_frequency", 250.0);
+        threshold_subscription_ = this->create_subscription<std_msgs::msg::Float64>(
+            "angle_threshold_setting", 10,
+            std::bind(&WaistAssistControlNode::threshold_callback, this, std::placeholders::_1));
 
-        // 파라미터 콜백 등록
+
+        // ----- 파라미터 선언 -----
+        // 구동기 및 센서 인덱스 파라미터
+        this->declare_parameter("actuator_indices", std::vector<int64_t>{4, 5});  // 기본값: 4, 5번 구동기
+        this->declare_parameter("waist_sensor_index", 0);  // 허리 변위 센서 인덱스 (기본값: 0번)
+
+        // 허리 보조 제어 파라미터
+        this->declare_parameter("waist_assist_active", true);  // 허리 보조 동작 활성화 여부
+        this->declare_parameter("waist_angle_threshold", 3.0);  // 허리 각도 임계값 (기본값: 3.0도)
+        this->declare_parameter("target_temperature", 50.0);  // 구동기 목표 온도 (기본값: 50도)
+        this->declare_parameter("control_frequency", 250.0);  // 제어 주파수 (Hz)
+
+        // 파라미터 변경 콜백 등록
         param_callback_handle_ = this->add_on_set_parameters_callback(
             std::bind(&WaistAssistControlNode::parameter_callback, this, std::placeholders::_1));
 
@@ -64,15 +71,26 @@ public:
             actuator_indices_[i] = static_cast<int>(actuator_indices[i]);
         }
 
+        waist_sensor_index_ = this->get_parameter("waist_sensor_index").as_int();
         target_temperature_ = this->get_parameter("target_temperature").as_double();
+
+        // 제어 변수 초기화
         waist_angle_ = 0.0;
-        current_intention_id_ = 0;
-        is_active_ = false;
+        current_intention_id_ = 0;  // 의도 ID 기본값은 0 (동작 없음)
+        previous_active_state_ = false;  // 이전 활성화 상태 추적
+
+        // 타겟 온도 배열 초기화 (전체 6개 채널)
+        target_temp_values_.resize(6, 0.0);
+        // 기본 타겟 온도 설정
+        for (int i = 0; i < NUM_ACTUATORS; i++) {
+            int idx = actuator_indices_[i];
+            target_temp_values_[idx] = target_temperature_;
+        }
 
         // 초기화 정보 출력
         RCLCPP_INFO(this->get_logger(), "허리 보조 제어 노드가 시작되었습니다");
         RCLCPP_INFO(this->get_logger(), "제어 구동기: %d번, %d번", actuator_indices_[0], actuator_indices_[1]);
-        RCLCPP_INFO(this->get_logger(), "허리 변위 센서: %d번", WAIST_SENSOR_INDEX);
+        RCLCPP_INFO(this->get_logger(), "허리 변위 센서: %d번", waist_sensor_index_);
         RCLCPP_INFO(this->get_logger(), "허리 각도 임계값: %.1f", this->get_parameter("waist_angle_threshold").as_double());
         RCLCPP_INFO(this->get_logger(), "구동기 목표 온도: %.1f°C", target_temperature_);
         RCLCPP_INFO(this->get_logger(), "제어 주파수: %.1fHz", control_frequency);
@@ -88,17 +106,28 @@ private:
         std::lock_guard<std::mutex> lock(control_mutex_);
 
         // 허리 각도 센서 데이터 확인
-        if (msg->displacement.size() > WAIST_SENSOR_INDEX) {
-            waist_angle_ = msg->displacement[WAIST_SENSOR_INDEX];
+        if (msg->displacement.size() > static_cast<size_t>(waist_sensor_index_)) {
+            waist_angle_ = msg->displacement[waist_sensor_index_];
             RCLCPP_DEBUG(this->get_logger(), "허리 각도: %.2f", waist_angle_);
         } else {
             RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 5000,
-                "허리 변위 센서 데이터가 없습니다");
+                "허리 변위 센서(%d번) 데이터가 없습니다", waist_sensor_index_);
         }
     }
 
+    void threshold_callback(const std_msgs::msg::Float64::SharedPtr msg)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        // 임계값 파라미터 업데이트
+        double threshold_value = msg->data;
+        this->set_parameter(rclcpp::Parameter("waist_angle_threshold", threshold_value));
+
+        RCLCPP_INFO(this->get_logger(), "허리 각도 임계값이 %.2f도로 변경되었습니다", threshold_value);
+    }
+
     // 사용자 의도 데이터 수신 콜백
-    void intention_callback(const wearable_robot_interfaces::msg::BackIntension::SharedPtr msg)
+    void intention_callback(const wearable_robot_interfaces::msg::BackIntention::SharedPtr msg)
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
 
@@ -119,8 +148,22 @@ private:
     void target_temp_callback(const std_msgs::msg::Float64::SharedPtr msg)
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
+
+        // 타겟 온도 업데이트
         target_temperature_ = msg->data;
+
+        // 파라미터도 업데이트
+        this->set_parameter(rclcpp::Parameter("target_temperature", target_temperature_));
+
+        // 타겟 온도 배열 업데이트
+        for (int i = 0; i < NUM_ACTUATORS; i++) {
+            int idx = actuator_indices_[i];
+            target_temp_values_[idx] = target_temperature_;
+        }
+
         RCLCPP_INFO(this->get_logger(), "구동기 목표 온도가 %.1f°C로 변경되었습니다", target_temperature_);
+
+        // 즉시 타겟 온도 발행
         publish_target_temperature();
     }
 
@@ -129,25 +172,38 @@ private:
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
 
-        // 허리 보조 제어 로직
+        // ----- 허리 보조 제어 로직 -----
         bool waist_assist_active = this->get_parameter("waist_assist_active").as_bool();
         double waist_angle_threshold = this->get_parameter("waist_angle_threshold").as_double();
 
-        // 활성화 상태 계산
-        bool new_active_state = waist_assist_active &&
-                               current_intention_id_ != 0 &&
-                               waist_angle_ > waist_angle_threshold;
+        // ** 간소화된 허리 보조 로직 **
+        // 1. 의도가 0이 아니고
+        // 2. 변위 센서 임계값(3.0)을 넘으면 동작
+        bool is_active = waist_assist_active && current_intention_id_ != 0 && waist_angle_ > waist_angle_threshold;
 
-        // 상태가 변경되었을 때만 로그 출력 및 타겟 온도 발행
-        if (new_active_state != is_active_) {
-            is_active_ = new_active_state;
+        // 활성화 상태가 변경되었을 때만 타겟 온도 발행
+        if (is_active != previous_active_state_) {
+            previous_active_state_ = is_active;
 
-            if (is_active_) {
+            if (is_active) {
+                // 활성화 상태로 변경되면 타겟 온도 설정
+                for (int i = 0; i < NUM_ACTUATORS; i++) {
+                    int idx = actuator_indices_[i];
+                    target_temp_values_[idx] = target_temperature_;
+                }
+
                 RCLCPP_INFO(this->get_logger(), "구동기 활성화: 목표 온도 %.1f°C 설정", target_temperature_);
             } else {
+                // 비활성화 상태로 변경되면 타겟 온도 0으로 설정
+                for (int i = 0; i < NUM_ACTUATORS; i++) {
+                    int idx = actuator_indices_[i];
+                    target_temp_values_[idx] = 0.0;
+                }
+
                 RCLCPP_INFO(this->get_logger(), "구동기 비활성화: 목표 온도 0°C 설정");
             }
 
+            // 타겟 온도 발행
             publish_target_temperature();
         }
     }
@@ -157,17 +213,15 @@ private:
     {
         auto temp_msg = wearable_robot_interfaces::msg::TemperatureData();
         temp_msg.header.stamp = this->now();
-        temp_msg.temperature.resize(TOTAL_CHANNELS, 0.0);
+        temp_msg.temperature.resize(6, 0.0);
 
-        // 활성화된 경우에만 타겟 온도 설정
-        if (is_active_) {
-            // 목표 구동기에만 타겟 온도 설정
-            for (int i = 0; i < NUM_ACTUATORS; i++) {
-                int idx = actuator_indices_[i];
-                if (idx >= 0 && idx < TOTAL_CHANNELS) {
-                    temp_msg.temperature[idx] = target_temperature_;
-                }
-            }
+        if (previous_active_state_) {
+            temp_msg.temperature[0] = target_temperature_;
+        }
+
+        for (int i = 0; i < NUM_ACTUATORS; i++) {
+            int idx = actuator_indices_[i];
+            temp_msg.temperature[idx] = previous_active_state_ ? target_temperature_ : 0.0;
         }
 
         // 메시지 발행
@@ -180,7 +234,6 @@ private:
     {
         rcl_interfaces::msg::SetParametersResult result;
         result.successful = true;
-        bool need_to_publish = false;
 
         for (const auto &param : parameters) {
             const std::string& name = param.get_name();
@@ -188,18 +241,32 @@ private:
             if (name == "waist_assist_active") {
                 RCLCPP_INFO(this->get_logger(),
                     "허리 보조 기능이 %s되었습니다", param.as_bool() ? "활성화" : "비활성화");
-                need_to_publish = true;
             }
             else if (name == "waist_angle_threshold") {
                 RCLCPP_INFO(this->get_logger(),
                     "허리 각도 임계값이 %.1f로 변경되었습니다", param.as_double());
-                need_to_publish = true;
             }
             else if (name == "target_temperature") {
                 target_temperature_ = param.as_double();
+
+                // 타겟 온도 배열 업데이트 (활성화된 경우만)
+                if (previous_active_state_) {
+                    for (int i = 0; i < NUM_ACTUATORS; i++) {
+                        int idx = actuator_indices_[i];
+                        target_temp_values_[idx] = target_temperature_;
+                    }
+
+                    // 타겟 온도 즉시 발행
+                    publish_target_temperature();
+                }
+
                 RCLCPP_INFO(this->get_logger(),
-                    "구동기 목표 온도 %.1f°C로 변경", target_temperature_);
-                need_to_publish = true;
+                    "구동기 목표 온도가 %.1f°C로 변경되었습니다", target_temperature_);
+            }
+            else if (name == "waist_sensor_index") {
+                waist_sensor_index_ = param.as_int();
+                RCLCPP_INFO(this->get_logger(),
+                    "허리 변위 센서 인덱스가 %d번으로 변경되었습니다", waist_sensor_index_);
             }
             else if (name == "actuator_indices") {
                 std::vector<int64_t> indices = param.as_integer_array();
@@ -210,7 +277,21 @@ private:
                     RCLCPP_INFO(this->get_logger(),
                         "제어 구동기가 %d번, %d번으로 변경되었습니다",
                         actuator_indices_[0], actuator_indices_[1]);
-                    need_to_publish = true;
+
+                    // 타겟 온도 배열 재설정
+                    for (int i = 0; i < 6; i++) {
+                        target_temp_values_[i] = 0.0;
+                    }
+
+                    if (previous_active_state_) {
+                        for (int i = 0; i < NUM_ACTUATORS; i++) {
+                            int idx = actuator_indices_[i];
+                            target_temp_values_[idx] = target_temperature_;
+                        }
+
+                        // 타겟 온도 즉시 발행
+                        publish_target_temperature();
+                    }
                 } else {
                     RCLCPP_WARN(this->get_logger(),
                         "유효하지 않은 구동기 인덱스 목록: 최소 %d개 필요", NUM_ACTUATORS);
@@ -219,19 +300,15 @@ private:
             }
         }
 
-        // 파라미터 변경으로 인해 타겟 온도 발행이 필요하면 발행
-        if (need_to_publish && is_active_) {
-            publish_target_temperature();
-        }
-
         return result;
     }
 
     // ----- 멤버 변수 -----
     // 구독 및 발행
     rclcpp::Subscription<wearable_robot_interfaces::msg::DisplacementData>::SharedPtr displacement_subscription_;
-    rclcpp::Subscription<wearable_robot_interfaces::msg::BackIntension>::SharedPtr intention_subscription_;
+    rclcpp::Subscription<wearable_robot_interfaces::msg::BackIntention>::SharedPtr intention_subscription_;
     rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr target_temp_subscription_;
+    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr threshold_subscription_;
     rclcpp::Publisher<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr target_temp_publisher_;
 
     // 파라미터 콜백
@@ -240,15 +317,17 @@ private:
     // 타이머
     rclcpp::TimerBase::SharedPtr control_timer_;
 
-    // 구동기 인덱스
+    // 구동기 및 센서 인덱스
     std::array<int, NUM_ACTUATORS> actuator_indices_;
+    int waist_sensor_index_;
 
     // 제어 상태 변수
-    double waist_angle_;          // 허리 각도
-    int current_intention_id_;    // 현재 의도 ID (0: 동작 없음)
-    double target_temperature_;   // 구동기 목표 온도
-    bool is_active_;              // 현재 활성화 상태
-    std::mutex control_mutex_;    // 제어 로직 동기화를 위한 뮤텍스
+    double waist_angle_;                               // 허리 각도
+    int current_intention_id_;                         // 현재 의도 ID (0: 동작 없음)
+    double target_temperature_;                        // 구동기 목표 온도
+    std::vector<float> target_temp_values_;           // 구동기별 목표 온도 배열
+    bool previous_active_state_;                       // 이전 활성화 상태
+    std::mutex control_mutex_;                         // 제어 로직 동기화를 위한 뮤텍스
 };
 
 int main(int argc, char* argv[])

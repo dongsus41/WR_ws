@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp.o"
-  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp.o"
+  "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intention__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_data__type_support.cpp.o"
   "CMakeFiles/wearable_robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp.o"
@@ -14,7 +14,7 @@ file(REMOVE_RECURSE
   "libwearable_robot_interfaces__rosidl_typesupport_c.pdb"
   "libwearable_robot_interfaces__rosidl_typesupport_c.so"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/actuator_command__type_support.cpp"
-  "rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intension__type_support.cpp"
+  "rosidl_typesupport_c/wearable_robot_interfaces/msg/back_intention__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/can_data_frame__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_data__type_support.cpp"
   "rosidl_typesupport_c/wearable_robot_interfaces/msg/displacement_raw_data__type_support.cpp"

@@ -161,18 +161,18 @@ CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_ro
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c -o CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.s
 
-CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o: CMakeFiles/wearable_robot_interfaces__python.dir/flags.make
-CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o: rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c
+CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o: CMakeFiles/wearable_robot_interfaces__python.dir/flags.make
+CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o: rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c
 
-CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c > CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.i
+CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c > CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.i
 
-CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c -o CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.s
+CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c -o CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.s
 
 CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_mode_s.c.o: CMakeFiles/wearable_robot_interfaces__python.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_mode_s.c.o: rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_mode_s.c
@@ -223,7 +223,7 @@ wearable_robot_interfaces__python_OBJECTS = \
 "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command_s.c.o" \
 "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_fan_command_s.c.o" \
 "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.o" \
-"CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o" \
+"CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o" \
 "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_mode_s.c.o" \
 "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_params_s.c.o" \
 "CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_emergency_stop_s.c.o"
@@ -239,7 +239,7 @@ rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__pyth
 rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command_s.c.o
 rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_fan_command_s.c.o
 rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.o
-rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o
+rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o
 rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_mode_s.c.o
 rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_set_control_params_s.c.o
 rosidl_generator_py/wearable_robot_interfaces/libwearable_robot_interfaces__python.so: CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/srv/_emergency_stop_s.c.o

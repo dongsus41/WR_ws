@@ -111,8 +111,8 @@ CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_ro
  rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__functions.h
  rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__struct.h
  rosidl_generator_c/wearable_robot_interfaces/msg/rosidl_generator_c__visibility_control.h
-CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c.o
- /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intension_s.c
+CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c.o
+ /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.h
  /opt/ros/foxy/include/rosidl_runtime_c/primitives_sequence.h
  /opt/ros/foxy/include/rosidl_runtime_c/string.h
@@ -217,8 +217,8 @@ CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_ro
  /usr/include/python3.8/unicodeobject.h
  /usr/include/python3.8/warnings.h
  /usr/include/python3.8/weakrefobject.h
- rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intension__functions.h
- rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intension__struct.h
+ rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.h
+ rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__struct.h
  rosidl_generator_c/wearable_robot_interfaces/msg/rosidl_generator_c__visibility_control.h
 CMakeFiles/wearable_robot_interfaces__python.dir/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c.o
  /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame_s.c

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import csv
 import threading
 import subprocess
 import signal
@@ -17,6 +18,7 @@ from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QVBoxLayout, QLabel
 from python_qt_binding.QtCore import Qt, QTimer
 import pyqtgraph as pg
+
 
 
 class ActuatorControlPlugin(Plugin):
@@ -54,6 +56,25 @@ class ActuatorControlPlugin(Plugin):
         self.pwm_line = None
         self.temp_legend = None
 
+        self.is_recording = False
+        self.csv_file = None
+        self.csv_writer = None
+        self.csv_filename = ""
+        self.csv_lock = threading.Lock()  # CSV 파일 쓰기 위한 락
+        self.csv_start_time = None
+        self.logging_rate = 250.0  # 250Hz
+        self.logging_interval = 1.0 / self.logging_rate  # 4ms
+        self.last_data_point = {
+            'timestamp': None,
+            'temperature': 0.0,
+            'target_temp': 0.0,
+            'pwm': 0,
+        }
+        self.logging_timer = None
+        self.data_buffer = []  # 데이터 포인트 버퍼 (쓰기 성능 향상)
+        self.buffer_size = 50  # 버퍼 크기 (약 200ms 분량의 데이터)
+        self.sequence_number = 0
+        self.data_points_count = 0
 
 
         # ROS 노드 초기화
@@ -195,6 +216,257 @@ class ActuatorControlPlugin(Plugin):
         self._widget.status_label.setText('플러그인이 초기화되었습니다')
         self.node.get_logger().info('구동기 제어 플러그인이 초기화되었습니다')
 
+    # 타이머 콜백 제거하고 콜백 기반 로깅으로 통합
+    def start_recording(self):
+        """
+        CSV 파일로 데이터 기록 시작
+        """
+        if self.is_recording:
+            return
+
+        try:
+            # 파일명에 날짜/시간 추가
+            base_name = self._widget.filename_edit.text()
+            if not base_name:
+                base_name = "wearable_robot"
+
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+            output_dir = os.path.expanduser(f"~/ros2_csv_logs")
+            os.makedirs(output_dir, exist_ok=True)
+
+            self.csv_filename = os.path.join(output_dir, f"{base_name}_{timestamp}.csv")
+
+            # CSV 파일 생성 및 헤더 작성
+            with self.csv_lock:
+                self.csv_file = open(self.csv_filename, 'w', newline='')
+                self.csv_writer = csv.writer(self.csv_file)
+                self.csv_writer.writerow([
+                    "timestamp",
+                    "ros_timestamp",  # ROS 타임스탬프 추가
+                    "elapsed_time_sec",
+                    "temperature",
+                    "target_temperature",
+                    "pwm",
+                    "sequence"  # 시퀀스 번호 추가
+                ])
+
+            self.is_recording = True
+            self.csv_start_time = datetime.datetime.now()
+            self.data_buffer = []  # 버퍼 초기화
+            self.data_points_count = 0  # 데이터 포인트 카운터 초기화
+            self.sequence_number = 0  # 시퀀스 번호 초기화
+
+            # 로깅 타이머 제거 - 콜백 기반 로깅만 사용
+            self.logging_timer = None
+
+            self._widget.status_label.setText(f"데이터 기록이 시작되었습니다: {os.path.basename(self.csv_filename)}")
+            self._widget.save_data_button.setText("기록 중지")
+            self.node.get_logger().info(f"CSV 데이터 기록이 시작되었습니다: {self.csv_filename}")
+
+            # 로깅 상태 메시지 업데이트
+            self._widget.log_status_label.setText(
+                f"로깅 상태: 활성화 - {os.path.basename(self.csv_filename)}"
+            )
+
+            # 그래프 플로팅도 자동으로 시작
+            if not self.is_plotting:
+                self.start_plotting()
+
+        except Exception as e:
+            error_msg = f"CSV 파일 기록 시작 오류: {str(e)}"
+            self._widget.status_label.setText(error_msg)
+            self.node.get_logger().error(error_msg)
+
+            # 오류 메시지 표시
+            QMessageBox.critical(self._widget, "저장 오류", f"CSV 파일 기록 시작 중 오류가 발생했습니다.\n{str(e)}")
+
+    def stop_recording(self):
+        """
+        CSV 파일로 데이터 기록 중지
+        """
+        if not self.is_recording:
+            return
+
+        try:
+            # 타이머가 있다면 중지 (기존 코드와의 호환성을 위해 유지)
+            if self.logging_timer is not None:
+                self.node.destroy_timer(self.logging_timer)
+                self.logging_timer = None
+
+            # 버퍼에 남아있는 데이터를 정렬 후 쓰기
+            with self.csv_lock:
+                if self.csv_writer is not None and self.data_buffer:
+                    # 타임스탬프 기준으로 데이터 정렬 (인덱스 1: ros_timestamp 사용)
+                    sorted_buffer = sorted(self.data_buffer, key=lambda x: float(x[1]))
+
+                    for row in sorted_buffer:
+                        self.csv_writer.writerow(row)
+
+                # 파일 닫기
+                if self.csv_file is not None:
+                    self.csv_file.close()
+                    self.csv_file = None
+                    self.csv_writer = None
+
+            self.is_recording = False
+            self.data_buffer = []
+
+            total_duration = 0
+            if hasattr(self, 'csv_start_time') and self.csv_start_time is not None:
+                total_duration = (datetime.datetime.now() - self.csv_start_time).total_seconds()
+
+            rate = self.data_points_count / total_duration if total_duration > 0 else 0
+
+            self._widget.status_label.setText(
+                f"데이터 기록이 중지되었습니다: {os.path.basename(self.csv_filename)} - "
+                f"{self.data_points_count}개 기록 (평균 {rate:.1f}Hz)"
+            )
+            self._widget.save_data_button.setText("데이터 저장")
+            self.node.get_logger().info(
+                f"CSV 데이터 기록이 중지되었습니다: {self.csv_filename} - "
+                f"{self.data_points_count}개 기록, 기간: {total_duration:.1f}초, 평균 속도: {rate:.1f}Hz"
+            )
+
+            # 로깅 상태 메시지 업데이트
+            self._widget.log_status_label.setText("로깅 상태: 대기 중")
+
+        except Exception as e:
+            error_msg = f"CSV 파일 기록 중지 오류: {str(e)}"
+            self._widget.status_label.setText(error_msg)
+            self.node.get_logger().error(error_msg)
+
+            # 오류 메시지 표시
+            QMessageBox.critical(self._widget, "저장 오류", f"CSV 파일 기록 중지 중 오류가 발생했습니다.\n{str(e)}")
+
+    def temp_callback(self, msg):
+        """
+        온도 데이터 수신 콜백
+        """
+        try:
+            # 구동기 5번(인덱스 5) 온도 데이터 저장
+            if len(msg.temperature) > 5:
+                self.temperature = msg.temperature[5]
+
+                # ROS 메시지 타임스탬프
+                ros_timestamp = msg.header.stamp.sec + (msg.header.stamp.nanosec / 1_000_000_000)
+                current_time = datetime.datetime.now()
+
+                # 그래프 데이터 수집 (그래프 활성화 상태일 때만)
+                if self.is_plotting and hasattr(self, 'start_time') and self.start_time is not None:
+                    elapsed_time = (current_time - self.start_time).total_seconds()
+
+                    # 데이터 락 획득 후 배열 수정
+                    with self.data_lock:
+                        self.time_data.append(elapsed_time)
+                        self.temp_data.append(self.temperature)
+
+                        # 목표 온도 (자동 모드일 때는 설정값, 수동 모드일 때는 0)
+                        if self.auto_mode:
+                            target_temp = self._widget.target_temp_spin.value()
+                        else:
+                            target_temp = 0.0
+                        self.target_temp_data.append(target_temp)
+
+                        # PWM 값
+                        self.pwm_data.append(self.current_pwm)
+
+                        # 버퍼 크기 제한 (5분 = 300초 기준)
+                        max_age = 300.0  # 5분
+                        while self.time_data and (elapsed_time - self.time_data[0]) > max_age:
+                            self.time_data.pop(0)
+                            self.temp_data.pop(0)
+                            self.target_temp_data.pop(0)
+                            self.pwm_data.pop(0)
+
+                    # CSV 파일에 데이터 기록 (기록 활성화 상태일 때만)
+                    if self.is_recording:
+                        # 시퀀스 번호 증가
+                        self.sequence_number += 1
+
+                        # 로깅 시작 시간과의 차이를 계산 (초 단위)
+                        elapsed_seconds = 0.0
+                        if hasattr(self, 'csv_start_time') and self.csv_start_time is not None:
+                            elapsed_seconds = (current_time - self.csv_start_time).total_seconds()
+
+                        # 자동 모드일 때는 설정값, 수동 모드일 때는 0
+                        if self.auto_mode:
+                            target_temp = self._widget.target_temp_spin.value()
+                        else:
+                            target_temp = 0.0
+
+                        # 버퍼에 데이터 추가 (ROS 타임스탬프와 시퀀스 번호 포함)
+                        self.add_to_buffer(current_time, ros_timestamp, elapsed_seconds,
+                                        self.temperature, target_temp, self.current_pwm,
+                                        self.sequence_number)
+
+                    # 로그 출력
+                    if len(self.time_data) % 1000 == 0:  # 1000개마다 로그 출력
+                        self.node.get_logger().info(f"데이터 개수: {len(self.time_data)}, 시간 범위: {elapsed_time - self.time_data[0]:.1f}초")
+        except Exception as e:
+            import traceback
+            self.node.get_logger().error(f'온도 데이터 처리 오류: {str(e)}')
+            self.node.get_logger().error(traceback.format_exc())
+
+    def add_to_buffer(self, current_time, ros_timestamp, elapsed_seconds, temperature, target_temp, pwm, sequence):
+        """
+        데이터를 버퍼에 추가하고, 필요시 파일에 기록
+        """
+        try:
+            # 버퍼에 데이터 추가
+            self.data_buffer.append([
+                current_time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3],  # 밀리초까지 표시
+                f"{ros_timestamp:.6f}",  # ROS 타임스탬프 (6자리 소수점)
+                f"{elapsed_seconds:.6f}",  # 경과 시간 (6자리 소수점)
+                f"{temperature:.2f}",  # 온도 (2자리 소수점)
+                f"{target_temp:.2f}",  # 목표 온도 (2자리 소수점)
+                f"{pwm}",  # PWM 값
+                f"{sequence}"  # 시퀀스 번호
+            ])
+
+            self.data_points_count += 1
+
+            # 버퍼가 일정 크기에 도달하면 파일에 쓰기
+            if len(self.data_buffer) >= 50:  # 50개 데이터마다 기록
+                self.flush_buffer()
+
+                # 로깅 상태 업데이트 (1000개 데이터 포인트마다)
+                if self.data_points_count % 1000 == 0:
+                    now = datetime.datetime.now()
+                    if hasattr(self, 'csv_start_time') and self.csv_start_time is not None:
+                        duration = (now - self.csv_start_time).total_seconds()
+                        rate = self.data_points_count / duration if duration > 0 else 0
+
+                        self._widget.log_status_label.setText(
+                            f"로깅 상태: 활성화 - {os.path.basename(self.csv_filename)} - "
+                            f"{self.data_points_count}개 기록 (평균 {rate:.1f}Hz)"
+                        )
+        except Exception as e:
+            self.node.get_logger().error(f"데이터 버퍼링 오류: {str(e)}")
+
+    def flush_buffer(self):
+        """
+        버퍼 데이터를 정렬하여 파일에 기록
+        """
+        if not self.data_buffer:
+            return
+
+        try:
+            with self.csv_lock:
+                if self.csv_writer is not None:
+                    # 타임스탬프 기준으로 정렬 (인덱스 1: ros_timestamp 사용)
+                    sorted_buffer = sorted(self.data_buffer, key=lambda x: float(x[1]))
+
+                    # 정렬된 데이터 기록
+                    for row in sorted_buffer:
+                        self.csv_writer.writerow(row)
+
+                    # 파일 버퍼 강제 디스크 쓰기
+                    self.csv_file.flush()
+
+            # 버퍼 비우기
+            self.data_buffer = []
+        except Exception as e:
+            self.node.get_logger().error(f"버퍼 플러시 오류: {str(e)}")
 
     def spin_ros(self):
         """ROS 2 노드 스핀을 위한 메서드"""
@@ -512,53 +784,6 @@ class ActuatorControlPlugin(Plugin):
             self.node.get_logger().error(f"그래프 업데이트 오류: {str(e)}")
             self.node.get_logger().error(traceback.format_exc())
 
-    def temp_callback(self, msg):
-        """
-        온도 데이터 수신 콜백
-        """
-        try:
-            # 구동기 5번(인덱스 5) 온도 데이터 저장
-            if len(msg.temperature) > 5:
-                self.temperature = msg.temperature[5]
-                self.node.get_logger().debug(f'구동기 5번 온도: {self.temperature:.1f}°C')
-
-                # 그래프 데이터 수집 (그래프 활성화 상태일 때만)
-                if self.is_plotting and hasattr(self, 'start_time') and self.start_time is not None:
-                    current_time = datetime.datetime.now()
-                    elapsed_time = (current_time - self.start_time).total_seconds()
-
-                    # 데이터 락 획득 후 배열 수정
-                    with self.data_lock:
-                        self.time_data.append(elapsed_time)
-                        self.temp_data.append(self.temperature)
-
-                        # 목표 온도 (자동 모드일 때는 설정값, 수동 모드일 때는 0)
-                        if self.auto_mode:
-                            target_temp = self._widget.target_temp_spin.value()
-                        else:
-                            target_temp = 0.0
-                        self.target_temp_data.append(target_temp)
-
-                        # PWM 값
-                        self.pwm_data.append(self.current_pwm)
-
-                        # 버퍼 크기 제한 (5분 = 300초 기준, 하지만 데이터 포인트가 많아질 수 있음)
-                        # 시간 기준으로 오래된 데이터 제거
-                        max_age = 300.0  # 5분
-                        while self.time_data and (elapsed_time - self.time_data[0]) > max_age:
-                            self.time_data.pop(0)
-                            self.temp_data.pop(0)
-                            self.target_temp_data.pop(0)
-                            self.pwm_data.pop(0)
-
-                    # 로그 출력
-                    if len(self.time_data) % 1000 == 0:  # 500개마다 로그 출력
-                        self.node.get_logger().info(f"데이터 개수: {len(self.time_data)}, 시간 범위: {elapsed_time - self.time_data[0]:.1f}초")
-        except Exception as e:
-            import traceback
-            self.node.get_logger().error(f'온도 데이터 처리 오류: {str(e)}')
-            self.node.get_logger().error(traceback.format_exc())
-
     def pwm_callback(self, msg):
         """
         현재 PWM 상태 수신 콜백
@@ -748,83 +973,52 @@ class ActuatorControlPlugin(Plugin):
         self.actuator_pub.publish(msg)
         self.node.get_logger().debug(f'구동기 명령 발행: 구동기 5번 PWM = {pwm_value}')
 
-    def request_data_save(self):
+    def write_data_to_csv(self, current_time, elapsed_time, temperature, target_temp, pwm):
         """
-        로깅 중이면 중지 요청
+        수신된 데이터를 CSV 파일에 기록
         """
         try:
-            # 이미 녹화 중인지 확인
-            if self.recording_process is not None:
+            with self.csv_lock:
+                if self.csv_writer is not None:
+                    # CSV에 데이터 행 추가
+                    self.csv_writer.writerow([
+                        current_time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3],  # 밀리초까지 표시
+                        f"{elapsed_time:.3f}",
+                        f"{temperature:.2f}",
+                        f"{target_temp:.2f}",
+                        f"{pwm}"
+                    ])
+                    # 파일을 주기적으로 디스크에 쓰기 (버퍼 플러시)
+                    self.csv_file.flush()
+        except Exception as e:
+            self.node.get_logger().error(f"CSV 데이터 기록 오류: {str(e)}")
+            # 오류 발생 시 기록 중지
+            self.is_recording = False
+            with self.csv_lock:
+                if self.csv_file is not None:
+                    self.csv_file.close()
+                    self.csv_file = None
+                    self.csv_writer = None
+
+    def request_data_save(self):
+        """
+        CSV 파일로 데이터 저장 시작/중지
+        """
+        try:
+            if self.is_recording:
                 # 녹화 중지
-                try:
-                    # 프로세스 그룹 전체를 종료하여 자식 프로세스도 함께 종료
-                    os.killpg(os.getpgid(self.recording_process.pid), signal.SIGTERM)
-                except:
-                    # 이미 종료된 경우 등의 예외 처리
-                    pass
-
-                self.recording_process = None
-
-                self._widget.status_label.setText("녹화가 중지되었습니다")
-                self._widget.save_data_button.setText("데이터 저장")
-                self.node.get_logger().info("ROS2 bag 녹화가 중지되었습니다")
-
-                # 로깅 상태 메시지 업데이트
-                self._widget.log_status_label.setText("로깅 상태: 대기 중")
-
+                self.stop_recording()
             else:
                 # 녹화 시작
-                # 파일명에 날짜/시간 추가
-                base_name = self._widget.filename_edit.text()
-                if not base_name:
-                    base_name = "wearable_robot"
-
-                timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-                output_dir = os.path.expanduser(f"~/ros2_bags/{base_name}_{timestamp}")
-
-                # 디렉토리가 없으면 생성
-                os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-
-                # 저장할 토픽 목록
-                topics = [
-                    "/temperature_data",
-                    "/displacement_data",
-                    "/imu_raw_data",
-                    "/fan_state",
-                    "/pwm_state"
-                ]
-
-                # ROS2 bag 녹화 명령 구성
-                cmd = ["ros2", "bag", "record", "-o", output_dir]
-                cmd.extend(topics)
-
-                # 새 프로세스 그룹으로 실행 (나중에 종료하기 쉽게)
-                self.recording_process = subprocess.Popen(
-                    cmd,
-                    preexec_fn=os.setsid,
-                    stdout=subprocess.DEVNULL,  # 출력 리다이렉션으로 오버헤드 감소
-                    stderr=subprocess.DEVNULL
-                )
-
-
-                self._widget.status_label.setText(f"녹화가 시작되었습니다: {os.path.basename(output_dir)}")
-                self._widget.save_data_button.setText("녹화 중지")
-                self.node.get_logger().info(f"ROS2 bag 녹화가 시작되었습니다: {output_dir}")
-
-                # 로깅 상태 메시지 업데이트
-                self._widget.log_status_label.setText(f"로깅 상태: 활성화 - {os.path.basename(output_dir)}")
-
-                # 그래프 플로팅도 자동으로 시작
-                if not self.is_plotting:
-                    self.start_plotting()
+                self.start_recording()
 
         except Exception as e:
-            error_msg = f"ROS2 bag 녹화 오류: {str(e)}"
+            error_msg = f"CSV 파일 기록 오류: {str(e)}"
             self._widget.status_label.setText(error_msg)
             self.node.get_logger().error(error_msg)
 
             # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "녹화 오류", f"ROS2 bag 녹화 중 오류가 발생했습니다.\n{str(e)}")
+            QMessageBox.critical(self._widget, "저장 오류", f"CSV 파일 기록 중 오류가 발생했습니다.\n{str(e)}")
 
     def handle_save_response(self, future):
         """
@@ -1003,13 +1197,10 @@ class ActuatorControlPlugin(Plugin):
         if hasattr(self, 'graph_timer') and self.graph_timer.isActive():
             self.graph_timer.stop()
 
-        # ROS2 bag 녹화 프로세스 종료
-        if hasattr(self, 'recording_process') and self.recording_process is not None:
-            try:
-                os.killpg(os.getpgid(self.recording_process.pid), signal.SIGTERM)
-                self.node.get_logger().info("ROS2 bag 녹화가 종료되었습니다")
-            except:
-                pass
+        # CSV 파일 닫기
+        if hasattr(self, 'is_recording') and self.is_recording:
+            self.stop_recording()
+
 
         # 스핀 스레드 종료 대기
         if hasattr(self, 'spin_thread') and self.spin_thread.is_alive():

@@ -1,6 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <wearable_robot_interfaces/msg/temperature_data.hpp>
 #include <wearable_robot_interfaces/msg/actuator_command.hpp>
+#include <wearable_robot_interfaces/srv/set_control_mode.hpp>
 #include <wearable_robot_interfaces/srv/set_control_params.hpp>
 #include <wearable_robot_interfaces/srv/emergency_stop.hpp>
 #include <string>
@@ -12,22 +13,20 @@
 class WaistActuatorControlNode : public rclcpp::Node
 {
 public:
-    // 상수 정의
-    static constexpr int TOTAL_CHANNELS = 6;     // 총 채널 수
-    static constexpr double DEFAULT_KP = 2.0;    // 기본 비례 게인
-    static constexpr double DEFAULT_KI = 0.05;   // 기본 적분 게인
-
     // 액추에이터 상태 정보를 담는 구조체
     struct ActuatorState {
         double current_temp;     // 현재 온도
+        double previous_error;   // 이전 오차
         double integral;         // 적분 누적값
+        uint8_t pwm_output;      // 현재 PWM 출력값
+        bool use_direct_pwm;     // 제어 모드 (true: 수동, false: 자동)
         double kp;               // 비례 게인
         double ki;               // 적분 게인
 
         // 기본 생성자
         ActuatorState()
-            : current_temp(0.0), integral(0.0),
-              kp(DEFAULT_KP), ki(DEFAULT_KI) {}
+            : current_temp(0.0), previous_error(0.0), integral(0.0),
+              pwm_output(0), use_direct_pwm(true), kp(2.0), ki(0.05) {}
     };
 
     WaistActuatorControlNode() : Node("waist_actuator_control_node")
@@ -46,29 +45,17 @@ public:
             "target_temperature", 10,
             std::bind(&WaistActuatorControlNode::target_temp_callback, this, std::placeholders::_1));
 
-        // 서비스 설정
-        setupServices();
+        // pwm mode: 직접 PWM 값 구독
+        direct_pwm_subscription_ = this->create_subscription<wearable_robot_interfaces::msg::ActuatorCommand>(
+            "direct_pwm_command", 10,
+            std::bind(&WaistActuatorControlNode::direct_pwm_callback, this, std::placeholders::_1));
 
-        // 파라미터 설정
-        setupParameters();
+        // 제어 모드 변경 서비스
+        control_mode_service_ = this->create_service<wearable_robot_interfaces::srv::SetControlMode>(
+            "set_control_mode",
+            std::bind(&WaistActuatorControlNode::handle_control_mode, this,
+                      std::placeholders::_1, std::placeholders::_2));
 
-        // 내부 변수 초기화
-        is_emergency_stop_ = false;
-        is_temperature_safe_ = true;
-
-        // PWM 값 배열 초기화
-        current_pwm_values_.resize(TOTAL_CHANNELS, 0);
-
-        // 초기화 로그 출력
-        logInitInfo();
-
-        // 초기 PWM 상태 발행
-        publish_pwm_command();
-    }
-
-private:
-    // 서비스 설정 함수
-    void setupServices() {
         // PI 파라미터 설정 서비스
         pi_param_service_ = this->create_service<wearable_robot_interfaces::srv::SetControlParams>(
             "set_pi_parameters",
@@ -80,23 +67,24 @@ private:
             "set_emergency_stop",
             std::bind(&WaistActuatorControlNode::handle_emergency_stop, this,
                       std::placeholders::_1, std::placeholders::_2));
-    }
 
-    // 파라미터 설정 함수
-    void setupParameters() {
         // 기본 파라미터 선언
-        this->declare_parameter("target_temperature", 50.0);
-        this->declare_parameter("max_pwm", 60.0);
-        this->declare_parameter("min_pwm", 0.0);
-        this->declare_parameter("safety_threshold", 80.0);
-        this->declare_parameter("control_frequency", 250.0);
-        this->declare_parameter("can_interface", "can0");
+        this->declare_parameter("target_temperature", 50.0);    // 공통 목표 온도
+        this->declare_parameter("max_pwm", 60.0);              // 최대 PWM
+        this->declare_parameter("min_pwm", 0.0);                // 최소 PWM
+        this->declare_parameter("safety_threshold", 80.0);      // 안전 온도 임계값 (섭씨)
+        this->declare_parameter("control_frequency", 250.0);    // 제어 주파수 (Hz)
 
         // 구동기별 파라미터 선언
-        this->declare_parameter("actuator_ids", std::vector<int64_t>{4, 5});
+        this->declare_parameter("actuator_ids", std::vector<int64_t>{4, 5});  // 기본값으로 4, 5번 구동기 설정
+        this->declare_parameter("actuator4.kp", 2.0);        // 4번 구동기 Kp
+        this->declare_parameter("actuator4.ki", 0.05);        // 4번 구동기 Ki
+        this->declare_parameter("actuator5.kp", 2.0);        // 5번 구동기 Kp
+        this->declare_parameter("actuator5.ki", 0.05);        // 5번 구동기 Ki
 
-        // 구동기 초기화
-        initializeActuators();
+        // 파라미터 변경 콜백 등록
+        param_callback_handle_ = this->add_on_set_parameters_callback(
+            std::bind(&WaistActuatorControlNode::parameter_callback, this, std::placeholders::_1));
 
         // 제어 타이머 설정
         double control_frequency = this->get_parameter("control_frequency").as_double();
@@ -106,72 +94,60 @@ private:
             std::chrono::milliseconds(period_ms),
             std::bind(&WaistActuatorControlNode::control_callback, this));
 
-        // 파라미터 변경 콜백 등록
-        param_callback_handle_ = this->add_on_set_parameters_callback(
-            std::bind(&WaistActuatorControlNode::parameter_callback, this, std::placeholders::_1));
-    }
+        // 내부 변수 초기화
+        is_emergency_stop_ = false;
+        is_temperature_safe_ = true;
 
-    // 구동기 초기화 함수
-    void initializeActuators() {
+        // PWM 값 배열 초기화
+        current_pwm_values_.resize(6, 0);
+
+        // 액티브 액추에이터 초기화
         std::vector<int64_t> actuator_ids = this->get_parameter("actuator_ids").as_integer_array();
         for (const auto& id : actuator_ids) {
-            if (id >= 0 && id < TOTAL_CHANNELS) {
+            if (id >= 0 && id < 6) {  // 0~5번 구동기만 허용
                 active_actuator_ids_.insert(static_cast<int>(id));
 
                 // 구동기별 상태 객체 초기화
                 actuator_states_[id] = ActuatorState();
 
-                // YAML 구조에 맞게 파라미터 접근 경로 설정
-                std::string actuator_prefix = "actuator" + std::to_string(id);
-                std::string kp_param = actuator_prefix + ".kp";
-                std::string ki_param = actuator_prefix + ".ki";
+                // 각 구동기의 PI 게인 설정
+                std::string kp_param = "actuator" + std::to_string(id) + ".kp";
+                std::string ki_param = "actuator" + std::to_string(id) + ".ki";
 
-                // 파라미터가 있는지 확인
                 if (this->has_parameter(kp_param)) {
                     actuator_states_[id].kp = this->get_parameter(kp_param).as_double();
-                } else {
-                    // 파라미터가 없으면 기본값 사용
-                    this->declare_parameter(kp_param, DEFAULT_KP);
-                    actuator_states_[id].kp = DEFAULT_KP;
                 }
 
                 if (this->has_parameter(ki_param)) {
                     actuator_states_[id].ki = this->get_parameter(ki_param).as_double();
-                } else {
-                    // 파라미터가 없으면 기본값 사용
-                    this->declare_parameter(ki_param, DEFAULT_KI);
-                    actuator_states_[id].ki = DEFAULT_KI;
                 }
-
-                RCLCPP_INFO(this->get_logger(),
-                    "구동기 %d의 PI 게인 - Kp: %.2f, Ki: %.3f",
-                    id, actuator_states_[id].kp, actuator_states_[id].ki);
             }
         }
-    }
 
-    // 초기화 정보 로그 출력
-    void logInitInfo() {
+        // 초기화 후 메시지 출력
         RCLCPP_INFO(this->get_logger(), "액추에이터 제어 노드가 시작되었습니다");
 
+        // 활성화된 액추에이터 출력
         std::string active_actuators = "활성화된 구동기: ";
         for (const auto& id : active_actuator_ids_) {
             active_actuators += std::to_string(id) + ", ";
         }
-
+        // 마지막 쉼표와 공백 제거
         if (!active_actuator_ids_.empty()) {
             active_actuators.pop_back();
             active_actuators.pop_back();
         }
-
         RCLCPP_INFO(this->get_logger(), "%s", active_actuators.c_str());
-        RCLCPP_INFO(this->get_logger(), "CAN 인터페이스: %s", this->get_parameter("can_interface").as_string().c_str());
+
         RCLCPP_INFO(this->get_logger(), "안전 온도 임계값: %.1f°C", this->get_parameter("safety_threshold").as_double());
-        RCLCPP_INFO(this->get_logger(), "목표 온도: %.1f°C", this->get_parameter("target_temperature").as_double());
-        RCLCPP_INFO(this->get_logger(), "최대 PWM: %.1f", this->get_parameter("max_pwm").as_double());
-        RCLCPP_INFO(this->get_logger(), "제어 주파수: %.1fHz", this->get_parameter("control_frequency").as_double());
+        RCLCPP_INFO(this->get_logger(), "제어 주파수: %.1fHz", control_frequency);
+        RCLCPP_INFO(this->get_logger(), "초기 제어 모드: 수동 제어");
+
+        // 초기 PWM 상태 발행
+        publish_pwm_command();
     }
 
+private:
     // 온도 데이터 수신 콜백
     void temperature_callback(const wearable_robot_interfaces::msg::TemperatureData::SharedPtr msg)
     {
@@ -184,48 +160,54 @@ private:
                 RCLCPP_DEBUG(this->get_logger(), "구동기 %d의 현재 온도: %.2f°C",
                     id, actuator_states_[id].current_temp);
 
-                // 온도가 임계값을 초과하면 비상 정지
+                // 온도 안전성 검사
                 check_temperature_safety(id);
+            } else {
+                RCLCPP_WARN(this->get_logger(), "구동기 %d의 온도 데이터가 없습니다", id);
             }
         }
     }
 
-    // 목표 온도 설정 콜백
-    void target_temp_callback(const wearable_robot_interfaces::msg::TemperatureData::SharedPtr msg)
+    // 직접 온도 명령 수신 콜백
+    void direct_pwm_callback(const wearable_robot_interfaces::msg::ActuatorCommand::SharedPtr msg)
     {
         std::lock_guard<std::mutex> lock(control_mutex_);
 
-        // 비상 정지 중에는 목표 온도 변경 무시
+        // 비상 정지 중에는 명령 무시
         if (is_emergency_stop_) {
-            RCLCPP_WARN(this->get_logger(), "비상 정지 중입니다. 목표 온도 변경이 무시됩니다.");
+            RCLCPP_WARN(this->get_logger(), "비상 정지 중입니다. PWM 명령이 무시됩니다.");
             return;
         }
 
-        // 목표 온도 설정
-        if (!msg->temperature.empty()) {
-            // 공통 목표 온도 업데이트
-            double target_temp = msg->temperature[0];
-            this->set_parameter(rclcpp::Parameter("target_temperature", target_temp));
+        // 각 액추에이터별 PWM 명령 처리
+        for (const auto& id : active_actuator_ids_) {
+            // 자동 모드인 액추에이터는 명령 무시
+            if (!actuator_states_[id].use_direct_pwm) {
+                RCLCPP_DEBUG(this->get_logger(),
+                    "구동기 %d는 자동 제어 모드입니다. 직접 PWM 명령이 무시됩니다.", id);
+                continue;
+            }
 
-            // 온도가 0에 가까우면 즉시 모든 PWM 출력을 0으로 설정
-            if (target_temp <= 0.1) {
-                RCLCPP_INFO(this->get_logger(), "목표 온도가 0°C로 설정되어 모든 구동기 출력을 0으로 설정합니다");
+            // 해당 구동기의 PWM 값 가져오기
+            if (msg->pwm.size() > static_cast<size_t>(id)) {
+                uint8_t direct_pwm_value = msg->pwm[id];
+                RCLCPP_INFO(this->get_logger(),
+                    "직접 PWM 제어 명령 수신: 구동기 %d, PWM 값: %d",
+                    id, direct_pwm_value);
 
-                // PWM 출력을 0으로 설정하고 발행
-                std::fill(current_pwm_values_.begin(), current_pwm_values_.end(), 0);
-                publish_pwm_command();
+                // 직접 제어 모드에서는 명령 즉시 적용
+                current_pwm_values_[id] = direct_pwm_value;
             } else {
-                RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 설정되었습니다", target_temp);
-
-                // 온도가 0이 아닌 경우 적분기 초기화 (급격한 변화 방지)
-                for (auto& pair : actuator_states_) {
-                    pair.second.integral = 0.0;
-                }
+                RCLCPP_WARN(this->get_logger(),
+                    "유효하지 않은 PWM 명령: 구동기 %d의 데이터가 없습니다", id);
             }
         }
+
+        // 모든 구동기 명령 처리 후 publish
+        publish_pwm_command();
     }
 
-    // 구동기 온도 안전성 검사
+    // 특정 구동기의 온도 안전성 검사
     void check_temperature_safety(int actuator_id)
     {
         double safety_threshold = this->get_parameter("safety_threshold").as_double();
@@ -243,6 +225,29 @@ private:
         }
     }
 
+    // 목표 온도 설정 콜백
+    void target_temp_callback(const wearable_robot_interfaces::msg::TemperatureData::SharedPtr msg)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        // 비상 정지 중에는 목표 온도 변경 무시
+        if (is_emergency_stop_) {
+            RCLCPP_WARN(this->get_logger(), "비상 정지 중입니다. 목표 온도 변경이 무시됩니다.");
+            return;
+        }
+
+        // 모든 구동기가 동일한 목표 온도를 사용
+        if (!msg->temperature.empty()) {
+            double target_temp = msg->temperature[0];
+
+            // 요구사항에 따라 모든 액추에이터에 동일한 목표 온도 적용
+            this->set_parameter(rclcpp::Parameter("target_temperature", target_temp));
+            RCLCPP_INFO(this->get_logger(), "모든 구동기의 목표 온도가 %.1f°C로 업데이트되었습니다", target_temp);
+        } else {
+            RCLCPP_WARN(this->get_logger(), "유효하지 않은 목표 온도 메시지: 데이터가 없습니다");
+        }
+    }
+
     // 비상 정지 활성화
     void activate_emergency_stop()
     {
@@ -250,39 +255,16 @@ private:
         RCLCPP_ERROR(this->get_logger(), "비상 정지가 활성화되었습니다! 모든 출력이 중단됩니다.");
 
         // PWM 출력을 0으로 설정하고 발행
-        std::fill(current_pwm_values_.begin(), current_pwm_values_.end(), 0);
+        for (auto& value : current_pwm_values_) {
+            value = 0;
+        }
         publish_pwm_command();
 
         // 모든 액추에이터의 적분기 초기화
         for (auto& pair : actuator_states_) {
-            pair.second.integral = 0.0;
+            ActuatorState& state = pair.second;
+            state.integral = 0.0;
         }
-    }
-
-    // PI 제어 계산 함수
-    uint8_t calculate_pi_control(int id, double target_temp, double dt, double max_pwm, double min_pwm)
-    {
-        ActuatorState& state = actuator_states_[id];
-
-        // PI 제어 연산
-        double error = target_temp - state.current_temp;
-        state.integral += error * dt;
-
-        // Anti-windup
-        if (state.integral > max_pwm / state.ki) state.integral = max_pwm / state.ki;
-        if (state.integral < min_pwm / state.ki) state.integral = min_pwm / state.ki;
-
-        // PI 출력 계산
-        double output = state.kp * error + state.ki * state.integral;
-
-        // 출력 제한
-        output = std::max(min_pwm, std::min(output, max_pwm));
-
-        RCLCPP_DEBUG(this->get_logger(),
-            "구동기 %d PI 계산: 오차=%.1f, 적분=%.1f, Kp=%.2f, Ki=%.3f, 출력=%.1f",
-            id, error, state.integral, state.kp, state.ki, output);
-
-        return static_cast<uint8_t>(output);
     }
 
     // 주기적 제어 콜백
@@ -292,21 +274,15 @@ private:
 
         // 비상 정지 중일 때는 제어 스킵, 0 값만 발행
         if (is_emergency_stop_) {
-            std::fill(current_pwm_values_.begin(), current_pwm_values_.end(), 0);
+            // 모든 PWM 값 0으로 설정
+            for (auto& value : current_pwm_values_) {
+                value = 0;
+            }
             publish_pwm_command();
             return;
         }
 
         double target_temp = this->get_parameter("target_temperature").as_double();
-
-        // 목표 온도가 0에 가까우면 모든 출력을 0으로 설정
-        if (target_temp <= 0.1) {
-            std::fill(current_pwm_values_.begin(), current_pwm_values_.end(), 0);
-            publish_pwm_command();
-            return;
-        }
-
-        // 이하 기존 PI 제어 로직 (온도가 0보다 클 때만 실행)
         double max_pwm = this->get_parameter("max_pwm").as_double();
         double min_pwm = this->get_parameter("min_pwm").as_double();
         double control_frequency = this->get_parameter("control_frequency").as_double();
@@ -314,12 +290,42 @@ private:
 
         // 각 액추에이터별 제어 로직 적용
         for (const auto& id : active_actuator_ids_) {
-            uint8_t pwm_value = calculate_pi_control(id, target_temp, dt, max_pwm, min_pwm);
-            current_pwm_values_[id] = pwm_value;
+            auto& state = actuator_states_[id];
 
-            RCLCPP_DEBUG(this->get_logger(),
-                "구동기 %d 온도 제어: 목표=%.1f°C, 현재=%.1f°C, 출력=%d",
-                id, target_temp, actuator_states_[id].current_temp, pwm_value);
+            // 직접 PWM 제어 모드일 경우
+            if (state.use_direct_pwm) {
+                RCLCPP_DEBUG(this->get_logger(),
+                    "직접 PWM 제어 모드: 구동기 %d, PWM 값: %d",
+                    id, current_pwm_values_[id]);
+            }
+            // 자동 온도 제어 모드일 경우
+            else {
+                // PI 제어 연산
+                double error = target_temp - state.current_temp;
+
+                state.integral += error * dt;
+
+                // Anti-windup
+                if (state.integral > max_pwm / state.ki) state.integral = max_pwm / state.ki;
+                if (state.integral < min_pwm / state.ki) state.integral = min_pwm / state.ki;
+
+                // PI 출력 계산 - 각 구동기별 고유 게인 사용
+                double output = state.kp * error + state.ki * state.integral;
+
+                // 출력 제한
+                if (output > max_pwm) output = max_pwm;
+                if (output < min_pwm) output = min_pwm;
+
+                // 정수화
+                uint8_t pwm_value = static_cast<uint8_t>(output);
+
+                // 액티브 액추에이터 PWM 값 설정
+                current_pwm_values_[id] = pwm_value;
+
+                RCLCPP_DEBUG(this->get_logger(),
+                    "구동기 %d 온도 제어: 목표=%.1f°C, 현재=%.1f°C, 오차=%.1f°C, 출력=%d, Kp=%.2f, Ki=%.3f",
+                    id, target_temp, state.current_temp, error, pwm_value, state.kp, state.ki);
+            }
         }
 
         // 모든 구동기 처리 후 통합 명령 발행
@@ -332,10 +338,70 @@ private:
         auto pwm_msg = wearable_robot_interfaces::msg::ActuatorCommand();
         pwm_msg.header.stamp = this->now();
         pwm_msg.pwm = current_pwm_values_;
+
+        // 메시지 발행
         pwm_publisher_->publish(pwm_msg);
     }
 
-    // PI 파라미터 설정 서비스 핸들러
+    // 제어 모드 변경 서비스 핸들러 (특정 구동기 또는 모든 구동기 동시에 변경 가능)
+    void handle_control_mode(
+        const std::shared_ptr<wearable_robot_interfaces::srv::SetControlMode::Request> request,
+        std::shared_ptr<wearable_robot_interfaces::srv::SetControlMode::Response> response)
+    {
+        std::lock_guard<std::mutex> lock(control_mutex_);
+
+        try {
+            // true: 자동 모드, false: 수동 모드
+            bool auto_mode = request->auto_mode;
+            int actuator_id = request->actuator_id;  // 추가된 필드, -1은 모든 구동기
+            bool success = false;
+            std::string message;
+
+            // 특정 구동기만 모드 변경
+            if (actuator_id >= 0 && actuator_id < 6) {
+                if (active_actuator_ids_.find(actuator_id) != active_actuator_ids_.end()) {
+                    actuator_states_[actuator_id].use_direct_pwm = !auto_mode;
+
+                    // 모드 전환 시 적분 누적값 초기화
+                    if (auto_mode) {
+                        actuator_states_[actuator_id].integral = 0.0;
+                    }
+
+                    success = true;
+                    message = "구동기 " + std::to_string(actuator_id) + "의 제어 모드가 " +
+                              std::string(auto_mode ? "자동 온도 제어" : "수동 PWM 제어") + "로 변경되었습니다";
+                } else {
+                    message = "구동기 " + std::to_string(actuator_id) + "은(는) 활성화되지 않았습니다";
+                }
+            }
+            // 모든 구동기 모드 변경
+            else if (actuator_id == -1) {
+                for (const auto& id : active_actuator_ids_) {
+                    actuator_states_[id].use_direct_pwm = !auto_mode;
+
+                    // 모드 전환 시 적분 누적값 초기화
+                    if (auto_mode) {
+                        actuator_states_[id].integral = 0.0;
+                    }
+                }
+                success = true;
+                message = "모든 구동기의 제어 모드가 " +
+                          std::string(auto_mode ? "자동 온도 제어" : "수동 PWM 제어") + "로 변경되었습니다";
+            } else {
+                message = "유효하지 않은 구동기 ID: " + std::to_string(actuator_id);
+            }
+
+            response->success = success;
+            response->message = message;
+            RCLCPP_INFO(this->get_logger(), "%s", message.c_str());
+        } catch (const std::exception& e) {
+            response->success = false;
+            response->message = "제어 모드 변경 실패: " + std::string(e.what());
+            RCLCPP_ERROR(this->get_logger(), "%s", response->message.c_str());
+        }
+    }
+
+    // PI 파라미터 설정 서비스 핸들러 - 각 구동기별 PI 게인 설정 가능
     void handle_pi_parameters(
         const std::shared_ptr<wearable_robot_interfaces::srv::SetControlParams::Request> request,
         std::shared_ptr<wearable_robot_interfaces::srv::SetControlParams::Response> response)
@@ -348,12 +414,12 @@ private:
                 throw std::invalid_argument("게인 값은 음수가 될 수 없습니다");
             }
 
-            int actuator_id = request->actuator_id;
+            int actuator_id = request->actuator_id;  // 추가된 필드, -1은 모든 구동기
             bool success = false;
             std::string message;
 
             // 특정 구동기만 파라미터 변경
-            if (actuator_id >= 0 && actuator_id < TOTAL_CHANNELS) {
+            if (actuator_id >= 0 && actuator_id < 6) {
                 if (active_actuator_ids_.find(actuator_id) != active_actuator_ids_.end()) {
                     // 개별 구동기 파라미터 업데이트
                     std::string kp_param = "actuator" + std::to_string(actuator_id) + ".kp";
@@ -368,7 +434,7 @@ private:
 
                     success = true;
                     message = "구동기 " + std::to_string(actuator_id) + "의 PI 파라미터가 업데이트되었습니다 (Kp=" +
-                            std::to_string(request->kp) + ", Ki=" + std::to_string(request->ki) + ")";
+                             std::to_string(request->kp) + ", Ki=" + std::to_string(request->ki) + ")";
                 } else {
                     message = "구동기 " + std::to_string(actuator_id) + "은(는) 활성화되지 않았습니다";
                 }
@@ -390,7 +456,7 @@ private:
 
                 success = true;
                 message = "모든 구동기의 PI 파라미터가 업데이트되었습니다 (Kp=" +
-                        std::to_string(request->kp) + ", Ki=" + std::to_string(request->ki) + ")";
+                         std::to_string(request->kp) + ", Ki=" + std::to_string(request->ki) + ")";
             } else {
                 message = "유효하지 않은 구동기 ID: " + std::to_string(actuator_id);
             }
@@ -468,14 +534,8 @@ private:
             std::string param_name = param.get_name();
 
             if (param_name == "target_temperature") {
-                double target_temp = param.as_double();
-                RCLCPP_INFO(this->get_logger(), "목표 온도가 %.1f°C로 변경되었습니다", target_temp);
-
-                // 목표 온도가 0에 가까우면 즉시 모든 PWM 출력을 0으로 설정
-                if (target_temp <= 0.1) {
-                    std::fill(current_pwm_values_.begin(), current_pwm_values_.end(), 0);
-                    publish_pwm_command();
-                }
+                RCLCPP_INFO(this->get_logger(),
+                    "목표 온도가 %.1f°C로 변경되었습니다", param.as_double());
             } else if (param_name == "safety_threshold") {
                 RCLCPP_INFO(this->get_logger(),
                     "안전 온도 임계값이 %.1f°C로 변경되었습니다", param.as_double());
@@ -486,32 +546,13 @@ private:
 
                 std::string active_actuators = "활성화된 구동기: ";
                 for (const auto& id : actuator_ids) {
-                    if (id >= 0 && id < TOTAL_CHANNELS) {
+                    if (id >= 0 && id < 6) {  // 0~5번 구동기만 허용
                         active_actuator_ids_.insert(static_cast<int>(id));
                         active_actuators += std::to_string(id) + ", ";
 
                         // 필요한 경우 상태 객체 초기화
                         if (actuator_states_.find(id) == actuator_states_.end()) {
                             actuator_states_[id] = ActuatorState();
-
-                            // PI 파라미터 초기화
-                            std::string actuator_prefix = "actuator" + std::to_string(id);
-                            std::string kp_param = actuator_prefix + ".kp";
-                            std::string ki_param = actuator_prefix + ".ki";
-
-                            if (this->has_parameter(kp_param)) {
-                                actuator_states_[id].kp = this->get_parameter(kp_param).as_double();
-                            } else {
-                                this->declare_parameter(kp_param, DEFAULT_KP);
-                                actuator_states_[id].kp = DEFAULT_KP;
-                            }
-
-                            if (this->has_parameter(ki_param)) {
-                                actuator_states_[id].ki = this->get_parameter(ki_param).as_double();
-                            } else {
-                                this->declare_parameter(ki_param, DEFAULT_KI);
-                                actuator_states_[id].ki = DEFAULT_KI;
-                            }
                         }
                     }
                 }
@@ -560,9 +601,11 @@ private:
     // 구독 및 발행
     rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr temp_subscription_;
     rclcpp::Subscription<wearable_robot_interfaces::msg::TemperatureData>::SharedPtr target_temp_subscription_;
+    rclcpp::Subscription<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr direct_pwm_subscription_;
     rclcpp::Publisher<wearable_robot_interfaces::msg::ActuatorCommand>::SharedPtr pwm_publisher_;
 
     // 서비스
+    rclcpp::Service<wearable_robot_interfaces::srv::SetControlMode>::SharedPtr control_mode_service_;
     rclcpp::Service<wearable_robot_interfaces::srv::SetControlParams>::SharedPtr pi_param_service_;
     rclcpp::Service<wearable_robot_interfaces::srv::EmergencyStop>::SharedPtr emergency_service_;
 
@@ -582,11 +625,6 @@ private:
     bool is_emergency_stop_;    // 비상 정지 상태
     bool is_temperature_safe_;  // 온도 안전 상태
 };
-
-// 클래스 외부에서 static constexpr 상수들의 정의 추가
-constexpr int WaistActuatorControlNode::TOTAL_CHANNELS;
-constexpr double WaistActuatorControlNode::DEFAULT_KP;
-constexpr double WaistActuatorControlNode::DEFAULT_KI;
 
 int main(int argc, char* argv[])
 {
