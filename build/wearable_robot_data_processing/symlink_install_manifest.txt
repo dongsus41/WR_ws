@@ -1,3 +1,4 @@
+/home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/can_send_node
 /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/can_data_processor
 /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/data_parser_node
 /home/kimm/wearable_robot_ws/install/wearable_robot_data_processing/lib/wearable_robot_data_processing/displacement_processing_node

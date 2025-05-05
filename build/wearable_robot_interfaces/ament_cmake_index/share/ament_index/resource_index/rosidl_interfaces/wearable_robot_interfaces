@@ -1,5 +1,7 @@
 msg/ActuatorCommand.idl
 msg/ActuatorCommand.msg
+msg/ActuatorControlCommand.idl
+msg/ActuatorControlCommand.msg
 msg/BackIntention.idl
 msg/BackIntention.msg
 msg/CANDataFrame.idl

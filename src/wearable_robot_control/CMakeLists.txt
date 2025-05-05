@@ -24,30 +24,6 @@ find_package(ros2_socketcan_msgs REQUIRED)
 find_package(ros2_socketcan REQUIRED)
 find_package(std_srvs REQUIRED)
 
-# 온도 제어 노드
-add_executable(actuator_control_node
-  src/actuator_control_node.cpp
-)
-ament_target_dependencies(actuator_control_node
-  rclcpp
-  std_msgs
-  std_srvs
-  wearable_robot_interfaces
-  ros2_socketcan_msgs
-)
-
-# 허리 제어 노드
-add_executable(waist_actuator_control_node
-  src/waist_actuator_control_node.cpp
-)
-ament_target_dependencies(waist_actuator_control_node
-  rclcpp
-  std_msgs
-  std_srvs
-  wearable_robot_interfaces
-  ros2_socketcan_msgs
-)
-
 # 허리 보조 제어 노드
 add_executable(waist_support_control_node
   src/waist_support_control_node.cpp
@@ -59,35 +35,9 @@ ament_target_dependencies(waist_support_control_node
 )
 
 
-# # 명령 노드
-# add_executable(command_send_node
-#   src/command_send_node.cpp
-# )
-# ament_target_dependencies(command_send_node
-#   rclcpp
-#   std_msgs
-#   wearable_robot_interfaces
-#   ros2_socketcan_msgs
-# )
-
-  # can 송신 노드
-  add_executable(can_transmitter_node
-    src/can_transmitter_node.cpp
-  )
-  ament_target_dependencies(can_transmitter_node
-    rclcpp
-    std_msgs
-    wearable_robot_interfaces
-    ros2_socketcan_msgs
-  )
-
-
 # 실행 파일 설치
 install(TARGETS
-  actuator_control_node
-  waist_actuator_control_node
   waist_support_control_node
-  can_transmitter_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

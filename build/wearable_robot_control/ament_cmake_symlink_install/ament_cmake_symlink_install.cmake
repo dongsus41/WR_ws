@@ -310,7 +310,7 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install("TARGETS" "actuator_control_node" "waist_actuator_control_node" "waist_support_control_node" "can_transmitter_node" "DESTINATION" "lib/wearable_robot_control")
+# install("TARGETS" "waist_support_control_node" "DESTINATION" "lib/wearable_robot_control")
 include("/home/kimm/wearable_robot_ws/build/wearable_robot_control/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install(DIRECTORY "config" "DESTINATION" "share/wearable_robot_control")

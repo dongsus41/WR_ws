@@ -91,20 +91,11 @@ def generate_launch_description():
         output='screen'
     )
 
-    # 구동기 제어 노드
-    actuator_control_node = Node(
-        package='wearable_robot_control',
-        executable='waist_actuator_control_node',
-        name='waist_actuator_control_node',
-        parameters=[waist_control_config],
-        output='screen'
-    )
-
     # CAN 송신 노드
-    command_send_node = Node(
-        package='wearable_robot_control',
-        executable='can_transmitter_node',
-        name='can_transmitter_node',
+    can_send_node = Node(
+        package='wearable_robot_data_processing',
+        executable='can_send_node',
+        name='can_send_node',
         parameters=[waist_control_config],
         output='screen'
     )
@@ -137,8 +128,7 @@ def generate_launch_description():
         parser_node,
         displacement_calib_node,
         wasit_control_node,
-        actuator_control_node,
-        command_send_node,
+        can_send_node,
         gui_node,
         shutdown_handler
     ])

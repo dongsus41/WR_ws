@@ -78,6 +78,7 @@ rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl
 rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/msg/ActuatorCommand.idl
 rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/msg/FanCommand.idl
 rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/msg/CANDataFrame.idl
+rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/msg/ActuatorControlCommand.idl
 rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/msg/BackIntention.idl
 rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/srv/SetControlMode.idl
 rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h: rosidl_adapter/wearable_robot_interfaces/srv/SetControlParams.idl
@@ -210,6 +211,18 @@ rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__struct.h
 rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.h: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.h
 
+rosidl_generator_c/wearable_robot_interfaces/msg/actuator_control_command.h: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/actuator_control_command.h
+
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.h: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.h
+
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__struct.h: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__struct.h
+
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__type_support.h: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__type_support.h
+
 rosidl_generator_c/wearable_robot_interfaces/msg/back_intention.h: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/back_intention.h
 
@@ -281,6 +294,9 @@ rosidl_generator_c/wearable_robot_interfaces/msg/detail/fan_command__functions.c
 
 rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c
+
+rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c
 
 rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c: rosidl_generator_c/wearable_robot_interfaces/msg/displacement_raw_data.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c
@@ -398,9 +414,22 @@ CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c.s
 
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.o: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.o: rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c
+
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c > CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.i
+
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.s
+
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o: rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.i: cmake_force
@@ -413,7 +442,7 @@ CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o: rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.i: cmake_force
@@ -426,7 +455,7 @@ CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o: rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.i: cmake_force
@@ -439,7 +468,7 @@ CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c.o: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c.o: rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c.o   -c /home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c
 
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/emergency_stop__functions.c.i: cmake_force
@@ -460,6 +489,7 @@ wearable_robot_interfaces__rosidl_generator_c_OBJECTS = \
 "CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__functions.c.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/fan_command__functions.c.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c.o" \
+"CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o" \
 "CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o" \
@@ -476,6 +506,7 @@ libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_i
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__functions.c.o
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/fan_command__functions.c.o
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c.o
+libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c.o
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c.o
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c.o
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c.o
@@ -499,7 +530,7 @@ libwearable_robot_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl
 libwearable_robot_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librcpputils.so
 libwearable_robot_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librcutils.so
 libwearable_robot_interfaces__rosidl_generator_c.so: CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking C shared library libwearable_robot_interfaces__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kimm/wearable_robot_ws/build/wearable_robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C shared library libwearable_robot_interfaces__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -543,6 +574,10 @@ CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_gene
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.h
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__struct.h
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__type_support.h
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/actuator_control_command.h
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.h
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__struct.h
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__type_support.h
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/back_intention.h
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.h
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__struct.h
@@ -567,6 +602,7 @@ CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_gene
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_command__functions.c
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/fan_command__functions.c
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/can_data_frame__functions.c
+CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/actuator_control_command__functions.c
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/msg/detail/back_intention__functions.c
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_mode__functions.c
 CMakeFiles/wearable_robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/wearable_robot_interfaces/srv/detail/set_control_params__functions.c

@@ -32,7 +32,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ActuatorCommand.msg"
   "msg/FanCommand.msg"
   "msg/CANDataFrame.msg"
-  #"msg/JointState.msg"
+  "msg/ActuatorControlCommand.msg"
   "msg/BackIntention.msg"
   "srv/SetControlMode.srv"
   "srv/SetControlParams.srv"

@@ -25,7 +25,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'actuator_control_plugin = wearable_robot_rqt_plugins.actuator_control_plugin:main',
             'waist_control_plugin = wearable_robot_rqt_plugins.waist_control_plugin:main',
         ],
     },

@@ -36,6 +36,17 @@ ament_target_dependencies(can_data_processor
   wearable_robot_interfaces
 )
 
+# can 송신 노드
+add_executable(can_send_node
+  src/can_send_node.cpp
+)
+ament_target_dependencies(can_send_node
+  rclcpp
+  std_msgs
+  wearable_robot_interfaces
+  ros2_socketcan_msgs
+)
+
 # 데이터 파싱 노드
 add_executable(data_parser_node
   src/data_parser_node.cpp
@@ -68,6 +79,7 @@ ament_target_dependencies(IMU_processing_node
 
 # 실행 파일 설치
 install(TARGETS
+  can_send_node
   can_data_processor
   data_parser_node
   displacement_processing_node

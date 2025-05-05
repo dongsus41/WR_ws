@@ -68,17 +68,48 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -92,48 +123,17 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,32 +168,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named IMU_processing_node
-
-# Build rule for target.
-IMU_processing_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 IMU_processing_node
-.PHONY : IMU_processing_node
-
-# fast build rule for target.
-IMU_processing_node/fast:
-	$(MAKE) -f CMakeFiles/IMU_processing_node.dir/build.make CMakeFiles/IMU_processing_node.dir/build
-.PHONY : IMU_processing_node/fast
-
-#=============================================================================
-# Target rules for targets named data_parser_node
-
-# Build rule for target.
-data_parser_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 data_parser_node
-.PHONY : data_parser_node
-
-# fast build rule for target.
-data_parser_node/fast:
-	$(MAKE) -f CMakeFiles/data_parser_node.dir/build.make CMakeFiles/data_parser_node.dir/build
-.PHONY : data_parser_node/fast
-
-#=============================================================================
 # Target rules for targets named can_data_processor
 
 # Build rule for target.
@@ -205,6 +179,32 @@ can_data_processor: cmake_check_build_system
 can_data_processor/fast:
 	$(MAKE) -f CMakeFiles/can_data_processor.dir/build.make CMakeFiles/can_data_processor.dir/build
 .PHONY : can_data_processor/fast
+
+#=============================================================================
+# Target rules for targets named uninstall
+
+# Build rule for target.
+uninstall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uninstall
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
+#=============================================================================
+# Target rules for targets named can_send_node
+
+# Build rule for target.
+can_send_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 can_send_node
+.PHONY : can_send_node
+
+# fast build rule for target.
+can_send_node/fast:
+	$(MAKE) -f CMakeFiles/can_send_node.dir/build.make CMakeFiles/can_send_node.dir/build
+.PHONY : can_send_node/fast
 
 #=============================================================================
 # Target rules for targets named wearable_robot_data_processing_uninstall
@@ -220,6 +220,19 @@ wearable_robot_data_processing_uninstall/fast:
 .PHONY : wearable_robot_data_processing_uninstall/fast
 
 #=============================================================================
+# Target rules for targets named data_parser_node
+
+# Build rule for target.
+data_parser_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 data_parser_node
+.PHONY : data_parser_node
+
+# fast build rule for target.
+data_parser_node/fast:
+	$(MAKE) -f CMakeFiles/data_parser_node.dir/build.make CMakeFiles/data_parser_node.dir/build
+.PHONY : data_parser_node/fast
+
+#=============================================================================
 # Target rules for targets named displacement_processing_node
 
 # Build rule for target.
@@ -233,17 +246,17 @@ displacement_processing_node/fast:
 .PHONY : displacement_processing_node/fast
 
 #=============================================================================
-# Target rules for targets named uninstall
+# Target rules for targets named IMU_processing_node
 
 # Build rule for target.
-uninstall: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 uninstall
-.PHONY : uninstall
+IMU_processing_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 IMU_processing_node
+.PHONY : IMU_processing_node
 
 # fast build rule for target.
-uninstall/fast:
-	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
-.PHONY : uninstall/fast
+IMU_processing_node/fast:
+	$(MAKE) -f CMakeFiles/IMU_processing_node.dir/build.make CMakeFiles/IMU_processing_node.dir/build
+.PHONY : IMU_processing_node/fast
 
 src/IMU_processing_node.o: src/IMU_processing_node.cpp.o
 
@@ -298,6 +311,33 @@ src/can_data_processor.s: src/can_data_processor.cpp.s
 src/can_data_processor.cpp.s:
 	$(MAKE) -f CMakeFiles/can_data_processor.dir/build.make CMakeFiles/can_data_processor.dir/src/can_data_processor.cpp.s
 .PHONY : src/can_data_processor.cpp.s
+
+src/can_send_node.o: src/can_send_node.cpp.o
+
+.PHONY : src/can_send_node.o
+
+# target to build an object file
+src/can_send_node.cpp.o:
+	$(MAKE) -f CMakeFiles/can_send_node.dir/build.make CMakeFiles/can_send_node.dir/src/can_send_node.cpp.o
+.PHONY : src/can_send_node.cpp.o
+
+src/can_send_node.i: src/can_send_node.cpp.i
+
+.PHONY : src/can_send_node.i
+
+# target to preprocess a source file
+src/can_send_node.cpp.i:
+	$(MAKE) -f CMakeFiles/can_send_node.dir/build.make CMakeFiles/can_send_node.dir/src/can_send_node.cpp.i
+.PHONY : src/can_send_node.cpp.i
+
+src/can_send_node.s: src/can_send_node.cpp.s
+
+.PHONY : src/can_send_node.s
+
+# target to generate assembly for a file
+src/can_send_node.cpp.s:
+	$(MAKE) -f CMakeFiles/can_send_node.dir/build.make CMakeFiles/can_send_node.dir/src/can_send_node.cpp.s
+.PHONY : src/can_send_node.cpp.s
 
 src/data_parser_node.o: src/data_parser_node.cpp.o
 
@@ -360,24 +400,28 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... IMU_processing_node"
-	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... rebuild_cache"
+	@echo "... can_data_processor"
+	@echo "... uninstall"
+	@echo "... test"
+	@echo "... can_send_node"
+	@echo "... wearable_robot_data_processing_uninstall"
 	@echo "... data_parser_node"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... can_data_processor"
-	@echo "... wearable_robot_data_processing_uninstall"
+	@echo "... rebuild_cache"
+	@echo "... list_install_components"
 	@echo "... displacement_processing_node"
-	@echo "... uninstall"
+	@echo "... install"
+	@echo "... IMU_processing_node"
+	@echo "... install/local"
 	@echo "... src/IMU_processing_node.o"
 	@echo "... src/IMU_processing_node.i"
 	@echo "... src/IMU_processing_node.s"
 	@echo "... src/can_data_processor.o"
 	@echo "... src/can_data_processor.i"
 	@echo "... src/can_data_processor.s"
+	@echo "... src/can_send_node.o"
+	@echo "... src/can_send_node.i"
+	@echo "... src/can_send_node.s"
 	@echo "... src/data_parser_node.o"
 	@echo "... src/data_parser_node.i"
 	@echo "... src/data_parser_node.s"

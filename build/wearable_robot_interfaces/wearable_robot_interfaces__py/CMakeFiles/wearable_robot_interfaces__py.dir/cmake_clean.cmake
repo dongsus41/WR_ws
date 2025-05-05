@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/wearable_robot_interfaces/msg/__init__.py"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command.py"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_command_s.c"
+  "../rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_control_command.py"
+  "../rosidl_generator_py/wearable_robot_interfaces/msg/_actuator_control_command_s.c"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention.py"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_back_intention_s.c"
   "../rosidl_generator_py/wearable_robot_interfaces/msg/_can_data_frame.py"
