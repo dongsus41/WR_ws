@@ -310,7 +310,7 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install("TARGETS" "can_send_node" "can_data_processor" "data_parser_node" "displacement_processing_node" "IMU_processing_node" "DESTINATION" "lib/wearable_robot_data_processing")
+# install("TARGETS" "can_send_node" "can_data_processor" "data_parser_node" "displacement_processing_node" "IMU_processing_node" "data_logger_node" "DESTINATION" "lib/wearable_robot_data_processing")
 include("/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install(DIRECTORY "include/" "DESTINATION" "include")

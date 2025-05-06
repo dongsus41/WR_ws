@@ -109,6 +109,19 @@ def generate_launch_description():
         on_exit=Shutdown()
     )
 
+    data_logger_node = Node(
+    package='wearable_robot_data_processing',
+    executable='data_logger_node',
+    name='data_logger_node',
+    parameters=[
+        {'log_directory': '~/ros2_csv_logs'},
+        {'sampling_rate': 125},
+        {'max_queue_size': 10000},
+        {'buffer_flush_size': 1000}
+    ],
+    output='screen'
+)
+
     # 종료 핸들러 - 시스템 종료 시 실행
     # Foxy에서는 on_shutdown_kwargs를 지원하지 않으므로 제거
     shutdown_handler = RegisterEventHandler(
@@ -130,5 +143,6 @@ def generate_launch_description():
         wasit_control_node,
         can_send_node,
         gui_node,
+        data_logger_node,
         shutdown_handler
     ])

@@ -1,4 +1,5 @@
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/install/strip.dir
+/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/install/local.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/can_data_processor.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/uninstall.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/test.dir
@@ -11,4 +12,4 @@
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/displacement_processing_node.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/install.dir
 /home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/IMU_processing_node.dir
-/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/install/local.dir
+/home/kimm/wearable_robot_ws/build/wearable_robot_data_processing/CMakeFiles/data_logger_node.dir

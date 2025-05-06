@@ -77,6 +77,15 @@ ament_target_dependencies(IMU_processing_node
   wearable_robot_interfaces
 )
 
+add_executable(data_logger_node
+  src/data_logger_node.cpp
+)
+ament_target_dependencies(data_logger_node
+  rclcpp
+  std_msgs
+  wearable_robot_interfaces
+)
+
 # 실행 파일 설치
 install(TARGETS
   can_send_node
@@ -84,6 +93,7 @@ install(TARGETS
   data_parser_node
   displacement_processing_node
   IMU_processing_node
+  data_logger_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

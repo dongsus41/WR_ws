@@ -12,7 +12,7 @@ import time
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 from wearable_robot_interfaces.msg import ActuatorCommand, TemperatureData, DisplacementData, FanCommand, BackIntention
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64, String, Bool
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QVBoxLayout, QLabel
@@ -133,6 +133,15 @@ class WaistControlPlugin(Plugin):
 
         self.displacement_sub = self.node.create_subscription(
             DisplacementData, 'displacement_data', self.displacement_callback, qos_profile)  # 변위 데이터
+
+        self.start_logging_pub = self.node.create_publisher(
+             String, 'start_data_logging', 10)
+
+        self.stop_logging_pub = self.node.create_publisher(
+            Bool, 'stop_data_logging', 10)
+
+        self.logging_status_sub = self.node.create_subscription(
+            String, 'data_logging_status', self.logging_status_callback, 10)
 
         self._shutdown_flag = False
 
@@ -553,29 +562,6 @@ class WaistControlPlugin(Plugin):
                     f"평균 간격: {avg_interval*1000:.2f}ms, 실제 속도: {actual_rate:.2f}Hz"
                 )
 
-    def logging_worker(self):
-        """별도 스레드에서 데이터 로깅 처리"""
-        self.node.get_logger().info("로깅 스레드 시작")
-
-        try:
-            while self.logging_thread_active and self.is_recording and not self._shutdown_flag:
-                # 버퍼에 데이터가 충분히 쌓이면 파일에 쓰기
-                if len(self.data_buffer) >= self.buffer_size_limit:
-                    self.flush_buffer()
-
-                # 100ms 대기
-                time.sleep(0.1)
-
-            # 종료 시 남은 버퍼 비우기
-            if self.data_buffer and self.is_recording:
-                self.flush_buffer()
-
-        except Exception as e:
-            self.node.get_logger().error(f"로깅 스레드 오류: {str(e)}")
-
-        finally:
-            self.node.get_logger().info("로깅 스레드 종료")
-
     def collect_data_point(self):
         """데이터 포인트 수집"""
         if not self.is_plotting:
@@ -873,140 +859,89 @@ class WaistControlPlugin(Plugin):
 
         self.node.get_logger().info(f'비상 정지 {"활성화" if self.is_emergency_stop else "해제"} 명령 전송')
 
-    def start_recording(self):
-        """CSV 파일로 데이터 기록 시작"""
-        if self.is_recording:
-            return
 
+    def logging_status_callback(self, msg):
+    #데이터 로거 노드의 상태 메시지 처리
         try:
-            # 파일명에 날짜/시간 추가
-            base_name = self._widget.filename_edit.text() if hasattr(self._widget, 'filename_edit') else "waist_robot_log"
-            if not base_name:
-                base_name = "waist_robot_log"
+            # 상태 메시지 파싱 (형식: "상태:파일명:데이터개수:속도:큐크기")
+            parts = msg.data.split(":")
 
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-            output_dir = os.path.expanduser("~/ros2_csv_logs")
-            os.makedirs(output_dir, exist_ok=True)
+            if len(parts) < 1:
+                return
 
-            self.csv_filename = os.path.join(output_dir, f"{base_name}_{timestamp}.csv")
+            status = parts[0]
 
-            # CSV 파일 생성 및 헤더 작성
-            with self.csv_lock:
-                self.csv_file = open(self.csv_filename, 'w', newline='')
-                self.csv_writer = csv.writer(self.csv_file)
-                self.csv_writer.writerow([
-                    "timestamp",
-                    "elapsed_time_sec",
-                    "temperature_4",
-                    "temperature_5",
-                    "target_temperature",
-                    "pwm_4",
-                    "pwm_5",
-                    "displacement",
-                    "intention",
-                    "fan_4",
-                    "fan_5"
-                ])
+            if status == "logging_started":
+                self.is_recording = True
+                self._widget.save_data_button.setText("기록 중지")
 
-            self.is_recording = True
-            self.csv_start_time = datetime.datetime.now()
-            self.data_buffer = []  # 버퍼 초기화
-            self.data_points_count = 0  # 데이터 포인트 카운터 초기화
+                if len(parts) > 1:
+                    filename = parts[1]
+                    self._widget.log_status_label.setText(f"로깅 상태: 활성화 - {filename}")
 
-            # 로깅 스레드 시작
-            self.logging_thread_active = True
-            self.logging_thread = threading.Thread(target=self.logging_worker)
-            self.logging_thread.daemon = True
-            self.logging_thread.start()
+            elif status == "logging_active":
+                if len(parts) >= 4:
+                    filename = parts[1]
+                    count = parts[2]
+                    rate = parts[3]
+                    self._widget.log_status_label.setText(
+                        f"로깅 상태: 활성화 - {filename} - {count}개 기록 ({rate}Hz)"
+                    )
 
-            self._widget.status_label.setText(f"125Hz 고속 데이터 기록이 시작되었습니다: {os.path.basename(self.csv_filename)}")
-            self._widget.save_data_button.setText("기록 중지")
-            self.node.get_logger().info(f"CSV 데이터 기록이 시작되었습니다 (125Hz): {self.csv_filename}")
+            elif status == "logging_stopped":
+                self.is_recording = False
+                self._widget.save_data_button.setText("데이터 저장")
 
-            # 로깅 상태 메시지 업데이트
-            self._widget.log_status_label.setText(
-                f"로깅 상태: 활성화 - {os.path.basename(self.csv_filename)}"
-            )
+                if len(parts) >= 4:
+                    filename = parts[1]
+                    count = parts[2]
+                    rate = parts[3]
+                    self._widget.log_status_label.setText(
+                        f"로깅 완료: {filename} - {count}개 데이터 ({rate}Hz)"
+                    )
 
-            # 그래프 플로팅도 자동으로 시작
-            if not self.is_plotting:
-                self.start_plotting()
+            elif status == "logging_error":
+                self.is_recording = False
+                self._widget.save_data_button.setText("데이터 저장")
+
+                error_msg = parts[1] if len(parts) > 1 else "알 수 없는 오류"
+                self._widget.log_status_label.setText(f"로깅 오류: {error_msg}")
 
         except Exception as e:
-            error_msg = f"CSV 파일 기록 시작 오류: {str(e)}"
-            self._widget.status_label.setText(error_msg)
-            self.node.get_logger().error(error_msg)
-
-            # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "저장 오류", f"CSV 파일 기록 시작 중 오류가 발생했습니다.\n{str(e)}")
-
-    def stop_recording(self):
-        """CSV 파일로 데이터 기록 중지"""
-        if not self.is_recording:
-            return
-
-        try:
-            # 로깅 스레드 중지
-            self.logging_thread_active = False
-            if self.logging_thread and self.logging_thread.is_alive():
-                self.logging_thread.join(timeout=1.0)  # 1초 대기
-
-            # 버퍼에 남아있는 데이터를 파일에 쓰기
-            with self.csv_lock:
-                if self.csv_writer is not None and self.data_buffer:
-                    for row in self.data_buffer:
-                        self.csv_writer.writerow(row)
-                    self.data_buffer = []
-
-                # 파일 닫기
-                if self.csv_file is not None:
-                    self.csv_file.close()
-                    self.csv_file = None
-                    self.csv_writer = None
-
-            self.is_recording = False
-
-            total_duration = 0
-            if hasattr(self, 'csv_start_time') and self.csv_start_time is not None:
-                total_duration = (datetime.datetime.now() - self.csv_start_time).total_seconds()
-
-            rate = self.data_points_count / total_duration if total_duration > 0 else 0
-
-            self._widget.status_label.setText(
-                f"데이터 기록이 중지되었습니다: {os.path.basename(self.csv_filename)} - "
-                f"{self.data_points_count}개 기록 (평균 {rate:.1f}Hz)"
-            )
-            self._widget.save_data_button.setText("데이터 저장")
-            self.node.get_logger().info(
-                f"CSV 데이터 기록이 중지되었습니다: {self.csv_filename} - "
-                f"{self.data_points_count}개 기록, 기간: {total_duration:.1f}초, 평균 속도: {rate:.1f}Hz"
-            )
-
-            # 로깅 상태 메시지 업데이트
-            self._widget.log_status_label.setText("로깅 상태: 대기 중")
-
-        except Exception as e:
-            error_msg = f"CSV 파일 기록 중지 오류: {str(e)}"
-            self._widget.status_label.setText(error_msg)
-            self.node.get_logger().error(error_msg)
-
-            # 오류 메시지 표시
-            QMessageBox.critical(self._widget, "저장 오류", f"CSV 파일 기록 중지 중 오류가 발생했습니다.\n{str(e)}")
+            self.node.get_logger().error(f"로깅 상태 처리 오류: {str(e)}")
 
     def request_data_save(self):
-        """CSV 파일로 데이터 저장 시작/중지"""
+        """CSV 파일로 데이터 저장 시작/중지 (C++ 데이터 로거 노드 사용)"""
         try:
             if self.is_recording:
-                # 녹화 중지
-                self.stop_recording()
+                # 로깅 중지 메시지 발행
+                stop_msg = Bool()
+                stop_msg.data = True
+                self.stop_logging_pub.publish(stop_msg)
+                self._widget.save_data_button.setText("데이터 저장")
+                # 상태는 콜백에서 업데이트됨
             else:
-                # 녹화 시작
-                self.start_recording()
+                # 로깅 시작 메시지 발행
+                filename = self._widget.filename_edit.text() if hasattr(self._widget, 'filename_edit') else "waist_robot_log"
+                if not filename:
+                    filename = "waist_robot_log"
+
+                start_msg = String()
+                start_msg.data = filename
+                self.start_logging_pub.publish(start_msg)
+                self._widget.save_data_button.setText("기록 중지")
+                # 상태는 콜백에서 업데이트됨
+
+                # 그래프 플로팅도 자동으로 시작 (기존 기능 유지)
+                if not self.is_plotting:
+                    self.start_plotting()
+
         except Exception as e:
-            error_msg = f"CSV 파일 기록 오류: {str(e)}"
+            error_msg = f"데이터 로거 통신 오류: {str(e)}"
             self._widget.status_label.setText(error_msg)
             self.node.get_logger().error(error_msg)
-            QMessageBox.critical(self._widget, "저장 오류", f"CSV 파일 기록 중 오류가 발생했습니다.\n{str(e)}")
+            QMessageBox.critical(self._widget, "저장 오류", f"데이터 로거 통신 중 오류가 발생했습니다.\n{str(e)}")
+
 
     def shutdown_plugin(self):
         """플러그인이 종료될 때 호출되는 메서드"""
@@ -1024,13 +959,11 @@ class WaistControlPlugin(Plugin):
         if hasattr(self, 'graph_timer') and self.graph_timer.isActive():
             self.graph_timer.stop()
 
-        # 로깅 스레드 중지 및 CSV 파일 닫기
-        self.logging_thread_active = False
-        if hasattr(self, 'logging_thread') and self.logging_thread and self.logging_thread.is_alive():
-            self.logging_thread.join(timeout=1.0)
-
+        # 로깅 중지 메시지 발행
         if hasattr(self, 'is_recording') and self.is_recording:
-            self.stop_recording()
+            stop_msg = Bool()
+            stop_msg.data = True
+            self.stop_logging_pub.publish(stop_msg)
 
         # 스핀 스레드 종료 대기
         if hasattr(self, 'spin_thread') and self.spin_thread.is_alive():

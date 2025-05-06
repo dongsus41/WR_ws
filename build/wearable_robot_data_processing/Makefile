@@ -68,6 +68,18 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -122,18 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -258,6 +258,19 @@ IMU_processing_node/fast:
 	$(MAKE) -f CMakeFiles/IMU_processing_node.dir/build.make CMakeFiles/IMU_processing_node.dir/build
 .PHONY : IMU_processing_node/fast
 
+#=============================================================================
+# Target rules for targets named data_logger_node
+
+# Build rule for target.
+data_logger_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 data_logger_node
+.PHONY : data_logger_node
+
+# fast build rule for target.
+data_logger_node/fast:
+	$(MAKE) -f CMakeFiles/data_logger_node.dir/build.make CMakeFiles/data_logger_node.dir/build
+.PHONY : data_logger_node/fast
+
 src/IMU_processing_node.o: src/IMU_processing_node.cpp.o
 
 .PHONY : src/IMU_processing_node.o
@@ -339,6 +352,33 @@ src/can_send_node.cpp.s:
 	$(MAKE) -f CMakeFiles/can_send_node.dir/build.make CMakeFiles/can_send_node.dir/src/can_send_node.cpp.s
 .PHONY : src/can_send_node.cpp.s
 
+src/data_logger_node.o: src/data_logger_node.cpp.o
+
+.PHONY : src/data_logger_node.o
+
+# target to build an object file
+src/data_logger_node.cpp.o:
+	$(MAKE) -f CMakeFiles/data_logger_node.dir/build.make CMakeFiles/data_logger_node.dir/src/data_logger_node.cpp.o
+.PHONY : src/data_logger_node.cpp.o
+
+src/data_logger_node.i: src/data_logger_node.cpp.i
+
+.PHONY : src/data_logger_node.i
+
+# target to preprocess a source file
+src/data_logger_node.cpp.i:
+	$(MAKE) -f CMakeFiles/data_logger_node.dir/build.make CMakeFiles/data_logger_node.dir/src/data_logger_node.cpp.i
+.PHONY : src/data_logger_node.cpp.i
+
+src/data_logger_node.s: src/data_logger_node.cpp.s
+
+.PHONY : src/data_logger_node.s
+
+# target to generate assembly for a file
+src/data_logger_node.cpp.s:
+	$(MAKE) -f CMakeFiles/data_logger_node.dir/build.make CMakeFiles/data_logger_node.dir/src/data_logger_node.cpp.s
+.PHONY : src/data_logger_node.cpp.s
+
 src/data_parser_node.o: src/data_parser_node.cpp.o
 
 .PHONY : src/data_parser_node.o
@@ -400,6 +440,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... can_data_processor"
 	@echo "... uninstall"
 	@echo "... test"
@@ -412,7 +453,7 @@ help:
 	@echo "... displacement_processing_node"
 	@echo "... install"
 	@echo "... IMU_processing_node"
-	@echo "... install/local"
+	@echo "... data_logger_node"
 	@echo "... src/IMU_processing_node.o"
 	@echo "... src/IMU_processing_node.i"
 	@echo "... src/IMU_processing_node.s"
@@ -422,6 +463,9 @@ help:
 	@echo "... src/can_send_node.o"
 	@echo "... src/can_send_node.i"
 	@echo "... src/can_send_node.s"
+	@echo "... src/data_logger_node.o"
+	@echo "... src/data_logger_node.i"
+	@echo "... src/data_logger_node.s"
 	@echo "... src/data_parser_node.o"
 	@echo "... src/data_parser_node.i"
 	@echo "... src/data_parser_node.s"
